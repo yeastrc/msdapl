@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferPeptide"> 
+
+	<typeAlias alias="ProteinferPeptide" type="org.yeastrc.ms.domain.protinfer.ProteinferPeptide"/>
+	<typeAlias alias="BaseProteinferPeptide" type="org.yeastrc.ms.domain.protinfer.GenericProteinferPeptide"/>
+	
+	<resultMap class="BaseProteinferPeptide" id="pinferPeptideBaseResult">
+		<result property="id" column="id" />
+		<result property="proteinferId" column="piRunID" nullValue="0"/>
+		<result property="sequence" column="sequence" />
+		<result property="uniqueToProtein" column="uniqueToProtein"/>
+		<result property="spectrumCount" select="ProteinferSpectrumMatch.selectSpectrumCountForPeptide" column="id" />
+	</resultMap>
+	
+	<resultMap class="ProteinferPeptide" id="pinferPeptideResult" extends="ProteinferPeptide.pinferPeptideBaseResult">
+		<result property="ionList" 
+				select="ProteinferIon.selectIonsForPeptide"
+				column="id"/>
+	</resultMap>
+	
+	<parameterMap class="BaseProteinferPeptide" id="pinferPeptideParam">
+		<parameter property="proteinferId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="sequence" jdbcType="VARCHAR" />
+		<parameter property="uniqueToProtein" jdbcType="TINYINT" />
+	</parameterMap>
+	
+	<select id="select" resultMap="pinferPeptideResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferPeptide WHERE id=#id#
+    </select>
+    
+    <select id="selectPeptideForSeq" resultMap="pinferPeptideResult" parameterClass="java.util.Map">
+    	SELECT * FROM msProteinInferPeptide WHERE piRunID=#pinferId# AND sequence=#sequence#
+    </select>
+    
+    <select id="selectPeptideIdsForProtein" resultClass="Integer" parameterClass="Integer">
+    	SELECT piPeptideID FROM msProteinInferProteinPeptideMatch WHERE piProteinID = #id#
+    </select>
+    
+    <select id="selectUniquePeptideIdsForProtein" resultClass="Integer" parameterClass="Integer">
+    	SELECT m.piProteinID 
+    	FROM msProteinInferProteinPeptideMatch AS m, msProteinInferPeptide as pept
+    	WHERE m.piPeptideID = pept.id
+    	AND pept.uniqueToProtein=1 
+    	AND m.piPeptideID=#id#
+    </select>
+    
+    <select id="selectPeptidesForProtein" resultMap="pinferPeptideResult" parameterClass="Integer">
+    	SELECT p.*
+    	FROM  msProteinInferPeptide as p, msProteinInferProteinPeptideMatch as protMatch 
+    	WHERE p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = #id#
+    </select>
+    
+    <select id="selectProteinIdsForPeptide" resultClass="Integer" parameterClass="Integer">
+    	SELECT piProteinID FROM msProteinInferProteinPeptideMatch WHERE piPeptideID=#id#
+    </select>
+    
+    <select id="selectPeptideIdsForProteinferRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msProteinInferPeptide WHERE piRunID=#id#
+    </select>
+    
+    <select id="selectUniqPeptSeqForRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT COUNT(*) FROM msProteinInferPeptide WHERE piRunID=#id#
+    </select>
+    
+    <select id="selectUniqIonsForRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT COUNT(*) 
+    	FROM msProteinInferPeptide AS pept, msProteinInferIon AS ion 
+    	WHERE ion.piPeptideID = pept.id 
+    	AND pept.piRunID=#id#
+    </select>
+    
+    <select id="selectPeptidesForProteinferRun" resultMap="pinferPeptideResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferPeptide WHERE piRunID=#id#
+    </select>
+   
+    <insert id="insert" parameterMap="pinferPeptideParam">
+    	INSERT INTO msProteinInferPeptide (
+    	piRunID,
+    	sequence,
+    	uniqueToProtein) 
+    	VALUES (?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <update id="update" parameterClass="BaseProteinferPeptide">
+    	UPDATE msProteinInferPeptide 
+    	SET piRunID=#proteinferId#,
+    	sequence=#sequence#,
+    	uniqueToProtein=#uniqueToProtein#
+    	WHERE id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msProteinInferPeptide WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

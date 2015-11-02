@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProlucidSearch"> 
+
+	<typeAlias alias="ProlucidSearchOut" type="org.yeastrc.ms.domain.search.prolucid.impl.ProlucidSearchBean"/>
+	<typeAlias alias="ProlucidParamIn" type="org.yeastrc.ms.upload.dao.search.prolucid.ibatis.ProlucidSearchDAOImpl$ProlucidParamSqlMapParam" />
+	<typeAlias alias="ProlucidParamOut" type="org.yeastrc.ms.domain.search.prolucid.impl.ProlucidParamBean" />
+	
+	<resultMap class="ProlucidSearchOut" id="prolucidSearchResult" extends="MsSearch.msSearchResult" >
+		<result property="prolucidParams" 
+				column="id" 
+				select="ProlucidSearch.selectParams"/>
+	</resultMap>
+	
+	<resultMap class="ProlucidParamOut" id="prolucidParamResult">
+		<result property="id" column="id" nullValue="0" />
+		<result property="paramElementName" column="elementName"/>
+		<result property="paramElementValue" column="value"/>
+		<result property="parentParamElementId" column="parentID" nullValue="0" />
+	</resultMap>
+	
+	<parameterMap class="ProlucidParamIn" id="prolucidParamParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="paramElementName" jdbcType="VARCHAR" />
+		<parameter property="paramElementValue" jdbcType="VARCHAR"/>
+		<parameter property="parentParamElementId" jdbcType="INTEGER" nullValue="0"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="prolucidSearchResult" parameterClass="Integer">
+    	SELECT * FROM msSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectParams" resultMap="prolucidParamResult" parameterClass="Integer">
+    	SELECT * FROM ProLuCIDParams WHERE searchID = #id#
+    </select>
+    
+    <select id="selectSearchParamValue" resultClass="String" parameterClass="java.util.Map">
+    	SELECT value FROM ProLuCIDParams 
+    	WHERE searchID=#searchId#  
+    	AND elementName=#paramName# 
+    	AND parentID in (SELECT id FROM ProLuCIDParams WHERE searchID=#searchId# AND elementName=#parentParamName#)
+    </select>
+    
+    <insert id="insertParams" parameterMap="prolucidParamParam">
+    	INSERT INTO ProLuCIDParams (
+    	searchID,
+    	elementName,
+    	value,
+    	parentID)
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+</sqlMap>

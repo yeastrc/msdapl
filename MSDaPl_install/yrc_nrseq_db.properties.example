@@ -1,0 +1,10 @@
+# MySQL database properties
+db.host=localhost
+db.name=YRC_NRSEQ
+db.username=root
+db.password=
+
+db.ncbi.host=localhost
+db.ncbi.name=NCBI
+db.ncbi.username=root
+db.ncbi.password=

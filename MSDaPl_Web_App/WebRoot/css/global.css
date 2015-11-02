@@ -1,0 +1,652 @@
+/* These are my global styling rules */
+
+HTML {
+	height: 100%;
+}
+
+BODY    {
+           background-color: #F2F2F2;
+           color: #000000;
+           height: 100%;
+           margin: 0;
+           padding: 0;
+           font-family: "Trebuchet MS",Arial,sans-serif;
+           font-size: 10pt;
+           font-style: normal;
+           font-weight: 500;
+        }
+TD {
+	vertical-align: top;
+}
+/* Make a footer stick to the bottom of the page code from: http://ryanfait.com/resources/footer-stick-to-bottom-of-page/ */
+
+DIV#mainContainer {
+	min-height:100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -15px;
+}
+
+DIV#push {
+	height: 15px;
+	clear: both;
+}
+
+DIV#footer {
+        width:100%;
+        height:15px;
+        bottom:0;
+        padding: 0 0 0 0;
+        margin:0;
+        border-width: 0;
+        border-style:none;
+        z-index:1;
+        background-color: #3d4960;
+        color: #FFFFFF;
+        font-size:8pt;
+        font-style:normal;
+        font-weight:bold;
+        text-align:center;
+}
+
+PRE	{
+		color: #000000;
+		font-size: 10pt;
+		font-weight:500;
+	}
+
+TD	{
+		font-size:10pt;
+	}
+TH	{
+		font-size:10pt;
+		font-weight:bold;
+	}
+
+A:link  {
+                color: #D74D2D;
+        }
+
+A:visited {
+                color: #666666;
+        }
+
+A:active {
+                color: #FF0000;
+        }
+
+#login_header {
+        border-width: 0;
+        background-color: #3d4960;
+        color: #FFFFFF;
+        font-size:10pt;
+        font-style:normal;
+        font-weight:300;
+        margin-top:0px;
+}
+#login_header a, #login_header a:hover #login_header a:visited {
+	font-weight:bold; color:white;text-decoration:none;padding:3;background-color:gray; border: solid 1px white;
+}
+
+/*  background-color: #0075B2; */
+#top_header {
+		display:block;
+        border-width: 0;
+        padding:20 0 0 170;
+        background-image: url("../images/MSDAPL_logo_small.png");
+        background-repeat: no-repeat;
+        background-position:bottom left;
+        background-color: #3d4960;
+        z-index:1;
+        color: #FFFFFF;
+        font-size:8pt;
+        font-style:normal;
+        font-weight:300;
+        margin-top:0px;
+}
+
+/* Menu Items */
+#main_menu{
+	position:relative;
+	display:block;
+	height:24px;
+	font-size:11px;
+	font-weight:bold;
+}
+
+/* #0A90D0; */
+#main_menu a, #main_menu a:hover #main_menu a:visited {
+	font-weight:bold; color:white;text-decoration:none;padding:3;background-color:gray; border: solid 1px white;
+}
+#main_menu ul{margin:0px;padding:0;list-style-type:none;width:auto;font-size:9pt;}
+#main_menu ul li{display:block;float:left;margin:0 1px 0 0;}
+#main_menu ul li a{display:block;float:left;color:white;text-decoration:none;padding:5px 20px 0 20px;height:19px;
+background-color:#ed9a2e;border:0;}
+#main_menu ul li a:hover{color:white;background-color: black;}
+#main_menu ul li a.current,#main_menu ul li a.current:hover{color:white;background:#D74D2D;
+border-style: outset none outset outset; border-width: 1px 0px 0px 1px; border-color: #D74D2D;}
+
+#sub_header {
+		display:block;
+		border-top: solid 5px #D74D2D;
+        padding:5 0 5 10;
+        z-index:1;
+        font-style:normal;
+        font-weight:300;
+        margin-top:0px;
+}
+#sub_menu{
+	display:block;
+	height:20px;
+	font-size:11pt;
+	font-weight:bold;
+}
+#sub_menu ul{margin:0px;padding:0;list-style-type:none;width:auto;font-size:9pt;}
+#sub_menu ul li{display:block;float:left;margin:0 5px 0 0;}
+#sub_menu ul li a{display:block;float:left;color:white;text-decoration:none;padding:3px 15px 3px 15px;height:15px;
+background-color:#939cb0; border-color: #939cb0; border-width: 1px; border-style: outset;}
+#sub_menu ul li a:hover{color:white;background-color: black;}
+
+
+DIV #history {
+	border: 1px dashed #8CACBB;
+	background-color: white;
+	margin: 2 5 2 5;
+	padding: 3;
+}
+
+DIV.ms, DIV.pinfer, DIV.upload, DIV.adminSearch, DIV.groups, DIV.search, DIV.register, DIV.error, DIV.login, DIV.project, DIV.account, DIV.content {
+        border-width: 1;
+        border-style: solid;
+        padding: 5 8 5 8;
+        z-index:1;
+        font-family: "Trebuchet MS",Arial,sans-serif;
+        font-size:10pt;
+        font-style:normal;
+        font-weight:500;
+        margin:0px;
+        border-color: #939cb0;
+        background-color: #FFFFFF;
+        color: black;
+}
+
+DIV.ms, DIV.pinfer, DIV.upload, DIV.adminSearch, DIV.groups, DIV.search, DIV.register, DIV.error, DIV.login, DIV.project, DIV.account {
+	max-width:1200;
+}
+
+DIV.ms_header, DIV.pinfer_header, DIV.upload_header, DIV.adminSearch_header, DIV.groups_header, DIV.search_header, DIV.register_header, DIV.error_header, DIV.login_header, DIV.project_header, DIV.account_header, DIV.content_header {
+        border-width: 1;
+        border-style: solid;
+        padding: 2 8 2 8;
+        z-index:1;
+        font-family: "Trebuchet MS",Arial,sans-serif;
+        font-size:11pt;
+        font-style:normal;
+        font-weight:900;
+        margin:0px;
+        border-color: gray;
+        background-color: #939cb0;
+        color: white;
+}
+DIV.ms_header, DIV.pinfer_header, DIV.upload_header, DIV.adminSearch_header, DIV.groups_header, DIV.search_header, DIV.register_header, DIV.error_header, DIV.login_header, DIV.project_header, DIV.account_header {
+		max-width:1200;
+}
+/* #939cb0 */
+
+DIV.pinfer_header_small {
+        margin:0px;
+        border-color: gray;
+        background-color: #939cb0;
+        color: white;
+}
+
+
+/****************************************************************************************************/*
+/* BEGIN  TABLE STYLING
+/****************************************************************************************************/*
+.table_basic, .table_compare_grp {
+	border: 1px solid #7F7F7F;
+	border-collapse: separate;
+	empty-cells: show;
+	border-spacing: 0;
+}
+
+.table_same_color_row {
+	border: 1px solid #7F7F7F;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+/* url(../images/sprite.png) repeat-x scroll 0 -100px; */
+.table_basic TH , .table_same_color_row TH, .table_compare_grp TH, TH.header {
+	background: #D8D8DA url(../images/sprite.png) repeat-x scroll 0 0;
+	color: #3D4960;
+	padding: 3 5 3 5;
+	text-align: center;
+	border-style: none solid solid none;
+	border-color: #CBCBCB;
+	border-width: medium 1px 1px medium;
+	border-collapse: separate;
+}
+.table_basic TH.sortable:hover, .sortable_table TH.sortable:hover {
+	color:#D74D2D;
+	cursor:pointer;
+}
+.table_basic TH.sorted-asc, .sortable_table TH.sorted-asc{
+	background: #3D4960 url(../images/sprite.png) repeat-x scroll 0 -1502px;
+	color: #FFFFFF;
+}
+.table_basic TH.sorted-asc:hover, .sortable_table TH.sorted-asc:hover {
+	color: #FFFFFF;
+}
+.table_basic TH.sorted-desc, .sortable_table TH.sorted-desc {
+	background: #3D4960 url(../images/sprite.png) repeat-x scroll 0 -1502px;
+	color: #FFFFFF;
+}
+.table_basic TH.sorted-desc:hover, .sortable_table TH.sorted-desc:hover {
+	color: #FFFFFF;
+}
+
+.table_basic .tr_odd, .table_compare_grp .tr_odd {
+	background-color: #F2F2F2;
+}
+.table_basic .tr_even, .table_compare_grp .tr_even {
+	background-color: #FFFFFF;
+}
+
+.table_basic td, .table_compare_grp td {
+	border-style: none solid solid none;
+	border-width: medium 1px 1px medium;
+	border-color: #FFFFFF #CBCBCB #F2F2F2 #FFFFFF;
+	padding: 3 3 3 3;
+	text-align: left;
+}
+
+.table_basic td.center_align, .table_compare_grp td.center_align{
+	text-align: center;
+}
+
+.table_basic td.right_align, .table_compare_grp td.right_align{
+	text-align: right;
+	white-space: nowrap;
+}
+
+.table_compare_grp td {
+	border-style: none solid solid none;
+	border-width: medium 1px 1px medium;
+	border-color: #FFFFFF #CBCBCB #CBCBCB #FFFFFF;
+	padding: 3 3 3 3;
+}
+
+
+.tr_highlight {
+	background-color: #939CB0;
+	font-weight: bold;
+}
+.tr_highlight a:visited {
+	color:	#D74D2D;
+}
+
+
+/* Small tables */
+TABLE.table_basic_small {
+	border: 1px dashed #7F7F7F;
+	border-collapse: separate;
+	empty-cells: show;
+	border-spacing: 0;
+}
+
+.table_basic_small TH {
+	background: #F2F2F2;
+	color: #3D4960;
+	padding: 2 3 2 3;
+	text-align: center;
+	border-style: none solid solid none;
+	border-color: #CBCBCB;
+	border-width: medium 1px 1px medium;
+	border-collapse: separate;
+}
+
+.table_basic_small TH.sortable:hover {
+	color:#D74D2D;
+	cursor:pointer;
+}
+
+.table_basic_small TD {
+	border-style: none solid solid none;
+	border-width: 0 1px 1px 0;
+	border-color: #CBCBCB;
+	padding: 3 3 3 3;
+}
+
+TD.centered {
+	text-align: center;
+}
+
+.faded {
+	opacity:.50;
+}
+
+.small_font {
+	font-size:8pt;
+}
+
+.font_9 {
+	font-size:9pt;
+}
+
+/****************************************************************************************************/*
+/* BUTTONS
+/****************************************************************************************************/*
+INPUT.plain_button, .plain_button {
+	background: transparent url(../images/sprite.png) repeat-x scroll 0 -1502px;;
+	color:#ffffff;
+	border-color: #3d4960;
+	border-width: 1px;
+	font-size:9pt;
+	font-weight:bold;
+	margin-top:15px;
+	padding: 2 5 2 5;
+	text-decoration:none;
+}
+
+INPUT.error_button, .error_button {
+	background-color:#D74D2D;
+	color:#ffffff;
+	border-color: #D74D2D;
+	border-width: 1px;
+	font-size:9pt;
+	font-weight:bold;
+	margin-top:15px;
+	padding: 2 5 2 5;
+	text-decoration:none;
+}
+
+/****************************************************************************************************/*
+/* FOLDABLE
+/****************************************************************************************************/*
+
+.clickable {
+	cursor: pointer;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.foldable {
+	cursor: pointer;
+}
+
+.fold-open{
+	background-image: url(../images/sprite.png);
+	background-position: 0 -400px;
+	background-repeat:no-repeat;
+}
+.fold-close{
+	background-image: url(../images/sprite.png);
+	background-position: 0 -350px;
+	background-repeat:no-repeat;
+}
+
+
+
+/****************************************************************************************************/*
+/* FOR TOOLTIPS
+/****************************************************************************************************/*
+p.tooltip {
+	clear:both;
+	margin:0;
+	padding:.5em 0;
+}
+#tooltip{
+	position:absolute;
+	border:1px dashed #333;
+	background:#f7f5d1;
+	padding:2px 5px;
+	color:#333;
+	display:none;
+}
+span.tooltip {
+	cursor:help;
+}
+span.tooltip:hover {
+	background-color:#FFE4C4;
+	font-weight:bold;
+}
+
+
+
+
+
+
+/* Login color definitions */
+DIV.login_header {
+}
+
+DIV.login {
+}
+
+
+/* Register color definitions */
+DIV.register {
+}
+
+DIV.register_header {
+	width: 600;
+}
+
+/* Error color definitions */
+DIV.error_header {
+        border-color: #A52A2A;
+        background-color: #A52A2A;
+        color: #FFFFF0;
+}
+DIV.error {
+        border-color: #A52A2A;
+        background-color: #FFFFF0;
+        color: #A52A2A;
+}
+
+
+
+/* Search color definitions */
+DIV.search {
+	width: 600;
+}
+
+DIV.search_header {
+	width: 600;
+}
+TR.search_A {
+	background-color: #E8EAFF;
+}
+TR.search_B {
+	background-color: #D8DBFE;
+}
+DIV.search .button {
+	background-color:#3d4960;
+	color:white;
+	font-size:10pt;
+	font-weight:bold;
+	margin-top:20px;
+}
+
+
+
+
+/* Project color definitions */
+DIV.project {
+}
+DIV.project_header {
+}
+TR.project_A {
+	background-color: #F2F2F2;
+}
+TR.project_B {
+	background-color: white;
+}
+DIV.project .button {
+	background-color:#3d4960;
+	color:white;
+	font-size:10pt;
+	font-weight:bold;
+	margin-top:20px;
+}
+
+
+
+
+
+/* account color definitions */
+DIV.account {
+        width: 600;
+}
+
+DIV.account_header {
+        width: 600;
+}
+
+/* admin group management color definitions */
+DIV.groups {
+        width: 600;
+}
+
+DIV.groups_header {
+        width: 600;
+}
+
+/* admin search color definitions */
+DIV.adminSearch {
+        width: 600;
+        border-color: #59AFFF;
+        background-color: #EEF7FF;
+        color: #000000;
+}
+DIV.adminSearch_header {
+        width: 600;
+        border-color: #59AFFF;
+        background-color: #59AFFF;
+        color: #000000;
+}
+TR.adminSearch_A {
+	background-color: #D6EBFF;
+}
+TR.adminSearch_B {
+	background-color: #EEF7FF;
+}
+
+/* data upload color definitions */
+DIV.upload {
+        width: 600;
+}
+
+DIV.upload_header {
+        width: 600;
+}
+TR.upload_A {
+	background-color: #FFF0D8;
+}
+TR.upload_B {
+	background-color: #E9E6E2;
+}
+
+
+
+DIV.ms {
+        width: 600;
+}
+DIV.ms_header {
+        width: 600;
+}
+TR.ms_A {
+	background-color: #D4FECA;
+}
+TR.ms_B {
+	background-color: #EBFFE6;
+}
+
+DIV.ms .button {
+	background-color:#3D902A;
+	color: #EBFFE6;
+	font-size:10pt;
+	font-weight:bold;
+	margin-top:20px;
+}
+
+
+
+/* MS-specific styling rules */
+SPAN.covered_peptide {
+	color: #FF0000;
+}
+SPAN.single_star_residue {
+	color: #FF0000;
+	font-weight: bold;
+	background-color: #FFFF00;
+}
+SPAN.multiple_star_residue {
+	color: #FFFF00;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+SPAN.single_at_residue {
+	color: #FF0000;
+	font-weight: bold;
+	background-color: #FFB7EA;
+}
+SPAN.multiple_at_residue {
+	color: #FFB7EA;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+SPAN.single_hash_residue {
+	color: #FF0000;
+	font-weight: bold;
+	background-color: #BCB7FF;
+}
+SPAN.multiple_hash_residue {
+	color: #BCB7FF;
+	font-weight: bold;
+	background-color: #FF0000;
+}
+
+.box_rotate {
+	display:block;
+	-moz-transform: rotate(-90deg);  /* FF3.5+ */
+    -o-transform: rotate(-90deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; /* IE8 */
+    position:relative;
+    top:40px;
+    -webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    -o-transform-origin: 0% 0%;
+}
+
+
+.highlight {
+	background-color:#FFFACD; /* LemonChiffon */
+}
+span.go_obsolete {
+	background-color:red;
+	color:white;
+	font-size:8pt;
+	font-weight:bold;
+	padding:0 2 0 2;
+}
+span.go_obsolete:hover {
+	cursor:help;
+}
+.hardBreak {
+  white-space: normal; /* css-3 */
+  white-space: -moz-pre-wrap !important;; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+, 6, 7, 8 compability-mode */
+  -ms-word-break: break-all; /* Internet Explorer 8 */
+  word-break: break-all; /*break-word works better in Chrome, but it is an undocumented property */
+                         /*word-break is not recognized by Firefox*/
+}
+

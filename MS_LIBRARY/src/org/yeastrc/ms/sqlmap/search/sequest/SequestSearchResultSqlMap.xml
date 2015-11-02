@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="SequestResult"> 
+
+
+	<typeAlias alias="SequestResultOut" type="org.yeastrc.ms.domain.search.sequest.impl.SequestSearchResultBean"/>
+	<typeAlias alias="SequestResultDataIn" type="org.yeastrc.ms.domain.search.sequest.SequestResultDataWId"/>
+	
+	
+	<resultMap class="SequestResultOut" id="sequestResultResult" extends="MsSearchResult.msSearchResult">
+		<result property="xCorrRank" column="XCorrRank" nullValue="-1"/>
+		<result property="spRank" column="spRank" nullValue="-1"/>
+		<result property="deltaCN" column="deltaCN"/>
+		<result property="deltaCNstar" column="deltaCNstar"/>
+		<result property="xCorr" column="XCorr"/>
+		<result property="sp" column="sp"/>
+		<result property="evalue" column="evalue"/>
+		<result property="calculatedMass" column="calculatedMass" />
+		<result property="matchingIons" column="matchingIons" nullValue="-1"/>
+		<result property="predictedIons" column="predictedIons" nullValue="-1"/>
+	</resultMap>
+	
+	<!-- 
+	<resultMap class="SequestResultOut" id="sequestResultResultN" groupBy="id">
+		<result property="id" column="id" />
+		<result property="runSearchId" column="runSearchID" nullValue="0"/>
+		<result property="scanId" column="scanID" nullValue="0"/>
+		<result property="charge" column="charge" nullValue="0"/>
+		<result property="validationStatus" column="validationStatus" typeHandler="VStatusHandler"/>
+		<result property="peptideSequence" column="peptide" />
+		<result property="preResidue" column="preResidue" typeHandler="CharTypeHandler" />
+		<result property="postResidue" column="postResidue" typeHandler="CharTypeHandler" />
+		<result property="dynamicResidueModifications"
+				resultMap="MsSearchMod.msResultDynaResidueModResult" 
+				/>
+		<result property="xCorrRank" column="XCorrRank" nullValue="-1"/>
+		<result property="spRank" column="spRank" nullValue="-1"/>
+		<result property="deltaCN" column="deltaCN"/>
+		<result property="xCorr" column="XCorr"/>
+		<result property="sp" column="sp"/>
+		<result property="evalue" column="evalue"/>
+		<result property="calculatedMass" column="calculatedMass" />
+		<result property="matchingIons" column="matchingIons" nullValue="-1"/>
+		<result property="predictedIons" column="predictedIons" nullValue="-1"/>
+	</resultMap>
+	-->
+	
+	<parameterMap class="SequestResultDataIn" id="sequestResultDataParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="sp" jdbcType="DECIMAL"/>
+		<parameter property="spRank" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="xCorr" jdbcType="DECIMAL"/>
+		<parameter property="xCorrRank" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="deltaCN" jdbcType="DECIMAL"/>
+		<parameter property="deltaCNstar" jdbcType="DECIMAL"/>
+		<parameter property="evalue" jdbcType="DOUBLE" />
+		<parameter property="calculatedMass" jdbcType="DECIMAL" />
+		<parameter property="matchingIons" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="predictedIons" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+
+    <select id="select" resultMap="sequestResultResult" parameterClass="Integer">
+		SELECT * FROM msRunSearchResult, SQTSearchResult 
+		WHERE SQTSearchResult.resultID = msRunSearchResult.id
+		AND msRunSearchResult.id = #id#
+	</select>
+    
+    <select id="selectTopResultIdsForRunSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearchResult as res, SQTSearchResult sres
+    	WHERE res.id = sres.resultID 
+    	AND sres.XCorrRank=1  
+    	AND runSearchID = #id#
+    </select>
+    
+    <!--  
+    <select id="selectTopResultsForRunSearchN" resultMap="sequestResultResultN" parameterClass="Integer">
+    	SELECT * FROM msRunSearchResult as res, SQTSearchResult sres
+    	WHERE res.id = sres.resultID 
+    	AND sres.XCorrRank=1  
+    	AND runSearchID = #id#
+    	ORDER BY res.id
+    </select>
+    
+    <select id="selectTopResultsForRunSearchN" resultMap="sequestResultResultN" parameterClass="Integer">
+    	SELECT * FROM (msRunSearchResult AS res, SQTSearchResult AS sres)
+    	LEFT JOIN (msDynamicModResult AS rmod, msSearchDynamicMod AS dmod)
+    	ON (rmod.resultID = res.id AND dmod.id = rmod.modID)
+    	WHERE res.id = sres.resultID 
+    	AND sres.XCorrRank=1  
+    	AND runSearchID = #id#
+    	ORDER BY res.id
+    </select>
+    -->
+    
+    <insert id="insert" parameterMap="sequestResultDataParam">
+    	INSERT INTO SQTSearchResult 
+    	(resultID, 
+    	sp,
+    	spRank,
+    	XCorr,
+    	XCorrRank, 
+    	deltaCN,
+    	deltaCNstar, 
+    	evalue,
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons) 
+    	VALUES (?,?,?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO SQTSearchResult 
+    	(resultID, 
+    	sp,
+    	spRank,
+    	XCorr,
+    	XCorrRank, 
+    	deltaCN, 
+    	deltaCNstar, 
+    	evalue,
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons)
+    	VALUES $values$
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM SQTSearchResult WHERE resultID=#id#
+    </delete>
+    
+</sqlMap>

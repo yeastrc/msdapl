@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetRunSummary"> 
+
+	<typeAlias alias="ProteinProphetRunSummary" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetRunSummary"/>
+	
+	<resultMap class="ProteinProphetRunSummary" id="prophetRunSummaryResult">
+		<result property="piRunId" column="piRunID" />
+		<result property="prophetGroupCount" column="prophetGroupCount" />
+		<result property="indistGroupCount" column="groupCount" />
+		<result property="proteinCount" column="proteinCount" />
+		<result property="uniqPeptSeqCount" column="peptSeqCount" />
+		<result property="uniqIonCount" column="ionCount" />
+		<result property="spectrumCount" column="spectrumCount" />
+		<result property="minSpectrumCount" column="minSpectrumCount" />
+		<result property="maxSpectrumCount" column="maxSpectrumCount" />
+	</resultMap>
+		
+	
+	<parameterMap class="ProteinProphetRunSummary" id="prophetRunSummaryParam">
+		<parameter property="piRunId" jdbcType="INTEGER"/>
+		<parameter property="prophetGroupCount" jdbcType="INTEGER"/>
+		<parameter property="indistGroupCount" jdbcType="INTEGER" />
+		<parameter property="proteinCount" jdbcType="INTEGER" />
+		<parameter property="uniqPeptSeqCount" jdbcType="INTEGER" />
+		<parameter property="uniqIonCount" jdbcType="INTEGER" />
+		<parameter property="spectrumCount" jdbcType="INTEGER" />
+		<parameter property="minSpectrumCount" jdbcType="INTEGER" />
+		<parameter property="maxSpectrumCount" jdbcType="INTEGER" />
+	</parameterMap>
+	
+	<select id="select" resultMap="prophetRunSummaryResult" parameterClass="Integer">
+    	SELECT * FROM proteinProphetRunSummary WHERE piRunID=#id#
+    </select>
+    
+    <insert id="insert" parameterMap="prophetRunSummaryParam">
+    	INSERT INTO proteinProphetRunSummary (
+    	piRunID,
+    	prophetGroupCount,
+    	groupCount,
+    	proteinCount,
+    	peptSeqCount,
+    	ionCount,
+    	spectrumCount,
+    	minSpectrumCount,
+    	maxSpectrumCount)
+    	VALUES(?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <update id="update" parameterClass="ProteinProphetRunSummary">
+    	UPDATE proteinProphetRunSummary 
+    	SET 
+    	prophetGroupCount=#prophetGroupCount#,
+    	groupCount=#indistGroupCount#,
+    	proteinCount=#proteinCount#,
+    	peptSeqCount=#uniqPeptSeqCount#,
+    	ionCount=#uniqIonCount#,
+    	spectrumCount=#spectrumCount#,
+    	minSpectrumCount=#minSpectrumCount#,
+    	maxSpectrumCount=#maxSpectrumCount#
+    	WHERE piRunID = #piRunId#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM proteinProphetRunSummary WHERE piRunID=#id#		    
+    </delete>
+    
+</sqlMap>

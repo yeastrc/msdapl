@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<!--  Parameters for PepProbe Seach, modified from search.params for pep_probe  --> 
+    <parameters>
+        <database>
+            <!--database_name>/scratch/yates/EBI-IPI_bovine_3.05_08-07-2006_con_reversed.fasta</database_name-->
+            <!--database_name>/bluefish/people-b/applications/yates/dbase/17PM_pombe030305.fasta</database_name-->
+            <!--database_name>/garibaldi/people-b/applications/yates/dbase/EBI-IPI_bovine_3.05_08-07-2006_con_reversed.fasta</database_name-->
+            <!--<database_name>/garibaldi/people-b/applications/yates/dbase/EBI-IPI_rat_3.17_05-10-2006_con_reversed.fasta</database_name> -->
+            <!--database_name>/scratch/yates/Other_bovine_na_03-25-2007_con_reversed.fasta</database_name-->
+            <!--database_name>/garibaldi/people-b/applications/yates/dbase/10pm_yeast.reverse.fasta</database_name-->
+            <!--<name>/bluefish/people-b/applications/yates/dbase/EBI-IPI_mouse_3.06_05-10-2005_origrev_con.fasta</name>-->
+		<database_name>/garibaldi/people-b/applications/yates/dbase/WormBase_C-elegans_wp180_08-19-2007_reversed.fasta</database_name> 
+            <is_indexed>false</is_indexed> <!-- This should be false unless you are using a pre-processed database. Leave it at false for regular FASTA databases. --> 
+        </database> 
+
+        <search_mode>
+            <!--Primary score type 
+                0 - default Binomial Probability This is not pep-prob probability score (by Rovshan), but similar. In Sequest, Sp score is the preliminary score. In Prolucid, the binomial probability score is the preliminary score.
+                1 - XCorr
+            -->
+            <primary_score_type>1</primary_score_type>
+
+            <!--Secondary score type
+                0 - Binomial Probability 
+                1 - XCorr 
+                2  Zscore Zscore is Prolucid's answer to Sequest's delCN. delCN =(XCorr of the top hit - XCorr of the second hit)/XCorr of the top hit.
+Zscore = (XCorr of the top hit - average XCorr of the 2nd , 3rd, and 500th hits)/standard deviation of the XCorr's of the 2nd , 3rd, and 500th hits. A Zscore of 5 means that the top hit is 5 STD away from the average. A good Zscore cutoff is 4.5, and 5 is even better.  
+            -->
+            <secondary_score_type>0</secondary_score_type>
+
+            <!-- 0 for accession, 1 for SEQUEST-like --> <!-- SEQUEST-like means more than one database ID can be printed to locus name (e.g. gi|14010863|ref|NP_114175.1|), as long as they are in the database used. The other choice is a single accession number (e.g. IPI00249267.1)-->
+            <locus_type>0</locus_type> 
+            <!-- 1 to output charge-disamguated sqt for each spectrum -->
+            <charge_disambiguation>0</charge_disambiguation> <!-- Raw_Xtract allows you to extract ms2 data of high-charge state precursor ions of up to +15  (default is +2 and +3). When the charge state of a precursor ion is uncertain, its ms2 spectrum will be searched 14 times (firstly, assuming a charge state of +2, then +3. and so on to +15). So, it could match 14 peptides in the database but only one of them may be true. If charge_disambiguation is set to 1, then Prolucid will only report the match with the highest Sp score and another with the highest Xcorr. This is a useful function for EDT data (and for that matter, CID data of large peptides). -->   
+
+            <!-- a integer between 90 to 99 inclusive for percentage of N15 enrichment 
+                 the default value is 0 for no labeling search  -->
+            <atomic_enrichement>0</atomic_enrichement> <!-- If the 15N atomic enrichment is 96%, I should try both 0 and 96 to see which works better. --> 
+
+            <!--MIN_MATCH -->
+            <min_match>0</min_match>
+            <peak_rank_threshold>200</peak_rank_threshold> <!-- meaning: use 200 most intense peaks for the preliminary probability score. This is similar to Sequest, in which 200 most intense peaks are used for the preliminary Sp score. -->
+            <candidate_peptide_threshold>500</candidate_peptide_threshold><!-- meaning: top 500 hits ranked by their preliminary scores are kept for final scoring (primary score+secondary score). Similarly, top 500 hits ranked by their Sp scores are further evaluated by cross correlation.  -->
+            
+            <fragmentation_method>CID</fragmentation_method>
+
+<is_decharged>0</is_decharged> <!-- Set this value to zero (i.e. each fragment ion m/z value will be used as is), unless the ms2 spectra are charge-state AND isotope deconvoluted (i.e. de-charged and de-isotoped) and then set this value to 1 in order for the resulting (M+H)+1 value of each fragment ion to be used for database search.-->
+
+        </search_mode>
+
+        <isotopes>
+            <!--ISOTOPES
+                mono or avg
+            -->
+            <precursor>mono</precursor>
+            <fragment>mono</fragment>
+            <!--num_peaks
+                an integer indicates how many isotopic peaks to consider
+                0 for traditional sequest +/- 3 like for precursor match
+            -->
+            <num_peaks>0</num_peaks> <!-- Definitely zero for LTQ data; 3 or 4 for orbi data. However, zero is optional for orbi data if search time is not a concern. (e.g. use zero for non-modification searches, or for modification searches with tryptic specificity) num_peaks=0 results in an even distribution of false positives over the mass window and more data points for statistical analysis. -->
+        </isotopes>
+        <tolerance>
+            <!--PRECURSOR_MASS_TOLERANCE
+                these two values will be used only when num_peaks is set to 0
+            -->
+            
+            <precursor_high>4500</precursor_high>
+            <precursor_low>4500</precursor_low> <!-- This mass window is used if num_peaks is set to 0. --> 
+            <!--PRECURSOR_MASS_ACCURACY in ppm-->
+            <precursor>50</precursor> <!-- This 50 ppm mass window is used if num_peaks is set to an integer (usually 3 or 4). -->
+            <!--FRAGMENT_ION_MASS_ACCURACY-->
+            <fragment>400</fragment> 
+        </tolerance>
+        <precursor_mass_limits>
+            <!--MIN_PMASS-->
+            <minimum>600.00</minimum> 
+            <!--MAX_PMASS-->
+            <maximum>16000.00</maximum> <!-- meaning spectra of precursor ions (M+H)+1 <600 amu or >16000 amu are not search. --> 
+        </precursor_mass_limits>
+        <peptide_length_limits>
+            <minimum>7</minimum>
+        </peptide_length_limits>
+        <num_peak_limits>
+            <!--MIN_LMZ-->
+            <minimum>25</minimum>
+            <!--MAX_LMZ-->
+            <maximum>5000</maximum> <!-- meaning a spectrum must have >=25 peaks but =<5000 peaks, or it will not be searched. -->
+        </num_peak_limits>
+        <max_num_diffmod>3</max_num_diffmod>
+        <modifications>
+            <n_term>
+                <static_mod>
+                    <symbol>*</symbol>
+                    <mass_shift>123.4567</mass_shift>
+                </static_mod>
+                <diff_mods>
+                    <!-- may loop -->
+                    <diff_mod>
+                        <symbol>*</symbol>
+                        <mass_shift>9876.5432</mass_shift>
+                    </diff_mod>
+                </diff_mods>
+            </n_term>
+            <c_term>
+                <static_mod>
+                    <symbol>*</symbol>
+                    <mass_shift>100.0</mass_shift>
+                </static_mod>
+                <diff_mods>
+                    <!-- may loop -->
+                   <diff_mod>
+                        <symbol>*</symbol>
+                        <mass_shift>200.0</mass_shift>
+                   </diff_mod>
+                </diff_mods>
+            </c_term>
+
+            <static_mods>
+                <!-- may loop, but each residue should have just one static_mod -->
+                <static_mod>
+                    <residue>G</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>A</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>S</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>P</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>V</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>T</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>C</residue>
+                    <mass_shift>58.0184</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>L</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>I</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>D</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>Y</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>F</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>N</residue>
+                    <mass_shift>1.9940</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>Q</residue>
+                    <mass_shift>1.9940</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>M</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>E</residue>
+                    <mass_shift>0.9970</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>K</residue>
+                    <mass_shift>1.9940</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>W</residue>
+                    <mass_shift>1.9940</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>H</residue>
+                    <mass_shift>2.9911</mass_shift>
+                </static_mod>
+                <static_mod>
+                    <residue>R</residue>
+                    <mass_shift>3.9881</mass_shift>
+                </static_mod>
+            </static_mods>
+            <diff_mods>
+                <!-- may loop -->
+                <diff_mod>
+                    <symbol>phosphorylation</symbol>
+                    <mass_shift>79.9663</mass_shift>
+                    <residues>
+                        <residue>Y</residue>
+                        <residue>S</residue>
+                        <residue>T</residue>
+                    </residues>
+                </diff_mod>
+		<diff_mod>
+                    <symbol>phosphorylation</symbol>
+                    <mass_shift>-18.01056</mass_shift>
+                    <residues>
+                        <residue>A</residue>
+                        <residue>B</residue>
+                    </residues>
+                </diff_mod>  <!--  Neutral loss of phosphoric acid is commented out for ms2 data. For ms3 data, search with both +79.9663 and -18.01056. -->
+
+            </diff_mods>
+        </modifications>
+        <enzyme_info>
+            <!-- enzyme specificity:
+                0 indicates no enzyme spepcificity
+                1 for one end 
+                2 for both ends
+            -->
+            <specificity>2</specificity> <!-- Use 2 (or at least 1) for diff mod search to speed up the search, especially with large databases, provided that the sample is digested with trypsin. --> 
+            <name>trypsin</name>
+            <!-- true for cut at C terminus and false for N  -->
+            <type>true</type>
+            <residues>
+                <residue>R</residue>
+                <residue>K</residue>
+            </residues>
+        </enzyme_info>
+    </parameters>

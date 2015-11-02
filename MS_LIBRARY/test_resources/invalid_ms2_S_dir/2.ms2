@@ -1,0 +1,88 @@
+H	FilteringProgram	Parc	
+H	CreationDate	12/20/2007 2:29:19 PM
+H	Extractor	RAWXtract
+H	ExtractorVersion	1.8
+H	Comments	RawXtract written by John Venable, 2003
+H	ExtractorOptions	MS2
+H	AcquisitionMethod	Data-Dependent
+H	InstrumentType	ITMS
+H	ScanType	MS2
+H	DataType	Centroid
+H	IsolationWindow	
+H	FirstScan	1
+H	LastScan	17903
+S	000002	000002	475.42000
+I
+I	RetTime
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan
+I
+Z	1	475.42
+D	PARC	0.106982
+166.2 1785.6
+178.2 3188.7
+181.4 442.7
+191.0 1045.0
+193.3 3087.3
+194.0 1108.8
+235.3 1824.4
+S	000009	000009	1372.55000  
+I	RetTime	0.03
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	2	123.45
+D       PARC	-1.2345 Hello World
+Z	1	1372.55
+D	PARC	-1.602722 Hello World
+397.4 78.6
+399.2 57.0
+401.1 23.4
+413.4 73.7
+S	000010	000010	717.62000 welcome
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	717.62
+D	PARC	0.133447
+207.4 37.8
+222.1 39.2
+235.2 45.8
+236.2 45.7
+278.2 94.5
+S	000011	000011	576.27000
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	576.27
+D	PARC	0.201929
+221.1 79.6
+228.3 47.5
+250.4 47.7
+251.4 45.4
+254.1 126.7
+263.2 218.6
+S	000012	000012	1394.58000
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	1394.58
+D	PARC	4.082397
+1.0 53.8
+420.3 1.0 
+S	000014	000014	1712.6500 
+I	RetTime	0.05
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	13
+Z	1	1712.65
+D	PARC	0.102705
+493.1 79.4
+510.8 8.0
+519.8 37.4
+252.2 4.9
+260.3 16.5

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="XtandemSearch"> 
+
+	<typeAlias alias="XtandemSearchOut" type="org.yeastrc.ms.domain.search.xtandem.impl.XtandemSearchBean"/>
+	<typeAlias alias="XtandemParamIn" type="org.yeastrc.ms.domain.search.xtandem.impl.XtandemParamWarp" />
+	<typeAlias alias="XtandemParamOut" type="org.yeastrc.ms.domain.search.impl.ParamBean" />
+	
+	<resultMap class="XtandemSearchOut" id="xtandemSearchResult" extends="MsSearch.msSearchResult" >
+		<result property="xtandemParams" 
+				column="id" 
+				select="XtandemSearch.selectParams"/>
+	</resultMap>
+	
+	<resultMap class="XtandemParamOut" id="xtandemParamResult">
+		<result property="paramName" column="param"/>
+		<result property="paramValue" column="value"/>
+	</resultMap>
+	
+	<parameterMap class="XtandemParamIn" id="xtandemParamParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="paramName" jdbcType="VARCHAR" />
+		<parameter property="paramValue" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="xtandemSearchResult" parameterClass="Integer">
+    	SELECT * FROM msSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectParams" resultMap="xtandemParamResult" parameterClass="Integer">
+    	SELECT * FROM XtandemParams WHERE searchID = #id#
+    </select>
+    
+    <select id="selectSearchParamValue" resultClass="String" parameterClass="java.util.Map">
+    	SELECT value from XtandemParams where searchID=#searchId# AND param=#paramName#
+    </select>
+    
+    <insert id="insertParams" parameterMap="xtandemParamParam">
+    	INSERT INTO XtandemParams (
+    	searchID,
+    	param,
+    	value)
+    	VALUES (?,?,?)
+    </insert>
+    
+</sqlMap>

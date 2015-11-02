@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsRun"> 
+
+	<typeAlias alias="MsRunIn" type="org.yeastrc.ms.domain.run.MsRunIn" />
+	<typeAlias alias="MsRunOut" type="org.yeastrc.ms.domain.run.impl.RunDb"/>
+	<typeAlias alias="MS2RunOut" type="org.yeastrc.ms.domain.run.ms2file.impl.MS2RunDb"/>
+	<typeAlias alias="RunType" type="org.yeastrc.ms.domain.run.RunFileFormat"/>
+	<typeAlias alias="RunTypeHandler" type="org.yeastrc.ms.dao.run.ibatis.MsRunDAOImpl$RunFileFormatTypeHandler"/>
+	
+	
+	<resultMap class="MsRunOut" id="msRunResult">
+		<result property="id" column="id" />
+		<result property="fileName" column="filename" />
+		<result property="runFileFormat" column="originalFileType" typeHandler="RunTypeHandler"/>
+		<result property="sha1Sum" column="sha1Sum" />
+		<result property="creationDate" column="creationTime" />
+		<result property="conversionSW" column="extractor" />
+		<result property="conversionSWVersion" column="extractorVersion" />
+		<result property="conversionSWOptions" column="extractorOptions" />
+		<result property="instrumentVendor" column="instrumentVendor" />
+		<result property="instrumentModel" column="instrumentType" />
+		<result property="instrumentSN" column="instrumentSN" />
+		<result property="acquisitionMethod" column="acquisitionMethod" />
+		<result property="comment" column="comment" />
+		<result property="enzymeList" 
+				column="id" 
+				select="MsEnzyme.selectEnzymesForRun"/>
+		<discriminator javaType="RunType" jdbcType="VARCHAR" 
+						column="originalFileType" 
+						typeHandler="RunTypeHandler">
+			<subMap value="MS2" resultMap="ms2RunResult"/>
+			<subMap value="CMS2" resultMap="ms2RunResult"/>
+		</discriminator>
+	</resultMap>
+	
+	<resultMap class="MS2RunOut" id="ms2RunResult" extends="MsRun.msRunResult">
+		<result property="headerList" 
+				column="id" 
+				select="MS2Header.selectHeadersForRun" />
+	</resultMap>
+	
+	
+	<parameterMap class="MsRunIn" id="msRunParam">
+		<parameter property="fileName" jdbcType="VARCHAR"/>
+		<parameter property="sha1Sum" jdbcType="CHAR"/>
+		<parameter property="creationDate" jdbcType="VARCHAR"/>
+		<parameter property="conversionSW" jdbcType="VARCHAR"/>
+		<parameter property="conversionSWVersion" jdbcType="VARCHAR"/>
+		<parameter property="conversionSWOptions" jdbcType="VARCHAR"/>
+		<parameter property="instrumentModel" jdbcType="VARCHAR"/>
+		<parameter property="instrumentVendor" jdbcType="VARCHAR"/>
+		<parameter property="instrumentSN" jdbcType="VARCHAR"/>
+		<parameter property="acquisitionMethod" jdbcType="VARCHAR" />
+		<parameter property="runFileFormat" jdbcType="VARCHAR" typeHandler="RunTypeHandler"
+		/>
+		<parameter property="comment" jdbcType="VARCHAR"/>
+	</parameterMap>
+    
+    <select id="selectRunIdsForFileNameAndSha1Sum" resultClass="Integer" parameterClass="java.util.Map"> 
+        SELECT id FROM msRun WHERE filename = #fileName# AND sha1Sum = #sha1Sum#
+    </select> 
+    
+    <select id="select" resultMap="msRunResult" parameterClass="Integer"> 
+        SELECT * FROM msRun WHERE id=#id#
+    </select> 
+    
+    <select id="selectRuns" resultMap="msRunResult" parameterClass="String"> 
+        SELECT * FROM msRun WHERE id IN ($runIds$)
+    </select> 
+
+    <select id="selectRunIdForSearchAndFileName" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT r.id from msRun as r, msRunSearch as s
+    	WHERE s.searchID=#searchId#
+    	AND r.filename=#fileName#
+    	AND s.runID = r.id
+    </select>
+    
+    <select id="selectRunIdForExperimentAndFileName" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT r.id from msRun as r, msExperimentRun as er
+    	WHERE er.experimentID=#experimentId#
+    	AND r.filename=#fileName#
+    	AND er.runID = r.id
+    </select>
+    
+    <select id="selectRunIdsForFileName" resultClass="Integer" parameterClass="String">
+    	SELECT id from msRun where filename=#filename#
+    </select>
+    
+    <select id="selectFileNameForRunId" resultClass="String" parameterClass="Integer">
+    	SELECT filename from msRun where id=#runId#
+    </select>
+    
+    <insert id="insert" parameterMap="msRunParam">
+    	INSERT INTO msRun ( filename, 
+    						sha1Sum,
+    						creationTime, 
+    						extractor, 
+    						extractorVersion, 
+    						extractorOptions, 
+    						instrumentType, 
+    						instrumentVendor, 
+    						instrumentSN,
+    						acquisitionMethod,
+    						originalFileType, 
+    						comment) 
+    	VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+    	<selectKey resultClass="int" >
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msRun WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

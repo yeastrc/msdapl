@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsSearchResult"> 
+
+	
+	<typeAlias alias="MsSearchResultOut" type="org.yeastrc.ms.domain.search.impl.SearchResultBean" />
+	<typeAlias alias="MsSearchResultPeptideOut" type="org.yeastrc.ms.domain.search.impl.SearchResultPeptideBean" />
+	<typeAlias alias="MsSearchResultIn" type="org.yeastrc.ms.upload.dao.search.ibatis.MsSearchResultWrap" />
+	
+	<typeAlias alias="VStatusHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchResultDAOImpl$ValidationStatusTypeHandler" />
+	
+	
+	<resultMap class="MsSearchResultPeptideOut" id="msSearchResultPeptideResult">
+		<result property="peptideSequence" column="peptide" />
+		<result property="preResidue" column="preResidue" typeHandler="CharTypeHandler" />
+		<result property="postResidue" column="postResidue" typeHandler="CharTypeHandler" />
+		<result property="dynamicResidueModifications"
+				select="MsSearchMod.selectDynamicResidueModsForResult"
+				column="id" />
+		<result property="dynamicTerminalModifications"
+				select="MsSearchMod.selectDynamicTerminalModsForResult"
+				column="id" />
+	</resultMap>
+	
+	<resultMap class="MsSearchResultOut" id="msSearchBaseResult">
+		<result property="id" column="id" />
+		<result property="runSearchId" column="runSearchID" nullValue="0"/>
+		<result property="scanId" column="scanID" nullValue="0"/>
+		<result property="charge" column="charge" nullValue="0"/>
+		<result property="observedMass" column="observedMass"/>
+		<result property="validationStatus" column="validationStatus" typeHandler="VStatusHandler"/>
+		<result property="resultPeptide" resultMap="MsSearchResult.msSearchResultPeptideResult" />
+	</resultMap>
+	
+	<resultMap class="MsSearchResultOut" id="msSearchResult" extends="MsSearchResult.msSearchBaseResult">
+		<result property="proteinMatchList" 
+				select="MsResultProtein.selectResultProteins" 
+				column="id"/>
+	</resultMap>
+	
+	
+	<parameterMap class="MsSearchResultIn" id="msSearchResultParam">
+		<parameter property="runSearchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="scanId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="charge" jdbcType="TINYINT" nullValue="0"/>
+		<parameter property="observedMass" jdbcType="DECIMAL"/>
+		<parameter property="peptideSequence" jdbcType="VARCHAR"/>
+		<parameter property="preResidueString" jdbcType="CHAR" nullValue=""/>
+		<parameter property="postResidueString" jdbcType="CHAR" nullValue=""/>
+		<parameter property="validationStatus" jdbcType="CHAR" typeHandler="VStatusHandler"/>
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="msSearchResult" parameterClass="Integer">
+    	SELECT * FROM msRunSearchResult WHERE id = #id#
+    </select>
+    
+     <select id="selectResultIdsForRunSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearchResult WHERE runSearchID = #id#
+    </select>
+    
+    <select id="selectResultIdsLimitedForRunSearch" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msRunSearchResult WHERE runSearchID = #runSearchId#
+    	ORDER BY id LIMIT #offset#, #limit#
+    </select>
+    
+    <select id="selectResultIdsForSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    </select>
+    
+    <select id="selectResultIdsLimitedForSearch" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    	ORDER BY res.id LIMIT #offset#, #limit#
+    </select>
+    
+    <select id="selectResultForRunSearchScanChargePeptide" resultMap="msSearchResult" parameterClass="java.util.Map">
+    	SELECT * FROM msRunSearchResult 
+    	WHERE runSearchID = #runSearchId# 
+    	AND scanID = #scanId#
+    	AND charge = #charge#
+    	AND peptide = #peptide#
+    </select>
+    
+    <select id="selectResultIdsForSearchChargePeptide" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    	AND res.charge = #charge#
+    	AND res.peptide = #peptide#
+    </select>
+    
+    <select id="selectResultIdsForSearchPeptide" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    	AND res.peptide = #peptide#
+    </select>
+    
+    <select id="selectResultIdsForSearchPeptideRegex" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    	AND res.peptide REGEXP #peptideRegex#
+    </select>
+    
+    <select id="selectResultIdsForSearchPeptides" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT res.id 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    	AND res.peptide IN $peptides$
+    </select>
+    
+    <select id="countRunSearchResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM msRunSearchResult WHERE runSearchID=#runSearchId# 
+    </select>
+    
+    <select id="countSearchResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) 
+    	FROM msRunSearchResult AS res, msRunSearch AS rs
+    	WHERE rs.searchID = #searchId#
+    	AND rs.id = res.runSearchID
+    </select>
+    
+    
+    <select id="selectResultIdsForRunSearchScanCharge" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msRunSearchResult 
+    	WHERE runSearchID = #runSearchId# 
+    	AND scanID = #scanId#
+    	AND charge = #charge#
+    </select>
+    
+    <select id="countResultsForRunSearchScanChargeMass" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(*) FROM msRunSearchResult 
+    	WHERE runSearchID = #runSearchId# 
+    	AND scanID = #scanId#
+    	AND charge = #charge#
+    	AND observedMass = #observedMass#
+    </select>
+    
+    <select id="selectResultIdsForRunSearchScan" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msRunSearchResult 
+    	WHERE runSearchID = #runSearchId# 
+    	AND scanID = #scanId#
+    </select>
+    
+    <insert id="insert" parameterMap="msSearchResultParam">
+    	INSERT INTO msRunSearchResult (
+    	runSearchID,
+    	scanID,
+    	charge,
+    	observedMass,
+    	peptide,
+    	preResidue,
+    	postResidue,
+    	validationStatus) 
+    	VALUES (?,?,?,?,?,?,?,?)
+    	<selectKey resultClass="int" >
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msRunSearchResult WHERE id=#id#		    
+    </delete>
+    
+    <delete id="deleteForRunSearch" parameterClass="Integer">
+		DELETE FROM msRunSearchResult 
+		WHERE runSearchID = #runSearchId#
+    </delete>
+    
+</sqlMap>

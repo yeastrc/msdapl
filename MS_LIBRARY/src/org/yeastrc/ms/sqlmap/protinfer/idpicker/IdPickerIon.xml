@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="IdPickerIon"> 
+
+	<typeAlias alias="IdPickerIon" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerIon"/>
+	
+	<resultMap class="IdPickerIon" id="idpIonResult" extends="ProteinferIon.pinferIonBaseResult">
+		<result property="bestSpectrumMatchList" 
+				select="IdPickerSpectrumMatch.selectBestMatchForIon"
+				column="id"/>
+	</resultMap>
+	
+	<select id="select" resultMap="idpIonResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferIon WHERE id=#id#
+    </select>
+    
+    <select id="selectIonsForPeptide" resultMap="idpIonResult" parameterClass="Integer">
+    	SELECT * from msProteinInferIon WHERE piPeptideID=#id#
+    </select>
+    
+</sqlMap>

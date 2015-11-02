@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferInput"> 
+
+	<typeAlias alias="ProteinferInput" type="org.yeastrc.ms.domain.protinfer.ProteinferInput"/>
+	
+	<resultMap class="ProteinferInput" id="pinferInputResult">
+		<result property="id" column="id" nullValue="0"/>
+		<result property="proteinferId" column="piRunID" nullValue="0"/>
+		<result property="inputId" column="inputID" nullValue="0"/>
+	</resultMap>
+	
+	<parameterMap class="ProteinferInput" id="pinferInputParam">
+		<parameter property="proteinferId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="inputId" jdbcType="INTEGER" nullValue="0"/>
+	</parameterMap>
+	
+    <select id="selectProteinferInputList" resultMap="pinferInputResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferInput WHERE piRunID = #id#
+    </select>
+    
+    <select id="selectRunSearchIds" resultClass="Integer" parameterClass="Integer">
+    	SELECT runSearchID FROM msProteinInferInput WHERE piRunID = #id#
+    </select>
+    
+    <insert id="saveProteinferInput" parameterMap="pinferInputParam">
+    	INSERT INTO msProteinInferInput (
+    	piRunID,
+    	inputID)
+    	VALUES (?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM ProteinferInput WHERE piRunID=#id#		    
+    </delete>
+    
+</sqlMap>

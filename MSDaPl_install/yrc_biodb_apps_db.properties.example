@@ -1,0 +1,7 @@
+# MySQL database properties
+db.host=localhost
+db.username=root
+db.password=
+db.sgd.name=sgd
+db.wormbase.name=wormbase
+db.flybase.name=flybase

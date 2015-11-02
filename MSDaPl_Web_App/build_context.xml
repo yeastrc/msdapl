@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." name="MSDaPl context.xml Writer" default="create_context_xml">
+
+	<!-- ================================================================================== -->
+	<!-- database host, name, user and passwords should be defined in the properties file   -->
+	<!-- ================================================================================== -->
+	<property name="props_file" value="${basedir}${file.separator}msdapl_db.properties" />
+	<property file="${props_file}" />
+	
+	<!-- Add the ant-contrib task definitions -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+  		<classpath>
+    		<pathelement location="${basedir}${file.separator}lib${file.separator}ant-contrib-1.0b3.jar"/>
+  		</classpath>
+	</taskdef>
+	
+	<target name="help"    description="print this help">
+  		<exec executable="ant">
+  			
+   			<arg value="-p"/>
+  		</exec>
+ 	</target>
+	
+	
+	<!-- This is the file we will write to -->
+	<property name="context_xml" value="${basedir}${file.separator}WebRoot${file.separator}META-INF${file.separator}context.xml"></property>
+	
+	
+	<!-- Main target to create context.xml -->
+	<target name="create_context_xml" depends="clear"
+	        description="This will create a context.xml based on properties in msdapl_db.properties" >
+		<antcall target="start_xml"/>
+		<antcall target="create_resources"/>
+		<antcall target="end_xml"/>
+	</target>
+	
+	<!-- Remove context.xml if it already exists -->
+	<target name="clear">
+		<delete file="${context_xml}" />
+	</target>
+	
+	<!-- Start the context.xml file with the <Context> element -->
+	<target name="start_xml">
+		<echo message="&lt;Context&gt;${line.separator}" file="${context_xml}" append="true" />
+	</target>
+	
+	<!-- End the context.xml file with the </Context> element -->
+	<target name="end_xml">
+		<echo message="&lt;/Context&gt;" file="${context_xml}" append="true" />
+	</target>
+	
+	
+	<!-- Create all the <Resource> elements -->
+	<target name="create_resources" >
+	
+		<echo message="Creating file ${context_xml}"/>
+		
+		<!-- Extract all the database names -->
+		<!-- Depends on ant-contrib  -->
+		<propertyselector property="database.list" match="db\.([^\.]*)\.dbname" select="\1" casesensitive="false" />
+		
+		<!-- Depends on ant-contrib  -->
+		<foreach list="${database.list}" 
+		         target="write_resource_element" 
+		         param="dbname" trim="true">
+		</foreach>
+		
+	</target>
+	
+	<!-- Create a single <Resource> element -->
+	<target name="write_resource_element">
+	
+		<echo message="Writing Resource element for ${dbname}" />
+		
+		<!-- propertycopy depends on ant-contrib  -->
+		<propertycopy name="my_dbdbname" from="db.${dbname}.dbname"/>
+		<propertycopy name="my_dbjndiname" from="db.${dbname}.jndiname" silent="true" />
+		<propertycopy name="my_dbhost" from="db.${dbname}.host" silent="true" />
+		<propertycopy name="my_dbuser" from="db.${dbname}.user" silent="true"/>
+		<propertycopy name="my_dbpasswd" from="db.${dbname}.password" silent="true"/>
+		
+		<!-- If task depends on ant-contrib  -->
+		
+		<!-- If JNDI name has not been set use the value for the .dbname property -->
+		<condition property="my_dbjndiname_isset" value="true" else="false">
+			<isset property="my_dbjndiname"/>
+		</condition>
+		<if>
+			<equals arg1="${my_dbjndiname_isset}" arg2="false" />
+			<then>
+				<propertycopy name="my_dbjndiname" from="db.${dbname}.dbname" />
+			</then>
+		</if>
+		
+		
+		<!-- If a host is not set we will use the global host information -->
+		<condition property="my_dbhost_isset" value="true" else="false">
+			<isset property="my_dbhost"/>
+		</condition>
+		<if>
+			<equals arg1="${my_dbhost_isset}" arg2="false" />
+			<then>
+				<propertycopy name="my_dbhost" from="all.host" />
+			</then>
+		</if>
+		
+		<!-- If a user is not set we will use the global user information -->
+		<condition property="my_dbuser_isset" value="true" else="false">
+			<isset property="my_dbuser"/>
+		</condition>
+		<if>
+			<equals arg1="${my_dbuser_isset}" arg2="false" />
+			<then>
+				<propertycopy name="my_dbuser" from="all.user" />
+			</then>
+		</if>
+		
+		<!-- If a password is not set we will use the global user information -->
+		<condition property="my_dbpasswd_isset" value="true" else="false">
+			<isset property="my_dbpasswd"/>
+		</condition>
+		<if>
+			<equals arg1="${my_dbpasswd_isset}" arg2="false" />
+			<then>
+				<propertycopy name="my_dbpasswd" from="all.password" />
+			</then>
+		</if>
+		
+	
+		<echo file="${context_xml}" append="true">
+  &lt;Resource
+    name="jdbc/${my_dbjndiname}"
+    auth="Container"
+    type="javax.sql.DataSource"
+    factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+    maxActive="100"
+    maxIdle="30"
+    maxWait="10000"
+    username="${my_dbuser}"
+    password="${my_dbpasswd}"
+    driverClassName="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://${my_dbhost}/${my_dbdbname}?autoReconnect=true"
+  /&gt;
+		</echo>
+	</target>
+
+</project>

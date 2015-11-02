@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="Deletion"> 
+    
+    <!-- ==================== Run related ==================== -->
+    <!-- DELETE FROM MS2FileChargeIndependentAnalysis -->
+    <delete id="deleteChargeIAnalysis" parameterClass="Integer">
+    	DELETE FROM MS2FileChargeIndependentAnalysis
+    	WHERE scanID IN 
+    	(SELECT id FROM msScan WHERE runID IN
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#))
+    </delete>
+    
+    <!-- DELETE FROM MS2FileChargeDependentAnalysis -->
+    <delete id="deleteChargeDAnalysis" parameterClass="Integer">
+    	DELETE FROM MS2FileChargeDependentAnalysis
+    	WHERE scanChargeID IN 
+    	(SELECT id FROM MS2FileScanCharge WHERE scanID IN
+    	(SELECT id FROM msScan WHERE runID IN
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#)))
+    </delete>
+    
+    <!-- DELETE FROM MS2FileScanCharge -->
+    <delete id="deleteScanCharge" parameterClass="Integer">
+    	DELETE FROM MS2FileScanCharge
+    	WHERE scanID IN 
+    	(SELECT id FROM msScan WHERE runID IN
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#))
+    </delete>
+    
+    <!-- DELETE FROM msScanData -->
+    <delete id="deleteScanData" parameterClass="Integer">
+    	DELETE FROM msScanData
+    	WHERE scanID IN 
+    	(SELECT id FROM msScan WHERE runID IN
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#))
+    </delete>
+    
+    <!-- DELETE from msScan -->
+    <delete id="deleteScan" parameterClass="Integer">
+    	DELETE FROM msScan
+    	WHERE runID IN 
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#)
+    </delete>
+    
+    <!-- DELETE from msRunEnzyme -->
+    <delete id="deleteRunEnzyme" parameterClass="Integer">
+    	DELETE FROM msRunEnzyme
+    	WHERE runID IN 
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#)
+    </delete>
+    
+    <!-- DELETE from MS2FileHeader -->
+    <delete id="deleteMS2Header" parameterClass="Integer">
+    	DELETE FROM MS2FileHeader
+    	WHERE runID IN 
+    	(SELECT id FROM msRun WHERE experimentID=#experimentId#)
+    </delete>
+    
+    <!-- DELETE from msRun -->
+    <delete id="deleteRun" parameterClass="Integer">
+    	DELETE FROM msRun WHERE experimentID=#experimentId#
+    </delete>
+    
+    <!-- ==================== Run related ==================== -->
+    
+    
+    
+    <!-- ==================== Search related ==================== -->
+    
+     <!-- DELETE from msProteinMatch -->
+    <delete id="deleteProteinMatch" parameterClass="Integer">
+    	DELETE FROM msProteinMatch
+    	WHERE resultID IN
+    	(SELECT id FROM msPeptideSearchResult WHERE searchID=#searchId#)
+    </delete>
+    
+    <!-- DELETE from SQTSearchResult -->
+    <delete id="deleteSQTResult" parameterClass="Integer">
+    	DELETE FROM SQTSearchResult
+    	WHERE resultID IN
+    	(SELECT id FROM msPeptideSearchResult WHERE searchID=#searchId#)
+    </delete>
+    
+    <!-- DELETE from msPeptideSearchResult -->
+    <delete id="deleteMsSearchResult" parameterClass="Integer">
+    	DELETE FROM msPeptideSearchResult WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from SQTSpectrumData -->
+    <delete id="deleteSQTSpectrum" parameterClass="Integer">
+    	DELETE FROM SQTSpectrumData WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from SQTSearchHeader -->
+    <delete id="deleteSQTHeader" parameterClass="Integer">
+    	DELETE FROM SQTSearchHeader WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from msSearchEnzyme -->
+    <delete id="deleteSearchEnzyme" parameterClass="Integer">
+    	DELETE FROM msSearchEnzyme WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from msSearchDatabase -->
+    <delete id="deleteSearchDatabase" parameterClass="Integer">
+    	DELETE FROM msSearchDatabase WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from msPeptideSearchStaticMod -->
+    <delete id="deleteSearchStaticMod" parameterClass="Integer">
+    	DELETE FROM msPeptideSearchStaticMod WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from msDynamicModResult -->
+    <delete id="deleteResultMod" parameterClass="Integer">
+    	DELETE FROM msDynamicModResult WHERE modID IN
+    	(SELECT id from msPeptideSearchDynamicMod where searchID=#searchId#)
+    </delete>
+    
+    <!-- DELETE from msPeptideSearchDynamicMod -->
+    <delete id="deleteSearchDynaMod" parameterClass="Integer">
+    	DELETE FROM msPeptideSearchDynamicMod WHERE searchID=#searchId#
+    </delete>
+    
+    <!-- DELETE from msPeptideSearch -->
+    <delete id="deleteSearch" parameterClass="Integer">
+    	DELETE FROM msPeptideSearch WHERE id=#searchId#
+    </delete>
+   <!-- ==================== Search related ==================== -->
+	 
+	 
+	 
+   <!-- ==================== Experiment related ==================== -->	
+   <delete id="deleteExperiment" parameterClass="Integer">
+    	DELETE FROM msExperiment WHERE id=#experimentId#
+    </delete>
+   <!-- ==================== Experiment related ==================== -->	
+   
+</sqlMap>

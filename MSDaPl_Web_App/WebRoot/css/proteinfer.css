@@ -1,0 +1,371 @@
+
+.table_pinfer {
+	border: 1px solid #7F7F7F;
+	border-collapse: separate;
+	empty-cells: show;
+	border-spacing: 0;
+}
+
+.table_pinfer TH {
+	background: #bec1c2 url(../images/sprite.png) repeat-x scroll 0 0; 
+	color: #3D4960;
+	padding: 3 5 3 5;
+	text-align: center;
+	border-style: none solid solid none;
+	border-color: #CBCBCB;
+	border-width: medium 1px 1px medium;
+	border-collapse: separate;
+}
+
+.table_pinfer TH.sortable:hover {
+	color:#D74D2D;
+	cursor:pointer;
+}
+.table_pinfer TH.sorted-asc {
+	background: #D8D8DA url(../images/sprite.png) repeat-x scroll 0 -1502px;
+	color: #FFFFFF;
+}
+.table_pinfer TH.sorted-asc:hover {
+	color: #FFFFFF;
+}
+.table_pinfer TH.sorted-desc {
+	background: #D8D8DA url(../images/sprite.png) repeat-x scroll 0 -1502px;
+	color: #FFFFFF;
+}
+.table_pinfer TH.sorted-desc:hover {
+	color: #FFFFFF;
+}
+
+.table_pinfer td {
+	
+	border-style: none solid solid none;
+	border-width: medium 1px 1px medium;
+	border-color: #FFFFFF #CBCBCB #D2D2D2 #FFFFFF;
+	padding: 3 3 3 3;
+	text-align: left;
+}
+
+.table_pinfer td.center_align {
+	text-align: center;
+}
+
+.table_pinfer TD.no-border {
+	border-style: none;
+	border-width: 0;
+}
+.table_pinfer TD.pinfer_filler {
+	border-style: solid none solid none;
+	border-width: 1px medium 1px medium;
+	border-color: #CBCBCB;
+}
+
+/* I really liked FAEBD7 but it looks pink on my windows laptop */
+TR.pinfer_A {
+	background-color: #F8F8FF; 
+}
+
+TR.pinfer_B {
+	background-color: #FFFFFF;
+}
+
+
+/* Small tables */
+TABLE.table_pinfer_small {
+	border: 1px dashed #7F7F7F;
+	border-collapse: separate;
+	empty-cells: show;
+	border-spacing: 0;
+}
+
+.table_pinfer_small TH {
+	background: #F2F2F2; 
+	color: #3D4960;
+	padding: 2 3 2 3;
+	text-align: center;
+	border-style: none solid solid none;
+	border-color: #CBCBCB;
+	border-width: medium 1px 1px medium;
+	border-collapse: separate;
+}
+.pinfer_small_hover {
+	color:#D74D2D;
+}
+
+.table_pinfer_small TD {
+	border-style: none solid solid none;
+	border-width: 0 1px 1px 0;
+	border-color: #FFFFFF #CBCBCB #F2F2F2 #FFFFFF;
+	padding: 3 3 3 3;
+}
+
+
+
+
+
+
+
+TH.pinfer_A_small {
+	background-color: #ED9A2E;
+    color: #FFFFFF;
+}
+
+
+TH.pinfer_selected_header_small {
+	color: #D74D2D;
+	background-color: #FFFAF0;
+}
+
+.prot_annot_U {
+	display:block;
+	border: 1px solid gray;
+	width: 10px;
+	height: 10px;	
+}
+
+.prot_annot_A {
+	display:block;
+	border: 1px solid gray;
+	background: green;
+	width: 10px;
+	height: 10px;	
+}
+
+.prot_annot_R {
+	display:block;
+	border: 1px solid gray;
+	background: red;
+	width: 10px;
+	height: 10px;	
+}
+
+.prot_annot_N {
+	display:block;
+	border: 1px solid gray;
+	background: yellow;
+	width: 10px;
+	height: 10px;	
+}
+
+
+
+/* COPIED FROM JQUERY UI's ui.all.css */
+/*slider*/
+.ui-slider { width: 200px; height: 23px; position: relative; background-repeat: no-repeat; background-position: center center; }
+.ui-slider-handle { position: absolute; z-index: 1; height: 23px; width: 12px; top: 0px; left: 0px; background-image: url(../images/proteinfer/slider-handle.gif);  }
+.ui-slider-handle-active { border: 1px dotted black;  }
+.ui-slider-disabled .ui-slider-handle { opacity: 0.5; filter: alpha(opacity=50); }
+.ui-slider-range { position: absolute; background: #F5FFFA; opacity: 0.3; filter: alpha(opacity=30); width: 100%; height: 100%; }
+
+/* Default slider backgrounds */
+.ui-slider, .ui-slider-1 { background-image: url(../images/proteinfer/slider-bg-1.png); }
+.ui-slider-2 { background-image: url(../images/proteinfer/slider-bg-2.png); }
+
+
+
+/* COPIED FROM JQUERY UI's flora.tabs.css */
+.ui-wrapper { border: 1px solid #F5FFFA; }
+.ui-wrapper input, .ui-wrapper textarea { border: 0; }
+
+/* Caution! Ensure accessibility in print and other media types... */
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .ui-tabs-hide {
+        display: none !important;
+    }
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .ui-tabs-nav {
+        display: none;
+    }
+}
+
+/* Skin */
+.ui-tabs-nav, .ui-tabs-panel {
+    font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+.ui-tabs-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 3px;
+}
+.ui-tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.ui-tabs-nav li {
+    float: left;
+    margin: 0 0 0 2px;
+    font-weight: bold;
+}
+.ui-tabs-nav a, .ui-tabs-nav a span {
+    float: left; /* fixes dir=ltr problem and other quirks IE */
+    padding: 0 12px;
+    background: url(../images/proteinfer/tabs.png) no-repeat;
+}
+.ui-tabs-nav a {
+    margin: 5px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
+    padding-left: 0;
+    background-position: 100% 0;
+    text-decoration: none;
+    white-space: nowrap; /* @ IE 6 */
+    outline: 0; /* @ Firefox, prevent dotted border after click */    
+}
+.ui-tabs-nav a:link, .ui-tabs-nav a:visited {
+    color: #fff;
+}
+.ui-tabs-nav .ui-tabs-selected a {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    margin-top: 0;
+    background-position: 100% -23px;
+}
+.ui-tabs-nav a span {
+    padding-top: 1px;
+    padding-right: 0;
+    height: 20px;
+    background-position: 0 0;
+    line-height: 20px;
+}
+.ui-tabs-nav .ui-tabs-selected a span {
+    padding-top: 0;
+    height: 27px;
+    background-position: 0 -23px;
+    line-height: 27px;
+}
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.ui-tabs-disabled {
+    opacity: .4;
+    filter: alpha(opacity=40);
+}
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited {
+    color: #000;
+}
+.ui-tabs-panel {
+    border: 1px solid gray;
+    padding: 10px;
+    background: #FFFFFF; /* declare background color for container to avoid distorted fonts in IE while fading */
+}
+/*.ui-tabs-loading em {
+    padding: 0 0 0 20px;
+    background: url(loading.gif) no-repeat 0 50%;
+}*/
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+*:first-child+html .ui-tabs-nav  { /* auto clear @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+
+/* This file skins dialog */
+
+.flora .ui-dialog,
+.flora.ui-dialog {
+	background-color: #F2F2F2;
+}
+
+.flora .ui-dialog .ui-dialog-titlebar,
+.flora.ui-dialog .ui-dialog-titlebar {
+	border-bottom: 1px solid #000000;
+	background: #3D4960 ;
+	padding: 0px;
+	height: 28px;
+	_height: 29px;
+}
+
+.flora .ui-draggable .ui-dialog-titlebar,
+.flora.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+
+.flora .ui-draggable-disabled .ui-dialog-titlebar,
+.flora.ui-draggable-disabled .ui-dialog-titlebar {
+	cursor: default;
+}
+
+.flora .ui-dialog .ui-dialog-titlebar-close,
+.flora.ui-dialog .ui-dialog-titlebar-close {
+	width: 16px;
+	height: 16px;
+	background: url(../images/proteinfer/dialog-titlebar-close.png) no-repeat;
+	position:absolute;
+	top: 6px;
+	right: 7px;
+	cursor: default;
+}
+
+.flora .ui-dialog .ui-dialog-titlebar-close span,
+.flora.ui-dialog .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.flora .ui-dialog .ui-dialog-titlebar-close-hover,
+.flora.ui-dialog .ui-dialog-titlebar-close-hover {
+	background: url(../images/proteinfer/dialog-titlebar-close-hover.png) no-repeat;
+}
+
+.flora .ui-dialog .ui-dialog-title,
+.flora.ui-dialog .ui-dialog-title {
+	margin-left: 5px;
+	color: white;
+	font-weight: bold;
+	position: relative;
+	top: 7px;
+	left: 4px;
+}
+
+.flora .ui-dialog .ui-dialog-content,
+.flora.ui-dialog .ui-dialog-content {
+	margin: 1.2em;
+}
+
+.flora .ui-dialog .ui-dialog-buttonpane,
+.flora.ui-dialog .ui-dialog-buttonpane {
+	position: absolute;
+	bottom: 8px;
+	right: 12px;
+	width: 100%;
+	text-align: right;
+}
+
+.flora .ui-dialog .ui-dialog-buttonpane button,
+.flora.ui-dialog .ui-dialog-buttonpane button {
+	margin: 6px;
+}
+
+/* Dialog handle styles */
+.flora .ui-dialog .ui-resizable-n,
+.flora.ui-dialog .ui-resizable-n { cursor: n-resize; height: 6px; width: 100%; top: 0px; left: 0px; background: transparent url(i/dialog-n.gif) repeat scroll center top; }
+
+.flora .ui-dialog .ui-resizable-s,
+.flora.ui-dialog .ui-resizable-s { cursor: s-resize; height: 8px; width: 100%; bottom: 0px; left: 0px; background: transparent url(i/dialog-s.gif) repeat scroll center top; }
+
+.flora .ui-dialog .ui-resizable-e,
+.flora.ui-dialog .ui-resizable-e { cursor: e-resize; width: 7px; right: 0px; top: 0px; height: 100%; background: transparent url(i/dialog-e.gif) repeat scroll right center; }
+
+.flora .ui-dialog .ui-resizable-w,
+.flora.ui-dialog .ui-resizable-w { cursor: w-resize; width: 7px; left: 0px; top: 0px; height: 100%; background: transparent url(i/dialog-w.gif) repeat scroll right center; }
+
+.flora .ui-dialog .ui-resizable-se,
+.flora.ui-dialog .ui-resizable-se { cursor: se-resize; width: 9px; height: 9px; right: 0px; bottom: 0px; background: transparent url(i/dialog-se.gif); }
+
+.flora .ui-dialog .ui-resizable-sw,
+.flora.ui-dialog .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: 0px; bottom: 0px; background: transparent url(i/dialog-sw.gif); }
+
+.flora .ui-dialog .ui-resizable-nw,
+.flora.ui-dialog .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 29px; left: 0px; top: 0px; background: transparent url(i/dialog-nw.gif); }
+
+.flora .ui-dialog .ui-resizable-ne,
+.flora.ui-dialog .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 29px; right: 0px; top: 0px; background: transparent url(i/dialog-ne.gif); }

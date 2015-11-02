@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="SequestSearch"> 
+
+	<typeAlias alias="SequestSearchOut" type="org.yeastrc.ms.domain.search.sequest.impl.SequestSearchBean"/>
+	<typeAlias alias="SequestParamIn" type="org.yeastrc.ms.domain.search.sequest.impl.SequestParamWarp" />
+	<typeAlias alias="SequestParamOut" type="org.yeastrc.ms.domain.search.impl.ParamBean" />
+	
+	<resultMap class="SequestSearchOut" id="sequestSearchResult" extends="MsSearch.msSearchResult" >
+		<result property="sequestParams" 
+				column="id" 
+				select="SequestSearch.selectParams"/>
+	</resultMap>
+	
+	<resultMap class="SequestParamOut" id="sequestParamResult">
+		<result property="paramName" column="param"/>
+		<result property="paramValue" column="value"/>
+	</resultMap>
+	
+	<parameterMap class="SequestParamIn" id="sequestParamParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="paramName" jdbcType="VARCHAR" />
+		<parameter property="paramValue" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="sequestSearchResult" parameterClass="Integer">
+    	SELECT * FROM msSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectParams" resultMap="sequestParamResult" parameterClass="Integer">
+    	SELECT * FROM SQTParams WHERE searchID = #id#
+    </select>
+    
+    <select id="selectSearchParamValue" resultClass="String" parameterClass="java.util.Map">
+    	SELECT value from SQTParams where searchID=#searchId# AND param=#paramName#
+    </select>
+    
+    <insert id="insertParams" parameterMap="sequestParamParam">
+    	INSERT INTO SQTParams (
+    	searchID,
+    	param,
+    	value)
+    	VALUES (?,?,?)
+    </insert>
+    
+</sqlMap>

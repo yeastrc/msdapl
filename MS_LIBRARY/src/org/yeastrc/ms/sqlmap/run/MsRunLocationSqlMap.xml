@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsRunLocation"> 
+
+	<typeAlias alias="MsRunLocationOut" type="org.yeastrc.ms.domain.run.impl.RunLocationDb" />
+	<typeAlias alias="MsRunLocationIn" type="org.yeastrc.ms.dao.run.ibatis.MsRunLocationWrap" />
+	
+	<resultMap class="MsRunLocationOut" id="msRunLocationResult">
+		<result property="id" column="id" />
+		<result property="runId" column="runID" nullValue="0"/>
+		<result property="createDate" column="createDate" />
+		<result property="serverDirectory" column="serverDirectory" />
+	</resultMap>
+	
+	<parameterMap class="MsRunLocationIn" id="msRunLocationParam">
+		<parameter property="runId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="serverDirectory" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+    
+    <select id="select" resultMap="msRunLocationResult" parameterClass="Integer">
+    	SELECT * FROM msRunLocation WHERE id = #id#
+    </select>
+    
+    <select id="selectLocationsForRun" resultMap="msRunLocationResult" parameterClass="Integer">
+    	SELECT * FROM msRunLocation WHERE runID=#runId#
+    </select>
+    
+     <select id="selectMatchingLocations" resultClass="Integer" parameterClass="MsRunLocationIn">
+    	SELECT count(*) FROM msRunLocation 
+    	WHERE runID=#runId#
+    	AND serverDirectory=#serverDirectory#
+    </select>
+    
+    <insert id="insert" parameterMap="msRunLocationParam">
+    	INSERT INTO msRunLocation (runID, serverDirectory) VALUES (?,?)
+    </insert>
+    
+</sqlMap>

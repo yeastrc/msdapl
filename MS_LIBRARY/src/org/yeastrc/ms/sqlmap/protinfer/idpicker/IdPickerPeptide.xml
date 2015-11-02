@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="IdPickerPeptide"> 
+
+	<typeAlias alias="IdPickerPeptide" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerPeptide"/>
+	<typeAlias alias="IdPickerPeptideBase" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerPeptideBase"/>
+	
+	<resultMap class="IdPickerPeptide" id="idpickerPeptideResult" extends="ProteinferPeptide.pinferPeptideBaseResult">
+		<result property="peptideGroupLabel" column="peptideGroupLabel" nullValue="0" />
+		<result property="ionList" 
+				select="IdPickerIon.selectIonsForPeptide"
+				column="id"/>
+	</resultMap>
+	
+	<resultMap class="IdPickerPeptideBase" id="idpickerPeptideBaseResult" extends="ProteinferPeptide.pinferPeptideBaseResult">
+		<result property="peptideGroupLabel" column="peptideGroupLabel" nullValue="0" />
+		<result property="ionList" 
+				select="ProteinferIon.selectIonsForPeptide"
+				column="id"/>
+	</resultMap>
+	
+	<parameterMap class="IdPickerPeptideBase" id="idpickerPeptideParam">
+		<parameter property="id" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="peptideGroupLabel" jdbcType="INTEGER" />
+	</parameterMap>
+	
+	<select id="select" resultMap="idpickerPeptideResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferPeptide as pep, IDPickerPeptide as idpPep
+    	WHERE pep.id=#id#
+    	AND pep.id = idpPep.piPeptideID
+    </select>
+    
+    <select id="selectBasePeptide" resultMap="idpickerPeptideBaseResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferPeptide as pep, IDPickerPeptide as idpPep
+    	WHERE pep.id=#id#
+    	AND pep.id = idpPep.piPeptideID
+    </select>
+    
+    <select id="selectPeptidesForProtein" resultMap="idpickerPeptideResult" parameterClass="Integer">
+    	SELECT p.*, idpPep.*
+    	FROM  msProteinInferPeptide as p, msProteinInferProteinPeptideMatch as protMatch, IDPickerPeptide as idpPep
+    	WHERE p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = #id#
+    	AND p.id = idpPep.piPeptideID
+    </select>
+    
+    <select id="selectBasePeptidesForProtein" resultMap="idpickerPeptideBaseResult" parameterClass="Integer">
+    	SELECT p.*, idpPep.*
+    	FROM  msProteinInferPeptide as p, msProteinInferProteinPeptideMatch as protMatch, IDPickerPeptide as idpPep
+    	WHERE p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = #id#
+    	AND p.id = idpPep.piPeptideID
+    </select>
+    
+    <select id="selectPeptidesForGroup" resultMap="idpickerPeptideResult" parameterClass="java.util.Map">
+    	SELECT pept.*, idpPep.* 
+    	FROM msProteinInferPeptide as pept, IDPickerPeptide as idpPep
+    	WHERE pept.piRunID=#pinferId#
+    	AND pept.id = idpPep.piPeptideID
+    	AND idpPep.peptideGroupLabel=#peptideGroupLabel#
+    </select>
+    
+    <select id="selectBasePeptidesForGroup" resultMap="idpickerPeptideBaseResult" parameterClass="java.util.Map">
+    	SELECT pept.*, idpPep.* 
+    	FROM msProteinInferPeptide as pept, IDPickerPeptide as idpPep
+    	WHERE pept.piRunID=#pinferId#
+    	AND pept.id = idpPep.piPeptideID
+    	AND idpPep.peptideGroupLabel=#peptideGroupLabel#
+    </select>
+    
+    <select id="selectPeptGrpLabelsForProtGrp" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT peptideGroupLabel FROM IDPickerGroupAssociation
+    	WHERE piRunID=#pinferId#
+    	AND proteinGroupLabel=#proteinGroupLabel#
+    </select>
+   
+    <insert id="insert" parameterMap="idpickerPeptideParam">
+    	INSERT INTO IDPickerPeptide (
+    	piPeptideID,
+    	peptideGroupLabel) 
+    	VALUES (?,?)
+    </insert>
+    
+    <insert id="insertGroupAssociation" parameterClass="java.util.Map">
+    	INSERT INTO IDPickerGroupAssociation (
+    	piRunID,
+    	proteinGroupLabel,
+    	peptideGroupLabel) 
+    	VALUES (#proteinGroupLabel#, #peptideGroupLabel#)
+    </insert>
+    
+    <update id="updateIdPickerPeptide" parameterClass="IdPickerPeptideBase">
+    	UPDATE IDPickerPeptide 
+    	SET peptideGroupLabel=#peptideGroupLabel#
+    	WHERE piPeptideID=#id#
+    </update>
+    
+    
+</sqlMap>

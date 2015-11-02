@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferIon"> 
+
+	<typeAlias alias="ProteinferIon" type="org.yeastrc.ms.domain.protinfer.ProteinferIon"/>
+	<typeAlias alias="BaseProteinferIon" type="org.yeastrc.ms.domain.protinfer.GenericProteinferIon"/>
+	
+	<resultMap class="BaseProteinferIon" id="pinferIonBaseResult">
+		<result property="id" column="id" />
+		<result property="proteinferPeptideId" column="piPeptideID" />
+		<result property="charge" column="charge" />
+		<result property="modifiedSequence" column="modifiedSequence" />
+		<result property="modificationStateId" column="modificationStateID" />
+		<result property="spectrumCount" select="ProteinferSpectrumMatch.selectSpectrumCountForIon" column="id" />
+	</resultMap>
+	
+	<resultMap class="ProteinferIon" id="pinferIonResult" extends="ProteinferIon.pinferIonBaseResult">
+		<result property="bestSpectrumMatchList" 
+				select="ProteinferSpectrumMatch.selectBestMatchForIon"
+				column="id"/>
+	</resultMap>
+	
+	<parameterMap class="BaseProteinferIon" id="pinferIonParam">
+		<parameter property="proteinferPeptideId" jdbcType="INTEGER" />
+		<parameter property="charge" jdbcType="INTEGER" />
+		<parameter property="modifiedSequence" jdbcType="VARCHAR" />
+		<parameter property="modificationStateId" jdbcType="INTEGER" />
+	</parameterMap>
+	
+	<select id="select" resultMap="pinferIonResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferIon WHERE id=#id#
+    </select>
+    
+    <select id="selectIonsForPeptide" resultMap="pinferIonResult" parameterClass="Integer">
+    	SELECT * from msProteinInferIon WHERE piPeptideID=#id#
+    </select>
+    
+    <insert id="insert" parameterMap="pinferIonParam">
+    	INSERT INTO msProteinInferIon (
+    	piPeptideID,
+    	charge,
+    	modifiedSequence,
+    	modificationStateID) 
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msProteinInferIon WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

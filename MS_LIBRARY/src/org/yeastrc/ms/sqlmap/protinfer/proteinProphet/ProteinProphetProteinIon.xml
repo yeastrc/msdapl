@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetProteinIon"> 
+
+	<typeAlias alias="ProteinProphetProteinIon" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetProteinPeptideIon"/>
+	
+	
+	<resultMap class="ProteinProphetProteinIon" id="prophetIonResult" extends="ProteinferIon.pinferIonResult">
+		
+	</resultMap>
+	
+	<resultMap class="ProteinProphetProteinIon" id="prophetProteinIonResult" extends="ProteinProphetProteinIon.prophetIonResult">
+		<result property="piProteinId" column="piProteinID" nullValue="0" />
+		<result property="weight" column="weight" nullValue="-1.0"/>
+		<result property="initialProbability" column="initialProbability" nullValue="-1.0"/>
+		<result property="nspAdjProbability" column="nspAdjProbability" nullValue="-1.0"/>
+		<result property="numSiblingPeptides" column="numSiblingPeptides" nullValue="-1.0"/>
+		<result property="isContributingEvidence" column="isContributingEvidence" />
+	</resultMap>
+	
+	<parameterMap class="ProteinProphetProteinIon" id="proteinIonParam">
+		<parameter property="piProteinId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="id" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="weight" jdbcType="DOUBLE" nullValue="-1.0" />
+		<parameter property="initialProbability" jdbcType="DOUBLE" nullValue="-1.0" />
+		<parameter property="nspAdjProbability" jdbcType="DOUBLE" nullValue="-1.0" />
+		<parameter property="numSiblingPeptides" jdbcType="DOUBLE" nullValue="-1.0" />
+	  	<parameter property="isContributingEvidence" jdbcType="TINYINT"  />
+	</parameterMap>
+	
+
+	<select id="selectIon" resultMap="prophetIonResult" parameterClass="Integer">
+		SELECT * FROM msProteinInferIon WHERE id=#id#
+	</select>
+	
+	<select id="selectProteinIon" resultMap="prophetIonResult" parameterClass="java.util.Map">
+		SELECT * FROM msProteinInferIon AS ion, ProteinProphetProteinIon AS pion
+		WHERE ion.id=#piIonId#
+		AND ion.id = pion.piIonID
+		AND pion.piProteinID=#piProteinId#
+	</select>
+	
+	<select id="selectIonsForProtein" resultMap="prophetProteinIonResult" parameterClass="java.util.Map">
+		SELECT * FROM msProteinInferIon AS ion, ProteinProphetProteinIon AS pion
+		AND ion.id = pion.piIonID
+		AND pion.piProteinID=#piProteinId#
+	</select>
+	
+	<!-- This one is used internally by ProteinProphetPeptide (lazy loading of ionList property -->
+	<select id="selectIonsForProteinPeptide" resultMap="prophetProteinIonResult" >
+		SELECT * FROM msProteinInferIon AS ion, ProteinProphetProteinIon AS pion
+		WHERE ion.piPeptideID=#piPeptideId# 
+		AND ion.id = pion.piIonID
+		AND pion.piProteinID=#piProteinId#
+	</select>
+	
+	<select id="selectIonsForPeptide" resultMap="prophetIonResult" parameterClass="Integer">
+    	SELECT * from msProteinInferIon WHERE piPeptideID=#id#
+    </select>
+    
+	<insert id="insert" parameterMap="proteinIonParam">
+    	INSERT INTO ProteinProphetProteinIon (
+    	piProteinID,
+    	piIonID,
+    	weight,
+    	initialProbability,
+    	nspAdjProbability,
+    	numSiblingPeptides,
+    	isContributingEvidence)
+    	VALUES (?,?,?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+</sqlMap>

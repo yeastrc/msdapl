@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsSearch"> 
+
+    <typeAlias alias="MsSearchOut" type="org.yeastrc.ms.domain.search.impl.SearchBean"/>
+    <typeAlias alias="MsSearchIn" type="org.yeastrc.ms.upload.dao.search.ibatis.MsSearchWrap"/>
+	
+	<typeAlias alias="ProgramType" type="org.yeastrc.ms.domain.search.SearchProgram"/>
+	<typeAlias alias="ProgramTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchDAOImpl$SearchProgramTypeHandler"/>
+	
+	<resultMap class="MsSearchOut" id="msSearchResult">
+		<result property="id" column="id" />
+		<result property="experimentId" column="experimentID" />
+		<result property="searchDate" column="expDate" />
+		<result property="serverDirectory" column="serverDirectory" />
+		<result property="searchProgram" column="analysisProgramName" 
+				typeHandler="ProgramTypeHandler"/>
+		<result property="searchProgramVersion" column="analysisProgramVersion" />
+		<result property="uploadDate" column="uploadDate" />
+		<result property="enzymeList" 
+				column="id" 
+				select="MsEnzyme.selectEnzymesForSearch"/>
+		<result property="searchDatabases" 
+				select="MsDatabase.selectSearchDatabases" 
+				column="id"/>
+		<result property="staticResidueMods" 
+				select="MsSearchMod.selectStaticResidueModsForSearch" 
+				column="id" />
+		<result property="dynamicResidueMods" 
+				select="MsSearchMod.selectDynamicResidueModsForSearch" 
+				column="id" />
+		<result property="staticTerminalMods" 
+				select="MsSearchMod.selectStaticTerminalModsForSearch" 
+				column="id" />
+		<result property="dynamicTerminalMods" 
+				select="MsSearchMod.selectDynamicTerminalModsForSearch" 
+				column="id" />
+	</resultMap>
+	
+	<parameterMap class="MsSearchIn" id="msSearchParam">
+		<parameter property="experimentId" />
+		<parameter property="searchDate" />
+		<parameter property="serverDirectory"  />
+		<parameter property="searchProgram" typeHandler="ProgramTypeHandler"/>
+		<parameter property="searchProgramVersion"/>
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="msSearchResult" parameterClass="Integer">
+    	SELECT * FROM msSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectSearchIdsForExperiment" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msSearch WHERE experimentID = #experimentId#
+    </select>
+
+    <select id="selectAnalysisProgramNamesForSearchAnalysisID" resultClass="String" parameterClass="Integer">
+    	    SELECT msSearch.analysisProgramName
+		    FROM msSearch WHERE id IN (
+
+		       SELECT DISTINCT( msRunSearch.searchID ) FROM msRunSearchAnalysis 
+		            INNER JOIN msRunSearch ON msRunSearchAnalysis.runSearchID = msRunSearch.id
+		            WHERE msRunSearchAnalysis.searchAnalysisID = #searchAnalysisID#
+		    )
+    </select>
+    
+    
+    <insert id="insert" parameterMap="msSearchParam">
+    	INSERT INTO msSearch (
+    	experimentId,
+    	expDate,
+    	serverDirectory,
+    	analysisProgramName,
+    	analysisProgramVersion)
+    	VALUES (?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msSearch WHERE id=#id#		    
+    </delete>
+    
+    <update id="updateAnalysisProgramVersion" parameterClass="java.util.Map">
+    	UPDATE msSearch
+    	SET analysisProgramVersion=#analysisProgramVersion#
+    	WHERE id=#searchId#
+    </update>
+    
+    <parameterMap class="java.util.Map" id="updateProgParam">
+    	<parameter property="analysisProgram" typeHandler="ProgramTypeHandler"/>
+		<parameter property="searchId"  />
+	</parameterMap>
+	
+    <update id="updateAnalysisProgram" parameterMap="updateProgParam">
+    	UPDATE msSearch
+    	SET analysisProgramName=?
+    	WHERE id=?
+    </update>
+    
+</sqlMap>

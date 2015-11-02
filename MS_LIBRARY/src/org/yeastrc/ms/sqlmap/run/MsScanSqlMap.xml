@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsScan"> 
+
+	<typeAlias alias="MsScanOut" type="org.yeastrc.ms.domain.run.impl.ScanDb"/>
+	<typeAlias alias="MsScanIn" type="org.yeastrc.ms.dao.run.ibatis.MsScanDAOImpl$MsScanSqlMapParam"/>
+	<typeAlias alias="MsScanDataIn" type="org.yeastrc.ms.dao.run.ibatis.MsScanDAOImpl$MsScanDataSqlMapParam"/>
+	
+	<typeAlias alias="DataConversionTypeHandler" type="org.yeastrc.ms.dao.run.ibatis.MsScanDAOImpl$DataConversionTypeHandler"/>
+	<typeAlias alias="PeakStorageTypeHandler" type="org.yeastrc.ms.dao.run.ibatis.MsScanDAOImpl$PeakStorageTypeHandler"/>
+	
+	<!-- Peak data is not lazy loaded since lazy-loading of 1:1 relationships is not supported 
+	     without an external library
+	 -->
+	
+	<resultMap class="MsScanOut" id="msScanNoDataResult">
+		<result property="id" column="id" />
+		<result property="runId" column="runID" nullValue="0" />
+		<result property="startScanNum" column="startScanNumber" nullValue="-1"/>
+		<result property="endScanNum" column="endScanNumber" nullValue="-1"/>
+		<result property="msLevel" column="level" nullValue="0"/>
+		<result property="precursorMz" column="preMZ" />
+		<result property="precursorScanId" column="preScanID" nullValue="0"/>
+		<result property="precursorScanNum" column="prescanNumber" nullValue="-1"/>
+		<result property="retentionTime" column="retentionTime" />
+		<result property="fragmentationType" column="fragmentationType" />
+		<result property="dataConversionType" 
+				column="isCentroid" 
+				typeHandler="DataConversionTypeHandler"
+				/>
+		<result property="peakCount" column="peakCount" nullValue="-1" />
+	</resultMap>
+	
+	<resultMap class="MsScanOut" id="msScanResult" extends="MsScan.msScanNoDataResult">
+		<result property="peakStorageType" column="type"
+		        typeHandler="PeakStorageTypeHandler" 
+		        />
+		<result property="peakData" column="data" />
+	</resultMap>
+	
+	
+	<parameterMap class="MsScanIn" id="msScanParam">
+		<parameter property="runId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="startScanNum" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="endScanNum" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="msLevel" jdbcType="TINYINT" nullValue="0"/>
+		<parameter property="precursorMz" jdbcType="DECIMAL" />
+		<parameter property="precursorScanId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="precursorScanNum" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="retentionTime" jdbcType="DECIMAL" />
+		<parameter property="fragmentationType" jdbcType="VARCHAR"/>
+		<parameter property="dataConversionType" 
+					typeHandler="DataConversionTypeHandler"
+					jdbcType="CHAR"/>
+		<parameter property="peakCount" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+	<parameterMap class="MsScanDataIn" id="msScanDataParam">
+		<parameter property="scanId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="peakStorageType" jdbcType="CHAR" typeHandler="PeakStorageTypeHandler" />
+		<parameter property="peakData" jdbcType="LONGBLOB" />
+	</parameterMap>
+	
+	
+    <select id="selectScanIdsForRun" resultClass="Integer" parameterClass="Integer"> 
+        SELECT id FROM msScan WHERE runID = #id#
+    </select> 
+    
+    <select id="selectScanIdsWithLevelOf2ForRun" resultClass="Integer" parameterClass="Integer"> 
+        SELECT id FROM msScan WHERE runID = #id# AND level = 2
+    </select>     
+	
+    <select id="selectScanIdsForRunAndLevel" resultClass="Integer" parameterClass="java.util.Map"> 
+        SELECT id FROM msScan 
+        WHERE runID = #runId#
+        AND level = #level#
+    </select> 
+    
+    <select id="selectScanCountForRun" resultClass="Integer" parameterClass="Integer"> 
+        SELECT count(*) FROM msScan WHERE runID = #id#
+    </select> 
+    
+    <select id="selectScanCountForRunLevel" resultClass="Integer" parameterClass="java.util.Map"> 
+        SELECT count(*) FROM msScan 
+        WHERE runID = #runId# 
+        AND level = #level#
+    </select> 
+    
+    <select id="selectMs2ScansForMs1Scan" resultClass="Integer" parameterClass="Integer"> 
+        SELECT id FROM msScan WHERE preScanID = #id#
+    </select> 
+    
+    <!-- Peak data is not lazy loaded since lazy-loading of 1:1 relationships is not supported 
+	     without an external library
+	 -->
+    <select id="select" resultMap="msScanResult" parameterClass="Integer">
+    	SELECT id, 
+    			runID, 
+    			startScanNumber, 
+    			endScanNumber, 
+    			level, 
+    			preMZ, 
+    			preScanID, 
+    			prescanNumber, 
+    			retentionTime,
+    			fragmentationType,
+    			isCentroid,
+    			peakCount,
+    			type,
+    			UNCOMPRESS(data) as data 
+    			FROM msScan, msScanData
+    			WHERE msScan.id = msScanData.scanID
+    			AND id= #id#
+    </select>
+    
+    <select id="selectScanNoData" resultMap="msScanNoDataResult" parameterClass="Integer">
+    	SELECT id, 
+    			runID, 
+    			startScanNumber, 
+    			endScanNumber, 
+    			level, 
+    			preMZ, 
+    			preScanID, 
+    			prescanNumber, 
+    			retentionTime,
+    			fragmentationType,
+    			isCentroid,
+    			peakCount
+    			FROM msScan
+    			WHERE id= #id#
+    </select>
+    
+    <select id="selectScanNumber" resultClass="Integer" parameterClass="Integer"> 
+        SELECT startScanNumber FROM msScan WHERE id=#id#
+    </select> 
+    
+    <select id="selectScanIdForScanNumRun" parameterClass="java.util.Map" resultClass="Integer">
+    	SELECT id from msScan where runId=#runId# AND startScanNumber=#scanNum#
+    </select>
+    
+    <select id="getMaxRTForRun" resultClass="Double" parameterClass="Integer">
+    	SELECT max(retentionTime) from msScan where runID=#runId#
+    </select>
+    
+    <select id="getMinRTForRun" resultClass="Double" parameterClass="Integer">
+    	SELECT min(retentionTime) from msScan where runID=#runId#
+    </select>
+    
+    <select id="getMaxRTForRunList" resultClass="Double" parameterClass="String">
+    	SELECT max(retentionTime) from msScan where runID IN ($runList$)
+    </select>
+    
+    <select id="getMinRTForRunList" resultClass="Double" parameterClass="String">
+    	SELECT min(retentionTime) from msScan where runID IN ($runList$)
+    </select>
+    
+    
+    
+    <select id="selectScanCountForExperimentIdScanLevelNotOnePreMZNotNULL" resultClass="Integer" parameterClass="Integer"> 
+        SELECT COUNT(*) AS count FROM msScan
+           INNER JOIN msRun ON msScan.runID = msRun.id 
+           INNER JOIN msExperimentRun ON msRun.id = msExperimentRun.runID 
+           WHERE msExperimentRun.experimentID = #experimentId# AND msScan.level != 1 AND msScan.preMZ IS NOT NULL
+    </select> 
+
+    
+    <select id="selectScanCountForExperimentIdScanLevelNotOne" resultClass="Integer" parameterClass="Integer"> 
+        SELECT COUNT(*) AS count FROM msScan
+           INNER JOIN msRun ON msScan.runID = msRun.id 
+           INNER JOIN msExperimentRun ON msRun.id = msExperimentRun.runID 
+           WHERE msExperimentRun.experimentID = #experimentId# AND msScan.level != 1
+    </select> 
+    
+    
+    
+    <select id="getMaxPreMZForExperimentIdScanLevelNotOnePreMZNotNULL" resultClass="java.math.BigDecimal" parameterClass="Integer">
+        SELECT MAX(msScan.preMZ) AS maxpreMZ FROM msScan 
+           INNER JOIN msRun ON msScan.runID = msRun.id 
+           INNER JOIN msExperimentRun ON msRun.id = msExperimentRun.runID 
+           WHERE msExperimentRun.experimentID = #experimentId# AND msScan.level != 1 AND msScan.preMZ IS NOT NULL
+    </select>
+    
+    <select id="getMinPreMZForExperimentIdScanLevelNotOnePreMZNotNULL" resultClass="java.math.BigDecimal" parameterClass="Integer">
+        SELECT MIN(msScan.preMZ) AS minPreMZ FROM msScan 
+           INNER JOIN msRun ON msScan.runID = msRun.id 
+           INNER JOIN msExperimentRun ON msRun.id = msExperimentRun.runID 
+           WHERE msExperimentRun.experimentID = #experimentId# AND msScan.level != 1 AND msScan.preMZ IS NOT NULL
+    </select>    
+    
+    
+    <!-- Not used, iBatis returned exception: Error: executeQueryForObject returned too many results. -->
+    <!--  
+    <select id="getPreMZListForExperimentId" resultClass="java.math.BigDecimal" parameterClass="Integer">
+        SELECT msScan.preMZ FROM msScan 
+           INNER JOIN msRun ON msScan.runID = msRun.id 
+           INNER JOIN msExperimentRun ON msRun.id = msExperimentRun.runID 
+           WHERE msExperimentRun.experimentID = #experimentId#
+    </select>           
+    -->
+    
+    
+           
+    
+    <insert id="insert" parameterMap="msScanParam">
+    	INSERT INTO msScan (runID, 
+    						startScanNumber, 
+    						endScanNumber, 
+    						level, 
+    						preMZ, 
+    						preScanID, 
+    						prescanNumber,
+    						retentionTime, 
+    						fragmentationType,
+    						isCentroid,
+    						peakCount) 
+    	VALUES (?,?,?,?,?,?,?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <insert id="insertPeakData" parameterMap="msScanDataParam">
+    	INSERT INTO msScanData (scanID,type,data) 
+    	VALUES (?,?,COMPRESS(?))
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msScan WHERE id=#scanId#		    
+    </delete>
+    
+    <delete id="deletePeakData" parameterClass="Integer">
+		DELETE FROM msScanData WHERE scanID=#scanId#		    
+    </delete>
+    
+</sqlMap>

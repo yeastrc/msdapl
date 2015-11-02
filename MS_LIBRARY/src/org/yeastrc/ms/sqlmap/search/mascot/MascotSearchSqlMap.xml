@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MascotSearch"> 
+
+	<typeAlias alias="MascotSearchOut" type="org.yeastrc.ms.domain.search.mascot.impl.MascotSearchBean"/>
+	<typeAlias alias="MascotParamIn" type="org.yeastrc.ms.domain.search.mascot.impl.MascotParamWarp" />
+	<typeAlias alias="MascotParamOut" type="org.yeastrc.ms.domain.search.impl.ParamBean" />
+	
+	<resultMap class="MascotSearchOut" id="mascotSearchResult" extends="MsSearch.msSearchResult" >
+		<result property="mascotParams" 
+				column="id" 
+				select="MascotSearch.selectParams"/>
+	</resultMap>
+	
+	<resultMap class="MascotParamOut" id="mascotParamResult">
+		<result property="paramName" column="param"/>
+		<result property="paramValue" column="value"/>
+	</resultMap>
+	
+	<parameterMap class="MascotParamIn" id="mascotParamParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="paramName" jdbcType="VARCHAR" />
+		<parameter property="paramValue" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="mascotSearchResult" parameterClass="Integer">
+    	SELECT * FROM msSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectParams" resultMap="mascotParamResult" parameterClass="Integer">
+    	SELECT * FROM MascotParams WHERE searchID = #id#
+    </select>
+    
+    <select id="selectSearchParamValue" resultClass="String" parameterClass="java.util.Map">
+    	SELECT value from MascotParams where searchID=#searchId# AND param=#paramName#
+    </select>
+    
+    <insert id="insertParams" parameterMap="mascotParamParam">
+    	INSERT INTO MascotParams (
+    	searchID,
+    	param,
+    	value)
+    	VALUES (?,?,?)
+    </insert>
+    
+</sqlMap>

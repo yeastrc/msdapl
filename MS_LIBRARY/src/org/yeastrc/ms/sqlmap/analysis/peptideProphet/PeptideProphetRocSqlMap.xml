@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PeptideProphetRoc"> 
+
+
+	<typeAlias alias="PeptideProphetRocOut" type="org.yeastrc.ms.domain.analysis.peptideProphet.PeptideProphetROCPoint"/>
+	<typeAlias alias="PeptideProphetRocIn" type="org.yeastrc.ms.domain.analysis.peptideProphet.PeptideProphetROCPoint"/>
+	
+	
+	<resultMap class="PeptideProphetRocOut" id="rocResult">
+		<result property="searchAnalysisId" column="searchAnalysisID"/>
+		<result property="sensitivity" column="sensitivity"/>
+		<result property="error" column="error"/>
+		<result property="minProbability" column="minProbability"/>
+		<result property="numCorrect" column="numCorrect"/>
+		<result property="numIncorrect" column="numIncorrect"/>
+	</resultMap>
+	
+	<parameterMap class="PeptideProphetRocIn" id="rocParam">
+		<parameter property="searchAnalysisId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="sensitivity" jdbcType="DOUBLE"/>
+		<parameter property="error" jdbcType="DOUBLE"/>
+		<parameter property="minProbability" jdbcType="DOUBLE"/>
+		<parameter property="numCorrect" jdbcType="INTEGER"/>
+		<parameter property="numIncorrect" jdbcType="INTEGER"/>
+	</parameterMap>
+	
+    
+    <select id="select" resultMap="rocResult" parameterClass="Integer">
+		SELECT * FROM PeptideProphetROC WHERE searchAnalysisID = #id# ORDER BY id
+	</select>
+	
+    
+    <insert id="insert" parameterMap="rocParam">
+    	INSERT INTO PeptideProphetROC 
+    	(searchAnalysisID, 
+    	sensitivity,
+    	error,
+    	minProbability,
+    	numCorrect,
+    	numIncorrect) 
+    	VALUES (?,?,?,?,?,?)
+    </insert>
+    
+</sqlMap>

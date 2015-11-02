@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration debug="true">
+
+<!-- Console appender -->
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender"> 
+    	<param name="Target" value="System.out"/> 
+    	<layout class="org.apache.log4j.PatternLayout"> 
+      		<param name="ConversionPattern" value="%%5p [%d{dd MMM yyyy HH:mm:ss}] - %m%n"/> 
+    	</layout> 
+  	</appender>
+  	
+<!-- RollingFileAppender -->
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+		<!-- The active file to log to -->
+        <!--  <param name="file" value="${catalina.base}/webapps/pr/logs/pr.log" /> -->
+		<param name="file" value="" />
+        <param name="append" value="true" />
+		<param name="MaxFileSize" value="100KB"/>
+    	<!-- Keep ten backup file -->
+    	<param name="MaxBackupIndex" value="10"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+        	<!-- The log message pattern -->
+        	<param name="ConversionPattern" value="%5p %d{ISO8601} [%t][%x] %c - %m%n" /> <!-- from .properties:  %d [%t] %-5p %c - %m %n -->
+        </layout>
+   </appender>
+
+
+<!-- Declare the SMTPAppender -->
+   <appender name="email" class="org.apache.log4j.net.SMTPAppender">
+       <param name="BufferSize" value="512" />
+       <param name="SMTPHost" value="localhost" />
+       <param name="From" value="" />
+       <param name="To" value="" />
+       <param name="Subject" value="MsUploadQueueWS ERROR" />
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" 
+				  value="[%d{ISO8601}]%n%n%-5p%n%n%c%n%n%m%n%n" />
+       </layout>
+       <filter class="org.apache.log4j.varia.LevelRangeFilter">
+           <param name="LevelMin" value="FATAL"/>
+           <param name="LevelMax" value="FATAL"/>
+       </filter>
+   </appender>
+
+
+   <!-- setup log4j's root logger -->
+   <root>
+       	<priority value="info" />
+       	<appender-ref ref="file" />
+		<appender-ref ref="email" />
+   </root>
+</log4j:configuration>

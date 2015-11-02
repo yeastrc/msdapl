@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsRunSearchAnalysis"> 
+
+    <typeAlias alias="MsRunSearchAnalysisOut" type="org.yeastrc.ms.domain.analysis.impl.RunSearchAnalysisBean"/>
+    <typeAlias alias="MsRunSearchAnalysisIn" type="org.yeastrc.ms.domain.analysis.MsRunSearchAnalysis"/>
+	
+	<typeAlias alias="FileFormatType" type="org.yeastrc.ms.domain.search.SearchFileFormat"/>
+	<typeAlias alias="FileFormatTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsRunSearchDAOImpl$SearchFileFormatTypeHandler"/>
+		
+	<resultMap class="MsRunSearchAnalysisOut" id="msRsAnalysisResult">
+		<result property="id" column="id" />
+		<result property="analysisId" column="searchAnalysisID" />
+		<result property="runSearchId" column="runSearchID" />
+		<result property="analysisFileFormat" column="originalFileType" 
+				javaType="FileFormatType" jdbcType="VARCHAR"
+				typeHandler="FileFormatTypeHandler"/>
+	</resultMap>
+	
+	<parameterMap class="MsRunSearchAnalysisIn" id="msRsAnalysisParam">
+		<parameter property="analysisId" />
+		<parameter property="runSearchId" />
+		<parameter property="analysisFileFormat" 
+					jdbcType="VARCHAR" javaType="FileFormatType" 
+					typeHandler="FileFormatTypeHandler"
+		/>
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="msRsAnalysisResult" parameterClass="Integer">
+    	SELECT * FROM msRunSearchAnalysis WHERE id = #id#
+    </select>
+    
+    <select id="selectIdsForAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearchAnalysis WHERE searchAnalysisID = #analysisId#
+    </select>
+    
+     <select id="selectForAnalysisRunSearch" resultMap="msRsAnalysisResult" parameterClass="Integer">
+    	SELECT * FROM msRunSearchAnalysis WHERE searchAnalysisID = #analysisId# AND runSearchID = #runSearchId#
+    </select>
+    
+    <select id="selectFileNameForRunSearchAnalysisId" resultClass="String" parameterClass="Integer">
+    	SELECT filename FROM msRunSearchAnalysis AS rsa, msRunSearch AS rs, msRun AS run
+    	WHERE rsa.runSearchID = rs.id
+    	AND rs.runID = run.id
+    	AND rsa.id=#id#
+    </select>
+    
+    <insert id="insert" parameterMap="msRsAnalysisParam">
+    	INSERT INTO msRunSearchAnalysis (
+    	searchAnalysisID,
+    	runSearchID,
+    	originalFileType)
+    	VALUES (?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+</sqlMap>

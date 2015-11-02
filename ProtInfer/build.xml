@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." name="Protinfer" default="build_jar">
+
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+		
+	
+	<!-- ================================================================================== -->
+	<!-- SVN repository wide overall SVN properties in svn_resources.properties -->
+	<!-- ================================================================================== -->
+	<property file="${basedir}${file.separator}..${file.separator}..${file.separator}aa_SVN_Info_Resources${file.separator}svn_resources.properties" />
+
+	<!-- ================================================================================== -->
+	<!--  SVN repository wide overall Ant properties in overall_build_config.properties -->
+	<!-- ================================================================================== -->
+	<property file="${basedir}${file.separator}..${file.separator}..${file.separator}aa_Ant_Config${file.separator}overall_build_config.properties" />
+		
+	
+	<!-- ================================================================================== -->
+	<!-- user defined values can be defined in build.properties -->
+	<!-- ================================================================================== -->
+	<property file="${basedir}${file.separator}build.properties" />
+	
+	<!-- ================================================================================== -->
+  	<!-- PRINT HELP -->
+	<!-- ================================================================================== -->
+	<target name="help"   description="print this help">
+		<exec executable="ant">
+	   		<arg value="-p"/>
+	  	</exec>
+	</target>
+	
+	<!-- ================================================================================== -->
+	<!-- Setup classpath for svnant -->
+	<!-- ================================================================================== -->
+	<path id= "svnant.classpath" >
+		
+		<fileset dir= "${basedir}${file.separator}..${file.separator}..${file.separator}aa_SVN_Info_Resources/${svn.jars.dir}" >
+			<include name= "*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- ================================================================================== -->
+	<!-- Test for svnant -->
+	<!-- ================================================================================== -->
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
+	
+	<target name="test_svn_ant" description="Prints the Subversion repository URL and working copy revision">
+	     <svn username="${svn.username}" password="${svn.password}">
+	        <wcVersion path= "${basedir}" />
+	     	<info target="${basedir}"/>
+	     </svn>
+	     <echo message= "Subversion repository url: ${repository.url}" />
+		 <echo message= "Working copy revision: ${svn.info.rev}" />
+	</target> 
+		
+	<!-- get the svn working copy info -->
+	<target name="svn_info">
+		<svn username="${svn.username}" password="${svn.password}">
+			<wcVersion path="${basedir}" prefix="ms_library."/>
+		</svn>
+		<condition property="wc_modified" else="NO" value="YES">
+  			<isset property="ms_library.modified"/>
+  		</condition>
+		<condition property="wc_mixed" else="NO" value="YES">
+  			<isset property="ms_library.mixed"/>
+  		</condition>
+  		<echo message="Project is at revision ${ms_library.revision.max-with-flags}" />
+  		<echo message="Working copy is modifed ${wc_modified}" />
+  		<echo message="Working copy is mixed ${wc_mixed}" />
+	</target>
+	
+	<!-- ================================================================================== -->
+	<!-- Create a Manifest.MF file with the SVN info -->
+	<!-- ================================================================================== -->
+	<target name="manifest" depends="prepare">
+		<manifest file="${basedir}/MANIFEST.MF">
+			<attribute name="Built-By" value="${user.name}"/>
+			<attribute name="Date" value="${build-info.current-date}" />
+			<attribute name="Time" value="${build-info.current-time}" />
+			<attribute name="Svn-Repository-URL" value="${ms_library.repository.url}"/>
+			<attribute name="Svn-Revision" value="${ms_library.revision.max-with-flags}"/>
+			<attribute name="Svn-Revision-Range" value="${ms_library.revision.range}"/>
+			<attribute name="Svn-WorkingCopy-Modified" value="${wc_modified}"/>
+			<attribute name="Svn-WorkingCopy-Mixed" value="${wc_mixed}"/>
+		</manifest>
+	</target>
+	
+	<!-- Check timestamp on files -->
+    <target name="prepare">
+    	<tstamp prefix="build-info">
+			<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+			<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+			<format property="year-month-day" pattern="yyyy-MM-dd" locale="en" />
+		</tstamp>
+
+    </target>
+	
+	<!-- ================================================================================== -->
+	<!-- Build the jar -->
+	<!-- ================================================================================== -->
+	<target name="build_jar" depends="compile,svn_info,manifest"
+			description="Packages the project as a jar file">
+		
+		<delete file="${basedir}${file.separator}protinfer.jar" />
+		
+		<!-- exclude everything in the default packaage-->
+		<jar destfile="${basedir}${file.separator}protinfer.jar" 
+			basedir="${basedir}${file.separator}bin"
+			excludes="*.*" 
+			manifest="${basedir}/MANIFEST.MF">
+			
+		</jar>
+		
+	</target>
+	
+	<!-- ================================================================================== -->
+	<!-- Clean the build directory -->
+	<!-- ================================================================================== -->
+    <target name="clean" description="Prepare for clean build">
+      <delete dir="bin"/>
+      <mkdir  dir="bin"/>
+    </target>
+	
+	<!-- ================================================================================== -->
+	<!-- Normal build of application -->
+	<!-- ================================================================================== -->
+    <target name="compile" depends="clean">
+    	<!-- <echo message="${toString:compile.classpath}"/> -->
+        <javac debug="on" srcdir="src" destdir="bin" source="${source}" target="${target}" encoding="${msdapl.java.source.character.set}" >
+            <classpath refid="compile.classpath"/>
+        </javac>
+    	<!-- copy the sqlmap xml files -->
+    	<copy todir="bin">
+    	    <fileset dir="src"
+    	             includes="**/*.xml" />
+    	</copy>
+
+    </target>
+	
+	<!-- classpath  -->
+    <path id="compile.classpath">
+    	<fileset dir="lib">
+        	<include name="**/*.jar"/>
+      	</fileset>
+        <pathelement path ="bin"/>
+    </path>
+		
+
+</project>

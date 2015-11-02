@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsDatabase"> 
+
+
+	<typeAlias alias="MsDatabaseOut" type="org.yeastrc.ms.domain.search.impl.SearchDatabaseBean"/>
+	<typeAlias alias="MsDatabaseIn" type="org.yeastrc.ms.domain.search.MsSearchDatabase"/>
+	
+	
+	<resultMap class="MsDatabaseOut" id="msDatabaseResult">
+		<result property="id" column="id"/>
+		<result property="sequenceDatabaseId" column="sequenceDatabaseID" nullValue="0" />
+		<result property="serverAddress" column="serverAddress"/>
+		<result property="serverPath" column="serverPath"/>
+	</resultMap>
+	
+	
+	
+	<parameterMap class="MsDatabaseIn" id="msDatabaseParam">
+		<parameter property="sequenceDatabaseId"/>
+		<parameter property="serverAddress" jdbcType="VARCHAR"/>
+		<parameter property="serverPath" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	
+	<!-- ================================================================================= -->
+	<!-- QUERIES INVOLVING ONLY msSequenceDatabaseDetails TABLE -->
+	<!-- ================================================================================= -->
+    <select id="selectDatabaseIdMatchAllCols" resultClass="Integer" parameterClass="MsDatabaseIn">
+    	SELECT id FROM msSequenceDatabaseDetail WHERE 
+    	<dynamic open="serverAddress">
+    		<isNull property="serverAddress">
+    			IS NULL
+    		</isNull>
+    		<isNotNull property="serverAddress">
+    			= #serverAddress#
+    		</isNotNull>
+    	</dynamic>
+    	<dynamic open="AND serverPath">
+    		<isNull property="serverPath">
+    			IS NULL
+    		</isNull>
+    		<isNotNull property="serverPath">
+    			= #serverPath#
+    		</isNotNull>
+    	</dynamic>
+    	AND sequenceDatabaseID = #sequenceDatabaseId#
+    </select>
+    
+    <select id="getNrseqDbId" resultClass="Integer" parameterClass="String">
+    	SELECT sequenceDatabaseID FROM msSequenceDatabaseDetail WHERE 
+    	serverPath = #serverPath#
+    </select>
+    
+    <select id="findSearchDatabases" resultMap="msDatabaseResult" parameterClass="String">
+    	SELECT * FROM msSequenceDatabaseDetail WHERE 
+    	serverPath LIKE #matchString#
+    </select>
+
+
+    <insert id="insertDatabase" parameterMap="msDatabaseParam">
+    	INSERT INTO msSequenceDatabaseDetail (
+    	sequenceDatabaseID,
+    	serverAddress,
+    	serverPath)
+    	VALUES (?,?,?)
+    	<selectKey resultClass="int">
+    		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <!-- ================================================================================= -->
+	<!-- QUERIES INVOLVING ONLY msSearchDatabase TABLE -->
+	<!-- ================================================================================= -->
+    <insert id="insertSearchDatabase" parameterClass="java.util.Map">
+    	INSERT INTO msSearchDatabase (searchID, databaseID) values(#searchId#, #databaseId#)
+    </insert>
+    
+    <delete id="deleteSearchDatabases" parameterClass="Integer">
+		DELETE FROM msSearchDatabase WHERE searchID=#id#
+    </delete>
+	
+	<!-- ================================================================================= -->
+	<!-- QUERIES INVOLVING BOTH msSearchDatabase AND msSequenceDatabaseDetails TABLEs -->
+	<!-- ================================================================================= -->
+	<select id="selectSearchDatabases" resultMap="msDatabaseResult" parameterClass="Integer">
+		SELECT * FROM msSequenceDatabaseDetail as db, msSearchDatabase as searchDb
+		WHERE db.id = searchDb.databaseID
+		AND searchDb.searchID = #id#
+	</select>
+    
+</sqlMap>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PercolatorResult"> 
+
+	
+	<typeAlias alias="PercolatorResultOut" type="org.yeastrc.ms.domain.analysis.percolator.impl.PercolatorResultBean" />
+	<typeAlias alias="PercolatorResultIn" type="org.yeastrc.ms.domain.analysis.percolator.PercolatorResultDataWId" />
+	
+	
+	<!-- All properties of the "super" resultMap will be included as part of this resultMap, 			-->
+	<!-- and values from the "super" resultMap  are set before any values specified by this resultMap 	-->
+	<resultMap class="PercolatorResultOut" id="percolatorResultResult" extends="MsSearchResult.msSearchBaseResult">
+		<result property="id" column="sresID" />
+		<result property="percolatorResultId" column="presID" />
+		<result property="runSearchAnalysisId" column="runSearchAnalysisID" nullValue="0"/>
+		<result property="qvalue" column="qvalue" nullValue="-1.0"/>
+		<result property="posteriorErrorProbability" column="pep" nullValue="-1.0"/>
+		<result property="discriminantScore" column="discriminantScore" />
+		<result property="pvalue" column="pvalue" nullValue="-1.0"/>
+		<result property="predictedRetentionTime" column="predictedRetentionTime" />
+		<result property="peptideResultId" column="peptideResultID" nullValue="0" />
+		<result property="proteinMatchList" 
+				select="MsResultProtein.selectResultProteins" 
+				column="sresID"/>
+	</resultMap>
+	
+	<parameterMap class="PercolatorResultIn" id="percolatorResultParam">
+		<parameter property="searchResultId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="runSearchAnalysisId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="qvalue" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="posteriorErrorProbability" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="discriminantScore" jdbcType="DOUBLE" />
+		<parameter property="pvalue" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="predictedRetentionTime" jdbcType="DECIMAL" />
+		<parameter property="peptideResultId" jdbcType="INTEGER" nullValue="0"/>
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="percolatorResultResult" parameterClass="Integer">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PercolatorResult AS pres
+		WHERE pres.id = #id#
+		AND pres.resultID = res.id
+	</select>
+	
+	<select id="selectForRunSearchAnalysis" resultMap="percolatorResultResult" parameterClass="java.util.Map">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PercolatorResult AS pres 
+		WHERE res.id = #searchResultId#
+		AND pres.resultID = res.id
+		AND pres.runSearchAnalysisID = #runSearchAnalysisId#
+	</select>
+	
+	<select id="selectForSearchAnalysis" resultMap="percolatorResultResult" parameterClass="java.util.Map">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PercolatorResult AS pres, msRunSearchAnalysis AS rsa
+		WHERE res.id = #searchResultId#
+		AND pres.resultID = res.id
+		AND pres.runSearchAnalysisID = rsa.id
+		AND rsa.searchAnalysisID = #searchAnalysisId# 
+	</select>
+    
+    
+    <select id="selectResultIdsForRunSearchAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM PercolatorResult WHERE runSearchAnalysisID=#runSearchAnalysisId#
+    </select>
+    
+    <select id="selectResultIdsLimitedForRunSearchAnalysis" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM PercolatorResult 
+    	WHERE runSearchAnalysisID=#runSearchAnalysisId# 
+    	ORDER BY resultID LIMIT #offset#, #limit#
+    </select>
+    
+    <select id="selectResultIdsForRunSearchAnalysisScan" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT pres.id
+    	FROM msRunSearchResult AS res, PercolatorResult AS pres 
+    	WHERE pres.runSearchAnalysisID=#runSearchAnalysisId#
+    	AND   pres.resultID = res.id
+    	AND   res.scanID = #scanId#
+    </select>
+    
+    <select id="selectResultIdsForAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT pres.id 
+    	FROM PercolatorResult AS pres, msRunSearchAnalysis as rsa 
+    	WHERE pres.runSearchAnalysisID = rsa.id AND
+    	rsa.searchAnalysisID = #analysisId# 
+    </select>
+    
+    <select id="selectResultIdsLimitedForAnalysis" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT pres.id 
+    	FROM PercolatorResult AS pres, msRunSearchAnalysis as rsa 
+    	WHERE pres.runSearchAnalysisID = rsa.id AND
+    	rsa.searchAnalysisID = #searchAnalyisId# 
+    	ORDER BY resultID LIMIT #offset#, #limit#
+    </select>
+    
+   	<select id="countRunSearchAnalysisResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM PercolatorResult WHERE runSearchAnalysisID=#runSearchAnalysisId# 
+    </select>
+    
+    <select id="countSearchAnalysisResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) 
+    	FROM PercolatorResult AS pres, msRunSearchAnalysis AS rsa
+    	WHERE rsa.searchAnalysisID=#searchAnalysisId# 
+    	AND  pres.runSearchAnalysisID = rsa.id
+    </select>
+    
+    <insert id="insert" parameterMap="percolatorResultParam">
+    	INSERT INTO PercolatorResult 
+    	(resultID, 
+    	runSearchAnalysisID,
+    	qvalue,
+    	pep,
+    	discriminantScore,
+    	pvalue,
+    	predictedRetentionTime,
+    	peptideResultID) 
+    	VALUES (?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO PercolatorResult 
+    	(resultID, 
+    	runSearchAnalysisID,
+    	qvalue,
+    	pep,
+    	discriminantScore,
+    	pvalue,
+    	predictedRetentionTime) 
+    	VALUES $values$
+    </insert>
+    
+    <delete id="deleteForRunSearchAnalysis" parameterClass="Integer">
+		DELETE FROM  PercolatorResult
+		WHERE runSearchAnalysisID = #runSearchAnalysisId#
+    </delete>
+</sqlMap>

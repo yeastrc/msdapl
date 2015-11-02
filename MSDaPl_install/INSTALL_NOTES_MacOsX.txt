@@ -1,0 +1,186 @@
+Date: 07/14/2011
+Author: Vagisha Sharma
+Platform: Mac OS-X (10.6.7)
+
+# -------------------------------------------------------------------------------
+# Requirements
+# -------------------------------------------------------------------------------
+Java: 1.6 
+Ant (http://ant.apache.org/) 1.7 or higher
+MySQL 5.1.x or higher
+Tomcat 6.0.x
+
+
+# -------------------------------------------------------------------------------
+# MySQL
+# -------------------------------------------------------------------------------
+1. Downloaded the installer for Mac OS-X: mysql-5.5.14-osx10.6-x86_64.dmg. 
+
+2. In /etc/my.cnf "skip-innodb" had to be commented out.  Starting with v5.5 
+   InnoDB is the default storage engine and cannot be "skipped".
+   Any new tables created will be InnoDB.  To create new tables with MyISAM:
+   a. append "Engine=MyISAM" to your CREATE TABLE statements
+   b. To set MyISAM as the default storage engine for a single client session:
+      SET storage_engine=MYISAM; 
+   c.To use use MyISAM as the default storage engine for the entire server:
+     add "default-storage-engine=MyISAM" to /etc/my.cnf OR
+     at server startup use "--default-storage-engine=MyISAM"  
+     
+     I went with option (c).
+
+3. Created user with all privileges on the required databases.  This user will
+   initialize / create all required databases.
+   
+   create user 'msdapl_root'@'localhost' identified by 'msdapl_root_pass';
+   grant all privileges on msData.* to 'msdapl_root'@'localhost';
+   grant all privileges on mainDb.* to 'msdapl_root'@'localhost';
+   grant all privileges on jobQueue.* to 'msdapl_root'@'localhost';
+   grant all privileges on YRC_NRSEQ.* to 'msdapl_root'@'localhost';
+   grant all privileges on philiusData.* to 'msdapl_root'@'localhost';
+   grant all privileges on sgd.* to 'msdapl_root'@'localhost';
+   grant all privileges on wormbase.* to 'msdapl_root'@'localhost';
+   grant all privileges on flybase.* to 'msdapl_root'@'localhost';
+   grant all privileges on hgnc.* to 'msdapl_root'@'localhost';
+   grant all privileges on cgd.* to 'msdapl_root'@'localhost';
+   grant all privileges on NCBI.* to 'msdapl_root'@'localhost';
+   grant all privileges on SangerPombe.* to 'msdapl_root'@'localhost';
+   grant all privileges on go_human.* to 'msdapl_root'@'localhost';
+   grant all privileges on mygo.* to 'msdapl_root'@'localhost';
+
+     These databases may/will have a date as part of them
+
+   grant all privileges on sgd_static_YYYYMM.* to 'msdapl_root'@'localhost';
+   grant all privileges on hgnc_static_YYYYMM.* to 'msdapl_root'@'localhost';
+   grant all privileges on cgd_static_YYYYMM.* to 'msdapl_root'@'localhost';
+   grant all privileges on mygo_YYYYMM.* to 'msdapl_root'@'localhost';
+
+   
+4. Create user with all privileges to 'msData', 'mainDb' and 'jobQueue'; 
+   SELECT privileges for all other databases.  This user information will
+   be used by the MSDaPl web application, and associated programs
+   (jobqueue and fastaparser).
+   
+   create user 'msdapl_user'@'localhost' identified by 'msdapl_pass';
+   grant all privileges on msData.* to 'msdapl_user'@'localhost';
+   grant all privileges on mainDb.* to 'msdapl_user'@'localhost';
+   grant all privileges on jobQueue.* to 'msdapl_user'@'localhost';
+   grant SELECT on *.* to 'msdapl_user'@'localhost';
+
+# -------------------------------------------------------------------------------
+# Apache Tomcat
+# -------------------------------------------------------------------------------
+1. Downloaded and installed Tomcat v 6.0.32
+   http://www.motorlogy.com/apachemirror/tomcat/tomcat-6/v6.0.32/bin/apache-tomcat-6.0.32.tar.gz
+
+
+
+# -------------------------------------------------------------------------------
+# MSDaPl_install
+# -------------------------------------------------------------------------------
+1. Check out installation code into "test_install" directory:
+
+   svn co http://msdapl.googlecode.com/svn/MSDaPl_install/trunk test_install
+   cd test_install
+   
+2. Copy the database dumps into test_install/mysqldump directory.
+   Database dumps have to be downloaded separately (location to be determined)
+   
+   
+3. Edit config.properties
+
+4. Run initialize.sh 
+   This script will:
+   
+   1. create directories for the following programs:
+   -- fasta_parser  (test_install/fasta_parser)
+   -- job_queue  (test_install/job_queue)
+   
+   2. Create a deployable war file for the MSDaPl web application
+      test_install/msdapl/msdapl.war
+      
+   3. Create and populate the following databases:
+   -- msData (stores the mass spec. data)
+   -- mainDb (stores project and user information)
+   -- jobQueue (stores information about data upload jobs)
+   -- YRC_NRSEQ (stores protein sequences, names, descriptions etc.)
+   -- Other databases for biological annotations:
+      sgd, SangerPombe, cgd, wormbase, flybase, philiusData, NCBI, mygo, go_human, hgnc
+
+3. Deploy war:
+   
+       i). copy test_install/msdapl/msdapl.war to Tomcat's webapp directory (e.g. /usr/local/apache-tomcat-6.0.32/webapps)
+      ii). restart tomcat
+     iii). open the webapp in a browser and test login etc.
+           URL to the webapp is:
+           <value_of_webapp_path_property_in_config_properties>/pages/internal/front.jsp
+           (e.g. http://localhost:8080/msdapl/pages/internal/front.jsp)
+      iv).create a new project and try to submit a new data upload job.  
+          Use test data in test_install/test/maccoss.  This directory contains data generated by the 
+          MacCoss lab's pipeline
+          We have not yet started the data upload program (in job_queue directory) so 
+          the status of the submitted job will be "Queued".
+   
+
+4. Test Fasta Parser application
+	  Before each data upload we have to first upload the fasta file used for peptide searches.  
+	  This step can be skipped if the file has already been uploaded for a previous experiment.   
+	  
+	 
+      i). cd test_install/fasta_parser
+      
+   	 ii). Run the program in TEST mode (-t flag) first.  Running in test mode will parse the file and try 
+   	      to associate a taxonomyID to each sequence in the file but it will not create any 
+   	      new database entries.
+   	  
+          java -jar fastaparser.jar -t -f ../test/maccoss/pipeline/ecoli-190209-contam.fasta 
+          -d "E. coli FASTA file" -n ecoli-190209-contam.fasta > ../test/maccoss/pipeline/fastaparser.out
+          
+    iii). Make sure there are no warnings.  Warnings are logged if the program is unable to 
+          find a taxonomyID for a sequence.
+      
+            grep -c "WARN" ../test/maccoss/pipeline/fastaparser.out
+            
+     iv).  Species assignment sanity check
+     
+            grep "Taxy" ../test/maccoss/pipeline/fastaparser.out | sort | uniq -c
+      
+            Output:      
+            1 			Taxy:	12227
+            1 			Taxy:	1280
+            1 			Taxy:	190485
+            2 			Taxy:	1936
+            1 			Taxy:	37998
+            2 			Taxy:	3823
+         4078 			Taxy:	511145
+            1 			Taxy:	615
+            1 			Taxy:	69
+           53 			Taxy:	83333
+            2 			Taxy:	9031
+           27 			Taxy:	9606
+            1 			Taxy:	9823
+            2 			Taxy:	9913
+            5 			Taxy:	9986
+            
+            4078 sequences were assigned taxonomyID 511145 (Escherichia coli str. K-12 substr. MG1655)
+            53 sequences were assigned taxonomyID 83333 (Escherichia coli K-12)
+            The remaining are common contaminant sequences.
+            
+      v). If there were no warnings and the species assignments look right, run 
+          the application again, NOT in TEST mode
+          
+           java -jar fastaparser.jar -f ../test/maccoss/pipeline/ecoli-190209-contam.fasta  
+          -d "E. coli FASTA file" -n ecoli-190209-contam.fasta > ../test/maccoss/pipeline/fastaparser.out
+          
+5.  Start the jobqueue program.  This program polls the database for new jobs and executes 
+    them in the order in which they were submitted.   
+      
+      cd test_install/jobqueue
+      java -jar jobqueue.jar
+      
+      The upload job submitted at the end of step 4 will be run. 
+      If the upload is successful we will be able to view the experiment in the MSDaPl web interface.
+      
+6. After a successful upload run protein inference (Available only for data from the MacCoss lab's pipeline)
+      
+   
+   

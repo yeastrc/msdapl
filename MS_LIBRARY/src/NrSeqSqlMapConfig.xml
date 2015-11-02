@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd" > 
+
+<sqlMapConfig>
+
+	<properties resource="msDataDB.properties" />
+	
+	<settings 
+		useStatementNamespaces="true"
+		lazyLoadingEnabled="true"
+	/>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE"> 
+      		<property name="JDBC.Driver" 
+                value="${db.driver}"/> 
+      		<property name="JDBC.ConnectionURL" 
+                value="${db.nrseq.url}"/> 
+      		<property name="JDBC.Username" 
+                value="${db.nrseq.user}"/> 
+      		<property name="JDBC.Password" 
+                value="${db.nrseq.password}"/>
+                
+            <property name="JDBC.DefaultAutoCommit" value="true" />
+                
+            <property name="Pool.MaximumActiveConnections" value="${db.maxactiveconn}"/>
+            <property name="Pool.MaximumIdleConnections" value="${db.maxidleconn}"/>
+            <property name="Pool.MaximumCheckoutTime" value="${db.maxcheckouttime}"/>
+            
+            <property name="Pool.PingQuery" value="${db.pingquery}"/>
+            <property name="Pool.PingEnabled" value="${db.pingenabled}"/>
+            <property name="Pool.PingConnectionsOlderThan" value="${db.pingolderthan}"/>
+            <property name="Pool.PingConnectionsNotUsedFor" value="${db.pingnotusedfor}"/>
+             
+    	</dataSource>
+	</transactionManager>
+	
+	<!--  sqlmaps -->
+	<sqlMap resource="org/yeastrc/sqlmap/nrseq/NrSeqSqlMap.xml" />
+		
+</sqlMapConfig>	

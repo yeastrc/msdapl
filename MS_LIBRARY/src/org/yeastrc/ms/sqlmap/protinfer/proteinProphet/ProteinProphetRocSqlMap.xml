@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetRoc"> 
+
+
+	<typeAlias alias="ProteinProphetRocOut" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetROCPoint"/>
+	<typeAlias alias="ProteinProphetRocIn" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetROCPoint"/>
+	
+	
+	<resultMap class="ProteinProphetRocOut" id="rocResult">
+		<result property="proteinferId" column="piRunID" nullValue="0"/>
+		<result property="sensitivity" column="sensitivity"/>
+		<result property="falsePositiveErrorRate" column="falsePositiveErrorRate"/>
+		<result property="minProbability" column="minProbability"/>
+		<result property="numCorrect" column="numCorrect"/>
+		<result property="numIncorrect" column="numIncorrect"/>
+	</resultMap>
+	
+	<parameterMap class="ProteinProphetRocIn" id="rocParam">
+		<parameter property="proteinferId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="sensitivity" jdbcType="DOUBLE"/>
+		<parameter property="falsePositiveErrorRate" jdbcType="DOUBLE"/>
+		<parameter property="minProbability" jdbcType="DOUBLE"/>
+		<parameter property="numCorrect" jdbcType="INTEGER"/>
+		<parameter property="numIncorrect" jdbcType="INTEGER"/>
+	</parameterMap>
+	
+    
+    <select id="select" resultMap="rocResult" parameterClass="Integer">
+		SELECT * FROM ProteinProphetROC WHERE piRunID = #id# ORDER BY id
+	</select>
+	
+    
+    <insert id="insert" parameterMap="rocParam">
+    	INSERT INTO ProteinProphetROC 
+    	(piRunID, 
+    	sensitivity,
+    	falsePositiveErrorRate,
+    	minProbability,
+    	numCorrect,
+    	numIncorrect) 
+    	VALUES (?,?,?,?,?,?)
+    </insert>
+    
+</sqlMap>

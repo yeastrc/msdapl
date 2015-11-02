@@ -1,0 +1,1924 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+
+
+<!-- ======================================== Form Bean Definitions -->
+    <form-beans>
+	<form-bean name="loginForm" type="org.yeastrc.www.login.LoginForm"/>
+	<form-bean name="registerForm" type="org.yeastrc.register.RegisterForm"/>
+	<form-bean name="forgotPasswordForm" type="org.yeastrc.www.login.ForgotPasswordForm"/>
+	<form-bean name="editProjectForm" type="org.yeastrc.www.project.EditProjectForm"/>
+	<form-bean name="editInformationForm" type="org.yeastrc.www.account.EditInformationForm"/>
+	<form-bean name="editUsernameForm" type="org.yeastrc.www.account.EditUsernameForm"/>
+	<form-bean name="editPasswordForm" type="org.yeastrc.www.account.EditPasswordForm"/>
+	<form-bean name="editResearcherForm" type="org.yeastrc.www.project.EditResearcherForm"/>
+	<form-bean name="manageGroupMembersForm" type="org.yeastrc.www.admin.ManageGroupMembersForm"/>
+	<form-bean name="searchProjectsForm" type="org.yeastrc.www.project.SearchProjectsForm"/>
+	<form-bean name="uploadMSDataForm" type="org.yeastrc.www.upload.UploadMSDataForm"/>
+	<form-bean name="uploadPercolatorResultForm" type="org.yeastrc.www.upload.UploadPercolatorResultForm"></form-bean>
+	<form-bean name="percolatorRunForm" type="org.yeastrc.www.upload.PercolatorRunForm"></form-bean>
+	<form-bean name="GOAnnotationForm" type="org.yeastrc.www.microscopy.GOAnnotationForm"/>
+	<form-bean name="MSCommentsForm" type="org.yeastrc.www.yates.MSCommentsForm"/>
+	<form-bean name="editGrantForm" type="org.yeastrc.www.project.EditGrantForm"></form-bean>
+	<form-bean name="addInstrumentForm" type="org.yeastrc.www.admin.AddInstrumentForm"/>
+	<form-bean name="qcPlotsFilterForm" type="org.yeastrc.www.project.experiment.stats.QcPlotsFilterForm"></form-bean>
+	<form-bean name="filterPercolatorResultsForm" type="org.yeastrc.www.project.experiment.PercolatorFilterResultsForm" />
+	<form-bean name="filterPeptideProphetResultsForm" type="org.yeastrc.www.project.experiment.PeptideProphetFilterResultsForm" />
+	<form-bean name="filterSequestResultsForm" type="org.yeastrc.www.project.experiment.SequestFilterResultsForm" />
+	<form-bean name="filterMascotResultsForm" type="org.yeastrc.www.project.experiment.MascotFilterResultsForm" />
+	<form-bean name="filterXtandemResultsForm" type="org.yeastrc.www.project.experiment.XtandemFilterResultsForm" />
+	<form-bean name="proteinInferenceFormPercolator" type="org.yeastrc.www.proteinfer.job.ProteinInferenceForm"></form-bean>
+	<form-bean name="idPickerFilterForm" type="org.yeastrc.www.proteinfer.idpicker.IdPickerFilterForm"></form-bean>
+	<form-bean name="proteinProphetFilterForm" type="org.yeastrc.www.proteinfer.proteinProphet.ProteinProphetFilterForm"></form-bean>
+	<form-bean name="proteinSetComparisonForm" type="org.yeastrc.www.compare.ProteinSetComparisonForm"></form-bean>
+	<form-bean name="datasetSelectionForm" type="org.yeastrc.www.compare.DatasetSelectionForm"></form-bean>
+	<form-bean name="datasetFiltersForm" type="org.yeastrc.www.compare.DatasetFiltersForm"></form-bean>
+	<form-bean name="peptideComparisonForm" type="org.yeastrc.www.compare.ComparePeptidesForm"></form-bean>
+	<form-bean name="goSearchForm" type="org.yeastrc.www.go.GOTermSearchForm"></form-bean>
+	<form-bean name="sequestPepxmlDownloadForm" type="org.yeastrc.www.project.experiment.SequestPepxmlDownloadForm"></form-bean>
+	
+	<form-bean name="rerunProtInferencesForm" type="org.yeastrc.www.proteinfer.job.RerunProteinInferenceForm"></form-bean>
+	<form-bean name="deleteProtInferencesForm" type="org.yeastrc.www.proteinfer.job.DeleteProteinInferenceForm"></form-bean>
+	
+	<form-bean name="exportBillingInformationForm" type="org.uwpr.www.costcenter.ExportBillingInformationForm" />
+	<form-bean name="timeBlockForm" type="org.uwpr.www.costcenter.TimeBlockForm" />
+	<form-bean name="instrumentRateForm" type="org.uwpr.www.costcenter.InstrumentRateForm" />
+    <form-bean name="editInstrumentTimeForm" type="org.uwpr.www.scheduler.EditProjectInstrumentTimeForm" />
+  	<form-bean name="viewInstrumentRatesForm" type="org.uwpr.www.costcenter.ViewInstrumentRatesForm"></form-bean>
+  	<form-bean name="paymentMethodForm" type="org.yeastrc.www.project.payment.PaymentMethodForm" />
+	
+    </form-beans>
+
+
+
+<!-- ================================= Global Exception Definitions -->
+    <global-exceptions>
+
+    </global-exceptions>
+    
+    
+<!-- =================================== Global Forward Definitions -->
+    <global-forwards>
+
+	<forward name="authenticate" path="/pages/login/login.jsp" />
+	<forward name="errors" path="/pages/errors/showErrors.jsp" />
+	<forward name="directAccessError" path="/pages/errors/directAccessError.jsp" />
+	<forward name="viewProject" path="/viewProject.do" />
+	<forward name="editProject" path="/editProject.do" />
+	<forward name="editInformation" path="/editInformation.do" />
+	<forward name="newResearcher" path="/newResearcher.do" />
+	<forward name="newProject" path="/newProject.do" />
+	<forward name="viewRegister" path="/viewRegister.do" />
+	<forward name="manageGroups" path="/manageGroups.do" />
+	<forward name="manageInstruments" path="/manageInstruments.do" />
+	<forward name="manageBilling" path="/manageBilling.do" />
+	<forward name="manageGroupMembers" path="/manageGroupMembers.do" />
+	<forward name="adminHome" path="/pages/admin/search/searchProjects.jsp"/>
+	<forward name="projectSearchForm" path="/pages/admin/search/searchProjects.jsp"/>
+	<forward name="standardHome" path="/viewFrontPage.do"/>
+	<forward name="adminSearch" path="/pages/admin/search/searchProjects.jsp"/>
+	<forward name="viewYatesRun" path="/viewYatesRun.do" />
+	<forward name="viewYatesResult" path="/viewYatesResult.do" />
+	<forward name="viewProtein" path="/viewProtein.do" />
+	<forward name="uploadMSDataFormAction" path="/uploadMSDataFormAction.do" />
+	<forward name="viewSpectra" path="/viewSpectra.do" />
+	<forward name="viewResearcher" path="/viewResearcher.do" />
+	<forward name="listUploadJobs" path="/listUploadJobs.do" />
+	<forward name="viewUploadJob" path="/viewUploadJob.do" />
+	<forward name="listProtInferJobs" path="/listProtInferJobs.do" />
+	<forward name="editResearcher" path="/editResearcher.do" />
+	<forward name="viewSequestResults" path="/viewSequestResults.do"/>
+	<forward name="viewPercolatorResults" path="/viewPercolatorResults.do"/>
+	<forward name="viewPeptideProphetResults" path="/viewPeptideProphetResults.do"/>
+	<forward name="viewMascotResults" path="/viewMascotResults.do"/>
+	<forward name="viewXtandemResults" path="/viewXtandemResults.do"/>
+	<forward name="viewQCPlots" path="/viewQCPlots.do"/>
+	<forward name="newPercolatorProteinInference" path="/newPercolatorProteinInference.do" />
+	<forward name="viewProteinInferenceResult" path="/viewProteinInferenceResult.do" />
+	<forward name="viewProteinProphetResult" path="/viewProteinProphetResult.do" />
+	<forward name="selectComparisonDatasets" path="/selectComparisonDatasets.do" />
+	<forward name="viewProteinGroupSetComparison" path="/doProteinSetComparison.do" />
+	<forward name="viewProteinSetComparison" path="/doProteinSetComparison.do" />
+	<forward name="doProteinSetComparison" path="/doProteinSetComparison.do" />
+	<forward name="availableFasta" path="/availableFasta.do"/>
+	<forward name="sequestPepxmlDownload" path="/newSequestPepXmlDownload.do" />
+	<forward name="percolatorUploadForm" path="/percolatorUploadForm.do" />
+	<forward name="percolatorRunForm" path="/percolatorRunForm.do" />
+	<forward name="uploadMSDataForm" path="/uploadMSDataFormAction.do" />
+	
+	<forward name="viewInstrumentRates" path="/viewInstrumentRates.do" />
+	<forward name="viewPaymentMethod" path="/viewPaymentMethod.do" />
+	<forward name="viewScheduler" path="/viewScheduler.do" />
+	<forward name="viewEditInstrumentTimeForm" path="/viewEditInstrumentTimeForm.do"/>
+	<forward name="viewAllInstrumentCalendar" path="/viewAllInstrumentCalendar.do"/>
+    </global-forwards>
+
+
+<!-- =================================== Action Mapping Definitions -->
+    <action-mappings>
+
+
+	<!-- MAP AN ACTION TO THE REGISTRATION PROCESS -->
+	<action
+	  path="/register"
+	  input="/pages/register/register.jsp"
+	  name="registerForm"
+	  scope="request"
+	  type="org.yeastrc.register.RegisterAction"
+	  validate="true">
+	  <forward name="Success" path="/pages/internal/front.jsp" redirect="true"/>
+	  <forward name="Failure" path="/pages/register/register.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	 path="/viewRegister"
+	 type="org.yeastrc.register.ViewRegisterAction"
+	 validate="false">
+	 <forward name="Done" path="/pages/register/register.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/login"
+	  input="/pages/login/login.jsp"
+	  name="loginForm"
+	  scope="request"
+	  type="org.yeastrc.www.login.LoginAction"
+	  validate="true">
+	  <forward name="Success" path="/pages/internal/front.jsp" redirect="true"/>
+	  <forward name="Failure" path="/pages/login/login.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/logout"
+	  type="org.yeastrc.www.login.LogoutAction"
+	  validate="false">
+	  <forward name="Done" path="/pages/login/login.jsp" redirect="true"/>
+	</action>
+
+	<action
+	  path="/sendPassword"
+	  input="/pages/login/forgotPassword.jsp"
+	  name="forgotPasswordForm"
+	  scope="request"
+	  type="org.yeastrc.www.login.ForgotPasswordAction"
+	  validate="true">
+	  <forward name="Success" path="/pages/login/passwordSent.jsp" redirect="true"/>
+	  <forward name="Failure" path="/pages/login/forgotPassword.jsp" redirect="false"/>
+	</action>
+
+	<!-- Edit account information -->
+	<action
+	  path="/editInformation"
+	  type="org.yeastrc.www.account.EditInformationAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/account/editInformation.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<!-- Edit account information -->
+	<action
+	  path="/editResearcher"
+	  type="org.yeastrc.www.project.EditResearcherAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/editResearcher.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/saveEditResearcher"
+	  input="/pages/internal/project/editResearcher.jsp"
+	  name="editInformationForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SaveEditResearcherAction"
+	  validate="true">
+	  <forward name="Success" path="/pages/internal/project/viewResearcher.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/project/editResearcher.jsp" redirect="false"/>
+	</action>
+
+	<!-- Edit username -->
+	<action
+	  path="/editUsername"
+	  type="org.yeastrc.www.account.EditUsernameAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/account/editUsername.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<!-- Edit password -->
+	<action
+	  path="/editPassword"
+	  type="org.yeastrc.www.account.EditPasswordAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/account/editPassword.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+
+	<action
+	  path="/saveInformation"
+	  input="/pages/internal/account/editInformation.jsp"
+	  name="editInformationForm"
+	  scope="request"
+	  type="org.yeastrc.www.account.SaveInformationAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/account/editInformation.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/account/editInformation.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/saveUsername"
+	  input="/pages/internal/account/editUsername.jsp"
+	  name="editUsernameForm"
+	  scope="request"
+	  type="org.yeastrc.www.account.SaveUsernameAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/account/editUsername.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/account/editUsername.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/savePassword"
+	  input="/pages/internal/account/editPassword.jsp"
+	  name="editPasswordForm"
+	  scope="request"
+	  type="org.yeastrc.www.account.SavePasswordAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/account/editPassword.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/account/editPassword.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/newResearcher"
+	  type="org.yeastrc.www.project.NewResearcherAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/newResearcher.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/saveResearcher"
+	  input="/pages/internal/project/newResearcher.jsp"
+	  name="editResearcherForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SaveResearcherAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/project/newResearcher.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/newResearcher.jsp" redirect="false"/>
+	</action>
+	
+	
+	<!-- ================================================================================== -->
+	<!-- Available FASTA files -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/availableFasta"
+	  type="org.yeastrc.www.project.ViewAvailableFastaFilesAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/viewAvailableFasta.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to projects -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/newProject"
+	  type="org.yeastrc.www.project.NewProjectAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/newProject.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewProject"
+	  type="org.yeastrc.www.project.ViewProjectAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/viewProject.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action path="/getFilesForExperiment"
+		type="org.yeastrc.www.project.experiment.ViewExperimentFilesAjaxAction">
+		<forward name="Success" path="/pages/internal/project/experimentFiles.jsp" redirect="false" />
+	</action>
+	
+	<action path="/getDetailsForExperiment"
+		type="org.yeastrc.www.project.experiment.ViewExperimentDetailsAjaxAction">
+		<forward name="Success" path="/pages/internal/project/experimentFullDetails.jsp" redirect="false" />
+	</action>
+
+	
+	<action
+	  path="/editProject"
+	  type="org.yeastrc.www.project.EditProjectAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/editProject.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/saveProject"
+	  input="/pages/internal/project/editProject.jsp"
+	  name="editProjectForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SaveProjectAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/project/editProject.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/saveNewProject"
+	  input="/pages/internal/project/newProject.jsp"
+	  name="editProjectForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SaveNewProjectAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/project/newProject.jsp" redirect="false"/>
+	  <forward name="Success" path="/viewProject.do" redirect="true"/>
+	</action>
+
+	<action
+	  path="/deleteProject"
+	  type="org.yeastrc.www.project.DeleteProjectAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/projectDeleted.jsp" redirect="true"/>
+	</action>
+	
+	<action
+	  path="/deleteExperiment"
+	  type="org.yeastrc.www.project.experiment.DeleteExperimentAction"
+	  >
+		<forward name="Success" path="/deleteExperimentSuccess.do" redirect="true" />
+		<forward name="Failure" path="/viewProject.do" redirect="false" />
+	</action>
+	
+	<action
+	  path="/deleteExperimentSuccess"
+	  type="org.yeastrc.www.project.experiment.DeleteExperimentSuccessAction"
+	  >
+		<forward name="Success" path="/pages/internal/project/experimentDeleted.jsp" redirect="false" />
+	</action>
+	
+	
+	<action
+	  path="/searchProjects"
+	  input="/pages/admin/search/searchProjects.jsp"
+	  name="searchProjectsForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SearchProjectsAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/admin/search/searchProjects.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/admin/search/searchProjectsResults.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/sortProjectSearch"
+	  type="org.yeastrc.www.project.SortProjectSearchAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/admin/search/searchProjects.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/admin/search/searchProjectsResults.jsp" redirect="false"/>
+	</action>
+	
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to experiment results -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/saveExperimentComments"
+	  type="org.yeastrc.www.project.experiment.SaveExperimentCommentsAjaxAction"
+	  >
+	</action>
+	
+	<action
+	  path="/saveExperimentInstrument"
+	  type="org.yeastrc.www.project.experiment.SaveExperimentInstrumentAjaxAction"
+	  >
+	</action>
+	
+	<action
+	  path="/saveAnalysisComments"
+	  type="org.yeastrc.www.project.experiment.SaveAnalysisCommentsAjaxAction"
+	  >
+	</action>
+	
+	<action
+	  path="/viewPercolatorResults"
+	  type="org.yeastrc.www.project.experiment.ViewPercolatorResults"
+	  name="filterPercolatorResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/percolator/viewPercolatorResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/percolator/viewPercolatorResults.jsp" redirect="false"/>
+	  <forward name="Download" path="/downloadPercolatorResults.do" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewPercolatorPeptidePsms"
+	  type="org.yeastrc.www.project.experiment.ViewPercolatorPeptidePsmAjaxAction"
+	  >
+	  <forward name="Success" path="/pages/internal/project/percolator/viewPercolatorPeptidePsms.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/downloadPercolatorResults"
+	  type="org.yeastrc.www.project.experiment.DownloadPercolatorResults"
+	  >
+	  <forward name="Failure" path="/pages/internal/project/percolator/viewPercolatorResults.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/percolator/viewPercolatorResults.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewPeptideProphetResults"
+	  type="org.yeastrc.www.project.experiment.ViewPeptideProphetResults"
+	  name="filterPeptideProphetResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/peptideProphet/viewPeptideProphetResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/peptideProphet/viewPeptideProphetResults.jsp" redirect="false"/>
+	</action>
+	
+	
+	
+	<action
+	  path="/viewSequestResults"
+	  type="org.yeastrc.www.project.experiment.ViewSequestResults"
+	  name="filterSequestResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/sequest/viewSequestResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/sequest/viewSequestResults.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewTideResults"
+	  type="org.yeastrc.www.project.experiment.ViewSequestResults"
+	  name="filterSequestResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/tide/viewTideResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/tide/viewTideResults.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewMascotResults"
+	  type="org.yeastrc.www.project.experiment.ViewMascotResults"
+	  name="filterMascotResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/mascot/viewMascotResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/mascot/viewMascotResults.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewXtandemResults"
+	  type="org.yeastrc.www.project.experiment.ViewXtandemResults"
+	  name="filterXtandemResultsForm"
+	  validate="true"
+	  scope="request"
+	  input="/pages/internal/project/xtandem/viewXtandemResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/xtandem/viewXtandemResults.jsp" redirect="false"/>
+	</action>
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to QC results -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/viewQCPlots"
+	  type="org.yeastrc.www.project.experiment.stats.ViewAnalysisStats"
+	  name="qcPlotsFilterForm"
+	  validate="false">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/stats/viewQCResults.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewPsmVsRetTimeResults"
+	  type="org.yeastrc.www.project.experiment.stats.PsmVsRetTimeStatsAjaxAction"
+	  >
+	  <forward name="Success" path="/pages/internal/project/stats/psmVsRetTimePlots.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewSpectraVsRetTimeResults"
+	  type="org.yeastrc.www.project.experiment.stats.SpectraVsRetTimeStatsAjaxAction"
+	  >
+	  <forward name="Success" path="/pages/internal/project/stats/spectraVsRetTimePlots.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewPsmDeltaMassResults"
+	  type="org.yeastrc.www.project.experiment.stats.PsmDeltaMassStatsAjaxAction"
+	  >
+	  <forward name="Success" path="/pages/internal/project/stats/psmDeltaMassPlot.jsp" redirect="false"/>
+	</action>
+	
+	
+	<action
+	  path="/updateQCPlots"
+	  type="org.yeastrc.www.project.experiment.stats.UpdateAnalysisStats"
+	  name="qcPlotsFilterForm"
+	  validate="true"
+	  input="/pages/internal/project/stats/viewQCResults.jsp">
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/internal/project/stats/viewQCResults.jsp" redirect="false"/>
+	</action>
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to groups -->
+	<!-- ================================================================================== -->
+	
+	<action
+	  path="/manageGroups"
+	  type="org.yeastrc.www.admin.ManageGroupsAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/admin/manageGroups.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/manageGroupMembers"
+	  type="org.yeastrc.www.admin.ManageGroupMembersAction"
+	  name="manageGroupMembersForm"
+	  scope="request"
+	  input="/pages/admin/manageGroupMembers.jsp"
+	  validate="true">
+	  <forward name="Success" path="/pages/admin/manageGroupMembers.jsp" redirect="false"/>
+	  <forward name="Failure" path="/manageGroups.do" redirect="false"/>
+	</action>
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to protein inferences (admin access only) -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/manageProteinInferences"
+	  type="org.yeastrc.www.proteinfer.job.ViewProtInferAdminOptions"
+	 >
+	  <forward name="Success" path="/pages/admin/manageProtInfer.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/rerunProteinInferences"
+	  type="org.yeastrc.www.proteinfer.job.RerunProteinInferencesAction"
+	  name="rerunProtInferencesForm"
+	  validate="false"
+	 >
+	  <forward name="Success" path="/pages/admin/manageProtInferSuccess.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/admin/manageProtInfer.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/deleteProteinInferences"
+	  type="org.yeastrc.www.proteinfer.job.DeleteProteinInferencesAction"
+	  name="deleteProtInferencesForm"
+	  validate="false"
+	 >
+	  <forward name="Success" path="/pages/admin/manageProtInferSuccess.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/admin/manageProtInfer.jsp" redirect="false"/>
+	</action>
+	
+	<action path="/listProtInferJobs"
+		type="org.yeastrc.www.proteinfer.job.ListProteinInferenceJobsAction" validate="false">
+		<forward name="Success" path="/pages/admin/listProtInferJobs.jsp"
+			redirect="false" />
+		<forward name="Failure" path="/pages/internal/front.jsp"
+			redirect="true" />
+	</action>
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to instruments -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/manageInstruments"
+	  type="org.yeastrc.www.admin.ManageInstrumentsAction"
+	 >
+	  <forward name="Success" path="/pages/admin/manageInstruments.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/addInstrument"
+	  type="org.yeastrc.www.admin.AddInstrumentFormAction"
+	 >
+	  <forward name="Success" path="/pages/admin/addInstrument.jsp" redirect="false"/>
+	  <forward name="Failure" path="/manageInstruments.do" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/editInstrument"
+	  type="org.yeastrc.www.admin.EditInstrumentAction"
+	 >
+	  <forward name="Success" path="/pages/admin/addInstrument.jsp" redirect="false"/>
+	  <forward name="Failure" path="/manageInstruments.do" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/saveInstrument"
+	  type="org.yeastrc.www.admin.SaveInstrumentAction"
+	  name="addInstrumentForm"
+	  input="/pages/admin/addInstrument.jsp"
+	  validate="true"
+	 >
+	  <forward name="Success" path="/manageInstruments.do" redirect="true"/>
+	  <forward name="Failure" path="/pages/admin/addInstrument.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/deleteInstrument"
+	  type="org.yeastrc.www.admin.DeleteInstrumentAction"
+	 >
+	  <forward name="Success" path="/manageInstruments.do" redirect="true"/>
+	  <forward name="Failure" path="/manageInstruments.do" redirect="false"/>
+	</action>
+	
+
+
+	<action
+	  path="/viewFrontPage"
+	  type="org.yeastrc.www.project.FrontPageAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewYatesRun"
+	  type="org.yeastrc.www.yates.ViewYatesRunAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewYatesRun.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewYatesResult"
+	  type="org.yeastrc.www.yates.ViewYatesResultAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewYatesResult.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewDTASelectFilter"
+	  type="org.yeastrc.www.yates.ViewDTASelectFilterAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewDTASelectFilter.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewDTASelectHTML"
+	  type="org.yeastrc.www.yates.ViewDTASelectHTMLAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewDTASelectHTML.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewDTASelect"
+	  type="org.yeastrc.www.yates.ViewDTASelectAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewDTASelect.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewProtein"
+	  type="org.yeastrc.www.protein.ViewProteinAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/protein/viewProtein.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/viewProteinDetails"
+	  type="org.yeastrc.www.protein.ProteinDetailsAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/protein/proteinDetails.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to PHILIUS WebService -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/submitPhiliusJob"
+	  type="org.yeastrc.www.philiusws.PhiliusSubmitJobAjaxAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/philius/philiusResults.jsp" redirect="false" />
+	</action>
+	
+	<action
+	  path="/getPhiliusResults"
+	  type="org.yeastrc.www.philiusws.PhiliusResultsAjaxAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/philius/philiusResults.jsp" redirect="false" />
+	</action>
+	
+	<action
+	  path="/pinferPhiliusResults"
+	  type="org.yeastrc.www.philiusws.PhiliusResultForPinferProteinAction"
+	  validate="false">
+	  <forward name="MakeResult" path="/getPhiliusResults.do" redirect="false" />
+	</action>
+	
+	<action
+	  path="/viewPhiliusGraphic"
+	  type="org.yeastrc.www.philiusws.ViewPhiliusGraphicAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/philius/philiusGraphic.jsp" redirect="false"/>
+	</action>
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to data upload -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/uploadMSDataFormAction"
+	  type="org.yeastrc.www.upload.UploadMSDataFormAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/admin/upload/uploadMSDataForm.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/uploadMSData"
+	  input="/pages/admin/upload/uploadMSDataForm.jsp"
+	  name="uploadMSDataForm"
+	  scope="request"
+	  type="org.yeastrc.www.upload.UploadMSDataAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/admin/upload/uploadMSDataForm.jsp" redirect="false"/>
+	  <forward name="Success" path="/listUploadJobs.do" redirect="true"/>
+	</action>
+
+	<action
+	  path="/percolatorUploadForm"
+	  type="org.yeastrc.www.upload.UploadPercolatorResultFormAction"
+	  validate="false">
+	  <forward name="Failure" path="/viewProject.do" redirect="false"/>
+	  <forward name="Success" path="/pages/admin/upload/uploadPercolatorResultForm.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/uploadPercolatorResult"
+	  input="/pages/admin/upload/uploadPercolatorResultForm.jsp"
+	  name="uploadPercolatorResultForm"
+	  scope="request"
+	  type="org.yeastrc.www.upload.UploadPercolatorResultAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/admin/upload/uploadPercolatorResultForm.jsp" redirect="false"/>
+	  <forward name="Success" path="/listUploadJobs.do" redirect="true"/>
+	</action>
+	
+	<action path="/listUploadJobs"
+		type="org.yeastrc.www.jobqueue.ListJobsAction" validate="false">
+		<forward name="Success" path="/pages/admin/upload/listJobs.jsp"
+			redirect="false" />
+		<forward name="Failure" path="/pages/internal/front.jsp"
+			redirect="true" />
+	</action>
+
+	<action
+	  path="/resetJob"
+	  type="org.yeastrc.www.jobqueue.ResetJobAction"
+	  validate="false">
+		<forward name="Success" path="/pages/admin/upload/listJobs.jsp" redirect="true"/>
+		<forward name="Failure" path="/pages/admin/upload/listJobs.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/deleteJob"
+	  type="org.yeastrc.www.jobqueue.DeleteJobAction"
+	  validate="false">
+		<forward name="Success" path="/pages/admin/upload/listJobs.jsp" redirect="true"/>
+		<forward name="Failure" path="/pages/admin/upload/listJobs.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewUploadJob"
+	  type="org.yeastrc.www.jobqueue.ViewJobAction"
+	  validate="false">
+		<forward name="Success" path="/pages/admin/upload/viewJob.jsp" redirect="false"/>
+		<forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+
+
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to running Percolator -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/percolatorRunForm"
+	  type="org.yeastrc.www.upload.PercolatorRunFormAction"
+	  validate="false">
+	  <forward name="Failure" path="/viewProject.do" redirect="true"/>
+	  <forward name="Success" path="/pages/internal/project/percolator/percolatorRunForm.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/percolatorRun"
+	  input="/pages/admin/upload/percolatorRunForm.jsp"
+	  name="percolatorRunForm"
+	  scope="request"
+	  type="org.yeastrc.www.upload.PercolatorRunAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/internal/project/percolator/percolatorRunForm.jsp" redirect="false"/>
+	  <forward name="Success" path="/listUploadJobs.do" redirect="true"/>
+	</action>
+
+
+
+
+
+	<action
+	  path="/viewSpectra"
+	  type="org.yeastrc.www.yates.ViewSpectraAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/data/yates/viewSpectra.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/data/yates/viewYatesResult.jsp" redirect="false"/>
+	</action>
+	
+	<action
+	  path="/saveMSComments"
+	  input="/pages/internal/data/yates/viewYatesRun.jsp"
+	  name="MSCommentsForm"
+	  scope="request"
+	  type="org.yeastrc.www.yates.SaveMSCommentsAction"
+	  validate="true">
+	  <forward name="Success" path="/viewYatesRun.do" redirect="true"/>
+	</action>
+	
+	<action
+	  path="/viewGOTreeImage"
+	  type="org.yeastrc.www.go.ViewGOTreeAction"
+	  validate="false">
+	  <forward name="Success" path="/pages/utils/showImage.jsp" redirect="false"/>
+	</action>
+
+	<action
+	  path="/viewResearcher"
+	  type="org.yeastrc.www.project.ViewResearcher"
+	  validate="false">
+	  <forward name="Success" path="/pages/internal/project/viewResearcher.jsp" redirect="false"/>
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+
+	
+	
+	
+	
+
+	<action
+	  path="/miniProjectSearch"
+	  input="/pages/admin/upload/uploadProjectSearch.jsp"
+	  name="searchProjectsForm"
+	  scope="request"
+	  type="org.yeastrc.www.project.SearchProjectsAction"
+	  validate="true">
+	  <forward name="Failure" path="/pages/admin/upload/uploadProjectSearch.jsp" redirect="false"/>
+	  <forward name="Success" path="/pages/admin/upload/uploadProjectSearch.jsp" redirect="false"/>
+	</action>
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to grants -->
+	<!-- ================================================================================== -->
+	<action 
+		path="/viewGrants"
+		type="org.yeastrc.www.project.ViewGrantsAction"
+	>
+		<forward name="Success" path="/pages/internal/project/viewGrants.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/project/viewGrants.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/saveGrant"
+		type="org.yeastrc.www.project.SaveGrantAction"
+		name="editGrantForm"
+		input="/pages/internal/project/editGrant.jsp"
+		scope="request"
+		validate="true"
+	>
+		<forward name="ListGrants" path="/viewGrants.do" redirect="true" />
+		<forward name="SavedGrant" path="/pages/internal/project/savedGrant.jsp" redirect="false" />
+		<forward name="Failure" path="/viewGrantForm.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/editGrant"
+		type="org.yeastrc.www.project.EditGrantAction"
+	>
+		<forward name="Success" path="/pages/internal/project/editGrant.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/project/editGrant.jsp" redirect="false" />
+	</action>
+	
+	<!-- ================================================================================== -->
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to protein inference IDPicker-->
+	<!-- ================================================================================== -->
+	<action 
+		path="/newPercolatorProteinInference"
+		type="org.yeastrc.www.proteinfer.job.NewPercolatorProteinInferenceAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/percolatorProteinInferenceForm.jsp" redirect="false" />
+		<forward name="Failure" path="/viewProject.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/doProteinInferenceAnalysis"
+		type="org.yeastrc.www.proteinfer.job.DoProteinInferenceAction"
+		name="proteinInferenceFormPercolator"
+		input="/pages/internal/proteinfer/proteinInferenceForm.jsp"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/viewProject.do" redirect="true" />
+		<forward name="Failure" path="/newProteinInference.do" redirect="false" />
+	</action>
+	
+	<action
+	  path="/deleteProteinInferJob"
+	  type="org.yeastrc.www.proteinfer.DeleteProteinInferenceAction"
+	  >
+		<forward name="Success" path="/viewProject.do" redirect="true" />
+		<forward name="Failure" path="/viewProject.do" redirect="false" />
+	</action>
+	
+	<action
+	  path="/rerunProteinInferJob"
+	  type="org.yeastrc.www.proteinfer.job.RerunProteinInferenceAction"
+	  >
+		<forward name="Success" path="/viewProject.do" redirect="true" />
+		<forward name="Failure" path="/viewProject.do" redirect="false" />
+	</action>
+	
+	<action
+		path="/viewProteinInferenceJob"
+		type="org.yeastrc.www.proteinfer.job.ViewProteinInferenceJob"
+	>
+		<forward name="Failure" path="/viewProject.do" redirect="true" />
+		<forward name="Success" path="/pages/internal/proteinfer/viewProteinInferenceJob.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/viewProteinInferenceResult"
+		type="org.yeastrc.www.proteinfer.idpicker.ViewProteinInferenceResultAction"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/proteinInferGateway.do" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinInferGateway"
+		type="org.yeastrc.www.proteinfer.idpicker.ProteinInferenceResultGatewayAction"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="ViewResults" path="/viewNewPinferResult.do" redirect="false" />
+		<forward name="Update" path="/updateProteinInferenceResult.do" redirect="false" />
+		<forward name="Download" path="/downloadProtInferResults.do" redirect="false" />
+		<forward name="GOSlimAnalysis" path="/protInferGoSlimAnalysis.do" redirect="false" />
+		<forward name="GOEnrichAnalysis" path="/protInferGoEnrichment.do" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/viewNewPinferResult"
+		type="org.yeastrc.www.proteinfer.idpicker.ProteinInferViewAction"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+	</action>
+	
+	
+	<action 
+		path="/updateProteinInferenceResult"
+		type="org.yeastrc.www.proteinfer.idpicker.UpdateProteinInferenceResultAjaxAction"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinlist.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/downloadProtInferResults"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.idpicker.ProteinInferDownloadAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/viewProteinInferenceResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/protInferGoSlimAnalysis"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.idpicker.GOSlimAjaxAction"
+	>
+		<forward name="Success" path="/protInferGoSlim.do" redirect="false" />
+		<forward name="GoTree" path="/protInferGoSlimTree.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/protInferGoEnrichment"
+		name="idPickerFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.idpicker.ProteinInferGOEnrichmentAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goEnrichmentAnalysis.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/goEnrichmentAnalysis.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/pageProteinInferenceResult"
+		type="org.yeastrc.www.proteinfer.idpicker.PageProteinferResultsAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinListTable.jsp" redirect="false" />
+		<forward name="ViewNewResults" path="/viewProteinInferenceResult.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/sortProteinInferenceResult"
+		type="org.yeastrc.www.proteinfer.idpicker.SortProteinferResultsAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinListTable.jsp" redirect="false" />
+		<forward name="ViewNewResults" path="/viewProteinInferenceResult.do" redirect="false" />
+	</action>
+	
+	
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to protein inference ProteinProphet-->
+	<!-- ================================================================================== -->
+	<action 
+		path="/viewProteinProphetResult"
+		type="org.yeastrc.www.proteinfer.proteinProphet.ViewProteinProphetResultAction"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/proteinProphetGateway.do" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinProphetGateway"
+		type="org.yeastrc.www.proteinfer.proteinProphet.ProteinProphetResultGatewayAction"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="ViewResults" path="/viewNewPProphetResult.do" redirect="false" />
+		<forward name="Update" path="/updateProteinProphetResult.do" redirect="false" />
+		<forward name="Download" path="/downloadProteinProphetResults.do" redirect="false" />
+		<forward name="GOSlimAnalysis" path="/proteinProphetGoSlimAnalysis.do" redirect="false" />
+		<forward name="GOEnrichAnalysis" path="/proteinProphetGoEnrichment.do" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/viewNewPProphetResult"
+		type="org.yeastrc.www.proteinfer.proteinProphet.ProteinProphetViewAction"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/downloadProteinProphetResults"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.proteinProphet.ProteinProphetDownloadAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinProphet/viewProteinProphetResult.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinProphetGoSlimAnalysis"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.proteinProphet.GOSlimAjaxAction"
+	>
+		<forward name="Success" path="/protInferGoSlim.do" redirect="false" />
+		<forward name="GoTree" path="/protInferGoSlimTree.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinProphetGoEnrichment"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.proteinfer.proteinProphet.ProteinProphetGOEnrichmentAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goEnrichmentAnalysis.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/goEnrichmentAnalysis.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/updateProteinProphetResult"
+		type="org.yeastrc.www.proteinfer.proteinProphet.UpdateProteinProphetResultAjaxAction"
+		name="proteinProphetFilterForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinProphet/proteinlist.jsp" redirect="false" />
+	</action>
+	
+	
+	<action 
+		path="/pageProteinProphetResult"
+		type="org.yeastrc.www.proteinfer.proteinProphet.PageProteinProphetResultsAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinProphet/proteinListTable.jsp" redirect="false" />
+		<forward name="ViewNewResults" path="/viewProteinProphetResult.do" redirect="false" />
+	</action>
+	
+	
+	<action 
+		path="/sortProteinProphetResult"
+		type="org.yeastrc.www.proteinfer.proteinProphet.SortProteinProphetResultsAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinProphet/proteinListTable.jsp" redirect="false" />
+		<forward name="ViewNewResults" path="/viewProteinProphetResult.do" redirect="false" />
+	</action>
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to protein inference: General -->
+	<!-- ================================================================================== -->
+	
+	<action 
+		path="/protInferGoSlim"
+		type="org.yeastrc.www.proteinfer.GOSlimAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goSlimAnalysis.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/protInferGoSlimTree"
+		type="org.yeastrc.www.proteinfer.GOSlimTreeAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goTreeView.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/protInferGoSlimNode"
+		type="org.yeastrc.www.proteinfer.GOSlimNodeAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goTreeNode.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/goTermSearch"
+		type="org.yeastrc.www.go.GOTermSearchAction"
+		name="goSearchForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goTermSearchForm.jsp" redirect="false" />
+	</action>
+	
+	<action
+	  path="/saveProtInferName"
+	  type="org.yeastrc.www.proteinfer.SaveProtInferNameAjaxAction"
+	  >
+	</action>
+	<action
+	  path="/saveProtInferComments"
+	  type="org.yeastrc.www.proteinfer.SaveProtInferCommentsAjaxAction"
+	  >
+	</action>
+	<action
+	  path="/bookmarkProteinInfer"
+	  type="org.yeastrc.www.project.BookmarkProteinInferRunAjaxAction"
+	  >
+	</action>
+	<action 
+		path="/getProteinPeptides"
+		type="org.yeastrc.www.proteinfer.ProteinPeptidesAjaxAction"
+	>
+	<forward name="Success" path="/pages/internal/proteinfer/proteinPeptides.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinSequence"
+		type="org.yeastrc.www.proteinfer.ProteinSequenceAjaxAction"
+	>
+	</action>
+	
+	<action 
+		path="/psmListForIon"
+		type="org.yeastrc.www.proteinfer.PsmListAjaxAction"
+	>
+	<forward name="Success" path="/pages/internal/proteinfer/psmListForIon.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinCluster"
+		type="org.yeastrc.www.proteinfer.idpicker.ProteinClusterAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinCluster.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/proteinDetails"
+		type="org.yeastrc.www.proteinfer.ProteinDetailsAjaxAction"
+	>
+		<forward name="SuccessIdPicker" path="/pages/internal/proteinfer/proteinDetails.jsp" redirect="false" />
+		<forward name="SuccessProphet" path="/pages/internal/proteinfer/proteinProphet/proteinDetails.jsp" redirect="false" />
+	</action>
+	
+	<action
+		path="/saveProteinAnnotation"
+		type="org.yeastrc.www.proteinfer.SaveProteinAnnotationAjaxAction"
+	>
+	</action>
+	
+	<action
+		path="/deleteProteinAnnotation"
+		type="org.yeastrc.www.proteinfer.DeleteProteinAnnotationAjaxAction"
+	>
+	</action>
+	
+	<action 
+		path="/viewSpectrum"
+		type="org.yeastrc.www.proteinfer.ViewSpectrumAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/viewSpectrum.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/viewSpectrum.jsp" redirect="false" />
+		
+	</action>
+	
+	<action 
+		path="/viewAlignedClusterProteins"
+		type="org.yeastrc.www.proteinfer.ViewAlignedClusterProteins"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinAlignment.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinAlignment.jsp" redirect="false" />
+		
+	</action>
+	
+	<action 
+		path="/viewAlignedGroupProteins"
+		type="org.yeastrc.www.proteinfer.ViewAlignedGroupProteins"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/proteinAlignment.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/proteinAlignment.jsp" redirect="false" />
+		
+	</action>
+	
+	
+	<action
+		path="/listInputGroups"
+		type="org.yeastrc.www.proteinfer.job.ListProteinInferInputGroupAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/listInputGroups.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/proteinfer/listInputGroups.jsp" redirect="false" />
+		
+	</action>
+	
+	<action 
+		path="/getInputList"
+		type="org.yeastrc.www.proteinfer.job.InputListAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/inputlist.jsp" redirect="false" />
+		
+	</action>
+	
+	<action
+		path="/listExperimentsWithProtein"
+		type="org.yeastrc.www.protein.ListRunsWithProteinAction"
+	>
+		<forward name="Success" path="/pages/internal/data/protein/runListWithProtein.jsp" redirect="false" />
+		<forward name="Failure" path="/viewFrontPage.do" redirect="false" />
+		
+	</action>
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to comparing protein datasets -->
+	<!-- ================================================================================== -->
+	
+	<action 
+		path="/selectComparisonDatasets"
+		type="org.yeastrc.www.compare.DatasetSelectionFormAction"
+	>
+		<forward name="Success" path="/pages/internal/compare/datasetSelectionForm.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/selectComparisonDatasetProjects"
+		type="org.yeastrc.www.compare.DatasetProjectSelectionFormAction"
+	>
+		<forward name="Success" path="/pages/internal/compare/datasetProjectSelectionForm.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/setComparisonFilters"
+		type="org.yeastrc.www.compare.DatasetFiltersFormAction"
+		name="datasetSelectionForm"
+		scope="request"
+		validate="false"
+	>
+		<forward name="Success" path="/pages/internal/compare/datasetFiltersForm.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/doProteinSetComparison"
+		type="org.yeastrc.www.compare.CompareProteinSetsAction"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="false"
+	>
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+		<forward name="DoComparison" path="/doComparison.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/doComparison"
+		type="org.yeastrc.www.compare.DoComparisonAction"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="false"
+	>
+		<forward name="ProteinList" path="/pages/internal/compare/viewProteinSetComparison.jsp" redirect="false" />
+		<forward name="ProteinGroupList" path="/pages/internal/compare/viewProteinGroupSetComparison.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+		<forward name="Download" path="/downloadProteinComparisonResults.do" redirect="false" />
+		<forward name="GOEnrichment" path="/compareGoEnrichment.do" redirect="false" />
+		<forward name="GOSlim" path="/compareGoSlim.do" redirect="false" />
+		<forward name="Cluster" path="/compareClustered.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/updateProteinSetComparison"
+		type="org.yeastrc.www.compare.UpdateProteinComparisonAction"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+		<forward name="DoComparison" path="/doComparison.do" redirect="false" />
+		<forward name="ClusterGateway" path="/clusterGateway.do" redirect="false" />
+	</action>
+	
+	<action 
+		path="/doPeptidesComparison"
+		type="org.yeastrc.www.compare.ComparePeptidesAjaxAction"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/compare/viewPeptidesComparison.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/doProteinGroupComparison"
+		type="org.yeastrc.www.compare.CompareProteinGroupsAjaxAction"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/compare/viewProteinGroupComparison.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/downloadProteinComparisonResults"
+		type="org.yeastrc.www.compare.DownloadComparisonResults"
+	>
+		<forward name="Success" path="/pages/internal/compare/viewProteinSetComparison.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/viewProteinSetComparison.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/compareGoSlim"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.compare.go.CompareGOSlimAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goSlimAnalysis.jsp" redirect="false" />
+		<forward name="FailureMessage" path="/pages/internal/compare/goFailure.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/compareGoEnrichment"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.compare.go.CompareGOEnrichmentAjaxAction"
+	>
+		<forward name="Success" path="/pages/internal/proteinfer/goEnrichmentAnalysis.jsp" redirect="false" />
+		<forward name="FailureMessage" path="/pages/internal/compare/goFailure.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/clusterGateway"
+		type="org.yeastrc.www.compare.clustering.ClusteringGatewayAction"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="false"
+	>
+		<forward name="WaitForClustering" path="/waitForClustering.do" redirect="false" />
+		<forward name="DoComparison" path="/doComparison.do" redirect="false" />
+		<forward name="ReadOld" path="/readCompareClustered.do" redirect="true" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/waitForClustering"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="false"
+		type="org.yeastrc.www.compare.clustering.WaitForClusteringAction"
+	>
+		<forward name="Success" path="/pages/internal/compare/waitForClustering.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/compareClustered"
+		name="proteinSetComparisonForm"
+		scope="request"
+		validate="true"
+		type="org.yeastrc.www.compare.clustering.ClusterSpectrumCountsAction"
+	>
+		<forward name="ReadSaved" path="/readCompareClustered.do" redirect="true" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/readCompareClustered"
+		type="org.yeastrc.www.compare.clustering.ReadClusteredSpectrumCountsAction"
+	>
+		<forward name="ProteinGroupList" path="/pages/internal/compare/viewProteinGroupSetComparison.jsp" redirect="false" />
+		<forward name="ProteinList" path="/pages/internal/compare/viewProteinSetComparison.jsp" redirect="false" />
+		<forward name="Download" path="/downloadProteinComparisonResults.do" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/comparisonError.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/heatmap"
+		type="org.yeastrc.www.compare.clustering.HeatMapAction"
+	>
+		<forward name="Success" path="/pages/internal/compare/heatMap.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/compare/heatMap.jsp" redirect="false" />
+	</action>
+	
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to downloading PepXML files -->
+	<!-- ================================================================================== -->
+	<action 
+		path="/newSequestPepXmlDownload"
+		type="org.yeastrc.www.project.experiment.SequestPepxmlDownloadFormAction"
+		validate="false"
+	>
+		<forward name="Success" path="/pages/internal/project/sequest/sequestPepxmlDownloadForm.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/front.jsp" redirect="false" />
+	</action>
+	
+	<action 
+		path="/sequestPepXmlDownload"
+		type="org.yeastrc.www.project.experiment.SequestPepxmlDownloadAction"
+		name="sequestPepxmlDownloadForm"
+		input="/pages/internal/project/sequest/sequestPepxmlDownloadForm.jsp"
+		scope="request"
+		validate="true"
+	>
+		<forward name="Success" path="/pages/internal/project/sequest/sequestPepxmlDownloadSubmitted.jsp" redirect="false" />
+		<forward name="Failure" path="/newSequestPepXmlDownload.do" redirect="false" />
+	</action>
+	
+	<!-- ================================================================================== -->
+	
+	
+    
+    <!-- ================================================================================== -->
+	<!-- Actions related to time blocks  -->
+	<!-- ================================================================================== -->
+    <action
+      path="/viewTimeBlocks"
+      type="org.uwpr.www.costcenter.ViewTimeBlocksAction"
+      >
+      <forward name="Success" path="/pages/admin/billing/viewTimeBlocks.jsp" redirect="false" />
+      <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/viewTimeBlockForm"
+      type="org.uwpr.www.costcenter.ViewTimeBlockFormAction"
+      name="timeBlockForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/admin/billing/timeBlockForm.jsp" redirect="false" />
+      <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/addTimeBlock"
+      type="org.uwpr.www.costcenter.SaveNewTimeBlockAction"
+      input="/pages/admin/billing/timeBlockForm.jsp"
+      name="timeBlockForm"
+      validate="true"
+      >
+      <forward name="Success" path="/viewTimeBlocks.do" redirect="true" />
+      <forward name="Failure" path="/pages/admin/billing/timeBlockForm.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/deleteTimeBlock"
+      type="org.uwpr.www.costcenter.DeleteTimeBlockAction"
+      >
+      <forward name="Success" path="/viewTimeBlocks.do" redirect="true" />
+      <forward name="Failure" path="/viewTimeBlocks.do" redirect="false" />
+    </action>
+    <!-- ================================================================================== -->
+    <!-- ================================================================================== -->
+    
+    
+    <!-- ================================================================================== -->
+	<!-- Actions related to instrument rates  -->
+	<!-- ================================================================================== -->
+    <action
+      path="/viewInstrumentRates"
+      type="org.uwpr.www.costcenter.ViewInstrumentRatesAction"
+      input="/pages/admin/billing/viewInstrumentRates.jsp"
+      name="viewInstrumentRatesForm"
+      validate="true"
+      >
+      <forward name="Success" path="/pages/admin/billing/viewInstrumentRates.jsp" redirect="false" />
+      <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/viewCurrentInstrumentRates"
+      type="org.uwpr.www.costcenter.ViewCurrentInstrumentRatesAction"
+      >
+      <forward name="Success" path="/pages/internal/viewCurrentInstrumentRates.jsp" redirect="false" />
+      <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/viewInstrumentRateForm"
+      type="org.uwpr.www.costcenter.ViewInstrumentRateFormAction"
+      name="instrumentRateForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/admin/billing/instrumentRateForm.jsp" redirect="false" />
+      <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/addInstrumentRate"
+      type="org.uwpr.www.costcenter.SaveNewInstrumentRateAction"
+      input="/pages/admin/billing/instrumentRateForm.jsp"
+      name="instrumentRateForm"
+      validate="true"
+      >
+      <forward name="Success" path="/viewInstrumentRates.do" redirect="true" />
+      <forward name="Failure" path="/pages/admin/billing/instrumentRateForm.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/editInstrumentRateForm"
+      type="org.uwpr.www.costcenter.EditInstrumentRateAction"
+      name="instrumentRateForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/admin/billing/editInstrumentRate.jsp" redirect="false" />
+      <forward name="Failure" path="/viewInstrumentRates.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/saveInstrumentRate"
+      type="org.uwpr.www.costcenter.SaveInstrumentRateAction"
+      input="/pages/admin/costcenter/editInstrumentRate.jsp"
+      name="instrumentRateForm"
+      validate="true"
+      >
+      <forward name="Success" path="/viewInstrumentRates.do" redirect="true" />
+      <forward name="Failure" path="/pages/admin/billing/editInstrumentRate.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/changeInstrumentRateForm"
+      type="org.uwpr.www.costcenter.ChangeInstrumentRateFormAction"
+      name="instrumentRateForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/admin/billing/changeInstrumentRate.jsp" redirect="false" />
+      <forward name="Failure" path="/viewInstrumentRates.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/saveChangeInstrumentRate"
+      type="org.uwpr.www.costcenter.SaveChangeInstrumentRateAction"
+      input="/pages/admin/costcenter/changeInstrumentRate.jsp"
+      name="instrumentRateForm"
+      validate="true"
+      >
+      <forward name="Success" path="/viewInstrumentRates.do" redirect="true" />
+      <forward name="Failure" path="/pages/admin/billing/changeInstrumentRate.jsp" redirect="false"/>
+    </action>
+    
+    <action
+      path="/deleteInstrumentRate"
+      type="org.uwpr.www.costcenter.DeleteInstrumentRateAction"
+      >
+      <forward name="Success" path="/viewInstrumentRates.do" redirect="true" />
+      <forward name="Failure" path="/viewInstrumentRates.do" redirect="false" />
+    </action>
+	
+    
+	<!-- ================================================================================== -->
+    <!-- ================================================================================== -->
+
+
+	<!-- ================================================================================== -->
+	<!-- Actions related to billing -->
+	<!-- ================================================================================== -->
+	<action
+	  path="/manageBilling"
+	  type="org.uwpr.www.costcenter.ViewCostCenterHomeAction"
+	  name="exportBillingInformationForm"
+      validate="false"
+	 >
+	  <forward name="Success" path="/pages/admin/billing/billingHome.jsp" redirect="false" />
+	  <forward name="Failure" path="/pages/internal/front.jsp" redirect="false"/>
+	</action>
+	
+	<action
+      path="/exportBillingInformation"
+      type="org.uwpr.www.costcenter.ExportBillingInformationAction"
+      input="/pages/admin/costcenter/billingHome.jsp"
+      name="exportBillingInformationForm"
+      validate="true"
+      >
+      <forward name="Success" path="/pages/admin/costcenter/billingHome.jsp" redirect="false"/>
+      <forward name="Failure" path="/pages/admin/costcenter/billingHome.jsp" redirect="false"/>
+    </action>
+    <!-- ================================================================================== -->
+    <!-- ================================================================================== -->
+
+
+	<!-- ================================================================================== -->
+    <!-- Actions related to creating and editing payment methods -->
+    <!-- ================================================================================== -->
+        <action
+      path="/newPaymentMethod"
+      type="org.yeastrc.www.project.payment.NewPaymentMethodAction"
+      name="paymentMethodForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/internal/project/payment/newPaymentMethod.jsp" redirect="false" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/saveNewPaymentMethod"
+      type="org.yeastrc.www.project.payment.SaveNewPaymentMethodAction"
+      name="paymentMethodForm"
+      input="/pages/internal/project/payment/newPaymentMethod.jsp"
+      validate="true"
+      >
+      <forward name="Success" path="/viewProject.do" redirect="true" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/viewPaymentMethod"
+      type="org.yeastrc.www.project.payment.ViewPaymentMethodAction"
+      >
+      <forward name="Success" path="/pages/internal/project/payment/viewPaymentMethod.jsp" redirect="false" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/editPaymentMethod"
+      type="org.yeastrc.www.project.payment.EditPaymentMethodAction"
+      name="paymentMethodForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/internal/project/payment/editPaymentMethod.jsp" redirect="false" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/savePaymentMethod"
+      type="org.yeastrc.www.project.payment.SavePaymentMethodAction"
+      name="paymentMethodForm"
+      input="/pages/internal/project/payment/editPaymentMethod.jsp"
+      validate="true"
+      >
+      <forward name="Success" path="/pages/internal/project/payment/viewPaymentMethod.jsp" redirect="true" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/deletePaymentMethod"
+      type="org.yeastrc.www.project.payment.DeletePaymentMethodAction"
+      >
+      <forward name="Success" path="/viewProject.do" redirect="true" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+	<!-- ================================================================================== -->
+	<!-- ================================================================================== -->
+	
+	<!-- ================================================================================== -->
+	<!-- Actions related to viewing scheduler and requesting / editing / deleting instrument time -->
+	<!-- ================================================================================== -->
+	<action
+		path="/viewAllInstrumentCalendar"
+		type="org.uwpr.www.scheduler.ViewAllInstrumentsCalendarAction"
+		>
+		<forward name="Success" path="/pages/internal/scheduler/viewAllInstrumentSchedule.jsp" redirect="false" />
+		<forward name="Failure" path="/pages/internal/scheduler/viewAllInstrumentSchedule.jsp" redirect="false" />
+	</action>
+	
+	<action
+      path="/viewScheduler"
+      type="org.uwpr.www.scheduler.ViewSchedulerAction"
+      >
+      <forward name="Success" path="/pages/internal/scheduler/viewSchedulerForProject.jsp" redirect="false" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+	
+	<action
+      path="/allInstrumentUsageBlocks"
+      type="org.uwpr.www.instrumentlog.AllInstrumentUsageJSONAction"
+      >
+    </action>
+    
+    <action
+      path="/instrumentUsageBlocks"
+      type="org.uwpr.www.instrumentlog.InstrumentUsageJSONAction"
+      >
+    </action>
+    
+    <action
+      path="/requestInstrumentTimeAjax"
+      type="org.uwpr.www.scheduler.RequestProjectInstrumentTimeAjaxAction"
+      >
+    </action>
+    
+    <action
+      path="/deleteInstrumentTimeAjax"
+      type="org.uwpr.www.scheduler.DeleteProjectInstrumentTimeAjaxAction"
+      >
+    </action>
+    
+    <action
+      path="/deleteInstrumentTime"
+      type="org.uwpr.www.scheduler.DeleteProjectInstrumentTimeAction"
+      >
+      <forward name="Success" path="/viewScheduledTimeDetails.do" redirect="true" />
+      <forward name="Failure" path="/viewScheduledTimeDetails.do" redirect="false"/>
+    </action>
+    
+    <action
+      path="/viewEditInstrumentTimeForm"
+      type="org.uwpr.www.scheduler.EditProjectInstrumentTimeFormAction"
+      >
+      <forward name="Success" path="/pages/internal/scheduler/editProjectInstrumentTimeForm.jsp" redirect="false" />
+    </action>
+    
+    <action
+      path="/editInstrumentTime"
+      type="org.uwpr.www.scheduler.EditProjectInstrumentTimeAction"
+      input="/pages/internal/scheduler/editProjectInstrumentTimeForm.jsp"
+      name="editInstrumentTimeForm"
+      validate="true"
+      >
+    </action>
+    
+    <action
+      path="/viewScheduledTimeDetails"
+      type="org.uwpr.www.scheduler.ViewTimeScheduledForProject"
+      >
+      <forward name="Success" path="/pages/internal/scheduler/viewTimeScheduledForProject.jsp" redirect="false" />
+      <forward name="Failure" path="/viewProject.do" redirect="false"/>
+    </action>
+   
+   
+   <!-- JSON services -->
+       
+    <action
+      path="/getPrecursorScanCountChartDataService"
+      type="org.yeastrc.www_services.GetPrecursorScanCountChartDataServiceAction"
+      >
+    </action>
+         
+    <action
+      path="/getPeaksPerScanCountChartDataService"
+      type="org.yeastrc.www_services.GetPeaksPerScanCountChartDataServiceAction"
+      >
+    </action>  
+   
+	
+	<!-- ================================================================================== -->
+	<!-- ================================================================================== -->
+	
+	
+	
+	</action-mappings>
+<!-- ===================================== Controller Configuration -->
+
+
+
+    <controller
+
+       processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+
+
+
+
+<!-- ================================ Message Resources Definitions -->
+
+
+
+    <!-- <message-resources parameter="resources.application"/> -->
+    <message-resources
+    	parameter="YRCMessageResources" null="false"/>
+ <!--   	null="false" /> -->
+
+
+
+
+
+<!-- ======================================= Plug Ins Configuration -->
+
+
+  <!-- ========== Tiles plugin ===================  -->
+  <!--												-->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from web.xml, then
+	 overload them with parameters defined here. All parameters are optional.
+	 The plugin should be declared in each struts-config file.
+       - definitions-config: (optional) 
+            Specify configuration file names. There can be several comma 
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1) 
+            Specify if the Tiles definition factory is module aware. If true (default), 
+			there will be one factory for each Struts module. 
+			If false, there will be one common factory for all module. In this later case, 
+			it is still needed to declare one plugin per module. The factory will be 
+			initialized with parameters found in the first initialized plugin (generally the
+			one associated with the default module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header. (default)
+			  false : no validation
+			  
+	  Paths found in Tiles definitions are relative to the main context.
+  -->
+  <!-- comment following if struts1.0.x -->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+    <set-property property="definitions-config" 
+	                 value="/WEB-INF/tiles-defs.xml" />
+    <set-property property="moduleAware" value="true" />
+    <set-property property="definitions-parser-validate" value="true" />
+  </plug-in>
+
+  <!-- end comment if struts1.0.x -->
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+
+</struts-config>
+

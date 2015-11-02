@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MS2ScanCharge"> 
+
+	<typeAlias alias="ScanChargeOut" type="org.yeastrc.ms.domain.run.ms2file.impl.ScanCharge"/>
+	<typeAlias alias="ScanChargeIn" type="org.yeastrc.ms.dao.run.ms2file.ibatis.MS2ScanChargeWrap"/>
+		
+	<resultMap class="ScanChargeOut" id="scanChargeResult">
+		<result property="charge" column="charge" nullValue="0"/>
+		<result property="mass" column="mass" />
+		<result property="chargeDependentAnalysisList" column="id" select="MS2ChgDAnalysis.selectAnalysisForCharge" />
+	</resultMap>
+	
+	<parameterMap class="ScanChargeIn" id="scanChargeParam">
+		<parameter property="scanId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="charge" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="mass" jdbcType="DECIMAL" />
+	</parameterMap>
+	
+	
+	<select id="selectIdsForScan" resultClass="Integer"> 
+        SELECT id FROM MS2FileScanCharge WHERE scanID=#scanId#
+    </select>
+    
+    <select id="selectForScan" resultMap="scanChargeResult"> 
+        SELECT * FROM MS2FileScanCharge WHERE scanID=#scanId#
+    </select>
+    
+    <select id="selectForScanAndCharge" resultMap="scanChargeResult" parameterClass="java.util.Map">
+    	SELECT * FROM MS2FileScanCharge WHERE scanID = #id# AND charge = #charge#
+    </select>
+    
+    
+    <insert id="insert" parameterMap="scanChargeParam">
+    	INSERT INTO MS2FileScanCharge (scanID, charge, mass) VALUES (?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="deleteByScanId" parameterClass="Integer">
+    	DELETE FROM MS2FileScanCharge WHERE scanID=#id#
+    </delete>
+    
+</sqlMap>

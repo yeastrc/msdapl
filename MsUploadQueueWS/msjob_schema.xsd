@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="msJob" type="msJob"/>
+
+  <xs:complexType name="msJob">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" minOccurs="0"/>
+      <xs:element name="submitterLoginName" type="xs:string"/>
+      <xs:element name="projectId" type="xs:int"/>
+      <xs:element name="dataDirectory" type="xs:string"/>
+      <xs:element name="pipeline" type="xs:string"/>
+      <xs:element name="date" type="xs:dateTime"/>
+      <xs:element name="targetSpecies" type="xs:int" minOccurs="0"/>
+      <xs:element name="instrument" type="xs:string" minOccurs="0"/>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="group" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

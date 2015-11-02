@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferProtein"> 
+
+	<typeAlias alias="ProteinferProtein" type="org.yeastrc.ms.domain.protinfer.ProteinferProtein" />
+	<typeAlias alias="BaseProteinferProtein" type="org.yeastrc.ms.domain.protinfer.GenericProteinferProtein" />
+
+	<typeAlias alias="UserValidationTypeHandler" 
+				type="org.yeastrc.ms.dao.protinfer.ibatis.ProteinferProteinDAO$UserValidationTypeHandler"/>
+	
+	<resultMap class="BaseProteinferProtein" id="pinferBaseProteinResult" >
+		<result property="id" column="id" nullValue="0" />
+		<result property="proteinferId" column="piRunID" nullValue="0"/>
+		<result property="nrseqProteinId" column="nrseqProteinID" nullValue="0"/>
+		<result property="coverage" column="coverage" nullValue="0"/>
+		<result property="spectrumCount" select="ProteinferSpectrumMatch.selectSpectrumCountForProtein" column="id" />
+		<result property="userAnnotation" column="userAnnotation"/>
+		<result property="userValidation" column="userValidation"
+				typeHandler="UserValidationTypeHandler"/>
+	</resultMap>
+		
+	<resultMap class="ProteinferProtein" id="pinferProteinResult" extends="ProteinferProtein.pinferBaseProteinResult">
+		<result property="peptides" 
+				select="ProteinferPeptide.selectPeptidesForProtein"
+				column="id"/>
+	</resultMap>
+	
+	<parameterMap class="BaseProteinferProtein" id="pinferProteinParam">
+		<parameter property="proteinferId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="nrseqProteinId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="coverage" jdbcType="DOUBLE" />
+		<parameter property="userAnnotation" jdbcType="TEXT" />
+		<parameter property="userValidation" jdbcType="CHAR" typeHandler="UserValidationTypeHandler"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="pinferProteinResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferProtein WHERE id=#id#
+    </select>
+    
+    <select id="selectProteinForNrseqId" resultMap="pinferProteinResult" parameterClass="java.util.Map">
+    	SELECT * FROM msProteinInferProtein WHERE piRunID=#pinferId# AND nrseqProteinID=#nrseqProteinId#
+    </select>
+    
+    <select id="selectProteinIdsForProteinferRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msProteinInferProtein WHERE piRunID = #id#
+    </select>
+    
+    <select id="selectProteinsForProteinferRun" resultMap="pinferProteinResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferProtein WHERE piRunID = #id#
+    </select>
+    
+    <select id="selectProteinCountForProteinferRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM msProteinInferProtein WHERE piRunID = #id#
+    </select>
+    
+    <select id="selectProteinIdsForNrseqIds" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msProteinInferProtein 
+    	WHERE piRunID = #pinferId#
+    	AND nrseqProteinID IN $nrseqIds$
+    </select>
+    
+    <select id="selectNrseqIdsForProteinferRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT DISTINCT(nrseqProteinID) FROM msProteinInferProtein WHERE piRunID = #id#
+    </select>
+    
+    <!-- 
+    <select id="peptidesForProteinInRuns" resultClass="String" parameterClass="java.util.Map">
+    	SELECT DISTINCT(sequence)
+    	FROM msProteinInferPeptide AS pept, 
+    	msProteinInferProtein AS prot, 
+    	msProteinInferProteinPeptideMatch AS m 
+    	WHERE prot.nrseqProteinID=#nrseqId#  
+    	AND prot.piRunID IN $pinferIds$ 
+    	AND pept.piRunID = prot.piRunID
+    	AND prot.id = m.piProteinID 
+    	AND m.piPeptideID = pept.id
+    </select>
+    -->
+    
+    <select id="peptidesForProteinInRuns" resultClass="String" parameterClass="java.util.Map">
+		SELECT DISTINCT (sequence) FROM
+		msProteinInferPeptide AS pept INNER JOIN
+		msProteinInferProteinPeptideMatch AS m ON pept.id = m.piPeptideID INNER JOIN
+		msProteinInferProtein AS prot ON m.piProteinID = prot.id
+		WHERE prot.nrseqProteinID = #nrseqId# AND prot.piRunID IN $pinferIds$
+    </select>
+    
+    <select id="proteinsForPeptideInRun" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT m.piProteinID
+    	FROM msProteinInferPeptide AS p, msProteinInferProteinPeptideMatch AS m
+    	<isPropertyAvailable property="exact">
+    		WHERE p.sequence = #peptide#
+    	</isPropertyAvailable>
+    	<isNotPropertyAvailable property="exact">
+    		WHERE p.sequence LIKE #peptide#
+    	</isNotPropertyAvailable>
+    	AND p.piRunID=#pinferId#
+    	AND p.id = m.piPeptideID
+    </select>
+    
+    <select id="peptideCountForProteinInRuns" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(DISTINCT(sequence))
+    	FROM msProteinInferPeptide AS pept, 
+    	msProteinInferProtein AS prot, 
+    	msProteinInferProteinPeptideMatch AS m 
+    	WHERE prot.nrseqProteinID=#nrseqId#  
+    	AND prot.piRunID IN $pinferIds$ 
+    	AND pept.piRunID = prot.piRunID 
+    	AND prot.id = m.piProteinID 
+    	AND m.piPeptideID = pept.id
+    </select>
+    
+    <update id="updateUserAnnotation" parameterClass="java.util.Map">
+    	UPDATE msProteinInferProtein SET userAnnotation=#annotation# where id=#pinferProteinId#
+    </update>
+    
+    <update id="updateUserValidation" parameterClass="java.util.Map">
+    	UPDATE msProteinInferProtein SET userValidation=#userValidation# where id=#pinferProteinId#
+    </update>
+    
+    <update id="update" parameterClass="BaseProteinferProtein">
+    	UPDATE msProteinInferProtein 
+    	SET piRunID = #proteinferId#,
+    	nrseqProteinID = #nrseqProteinId#,
+    	coverage = #coverage#,
+    	userAnnotation = #userAnnotation#,
+    	userValidation = #userValidationString#
+    	WHERE id=#id#
+    </update>
+    
+    <insert id="insert" parameterMap="pinferProteinParam">
+    	INSERT INTO msProteinInferProtein (
+    	piRunID,
+    	nrseqProteinID,
+    	coverage,
+    	userAnnotation,
+    	userValidation) 
+    	VALUES (?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <insert id="insertPeptideProteinMatch" parameterClass="java.util.Map">
+    	INSERT INTO msProteinInferProteinPeptideMatch (
+    	piProteinID,
+    	piPeptideID) 
+    	VALUES (#pinferProteinId#, #pinferPeptideId#)
+    </insert>
+    
+    <select id="checkProteinPeptideMatch" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(*) FROM msProteinInferProteinPeptideMatch
+    	WHERE piProteinID=#proteinId#
+    	AND piPeptideID=#peptideId#
+    </select>
+    
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msProteinInferProtein WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

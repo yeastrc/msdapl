@@ -1,0 +1,4387 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<experiment xmlns="http://per-colator.com/percolator_in/11" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://per-colator.com/percolator_in/11 http://per-colator.com/xml/xml-1-1/percolator_in.xsd"> 
+
+<enzyme>trypsin</enzyme>
+
+<process_info>
+  <command_line>/net/maccoss/vol2/software/bin64/sqt2pin_v1.17 /net/maccoss/vol2/home/frewen/Research/hermie/data/test/barista-tests/pipeline/percolator/realSqt.list /net/maccoss/vol2/home/frewen/Research/hermie/data/test/barista-tests/pipeline/percolator/randSqt.list</command_line>
+</process_info>
+
+<featureDescriptions xmlns="http://per-colator.com/percolator_in/11">
+
+  <featureDescription name="lnrSp"/>
+
+  <featureDescription name="deltLCn"/>
+
+  <featureDescription name="deltCn"/>
+
+  <featureDescription name="Xcorr"/>
+
+  <featureDescription name="Sp"/>
+
+  <featureDescription name="IonFrac"/>
+
+  <featureDescription name="Mass"/>
+
+  <featureDescription name="PepLen"/>
+
+  <featureDescription name="Charge1"/>
+
+  <featureDescription name="Charge2"/>
+
+  <featureDescription name="Charge3"/>
+
+  <featureDescription name="enzN"/>
+
+  <featureDescription name="enzC"/>
+
+  <featureDescription name="enzInt"/>
+
+  <featureDescription name="lnNumSP"/>
+
+  <featureDescription name="dM"/>
+
+  <featureDescription name="absdM"/>
+
+</featureDescriptions>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="915.25" scanNumber="2">
+
+  <peptideSpectrumMatch calculatedMassToCharge="913.006" chargeState="2" experimentalMassToCharge="915.25" id="test-spec-03_2_2_1" isDecoy="false">
+    <features>
+      <feature>2.83321334405622</feature>
+      <feature>0.420720815382999</feature>
+      <feature>0.00294210360407694</feature>
+      <feature>0.9517</feature>
+      <feature>158.6</feature>
+      <feature>0.714285714285714</feature>
+      <feature>915.25</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.4953689269624</feature>
+      <feature>1.12200000000001</feature>
+      <feature>1.12200000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ELAKVSHE</peptideSequence>
+    </peptide>
+    <occurence flankC="-" flankN="S" proteinId="gi|16131264|ref|NP_417845.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1370.57" chargeState="3" experimentalMassToCharge="1372.37" id="test-spec-03_2_3_1" isDecoy="false">
+    <features>
+      <feature>3.25809653802148</feature>
+      <feature>0.418894702888682</feature>
+      <feature>0.0970539746254749</feature>
+      <feature>1.3951</feature>
+      <feature>144.3</feature>
+      <feature>0.267857142857143</feature>
+      <feature>1372.37</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.27743811550868</feature>
+      <feature>0.599999999999985</feature>
+      <feature>0.599999999999985</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VDVGISGPTAAVVGK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="E" proteinId="gi|49176247|ref|YP_026172.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1614.735" chargeState="2" experimentalMassToCharge="1613.63" id="test-spec-05_2_2_1" isDecoy="false">
+    <features>
+      <feature>3.04452243772342</feature>
+      <feature>0.512654777665291</feature>
+      <feature>0.0473483373569036</feature>
+      <feature>1.2841</feature>
+      <feature>130.5</feature>
+      <feature>0.409090909090909</feature>
+      <feature>1613.63</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.14633504200027</feature>
+      <feature>-0.552499999999895</feature>
+      <feature>0.552499999999895</feature>
+    </features>
+    <peptide>
+      <peptideSequence>YLRHRIADYDYE</peptideSequence>
+    </peptide>
+    <occurence flankC="H" flankN="R" proteinId="gi|16130724|ref|NP_417297.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2421.706" chargeState="3" experimentalMassToCharge="2419.94" id="test-spec-05_2_3_1" isDecoy="false">
+    <features>
+      <feature>4.91998092582813</feature>
+      <feature>0.197199810156621</feature>
+      <feature>0.122626957759848</feature>
+      <feature>1.6856</feature>
+      <feature>126.6</feature>
+      <feature>0.204545454545455</feature>
+      <feature>2419.94</feature>
+      <feature>23</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.81299223196997</feature>
+      <feature>-0.588666666666692</feature>
+      <feature>0.588666666666692</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AGGMYLNQVIENGDVLGVAWGRT</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="R" proteinId="gi|90111724|ref|NP_418715.2|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="913.949" chargeState="2" experimentalMassToCharge="915.25" id="test-spec-03_2_2_1" isDecoy="true">
+    <features>
+      <feature>2.30258509299405</feature>
+      <feature>0.322617124394184</feature>
+      <feature>0.197495961227787</feature>
+      <feature>1.238</feature>
+      <feature>180.4</feature>
+      <feature>0.714285714285714</feature>
+      <feature>915.25</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.48925915875781</feature>
+      <feature>0.650500000000022</feature>
+      <feature>0.650500000000022</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ENFVYNGA</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="random_seq_533"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1371.434" chargeState="3" experimentalMassToCharge="1372.37" id="test-spec-03_2_3_1" isDecoy="true">
+    <features>
+      <feature>3.49650756146648</feature>
+      <feature>0.335067500823181</feature>
+      <feature>0.082910767204478</feature>
+      <feature>1.5185</feature>
+      <feature>144.3</feature>
+      <feature>0.272727272727273</feature>
+      <feature>1372.37</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.28683834294891</feature>
+      <feature>0.311999999999974</feature>
+      <feature>0.311999999999974</feature>
+    </features>
+    <peptide>
+      <peptideSequence>HAYVVRGHSDTE</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="K" proteinId="random_seq_2316"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1613.79" chargeState="2" experimentalMassToCharge="1613.63" id="test-spec-05_2_2_1" isDecoy="true">
+    <features>
+      <feature>4.80402104473326</feature>
+      <feature>0.740193164933135</feature>
+      <feature>0.113670133729569</feature>
+      <feature>1.346</feature>
+      <feature>90.1</feature>
+      <feature>0.307692307692308</feature>
+      <feature>1613.63</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.16576132857822</feature>
+      <feature>-0.0799999999999272</feature>
+      <feature>0.0799999999999272</feature>
+    </features>
+    <peptide>
+      <peptideSequence>HFKVDIGSYFASNK</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="I" proteinId="random_seq_3837"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2420.693" chargeState="3" experimentalMassToCharge="2419.94" id="test-spec-05_2_3_1" isDecoy="true">
+    <features>
+      <feature>6.11368217983223</feature>
+      <feature>0.768137580181376</feature>
+      <feature>0.0205153727051537</feature>
+      <feature>1.8084</feature>
+      <feature>92.3</feature>
+      <feature>0.19047619047619</feature>
+      <feature>2419.94</feature>
+      <feature>22</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.80986280537906</feature>
+      <feature>-0.251000000000052</feature>
+      <feature>0.251000000000052</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NLAITADTKDLSVLIDGQRVYN</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="K" proteinId="random_seq_2239"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1271.59" scanNumber="3">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1269.509" chargeState="2" experimentalMassToCharge="1271.59" id="test-spec-03_3_2_1" isDecoy="false">
+    <features>
+      <feature>5.19295685089021</feature>
+      <feature>0.76527445242529</feature>
+      <feature>0.00266028198989083</feature>
+      <feature>1.1277</feature>
+      <feature>65.4</feature>
+      <feature>0.363636363636364</feature>
+      <feature>1271.59</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.31109027507633</feature>
+      <feature>1.04049999999995</feature>
+      <feature>1.04049999999995</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TDLPKALAALQK</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="P" proteinId="gi|16130154|ref|NP_416721.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1908.376" chargeState="3" experimentalMassToCharge="1906.88" id="test-spec-03_3_3_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.323939700753741</feature>
+      <feature>0.131567105411182</feature>
+      <feature>1.7778</feature>
+      <feature>296.2</feature>
+      <feature>0.338235294117647</feature>
+      <feature>1906.88</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.02485381183907</feature>
+      <feature>-0.498666666666622</feature>
+      <feature>0.498666666666622</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IIPHSLAAAMLAGILLRF</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="R" proteinId="gi|90111272|ref|NP_415950.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1176.363" chargeState="2" experimentalMassToCharge="1175.11" id="test-spec-05_3_2_1" isDecoy="false">
+    <features>
+      <feature>2.484906649788</feature>
+      <feature>0.807752457551385</feature>
+      <feature>0.0934986595174263</feature>
+      <feature>0.8952</feature>
+      <feature>155.7</feature>
+      <feature>0.611111111111111</feature>
+      <feature>1175.11</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.38999170021426</feature>
+      <feature>-0.626500000000078</feature>
+      <feature>0.626500000000078</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DLKELEAAMR</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="I" proteinId="gi|49176235|ref|YP_026169.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1761.134" chargeState="3" experimentalMassToCharge="1762.16" id="test-spec-05_3_3_1" isDecoy="false">
+    <features>
+      <feature>4.27666611901606</feature>
+      <feature>0.507700658117918</feature>
+      <feature>0.117647058823529</feature>
+      <feature>1.4739</feature>
+      <feature>127.3</feature>
+      <feature>0.265625</feature>
+      <feature>1762.16</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.11811542793366</feature>
+      <feature>0.342000000000022</feature>
+      <feature>0.342000000000022</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RFVPIISGLAAIFTGVV</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="K" proteinId="gi|16129064|ref|NP_415619.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1270.415" chargeState="2" experimentalMassToCharge="1271.59" id="test-spec-03_3_2_1" isDecoy="true">
+    <features>
+      <feature>2.484906649788</feature>
+      <feature>0.535199602451549</feature>
+      <feature>0.00505217823422229</feature>
+      <feature>1.2074</feature>
+      <feature>111.7</feature>
+      <feature>0.5</feature>
+      <feature>1271.59</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.31847703058076</feature>
+      <feature>0.587499999999977</feature>
+      <feature>0.587499999999977</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RSSQALLQQAAP</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="K" proteinId="random_seq_3632"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1909.179" chargeState="3" experimentalMassToCharge="1906.88" id="test-spec-03_3_3_1" isDecoy="true">
+    <features>
+      <feature>4.39444915467244</feature>
+      <feature>0.493126876283773</feature>
+      <feature>0.0131932374782746</feature>
+      <feature>1.2658</feature>
+      <feature>99.4</feature>
+      <feature>0.235294117647059</feature>
+      <feature>1906.88</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.02713842775492</feature>
+      <feature>-0.766333333333326</feature>
+      <feature>0.766333333333326</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GNALLPLLAAALKQPECE</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="K" proteinId="random_seq_175"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1173.339" chargeState="2" experimentalMassToCharge="1175.11" id="test-spec-05_3_2_1" isDecoy="true">
+    <features>
+      <feature>3.36729582998647</feature>
+      <feature>0.718454417387804</feature>
+      <feature>0.0571543570134836</feature>
+      <feature>0.9938</feature>
+      <feature>125.4</feature>
+      <feature>0.444444444444444</feature>
+      <feature>1175.11</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.41066555320971</feature>
+      <feature>0.885499999999979</feature>
+      <feature>0.885499999999979</feature>
+    </features>
+    <peptide>
+      <peptideSequence>MATNQTFQTM</peptideSequence>
+    </peptide>
+    <occurence flankC="-" flankN="P" proteinId="random_seq_3323"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1763.991" chargeState="3" experimentalMassToCharge="1762.16" id="test-spec-05_3_3_1" isDecoy="true">
+    <features>
+      <feature>2.63905732961526</feature>
+      <feature>0.336744186046512</feature>
+      <feature>0.0347508305647839</feature>
+      <feature>1.505</feature>
+      <feature>161.1</feature>
+      <feature>0.263888888888889</feature>
+      <feature>1762.16</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.10041389259758</feature>
+      <feature>-0.610333333333301</feature>
+      <feature>0.610333333333301</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AGMSGPIIGYQGARASVAG</peptideSequence>
+    </peptide>
+    <occurence flankC="K" flankN="K" proteinId="random_seq_3211"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1309.01" scanNumber="4">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1306.447" chargeState="2" experimentalMassToCharge="1309.01" id="test-spec-03_4_2_1" isDecoy="false">
+    <features>
+      <feature>5.12396397940326</feature>
+      <feature>0.385858405499509</feature>
+      <feature>0.0971341844478172</feature>
+      <feature>1.1201</feature>
+      <feature>63.9</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1309.01</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.20863892533642</feature>
+      <feature>1.28150000000005</feature>
+      <feature>1.28150000000005</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AHIGVDAKSGLTH</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="K" proteinId="gi|16128244|ref|NP_414793.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16128535|ref|NP_415084.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16128639|ref|NP_415189.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16129292|ref|NP_415847.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16129331|ref|NP_415888.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16129935|ref|NP_416498.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16129971|ref|NP_416535.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16130129|ref|NP_416696.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16130882|ref|NP_417456.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16131108|ref|NP_417685.1|"/>
+    <occurence flankC="S" flankN="K" proteinId="gi|16131377|ref|NP_417962.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1965.371" chargeState="3" experimentalMassToCharge="1963.01" id="test-spec-03_4_3_1" isDecoy="false">
+    <features>
+      <feature>5.73334127689775</feature>
+      <feature>0.211325529895603</feature>
+      <feature>0.10832015185068</feature>
+      <feature>1.5805</feature>
+      <feature>82.7</feature>
+      <feature>0.203125</feature>
+      <feature>1963.01</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.02147746713881</feature>
+      <feature>-0.787000000000035</feature>
+      <feature>0.787000000000035</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LTCDIPQVKPLNIVIKL</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="gi|16128898|ref|NP_415451.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1569.706" chargeState="2" experimentalMassToCharge="1566.85" id="test-spec-05_4_2_1" isDecoy="false">
+    <features>
+      <feature>5.92157841964382</feature>
+      <feature>0.629279691151072</feature>
+      <feature>0.0789393477598293</feature>
+      <feature>0.9843</feature>
+      <feature>40.5</feature>
+      <feature>0.307692307692308</feature>
+      <feature>1566.85</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.14995322196109</feature>
+      <feature>-1.428</feature>
+      <feature>1.428</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QLTCAISGESLAYR</peptideSequence>
+    </peptide>
+    <occurence flankC="F" flankN="M" proteinId="gi|16131161|ref|NP_417739.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2347.525" chargeState="3" experimentalMassToCharge="2349.77" id="test-spec-05_4_3_1" isDecoy="false">
+    <features>
+      <feature>5.15905529921453</feature>
+      <feature>0.309864016014358</feature>
+      <feature>0.0290605370332022</feature>
+      <feature>1.4487</feature>
+      <feature>72.2</feature>
+      <feature>0.184210526315789</feature>
+      <feature>2349.77</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.84879645092595</feature>
+      <feature>0.748333333333297</feature>
+      <feature>0.748333333333297</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NQNTCINQMPCVSLGEPVER</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="S" proteinId="gi|16131817|ref|NP_418414.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1311.506" chargeState="2" experimentalMassToCharge="1309.01" id="test-spec-03_4_2_1" isDecoy="true">
+    <features>
+      <feature>4.58496747867057</feature>
+      <feature>0.975406871609403</feature>
+      <feature>0.183001808318264</feature>
+      <feature>1.106</feature>
+      <feature>69.8</feature>
+      <feature>0.375</feature>
+      <feature>1309.01</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.22108246850808</feature>
+      <feature>-1.24800000000005</feature>
+      <feature>1.24800000000005</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NVGLKAADAPNLK</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="A" proteinId="random_seq_2160"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1963.145" chargeState="3" experimentalMassToCharge="1963.01" id="test-spec-03_4_3_1" isDecoy="true">
+    <features>
+      <feature>3.17805383034795</feature>
+      <feature>0.784175505632782</feature>
+      <feature>0.0658146122933</feature>
+      <feature>1.5179</feature>
+      <feature>147.4</feature>
+      <feature>0.265625</feature>
+      <feature>1963.01</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.04440384443155</feature>
+      <feature>-0.044999999999997</feature>
+      <feature>0.044999999999997</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TCNLGSRFFANLFETGK</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="V" proteinId="random_seq_2184"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1569.781" chargeState="2" experimentalMassToCharge="1566.85" id="test-spec-05_4_2_1" isDecoy="true">
+    <features>
+      <feature>5.16478597392351</feature>
+      <feature>0.350816188544383</feature>
+      <feature>0.100357384333044</feature>
+      <feature>1.0353</feature>
+      <feature>55</feature>
+      <feature>0.3</feature>
+      <feature>1566.85</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.16251474249358</feature>
+      <feature>-1.46550000000002</feature>
+      <feature>1.46550000000002</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GGDALVAVIAQQLASR</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="A" proteinId="random_seq_1563"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2347.763" chargeState="3" experimentalMassToCharge="2349.77" id="test-spec-05_4_3_1" isDecoy="true">
+    <features>
+      <feature>2.484906649788</feature>
+      <feature>0.248500428449015</feature>
+      <feature>0.103025509195175</feature>
+      <feature>1.5171</feature>
+      <feature>115.2</feature>
+      <feature>0.210526315789474</feature>
+      <feature>2349.77</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.86953877719374</feature>
+      <feature>0.669000000000021</feature>
+      <feature>0.669000000000021</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IFTIVCVGAVVLVLGWCRQR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="I" proteinId="random_seq_1402"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1468.01" scanNumber="5">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1465.651" chargeState="2" experimentalMassToCharge="1468.01" id="test-spec-03_5_2_1" isDecoy="false">
+    <features>
+      <feature>5.6937321388027</feature>
+      <feature>0.601289134438306</feature>
+      <feature>0.0672191528545121</feature>
+      <feature>0.9774</feature>
+      <feature>52.1</feature>
+      <feature>0.318181818181818</feature>
+      <feature>1468.01</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.18101454259435</feature>
+      <feature>1.17949999999996</feature>
+      <feature>1.17949999999996</feature>
+    </features>
+    <peptide>
+      <peptideSequence>YGAEMIHPEYRV</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="K" proteinId="gi|16131523|ref|NP_418109.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2200.465" chargeState="3" experimentalMassToCharge="2201.51" id="test-spec-03_5_3_1" isDecoy="false">
+    <features>
+      <feature>5.10594547390058</feature>
+      <feature>0.842711192436719</feature>
+      <feature>0.0786062824031718</feature>
+      <feature>1.3116</feature>
+      <feature>84.6</feature>
+      <feature>0.2</feature>
+      <feature>2201.51</feature>
+      <feature>21</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>8.90801832278489</feature>
+      <feature>0.348333333333358</feature>
+      <feature>0.348333333333358</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IVELPAGATPVDFAYAVHTDI</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="R" proteinId="gi|16131521|ref|NP_418107.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1459.589" chargeState="2" experimentalMassToCharge="1459.11" id="test-spec-05_5_2_1" isDecoy="false">
+    <features>
+      <feature>3.61091791264422</feature>
+      <feature>0.609941584922297</feature>
+      <feature>0.0157610492670561</feature>
+      <feature>0.9073</feature>
+      <feature>79.8</feature>
+      <feature>0.285714285714286</feature>
+      <feature>1459.11</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.24879155835043</feature>
+      <feature>-0.239500000000021</feature>
+      <feature>0.239500000000021</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GIAAHAANSPHLGRS</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="K" proteinId="gi|16129298|ref|NP_415853.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2189.442" chargeState="3" experimentalMassToCharge="2188.16" id="test-spec-05_5_3_1" isDecoy="false">
+    <features>
+      <feature>4.31748811353631</feature>
+      <feature>0.524146544546212</feature>
+      <feature>0.202053844018873</feature>
+      <feature>1.4412</feature>
+      <feature>90</feature>
+      <feature>0.184210526315789</feature>
+      <feature>2188.16</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.93247660846174</feature>
+      <feature>-0.427333333333384</feature>
+      <feature>0.427333333333384</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TVLPLVVYPNSGEHYDAVSK</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="L" proteinId="gi|16128246|ref|NP_414795.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1467.607" chargeState="2" experimentalMassToCharge="1468.01" id="test-spec-03_5_2_1" isDecoy="true">
+    <features>
+      <feature>5.72358510195238</feature>
+      <feature>0.736736233341715</feature>
+      <feature>0.177353113737323</feature>
+      <feature>1.1931</feature>
+      <feature>51.2</feature>
+      <feature>0.318181818181818</feature>
+      <feature>1468.01</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.19614002257504</feature>
+      <feature>0.20150000000001</feature>
+      <feature>0.20150000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>REGAYKPNNYVR</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="V" proteinId="random_seq_1725"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2204.343" chargeState="3" experimentalMassToCharge="2201.51" id="test-spec-03_5_3_1" isDecoy="true">
+    <features>
+      <feature>5.19295685089021</feature>
+      <feature>0.659830209296461</feature>
+      <feature>0.0928805581238968</feature>
+      <feature>1.1897</feature>
+      <feature>82.3</feature>
+      <feature>0.194444444444444</feature>
+      <feature>2201.51</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>8.91476052739726</feature>
+      <feature>-0.94433333333321</feature>
+      <feature>0.94433333333321</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SDYADPQAQELLHGICWTV</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="random_seq_1671"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1457.601" chargeState="2" experimentalMassToCharge="1459.11" id="test-spec-05_5_2_1" isDecoy="true">
+    <features>
+      <feature>6.11589212548303</feature>
+      <feature>0.511246427239965</feature>
+      <feature>0.0259724120790356</feature>
+      <feature>0.8047</feature>
+      <feature>38.4</feature>
+      <feature>0.208333333333333</feature>
+      <feature>1459.11</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.24647941859206</feature>
+      <feature>0.754499999999894</feature>
+      <feature>0.754499999999894</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LEAFLEEGFFAPS</peptideSequence>
+    </peptide>
+    <occurence flankC="Y" flankN="R" proteinId="random_seq_1596"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2185.525" chargeState="3" experimentalMassToCharge="2188.16" id="test-spec-05_5_3_1" isDecoy="true">
+    <features>
+      <feature>3.46573590279973</feature>
+      <feature>0.137552039966694</feature>
+      <feature>0.0164029975020816</feature>
+      <feature>1.201</feature>
+      <feature>109.6</feature>
+      <feature>0.184210526315789</feature>
+      <feature>2188.16</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.94923531437485</feature>
+      <feature>0.878333333333254</feature>
+      <feature>0.878333333333254</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ARTVKINMHKPGTADATIYP</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="K" proteinId="random_seq_13"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1151.71" scanNumber="6">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1149.273" chargeState="2" experimentalMassToCharge="1151.71" id="test-spec-03_6_2_1" isDecoy="false">
+    <features>
+      <feature>5.98645200528444</feature>
+      <feature>0.477611940298507</feature>
+      <feature>0.00300223022816936</feature>
+      <feature>1.1658</feature>
+      <feature>82.5</feature>
+      <feature>0.35</feature>
+      <feature>1151.71</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.24859908409327</feature>
+      <feature>1.21850000000006</feature>
+      <feature>1.21850000000006</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DVVAYAVQNGI</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="R" proteinId="gi|16129970|ref|NP_416533.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1725.779" chargeState="3" experimentalMassToCharge="1727.06" id="test-spec-03_6_3_1" isDecoy="false">
+    <features>
+      <feature>3.97029191355212</feature>
+      <feature>0.649686981646958</feature>
+      <feature>0.098560650650115</feature>
+      <feature>1.8689</feature>
+      <feature>216.6</feature>
+      <feature>0.266666666666667</feature>
+      <feature>1727.06</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.10030226676725</feature>
+      <feature>0.426999999999983</feature>
+      <feature>0.426999999999983</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GEADAMICGTVGDYHE</peptideSequence>
+    </peptide>
+    <occurence flankC="H" flankN="R" proteinId="gi|16130388|ref|NP_416958.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1211.427" chargeState="2" experimentalMassToCharge="1214.11" id="test-spec-05_6_2_1" isDecoy="false">
+    <features>
+      <feature>6.14418563412565</feature>
+      <feature>0.0809628008752735</feature>
+      <feature>0.00230974957451983</feature>
+      <feature>0.8226</feature>
+      <feature>63.9</feature>
+      <feature>0.272727272727273</feature>
+      <feature>1214.11</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.29908358181057</feature>
+      <feature>1.3415</feature>
+      <feature>1.3415</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ALAGELPLLKGE</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="R" proteinId="gi|16128728|ref|NP_415281.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1821.071" chargeState="3" experimentalMassToCharge="1820.66" id="test-spec-05_6_3_1" isDecoy="false">
+    <features>
+      <feature>6.10924758276437</feature>
+      <feature>0.338939197930142</feature>
+      <feature>0.0956500646830529</feature>
+      <feature>1.2368</feature>
+      <feature>84.6</feature>
+      <feature>0.216666666666667</feature>
+      <feature>1820.66</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.06462071762678</feature>
+      <feature>-0.136999999999944</feature>
+      <feature>0.136999999999944</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TIPCINDSLVDKFGLK</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="K" proteinId="gi|90111165|ref|NP_415246.2|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1149.338" chargeState="2" experimentalMassToCharge="1151.71" id="test-spec-03_6_2_1" isDecoy="true">
+    <features>
+      <feature>5.23110861685459</feature>
+      <feature>0.70384204909285</feature>
+      <feature>0.154139350510749</feature>
+      <feature>1.3118</feature>
+      <feature>103.3</feature>
+      <feature>0.3</feature>
+      <feature>1151.71</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.2620785673806</feature>
+      <feature>1.18600000000004</feature>
+      <feature>1.18600000000004</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LTSQKGVEGMV</peptideSequence>
+    </peptide>
+    <occurence flankC="F" flankN="K" proteinId="random_seq_919"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1726.817" chargeState="3" experimentalMassToCharge="1727.06" id="test-spec-03_6_3_1" isDecoy="true">
+    <features>
+      <feature>2.99573227355399</feature>
+      <feature>0.400647410358566</feature>
+      <feature>0.0633715139442232</feature>
+      <feature>1.6064</feature>
+      <feature>271.1</feature>
+      <feature>0.3</feature>
+      <feature>1727.06</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.13712430964492</feature>
+      <feature>0.0809999999999794</feature>
+      <feature>0.0809999999999794</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TVGDADAGPEFQYSLR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="V" proteinId="random_seq_1335"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1211.434" chargeState="2" experimentalMassToCharge="1214.11" id="test-spec-05_6_2_1" isDecoy="true">
+    <features>
+      <feature>4.58496747867057</feature>
+      <feature>0.756489106640258</feature>
+      <feature>0.0235588449911394</feature>
+      <feature>0.9593</feature>
+      <feature>103.4</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1214.11</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.30846476996938</feature>
+      <feature>1.33799999999997</feature>
+      <feature>1.33799999999997</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LQVTLVPRER</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="L" proteinId="random_seq_2915"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1820.028" chargeState="3" experimentalMassToCharge="1820.66" id="test-spec-05_6_3_1" isDecoy="true">
+    <features>
+      <feature>4.71849887129509</feature>
+      <feature>0.585045619761145</feature>
+      <feature>0.11786959424375</feature>
+      <feature>1.3481</feature>
+      <feature>124.9</feature>
+      <feature>0.265625</feature>
+      <feature>1820.66</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.09896178399279</feature>
+      <feature>0.210666666666687</feature>
+      <feature>0.210666666666687</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IVVVEELGVQSDSAAFR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="A" proteinId="random_seq_1332"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1111.75" scanNumber="8">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1113.334" chargeState="2" experimentalMassToCharge="1111.75" id="test-spec-03_8_2_1" isDecoy="false">
+    <features>
+      <feature>4.12713438504509</feature>
+      <feature>0.264679883823715</feature>
+      <feature>0.0745674958959465</feature>
+      <feature>1.5838</feature>
+      <feature>180.4</feature>
+      <feature>0.5625</feature>
+      <feature>1111.75</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.2508103045299</feature>
+      <feature>-0.79200000000003</feature>
+      <feature>0.79200000000003</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IVSQLLQRR</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="A" proteinId="gi|16131214|ref|NP_417794.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1668.92" chargeState="3" experimentalMassToCharge="1667.12" id="test-spec-03_8_3_1" isDecoy="false">
+    <features>
+      <feature>1.09861228866811</feature>
+      <feature>0.156378189094547</feature>
+      <feature>0.011255627813907</feature>
+      <feature>1.999</feature>
+      <feature>453.3</feature>
+      <feature>0.384615384615385</feature>
+      <feature>1667.12</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.10830764641103</feature>
+      <feature>-0.600000000000061</feature>
+      <feature>0.600000000000061</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RPNGLFIAHFGWPR</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="A" proteinId="gi|16131984|ref|NP_418583.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1411.539" chargeState="2" experimentalMassToCharge="1409.91" id="test-spec-05_8_2_1" isDecoy="false">
+    <features>
+      <feature>4.96284463025991</feature>
+      <feature>0.16661472293212</feature>
+      <feature>0.0227513557314717</feature>
+      <feature>1.6043</feature>
+      <feature>106.4</feature>
+      <feature>0.321428571428571</feature>
+      <feature>1409.91</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.17843682296317</feature>
+      <feature>-0.814499999999953</feature>
+      <feature>0.814499999999953</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ALQGGGGLEPGLADR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="Q" proteinId="gi|16129831|ref|NP_416393.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2112.317" chargeState="3" experimentalMassToCharge="2114.36" id="test-spec-05_8_3_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.134579604855143</feature>
+      <feature>0.0741118100469567</feature>
+      <feature>2.2574</feature>
+      <feature>521.9</feature>
+      <feature>0.315789473684211</feature>
+      <feature>2114.36</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.96021095557699</feature>
+      <feature>0.68100000000004</feature>
+      <feature>0.68100000000004</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NEVKNSVLVDNGDLIQGSPL</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="gi|16132035|ref|NP_418634.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1113.244" chargeState="2" experimentalMassToCharge="1111.75" id="test-spec-03_8_2_1" isDecoy="true">
+    <features>
+      <feature>4.11087386417331</feature>
+      <feature>0.0980440550379466</feature>
+      <feature>0.0198679582896279</feature>
+      <feature>1.6207</feature>
+      <feature>170.1</feature>
+      <feature>0.555555555555556</feature>
+      <feature>1111.75</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.25004173882773</feature>
+      <feature>-0.746999999999957</feature>
+      <feature>0.746999999999957</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LVSQQLDGPR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="A" proteinId="random_seq_815"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1668.912" chargeState="3" experimentalMassToCharge="1667.12" id="test-spec-03_8_3_1" isDecoy="true">
+    <features>
+      <feature>4.30406509320417</feature>
+      <feature>0.0760047082562636</feature>
+      <feature>0.0461857519197355</feature>
+      <feature>1.7841</feature>
+      <feature>268.4</feature>
+      <feature>0.263888888888889</feature>
+      <feature>1667.12</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.13959596745043</feature>
+      <feature>-0.597333333333381</feature>
+      <feature>0.597333333333381</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GNVGNGTLLGVGAGLLAGK</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="V" proteinId="random_seq_1098"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1407.547" chargeState="2" experimentalMassToCharge="1409.91" id="test-spec-05_8_2_1" isDecoy="true">
+    <features>
+      <feature>2.39789527279837</feature>
+      <feature>0.31393025204667</feature>
+      <feature>0.0440275897634241</feature>
+      <feature>1.5513</feature>
+      <feature>178.4</feature>
+      <feature>0.4</feature>
+      <feature>1409.91</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.20492573927468</feature>
+      <feature>1.18150000000003</feature>
+      <feature>1.18150000000003</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IEKIRLDDNQY</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="K" proteinId="random_seq_690"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2116.602" chargeState="3" experimentalMassToCharge="2114.36" id="test-spec-05_8_3_1" isDecoy="true">
+    <features>
+      <feature>4.68213122712422</feature>
+      <feature>0.408252451852228</feature>
+      <feature>0.0577265104934193</feature>
+      <feature>1.9679</feature>
+      <feature>178.8</feature>
+      <feature>0.25</feature>
+      <feature>2114.36</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>8.95763926841965</feature>
+      <feature>-0.747333333333245</feature>
+      <feature>0.747333333333245</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FLSILVYSIILYLVAAIGF</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="random_seq_2184"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1744.43" scanNumber="9">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1743.053" chargeState="2" experimentalMassToCharge="1744.43" id="test-spec-03_9_2_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.0815484378070348</feature>
+      <feature>0.0382524399030589</feature>
+      <feature>1.5267</feature>
+      <feature>190.5</feature>
+      <feature>0.428571428571429</feature>
+      <feature>1744.43</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.117127990254</feature>
+      <feature>0.688499999999976</feature>
+      <feature>0.688499999999976</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LFFATTFEVMGHLTK</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="A" proteinId="gi|16128049|ref|NP_414597.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2618.872" chargeState="3" experimentalMassToCharge="2616.14" id="test-spec-03_9_3_1" isDecoy="false">
+    <features>
+      <feature>2.07944154167984</feature>
+      <feature>0.817351113000053</feature>
+      <feature>0.0451575200552517</feature>
+      <feature>1.8823</feature>
+      <feature>179.4</feature>
+      <feature>0.217391304347826</feature>
+      <feature>2616.14</feature>
+      <feature>24</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.71980745147795</feature>
+      <feature>-0.910666666666657</feature>
+      <feature>0.910666666666657</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TPGELAQQTGVSGRTILRDIDYLN</peptideSequence>
+    </peptide>
+    <occurence flankC="F" flankN="R" proteinId="gi|16131737|ref|NP_418333.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1459.489" chargeState="2" experimentalMassToCharge="1456.49" id="test-spec-05_9_2_1" isDecoy="false">
+    <features>
+      <feature>2.30258509299405</feature>
+      <feature>0.343539325842697</feature>
+      <feature>0.0573033707865168</feature>
+      <feature>0.712</feature>
+      <feature>100.7</feature>
+      <feature>0.307692307692308</feature>
+      <feature>1456.49</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.21114005214675</feature>
+      <feature>-1.49950000000001</feature>
+      <feature>1.49950000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FTGSVDGEEFEGGK</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="D" proteinId="gi|16128421|ref|NP_414970.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2184.383" chargeState="3" experimentalMassToCharge="2184.23" id="test-spec-05_9_3_1" isDecoy="false">
+    <features>
+      <feature>1.79175946922805</feature>
+      <feature>0.468034993270525</feature>
+      <feature>0.0137954239569313</feature>
+      <feature>0.8916</feature>
+      <feature>135.7</feature>
+      <feature>0.208333333333333</feature>
+      <feature>2184.23</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.923591197573</feature>
+      <feature>-0.0509999999999309</feature>
+      <feature>0.0509999999999309</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QAITQLEALDNRYPFGPYS</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="R" proteinId="gi|16130516|ref|NP_417086.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1744.018" chargeState="2" experimentalMassToCharge="1744.43" id="test-spec-03_9_2_1" isDecoy="true">
+    <features>
+      <feature>5.47227067367148</feature>
+      <feature>0.53798849434636</feature>
+      <feature>0.00687694240560733</feature>
+      <feature>1.5123</feature>
+      <feature>59.6</feature>
+      <feature>0.235294117647059</feature>
+      <feature>1744.43</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.11393959768983</feature>
+      <feature>0.206000000000017</feature>
+      <feature>0.206000000000017</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RSLVAATEVSTAIGVGVL</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="K" proteinId="random_seq_2872"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2617.813" chargeState="3" experimentalMassToCharge="2616.14" id="test-spec-03_9_3_1" isDecoy="true">
+    <features>
+      <feature>5.53338948872752</feature>
+      <feature>0.781909913658587</feature>
+      <feature>0.00738583168625819</feature>
+      <feature>1.9226</feature>
+      <feature>88.9</feature>
+      <feature>0.170454545454545</feature>
+      <feature>2616.14</feature>
+      <feature>23</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.70632484013874</feature>
+      <feature>-0.557666666666743</feature>
+      <feature>0.557666666666743</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QDDFTFGYQFGSCGGGTIYVRLK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="V" proteinId="random_seq_150"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1454.539" chargeState="2" experimentalMassToCharge="1456.49" id="test-spec-05_9_2_1" isDecoy="true">
+    <features>
+      <feature>4.80402104473326</feature>
+      <feature>0.873736611856992</feature>
+      <feature>0.0930758787147384</feature>
+      <feature>0.6629</feature>
+      <feature>60.6</feature>
+      <feature>0.272727272727273</feature>
+      <feature>1456.49</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.2072355570227</feature>
+      <feature>0.975500000000011</feature>
+      <feature>0.975500000000011</feature>
+    </features>
+    <peptide>
+      <peptideSequence>WNHIDSATDTMY</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="-" proteinId="random_seq_1948"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2185.341" chargeState="3" experimentalMassToCharge="2184.23" id="test-spec-05_9_3_1" isDecoy="true">
+    <features>
+      <feature>4.74493212836325</feature>
+      <feature>0.641997093626739</feature>
+      <feature>0.00726593315341499</feature>
+      <feature>0.9634</feature>
+      <feature>80.6</feature>
+      <feature>0.205882352941176</feature>
+      <feature>2184.23</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.9441588309704</feature>
+      <feature>-0.370333333333292</feature>
+      <feature>0.370333333333292</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ELADLIEQARDDHCTIVW</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="K" proteinId="random_seq_123"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="839.07" scanNumber="10">
+
+  <peptideSpectrumMatch calculatedMassToCharge="838.891" chargeState="2" experimentalMassToCharge="839.07" id="test-spec-03_10_2_1" isDecoy="false">
+    <features>
+      <feature>4.23410650459726</feature>
+      <feature>0.438735555343329</feature>
+      <feature>0.07773851590106</feature>
+      <feature>1.0471</feature>
+      <feature>90</feature>
+      <feature>0.5</feature>
+      <feature>839.07</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.16565676434954</feature>
+      <feature>0.0895000000000437</feature>
+      <feature>0.0895000000000437</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AGGQHVNR</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="G" proteinId="gi|16130793|ref|NP_417367.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1255.372" chargeState="3" experimentalMassToCharge="1258.1" id="test-spec-03_10_3_1" isDecoy="false">
+    <features>
+      <feature>4.35670882668959</feature>
+      <feature>0.333764739718148</feature>
+      <feature>0.0562985332182917</feature>
+      <feature>1.3908</feature>
+      <feature>107.2</feature>
+      <feature>0.3</feature>
+      <feature>1258.1</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.31271643859305</feature>
+      <feature>0.909333333333279</feature>
+      <feature>0.909333333333279</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GKSGIIYCNSR</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="gi|162135918|ref|YP_026263.3|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1573.763" chargeState="2" experimentalMassToCharge="1571.65" id="test-spec-05_10_2_1" isDecoy="false">
+    <features>
+      <feature>3.80666248977032</feature>
+      <feature>0.644870923913043</feature>
+      <feature>0.0180876358695651</feature>
+      <feature>1.1776</feature>
+      <feature>90.2</feature>
+      <feature>0.321428571428571</feature>
+      <feature>1571.65</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.18635500922567</feature>
+      <feature>-1.05649999999991</feature>
+      <feature>1.05649999999991</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FYTDVLGLPGTYGGI</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="K" proteinId="gi|145698335|ref|NP_418313.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2356.868" chargeState="3" experimentalMassToCharge="2356.97" id="test-spec-05_10_3_1" isDecoy="false">
+    <features>
+      <feature>2.77258872223978</feature>
+      <feature>0.524580953272778</feature>
+      <feature>0.0711208914692388</feature>
+      <feature>2.1358</feature>
+      <feature>225.3</feature>
+      <feature>0.228260869565217</feature>
+      <feature>2356.97</feature>
+      <feature>24</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>2</feature>
+      <feature>8.85395110151461</feature>
+      <feature>0.0339999999999539</feature>
+      <feature>0.0339999999999539</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KLLPTAPSAAVVVVRVVVVVGNAP</peptideSequence>
+    </peptide>
+    <occurence flankC="-" flankN="A" proteinId="gi|16131542|ref|NP_418128.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="837.986" chargeState="2" experimentalMassToCharge="839.07" id="test-spec-03_10_2_1" isDecoy="true">
+    <features>
+      <feature>4.34380542185368</feature>
+      <feature>0.296143022678364</feature>
+      <feature>0.136897864591955</feature>
+      <feature>1.2082</feature>
+      <feature>92.1</feature>
+      <feature>0.571428571428571</feature>
+      <feature>839.07</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.21114005214675</feature>
+      <feature>0.54200000000003</feature>
+      <feature>0.54200000000003</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KGVQHGIV</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="-" proteinId="random_seq_1212"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1255.595" chargeState="3" experimentalMassToCharge="1258.1" id="test-spec-03_10_3_1" isDecoy="true">
+    <features>
+      <feature>6.10255859461357</feature>
+      <feature>0.705413435756214</feature>
+      <feature>0.0668164359736212</feature>
+      <feature>1.3799</feature>
+      <feature>67.3</feature>
+      <feature>0.225</feature>
+      <feature>1258.1</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.33184978937338</feature>
+      <feature>0.834999999999961</feature>
+      <feature>0.834999999999961</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QMAKPKLAVIR</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="K" proteinId="random_seq_3593"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1568.812" chargeState="2" experimentalMassToCharge="1571.65" id="test-spec-05_10_2_1" isDecoy="true">
+    <features>
+      <feature>3.13549421592915</feature>
+      <feature>0.474683544303797</feature>
+      <feature>0.0576575323410766</feature>
+      <feature>1.4378</feature>
+      <feature>100.4</feature>
+      <feature>0.346153846153846</feature>
+      <feature>1571.65</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.20271134481169</feature>
+      <feature>1.4190000000001</feature>
+      <feature>1.4190000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KLLMSKYDANIANS</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="R" proteinId="random_seq_2643"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2354.663" chargeState="3" experimentalMassToCharge="2356.97" id="test-spec-05_10_3_1" isDecoy="true">
+    <features>
+      <feature>2.56494935746154</feature>
+      <feature>0.592777583537286</feature>
+      <feature>0.124019779231807</feature>
+      <feature>2.0021</feature>
+      <feature>207.1</feature>
+      <feature>0.215909090909091</feature>
+      <feature>2356.97</feature>
+      <feature>23</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.84043543926657</feature>
+      <feature>0.76899999999993</feature>
+      <feature>0.76899999999993</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DQPVGAGILGNLAQTAAWMVNAR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="W" proteinId="random_seq_2825"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="823.87" scanNumber="11">
+
+  <peptideSpectrumMatch calculatedMassToCharge="821.897" chargeState="2" experimentalMassToCharge="823.87" id="test-spec-03_11_2_1" isDecoy="false">
+    <features>
+      <feature>5.99893656194668</feature>
+      <feature>0.35406166132094</feature>
+      <feature>0.15055311906788</feature>
+      <feature>1.5277</feature>
+      <feature>87.3</feature>
+      <feature>0.428571428571429</feature>
+      <feature>823.87</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.20109779060925</feature>
+      <feature>0.986499999999978</feature>
+      <feature>0.986499999999978</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GVASSWSK</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="I" proteinId="gi|16128655|ref|NP_415205.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1237.469" chargeState="3" experimentalMassToCharge="1235.3" id="test-spec-03_11_3_1" isDecoy="false">
+    <features>
+      <feature>4.39444915467244</feature>
+      <feature>0.560617806667064</feature>
+      <feature>0.150814002027551</feature>
+      <feature>1.6769</feature>
+      <feature>123.7</feature>
+      <feature>0.275</feature>
+      <feature>1235.3</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.29293367028004</feature>
+      <feature>-0.723000000000032</feature>
+      <feature>0.723000000000032</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ASRIAEMEAMK</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="A" proteinId="gi|16129380|ref|NP_415938.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="822.971" chargeState="2" experimentalMassToCharge="824.09" id="test-spec-05_11_2_1" isDecoy="false">
+    <features>
+      <feature>3.58351893845611</feature>
+      <feature>0.187222595830531</feature>
+      <feature>0.0266980497646268</feature>
+      <feature>1.487</feature>
+      <feature>197</feature>
+      <feature>0.642857142857143</feature>
+      <feature>824.09</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.18327745242649</feature>
+      <feature>0.559500000000014</feature>
+      <feature>0.559500000000014</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GVAIPHTK</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="F" proteinId="gi|16130315|ref|NP_416884.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1237.469" chargeState="3" experimentalMassToCharge="1235.63" id="test-spec-05_11_3_1" isDecoy="false">
+    <features>
+      <feature>4.34380542185368</feature>
+      <feature>0.656387969094923</feature>
+      <feature>0.0284216335540838</feature>
+      <feature>1.4496</feature>
+      <feature>145.3</feature>
+      <feature>0.275</feature>
+      <feature>1235.63</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.26492324974647</feature>
+      <feature>-0.612999999999981</feature>
+      <feature>0.612999999999981</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ASRIAEMEAMK</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="A" proteinId="gi|16129380|ref|NP_415938.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="823.017" chargeState="2" experimentalMassToCharge="823.87" id="test-spec-03_11_2_1" isDecoy="true">
+    <features>
+      <feature>0</feature>
+      <feature>0.161712668082095</feature>
+      <feature>0.104317055909413</feature>
+      <feature>1.413</feature>
+      <feature>370.5</feature>
+      <feature>0.833333333333333</feature>
+      <feature>823.87</feature>
+      <feature>7</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.22621372113247</feature>
+      <feature>0.426499999999976</feature>
+      <feature>0.426499999999976</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KVHGLIR</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="N" proteinId="random_seq_3561"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1237.431" chargeState="3" experimentalMassToCharge="1235.3" id="test-spec-03_11_3_1" isDecoy="true">
+    <features>
+      <feature>5.84932477994686</feature>
+      <feature>0.632985216329852</feature>
+      <feature>0.0375016953750169</feature>
+      <feature>1.4746</feature>
+      <feature>86.1</feature>
+      <feature>0.25</feature>
+      <feature>1235.3</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.31596085383987</feature>
+      <feature>-0.710333333333362</feature>
+      <feature>0.710333333333362</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ALDRHTAAILR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="A" proteinId="random_seq_3757"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="821.94" chargeState="2" experimentalMassToCharge="824.09" id="test-spec-05_11_2_1" isDecoy="true">
+    <features>
+      <feature>3.46573590279973</feature>
+      <feature>0.361382313689682</feature>
+      <feature>0.0101847299290581</feature>
+      <feature>1.4237</feature>
+      <feature>188.1</feature>
+      <feature>0.571428571428571</feature>
+      <feature>824.09</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.20492573927468</feature>
+      <feature>1.07499999999999</feature>
+      <feature>1.07499999999999</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GLGSNFVK</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="I" proteinId="random_seq_2696"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1234.442" chargeState="3" experimentalMassToCharge="1235.63" id="test-spec-05_11_3_1" isDecoy="true">
+    <features>
+      <feature>4.17438726989564</feature>
+      <feature>0.366456963111238</feature>
+      <feature>0.00235916499857026</feature>
+      <feature>1.3988</feature>
+      <feature>160.3</feature>
+      <feature>0.325</feature>
+      <feature>1235.63</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.29449767998291</feature>
+      <feature>0.396000000000034</feature>
+      <feature>0.396000000000034</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GKELAEQMSIK</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="A" proteinId="random_seq_1849"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1694.95" scanNumber="12">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1694.773" chargeState="2" experimentalMassToCharge="1694.95" id="test-spec-03_12_2_1" isDecoy="false">
+    <features>
+      <feature>4.15888308335967</feature>
+      <feature>0.186491783506709</feature>
+      <feature>0.0511834765566109</feature>
+      <feature>1.3266</feature>
+      <feature>80.5</feature>
+      <feature>0.285714285714286</feature>
+      <feature>1694.95</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.11250701162742</feature>
+      <feature>0.0885000000000673</feature>
+      <feature>0.0885000000000673</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RTFNAIEDASEQLEA</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="R" proteinId="gi|16131148|ref|NP_417726.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2541.649" chargeState="3" experimentalMassToCharge="2541.92" id="test-spec-03_12_3_1" isDecoy="false">
+    <features>
+      <feature>3.09104245335832</feature>
+      <feature>0.156317806195467</feature>
+      <feature>0.041364664604589</feature>
+      <feature>2.1661</feature>
+      <feature>196.4</feature>
+      <feature>0.2375</feature>
+      <feature>2541.92</feature>
+      <feature>21</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.76732914779405</feature>
+      <feature>0.0903333333333952</feature>
+      <feature>0.0903333333333952</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RQSPDGCEDGSYYYLVDMQEK</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="T" proteinId="gi|145698221|ref|NP_414785.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1469.622" chargeState="2" experimentalMassToCharge="1469.37" id="test-spec-05_12_2_1" isDecoy="false">
+    <features>
+      <feature>6.02102334934953</feature>
+      <feature>0.222819754414269</feature>
+      <feature>0.00215111589136861</feature>
+      <feature>1.1157</feature>
+      <feature>23.1</feature>
+      <feature>0.291666666666667</feature>
+      <feature>1469.37</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.19278721272859</feature>
+      <feature>-0.12600000000009</feature>
+      <feature>0.12600000000009</feature>
+    </features>
+    <peptide>
+      <peptideSequence>PVLQQQAQTDGKR</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="Y" proteinId="gi|16128086|ref|NP_414635.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2205.467" chargeState="3" experimentalMassToCharge="2203.55" id="test-spec-05_12_3_1" isDecoy="false">
+    <features>
+      <feature>3.80666248977032</feature>
+      <feature>0.328874024526198</feature>
+      <feature>0.105087132547087</feature>
+      <feature>1.7043</feature>
+      <feature>66</feature>
+      <feature>0.214285714285714</feature>
+      <feature>2203.55</feature>
+      <feature>22</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.90910013492555</feature>
+      <feature>-0.638999999999972</feature>
+      <feature>0.638999999999972</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EVFGDKSPAISATKAMTGHSLG</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="gi|16130258|ref|NP_416826.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1696.808" chargeState="2" experimentalMassToCharge="1694.95" id="test-spec-03_12_2_1" isDecoy="true">
+    <features>
+      <feature>3.61091791264422</feature>
+      <feature>0.744466657146937</feature>
+      <feature>0.0952448950449807</feature>
+      <feature>1.4006</feature>
+      <feature>90</feature>
+      <feature>0.346153846153846</feature>
+      <feature>1694.95</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.11822508306838</feature>
+      <feature>-0.928999999999974</feature>
+      <feature>0.928999999999974</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QEGLECRESVYRLG</peptideSequence>
+    </peptide>
+    <occurence flankC="H" flankN="R" proteinId="random_seq_3550"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2542.864" chargeState="3" experimentalMassToCharge="2541.92" id="test-spec-03_12_3_1" isDecoy="true">
+    <features>
+      <feature>0</feature>
+      <feature>0.213769793499398</feature>
+      <feature>0.0097231225113438</feature>
+      <feature>2.1598</feature>
+      <feature>281.9</feature>
+      <feature>0.23</feature>
+      <feature>2541.92</feature>
+      <feature>26</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.75951172211649</feature>
+      <feature>-0.314666666666653</feature>
+      <feature>0.314666666666653</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RIHAYAGTALAVSKVGGTSNSPLTIG</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="R" proteinId="random_seq_208"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1468.822" chargeState="2" experimentalMassToCharge="1469.37" id="test-spec-05_12_2_1" isDecoy="true">
+    <features>
+      <feature>2.484906649788</feature>
+      <feature>0.343208038704875</feature>
+      <feature>0.180424264979531</feature>
+      <feature>1.3435</feature>
+      <feature>67.7</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1469.37</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.19766031881881</feature>
+      <feature>0.274000000000001</feature>
+      <feature>0.274000000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LIPKLAEMSQPLK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="I" proteinId="random_seq_2045"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2202.655" chargeState="3" experimentalMassToCharge="2203.55" id="test-spec-05_12_3_1" isDecoy="true">
+    <features>
+      <feature>5.81413053182507</feature>
+      <feature>0.943979801167745</feature>
+      <feature>0.0723528483509548</feature>
+      <feature>1.2674</feature>
+      <feature>40.2</feature>
+      <feature>0.225</feature>
+      <feature>2203.55</feature>
+      <feature>21</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.91193433616143</feature>
+      <feature>0.298333333333327</feature>
+      <feature>0.298333333333327</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LIIGGSISVTEARLSLFALIK</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="F" proteinId="random_seq_3223"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1625.13" scanNumber="14">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1622.886" chargeState="2" experimentalMassToCharge="1625.13" id="test-spec-03_14_2_1" isDecoy="false">
+    <features>
+      <feature>5.91079664404053</feature>
+      <feature>0.160007990411506</feature>
+      <feature>0.108603009721667</feature>
+      <feature>1.5018</feature>
+      <feature>57.5</feature>
+      <feature>0.230769230769231</feature>
+      <feature>1625.13</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.14590851181679</feature>
+      <feature>1.12200000000007</feature>
+      <feature>1.12200000000007</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ELLSPAQRPLQITR</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="L" proteinId="gi|162135893|ref|NP_414690.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2436.821" chargeState="3" experimentalMassToCharge="2437.19" id="test-spec-03_14_3_1" isDecoy="false">
+    <features>
+      <feature>5.54907608489522</feature>
+      <feature>0.426779644789124</feature>
+      <feature>0.0783666044329552</feature>
+      <feature>2.0889</feature>
+      <feature>117.7</feature>
+      <feature>0.184782608695652</feature>
+      <feature>2437.19</feature>
+      <feature>24</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.80552505270952</feature>
+      <feature>0.123000000000047</feature>
+      <feature>0.123000000000047</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AFAALVYGLISIGGYVGDHLLGTK</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="G" proteinId="gi|16131368|ref|NP_417953.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1348.545" chargeState="2" experimentalMassToCharge="1346.07" id="test-spec-05_14_2_1" isDecoy="false">
+    <features>
+      <feature>2.19722457733622</feature>
+      <feature>0.129498554481109</feature>
+      <feature>0.047652277938391</feature>
+      <feature>1.0031</feature>
+      <feature>159.1</feature>
+      <feature>0.375</feature>
+      <feature>1346.07</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.30200756050201</feature>
+      <feature>-1.23750000000007</feature>
+      <feature>1.23750000000007</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LSLNNLGMTAADK</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="Q" proteinId="gi|16131205|ref|NP_417785.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2021.299" chargeState="3" experimentalMassToCharge="2018.6" id="test-spec-05_14_3_1" isDecoy="false">
+    <features>
+      <feature>0.693147180559945</feature>
+      <feature>0.741005342086632</feature>
+      <feature>0.140953852094999</feature>
+      <feature>1.5537</feature>
+      <feature>212.4</feature>
+      <feature>0.294117647058824</feature>
+      <feature>2018.6</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.01176747459618</feature>
+      <feature>-0.89966666666669</feature>
+      <feature>0.89966666666669</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VGPWALPSPPWGSVWLDR</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="F" proteinId="gi|90111302|ref|NP_416108.2|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1627.865" chargeState="2" experimentalMassToCharge="1625.13" id="test-spec-03_14_2_1" isDecoy="true">
+    <features>
+      <feature>3.55534806148941</feature>
+      <feature>0.542371676382767</feature>
+      <feature>0.078558225508318</feature>
+      <feature>1.4066</feature>
+      <feature>103.8</feature>
+      <feature>0.321428571428571</feature>
+      <feature>1625.13</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.15440473964588</feature>
+      <feature>-1.36749999999995</feature>
+      <feature>1.36749999999995</feature>
+    </features>
+    <peptide>
+      <peptideSequence>PVIGAGAFLRVQNER</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="A" proteinId="random_seq_550"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2438.731" chargeState="3" experimentalMassToCharge="2437.19" id="test-spec-03_14_3_1" isDecoy="true">
+    <features>
+      <feature>4.12713438504509</feature>
+      <feature>0.340707128001513</feature>
+      <feature>0.00883910001890714</feature>
+      <feature>2.1156</feature>
+      <feature>165.5</feature>
+      <feature>0.210526315789474</feature>
+      <feature>2437.19</feature>
+      <feature>20</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.80642406385787</feature>
+      <feature>-0.513666666666722</feature>
+      <feature>0.513666666666722</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EHVTYDEVPDFPSKMFLNLR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="I" proteinId="random_seq_4059"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1345.521" chargeState="2" experimentalMassToCharge="1346.07" id="test-spec-05_14_2_1" isDecoy="true">
+    <features>
+      <feature>5.18738580584075</feature>
+      <feature>0.296272285251216</feature>
+      <feature>0.0624527282549973</feature>
+      <feature>0.9255</feature>
+      <feature>73.3</feature>
+      <feature>0.416666666666667</feature>
+      <feature>1346.07</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.30392178559771</feature>
+      <feature>0.274499999999989</feature>
+      <feature>0.274499999999989</feature>
+    </features>
+    <peptide>
+      <peptideSequence>PLTATLTKGEGTR</peptideSequence>
+    </peptide>
+    <occurence flankC="M" flankN="A" proteinId="random_seq_94"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2021.128" chargeState="3" experimentalMassToCharge="2018.6" id="test-spec-05_14_3_1" isDecoy="true">
+    <features>
+      <feature>2.70805020110221</feature>
+      <feature>0.173430345606222</feature>
+      <feature>0.00326161951953841</feature>
+      <feature>1.5943</feature>
+      <feature>174.3</feature>
+      <feature>0.263888888888889</feature>
+      <feature>2018.6</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.00993630763146</feature>
+      <feature>-0.842666666666673</feature>
+      <feature>0.842666666666673</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DNNITYIAGGKGDNAINNR</peptideSequence>
+    </peptide>
+    <occurence flankC="F" flankN="V" proteinId="random_seq_2108"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="959.75" scanNumber="15">
+
+  <peptideSpectrumMatch calculatedMassToCharge="960.149" chargeState="2" experimentalMassToCharge="959.75" id="test-spec-03_15_2_1" isDecoy="false">
+    <features>
+      <feature>3.85014760171006</feature>
+      <feature>0.264762898896511</feature>
+      <feature>0.0128243364151505</feature>
+      <feature>1.3412</feature>
+      <feature>188.8</feature>
+      <feature>0.5625</feature>
+      <feature>959.75</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.50517182658118</feature>
+      <feature>-0.1995</feature>
+      <feature>0.1995</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LGKSSLLNK</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="G" proteinId="gi|90111464|ref|NP_417080.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1441.608" chargeState="3" experimentalMassToCharge="1439.12" id="test-spec-03_15_3_1" isDecoy="false">
+    <features>
+      <feature>4.88280192258637</feature>
+      <feature>0.412830982430092</feature>
+      <feature>0.0301286810195496</feature>
+      <feature>1.6164</feature>
+      <feature>185.7</feature>
+      <feature>0.3125</feature>
+      <feature>1439.12</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.20271134481169</feature>
+      <feature>-0.829333333333352</feature>
+      <feature>0.829333333333352</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DVGTWIAGVGYRF</peptideSequence>
+    </peptide>
+    <occurence flankC="-" flankN="V" proteinId="gi|16128782|ref|NP_415335.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1084.398" chargeState="2" experimentalMassToCharge="1085.73" id="test-spec-05_15_2_1" isDecoy="false">
+    <features>
+      <feature>4.51085950651685</feature>
+      <feature>0.884615384615385</feature>
+      <feature>0.0646582519647535</feature>
+      <feature>0.8398</feature>
+      <feature>137.2</feature>
+      <feature>0.388888888888889</feature>
+      <feature>1085.73</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.36999018950572</feature>
+      <feature>0.666000000000054</feature>
+      <feature>0.666000000000054</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LKARGVLMVP</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="R" proteinId="gi|49176374|ref|YP_026231.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1630.948" chargeState="3" experimentalMassToCharge="1628.09" id="test-spec-05_15_3_1" isDecoy="false">
+    <features>
+      <feature>4.85981240436167</feature>
+      <feature>0.336399660345316</feature>
+      <feature>0.173931502971979</feature>
+      <feature>1.4132</feature>
+      <feature>146.1</feature>
+      <feature>0.25</feature>
+      <feature>1628.09</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.16314393714521</feature>
+      <feature>-0.952666666666725</feature>
+      <feature>0.952666666666725</feature>
+    </features>
+    <peptide>
+      <peptideSequence>YLFTVLRWAYAVK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="A" proteinId="gi|16129593|ref|NP_416152.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="961.051" chargeState="2" experimentalMassToCharge="959.75" id="test-spec-03_15_2_1" isDecoy="true">
+    <features>
+      <feature>4.88280192258637</feature>
+      <feature>0.344336438504118</feature>
+      <feature>0.00337518563521001</feature>
+      <feature>1.4814</feature>
+      <feature>159.8</feature>
+      <feature>0.5625</feature>
+      <feature>959.75</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.51642703610407</feature>
+      <feature>-0.650500000000022</feature>
+      <feature>0.650500000000022</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AKATDEGLR</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="L" proteinId="random_seq_3177"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1438.647" chargeState="3" experimentalMassToCharge="1439.12" id="test-spec-03_15_3_1" isDecoy="true">
+    <features>
+      <feature>4.7361984483945</feature>
+      <feature>0.165890841382521</feature>
+      <feature>0.0724426859071336</feature>
+      <feature>1.7186</feature>
+      <feature>187.5</feature>
+      <feature>0.3125</feature>
+      <feature>1439.12</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.21203892861176</feature>
+      <feature>0.157666666666652</feature>
+      <feature>0.157666666666652</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GTTIVLIDAHIER</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="V" proteinId="random_seq_297"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1084.292" chargeState="2" experimentalMassToCharge="1085.73" id="test-spec-05_15_2_1" isDecoy="true">
+    <features>
+      <feature>3.76120011569356</feature>
+      <feature>0.279785809906292</feature>
+      <feature>0.0851611574503141</feature>
+      <feature>0.9711</feature>
+      <feature>160.5</feature>
+      <feature>0.388888888888889</feature>
+      <feature>1085.73</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.37466766539786</feature>
+      <feature>0.719000000000051</feature>
+      <feature>0.719000000000051</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ARRAAVLVLD</peptideSequence>
+    </peptide>
+    <occurence flankC="F" flankN="R" proteinId="random_seq_3437"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1630.817" chargeState="3" experimentalMassToCharge="1628.09" id="test-spec-05_15_3_1" isDecoy="true">
+    <features>
+      <feature>3.8286413964891</feature>
+      <feature>0.354290320216897</feature>
+      <feature>0.134608338829047</feature>
+      <feature>1.3647</feature>
+      <feature>184</feature>
+      <feature>0.25</feature>
+      <feature>1628.09</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.16951837745593</feature>
+      <feature>-0.90900000000003</feature>
+      <feature>0.90900000000003</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RVIAAITDVNLGTEAS</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="K" proteinId="random_seq_2433"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1481.59" scanNumber="16">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1481.715" chargeState="2" experimentalMassToCharge="1481.59" id="test-spec-03_16_2_1" isDecoy="false">
+    <features>
+      <feature>6.00388706710654</feature>
+      <feature>0.621235587678541</feature>
+      <feature>0.0551540182412664</feature>
+      <feature>1.1622</feature>
+      <feature>21.4</feature>
+      <feature>0.291666666666667</feature>
+      <feature>1481.59</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.17460956202038</feature>
+      <feature>-0.0625</feature>
+      <feature>0.0625</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SLRPLGQILLENQ</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="gi|16128552|ref|NP_415101.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2218.917" chargeState="3" experimentalMassToCharge="2221.88" id="test-spec-03_16_3_1" isDecoy="false">
+    <features>
+      <feature>4.30406509320417</feature>
+      <feature>0.458259325044405</feature>
+      <feature>0.0545293072824155</feature>
+      <feature>1.126</feature>
+      <feature>56.1</feature>
+      <feature>0.2</feature>
+      <feature>2221.88</feature>
+      <feature>21</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.91865027812686</feature>
+      <feature>0.987666666666731</feature>
+      <feature>0.987666666666731</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KLMLLRSALGMGIVMVLMGLA</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="R" proteinId="gi|16129016|ref|NP_415571.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1274.398" chargeState="2" experimentalMassToCharge="1276.33" id="test-spec-05_16_2_1" isDecoy="false">
+    <features>
+      <feature>1.79175946922805</feature>
+      <feature>0.308120723492282</feature>
+      <feature>0.100567548931205</feature>
+      <feature>1.8853</feature>
+      <feature>217.8</feature>
+      <feature>0.55</feature>
+      <feature>1276.33</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.31217467785745</feature>
+      <feature>0.966000000000008</feature>
+      <feature>0.966000000000008</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VTEHAFLDVDK</peptideSequence>
+    </peptide>
+    <occurence flankC="M" flankN="E" proteinId="gi|16131887|ref|NP_418485.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1914.159" chargeState="3" experimentalMassToCharge="1913.99" id="test-spec-05_16_3_1" isDecoy="false">
+    <features>
+      <feature>5.62040086571715</feature>
+      <feature>0.482045096037858</feature>
+      <feature>0.103182703906468</feature>
+      <feature>2.1554</feature>
+      <feature>97.5</feature>
+      <feature>0.234375</feature>
+      <feature>1913.99</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.01784725986073</feature>
+      <feature>-0.0563333333333655</feature>
+      <feature>0.0563333333333655</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ILCAKAENARLVVNIDN</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="K" proteinId="gi|27371164|gb|AAH41070.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1479.61" chargeState="2" experimentalMassToCharge="1481.59" id="test-spec-03_16_2_1" isDecoy="true">
+    <features>
+      <feature>5.47227067367148</feature>
+      <feature>0.851840234211627</feature>
+      <feature>0.0423462986198243</feature>
+      <feature>0.9564</feature>
+      <feature>30.3</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1481.59</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.18183801150347</feature>
+      <feature>0.990000000000009</feature>
+      <feature>0.990000000000009</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NDLTPTLTGLDYR</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="V" proteinId="random_seq_4024"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2224.481" chargeState="3" experimentalMassToCharge="2221.88" id="test-spec-03_16_3_1" isDecoy="true">
+    <features>
+      <feature>1.79175946922805</feature>
+      <feature>0.40984098409841</feature>
+      <feature>0.0139513951395139</feature>
+      <feature>1.3332</feature>
+      <feature>88.6</feature>
+      <feature>0.2</feature>
+      <feature>2221.88</feature>
+      <feature>21</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.91233856711755</feature>
+      <feature>-0.867000000000038</feature>
+      <feature>0.867000000000038</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TEPALPIPDGACSMSADLHIK</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="V" proteinId="random_seq_1977"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1274.506" chargeState="2" experimentalMassToCharge="1276.33" id="test-spec-05_16_2_1" isDecoy="true">
+    <features>
+      <feature>2.484906649788</feature>
+      <feature>0.641129252443619</feature>
+      <feature>0.0932124720144159</feature>
+      <feature>1.8313</feature>
+      <feature>187.2</feature>
+      <feature>0.5</feature>
+      <feature>1276.33</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.31596085383987</feature>
+      <feature>0.911999999999921</feature>
+      <feature>0.911999999999921</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AEAADLNKLVMV</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="K" proteinId="random_seq_2293"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1912.214" chargeState="3" experimentalMassToCharge="1913.99" id="test-spec-05_16_3_1" isDecoy="true">
+    <features>
+      <feature>1.6094379124341</feature>
+      <feature>0.103368785036936</feature>
+      <feature>0.00466285953790545</feature>
+      <feature>1.9087</feature>
+      <feature>207.9</feature>
+      <feature>0.316666666666667</feature>
+      <feature>1913.99</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.04061909715797</feature>
+      <feature>0.592000000000022</feature>
+      <feature>0.592000000000022</feature>
+    </features>
+    <peptide>
+      <peptideSequence>PTVLRSFPTLINAYYR</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="K" proteinId="random_seq_2549"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1957.11" scanNumber="17">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1958.213" chargeState="2" experimentalMassToCharge="1957.11" id="test-spec-03_17_2_1" isDecoy="false">
+    <features>
+      <feature>2.07944154167984</feature>
+      <feature>0.257835132999737</feature>
+      <feature>0.156636818540953</feature>
+      <feature>1.5188</feature>
+      <feature>79</feature>
+      <feature>0.3</feature>
+      <feature>1957.11</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.02557583353109</feature>
+      <feature>-0.551500000000033</feature>
+      <feature>0.551500000000033</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NTWTLLPRERVLCIAD</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="R" proteinId="gi|16128980|ref|NP_415534.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2936.532" chargeState="3" experimentalMassToCharge="2935.16" id="test-spec-03_17_3_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.258613445378151</feature>
+      <feature>0.0642331932773108</feature>
+      <feature>1.904</feature>
+      <feature>164</feature>
+      <feature>0.240384615384615</feature>
+      <feature>2935.16</feature>
+      <feature>27</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.56464913257253</feature>
+      <feature>-0.457333333333433</feature>
+      <feature>0.457333333333433</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GIMLLWTGGKWIEGLPAELKQLSAPLL</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="R" proteinId="gi|16129473|ref|NP_416031.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="929.007" chargeState="2" experimentalMassToCharge="930.55" id="test-spec-05_17_2_1" isDecoy="false">
+    <features>
+      <feature>4.02535169073515</feature>
+      <feature>0.460315441363521</feature>
+      <feature>0.0245484609514118</feature>
+      <feature>1.5724</feature>
+      <feature>240.2</feature>
+      <feature>0.642857142857143</feature>
+      <feature>930.55</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.5089623844663</feature>
+      <feature>0.771500000000003</feature>
+      <feature>0.771500000000003</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FADVASYR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="T" proteinId="gi|16131893|ref|NP_418491.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1394.474" chargeState="3" experimentalMassToCharge="1395.32" id="test-spec-05_17_3_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.187354061693499</feature>
+      <feature>0.0425832616443406</feature>
+      <feature>1.6274</feature>
+      <feature>515</feature>
+      <feature>0.403846153846154</feature>
+      <feature>1395.32</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.21542741102474</feature>
+      <feature>0.282000000000001</feature>
+      <feature>0.282000000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VGGPGNIASCGNCM</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="R" proteinId="gi|16130354|ref|NP_416924.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1956.136" chargeState="2" experimentalMassToCharge="1957.11" id="test-spec-03_17_2_1" isDecoy="true">
+    <features>
+      <feature>2.99573227355399</feature>
+      <feature>0.833360232408005</feature>
+      <feature>0.00225952227243394</feature>
+      <feature>1.2392</feature>
+      <feature>59.2</feature>
+      <feature>0.25</feature>
+      <feature>1957.11</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.03729565196244</feature>
+      <feature>0.486999999999966</feature>
+      <feature>0.486999999999966</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TTARSIGASTPIADYGNFL</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="R" proteinId="random_seq_2996"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2937.107" chargeState="3" experimentalMassToCharge="2935.16" id="test-spec-03_17_3_1" isDecoy="true">
+    <features>
+      <feature>1.6094379124341</feature>
+      <feature>0.447961704756022</feature>
+      <feature>0.00313979822935968</feature>
+      <feature>1.9428</feature>
+      <feature>120.9</feature>
+      <feature>0.175925925925926</feature>
+      <feature>2935.16</feature>
+      <feature>28</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.55833513474741</feature>
+      <feature>-0.649000000000039</feature>
+      <feature>0.649000000000039</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GSVEPVVDITDASAYADNTSPASDVRWI</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="random_seq_3832"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="929.053" chargeState="2" experimentalMassToCharge="930.55" id="test-spec-05_17_2_1" isDecoy="true">
+    <features>
+      <feature>3.43398720448515</feature>
+      <feature>0.421810699588477</feature>
+      <feature>0.0212834362139917</feature>
+      <feature>1.5552</feature>
+      <feature>268.3</feature>
+      <feature>0.642857142857143</feature>
+      <feature>930.55</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.51819265121735</feature>
+      <feature>0.748499999999979</feature>
+      <feature>0.748499999999979</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FSPATHLR</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="A" proteinId="random_seq_237"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1392.564" chargeState="3" experimentalMassToCharge="1395.32" id="test-spec-05_17_3_1" isDecoy="true">
+    <features>
+      <feature>4.98360662170834</feature>
+      <feature>0.561468234117058</feature>
+      <feature>0.00287643821910952</feature>
+      <feature>1.5992</feature>
+      <feature>225.4</feature>
+      <feature>0.325</feature>
+      <feature>1395.32</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.20492573927468</feature>
+      <feature>0.918666666666619</feature>
+      <feature>0.918666666666619</feature>
+    </features>
+    <peptide>
+      <peptideSequence>WEGNGRWMSLR</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="I" proteinId="random_seq_1345"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1003.85" scanNumber="18">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1004.158" chargeState="1" experimentalMassToCharge="1003.85" id="test-spec-03_18_1_1" isDecoy="false">
+    <features>
+      <feature>5.93753620508243</feature>
+      <feature>0.491217193635049</feature>
+      <feature>0.0243852035544534</feature>
+      <feature>0.4839</feature>
+      <feature>47.7</feature>
+      <feature>0.3125</feature>
+      <feature>1003.85</feature>
+      <feature>9</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.48151189230097</feature>
+      <feature>-0.307999999999993</feature>
+      <feature>0.307999999999993</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VVTSDTRII</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="K" proteinId="gi|90111535|ref|NP_417555.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1305.383" chargeState="2" experimentalMassToCharge="1302.41" id="test-spec-05_18_2_1" isDecoy="false">
+    <features>
+      <feature>4.15888308335967</feature>
+      <feature>0.124139756484913</feature>
+      <feature>0.0318510675842598</feature>
+      <feature>1.1334</feature>
+      <feature>137.8</feature>
+      <feature>0.409090909090909</feature>
+      <feature>1302.41</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.32945585286634</feature>
+      <feature>-1.48649999999998</feature>
+      <feature>1.48649999999998</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VDGAVQLNESLC</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="gi|16130631|ref|NP_417204.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1952.144" chargeState="3" experimentalMassToCharge="1953.11" id="test-spec-05_18_3_1" isDecoy="false">
+    <features>
+      <feature>4.85981240436167</feature>
+      <feature>0.188850019434727</feature>
+      <feature>0.0194902548725637</feature>
+      <feature>1.8009</feature>
+      <feature>185.8</feature>
+      <feature>0.21875</feature>
+      <feature>1953.11</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.02232262263735</feature>
+      <feature>0.321999999999965</feature>
+      <feature>0.321999999999965</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EAPYIKHTLSDDKYATV</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="gi|16129060|ref|NP_415615.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1006.045" chargeState="1" experimentalMassToCharge="1003.85" id="test-spec-03_18_1_1" isDecoy="true">
+    <features>
+      <feature>5.24174701505964</feature>
+      <feature>0.24968658587547</feature>
+      <feature>0.162557459256164</feature>
+      <feature>0.4786</feature>
+      <feature>56.5</feature>
+      <feature>0.25</feature>
+      <feature>1003.85</feature>
+      <feature>9</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.48584864349625</feature>
+      <feature>-2.19499999999994</feature>
+      <feature>2.19499999999994</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EADSLSLRD</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="R" proteinId="random_seq_2700"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1300.439" chargeState="2" experimentalMassToCharge="1302.41" id="test-spec-05_18_2_1" isDecoy="true">
+    <features>
+      <feature>4.55387689160054</feature>
+      <feature>0.79735001840265</feature>
+      <feature>0.14861980125138</feature>
+      <feature>1.3585</feature>
+      <feature>125.5</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1302.41</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.32465071815359</feature>
+      <feature>0.985500000000002</feature>
+      <feature>0.985500000000002</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LAPNGTAWADKGV</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="R" proteinId="random_seq_776"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1953.351" chargeState="3" experimentalMassToCharge="1953.11" id="test-spec-05_18_3_1" isDecoy="true">
+    <features>
+      <feature>3.04452243772342</feature>
+      <feature>0.220968027894332</feature>
+      <feature>0.0873470835057029</feature>
+      <feature>1.6921</feature>
+      <feature>258.7</feature>
+      <feature>0.25</feature>
+      <feature>1953.11</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.01602720232985</feature>
+      <feature>-0.0803333333334043</feature>
+      <feature>0.0803333333334043</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NISGVLMMLGTKFYGHLA</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="R" proteinId="random_seq_1040"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="950.43" scanNumber="20">
+
+  <peptideSpectrumMatch calculatedMassToCharge="948.024" chargeState="2" experimentalMassToCharge="950.43" id="test-spec-03_20_2_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.0847351591825387</feature>
+      <feature>0.0622132628944808</feature>
+      <feature>1.4386</feature>
+      <feature>544.5</feature>
+      <feature>0.857142857142857</feature>
+      <feature>950.43</feature>
+      <feature>8</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.31811796414961</feature>
+      <feature>1.20299999999997</feature>
+      <feature>1.20299999999997</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EIDACIAR</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="D" proteinId="gi|16129303|ref|NP_415858.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1422.623" chargeState="3" experimentalMassToCharge="1425.14" id="test-spec-03_20_3_1" isDecoy="false">
+    <features>
+      <feature>1.09861228866811</feature>
+      <feature>0.46429833863556</feature>
+      <feature>0.0239778484741369</feature>
+      <feature>1.6974</feature>
+      <feature>329.5</feature>
+      <feature>0.346153846153846</feature>
+      <feature>1425.14</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.19319421314121</feature>
+      <feature>0.839000000000018</feature>
+      <feature>0.839000000000018</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SSEALQVGSIMATK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="P" proteinId="gi|16130325|ref|NP_416894.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1703.905" chargeState="2" experimentalMassToCharge="1701.45" id="test-spec-05_20_2_1" isDecoy="false">
+    <features>
+      <feature>5.20948615284142</feature>
+      <feature>0.215633672525439</feature>
+      <feature>0.0197964847363551</feature>
+      <feature>1.081</feature>
+      <feature>60.2</feature>
+      <feature>0.321428571428571</feature>
+      <feature>1701.45</feature>
+      <feature>15</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.14184737553088</feature>
+      <feature>-1.22749999999996</feature>
+      <feature>1.22749999999996</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IQTIDEIQSTETLIV</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="K" proteinId="gi|16131611|ref|NP_418199.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2551.786" chargeState="3" experimentalMassToCharge="2551.67" id="test-spec-05_20_3_1" isDecoy="false">
+    <features>
+      <feature>5.68017260901707</feature>
+      <feature>0.365347373517308</feature>
+      <feature>0.126180101670298</feature>
+      <feature>1.6524</feature>
+      <feature>96.5</feature>
+      <feature>0.170454545454545</feature>
+      <feature>2551.67</feature>
+      <feature>23</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.73729211254422</feature>
+      <feature>-0.0386666666666618</feature>
+      <feature>0.0386666666666618</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VLNQFDDAGIVTRHNFEGGKSVF</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="R" proteinId="gi|16128659|ref|NP_415209.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="952.13" chargeState="2" experimentalMassToCharge="950.43" id="test-spec-03_20_2_1" isDecoy="true">
+    <features>
+      <feature>1.38629436111989</feature>
+      <feature>0.370003588087549</feature>
+      <feature>0.035593828489415</feature>
+      <feature>1.3935</feature>
+      <feature>463.6</feature>
+      <feature>0.833333333333333</feature>
+      <feature>950.43</feature>
+      <feature>7</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.34285875167633</feature>
+      <feature>-0.850000000000023</feature>
+      <feature>0.850000000000023</feature>
+    </features>
+    <peptide>
+      <peptideSequence>FLPKQYR</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="L" proteinId="random_seq_2555"/>
+    <occurence flankC="D" flankN="L" proteinId="random_seq_3508"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1422.602" chargeState="3" experimentalMassToCharge="1425.14" id="test-spec-03_20_3_1" isDecoy="true">
+    <features>
+      <feature>5.70711026474888</feature>
+      <feature>0.531406895012831</feature>
+      <feature>0.058629923016847</feature>
+      <feature>1.7926</feature>
+      <feature>171.1</feature>
+      <feature>0.270833333333333</feature>
+      <feature>1425.14</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.20562929224606</feature>
+      <feature>0.846000000000004</feature>
+      <feature>0.846000000000004</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SNVVFKSDGKVLE</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="R" proteinId="random_seq_1743"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1699.815" chargeState="2" experimentalMassToCharge="1701.45" id="test-spec-05_20_2_1" isDecoy="true">
+    <features>
+      <feature>3.91202300542815</feature>
+      <feature>0.628617610837439</feature>
+      <feature>0.135237068965517</feature>
+      <feature>1.2992</feature>
+      <feature>91.9</feature>
+      <feature>0.3</feature>
+      <feature>1701.45</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.14974074984725</feature>
+      <feature>0.817499999999995</feature>
+      <feature>0.817499999999995</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GCVHGSNDSVVRQGVK</peptideSequence>
+    </peptide>
+    <occurence flankC="W" flankN="V" proteinId="random_seq_1684"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2552.887" chargeState="3" experimentalMassToCharge="2551.67" id="test-spec-05_20_3_1" isDecoy="true">
+    <features>
+      <feature>5.91620206260743</feature>
+      <feature>0.204480602270658</feature>
+      <feature>0.0117782769716472</feature>
+      <feature>1.6471</feature>
+      <feature>87.5</feature>
+      <feature>0.19047619047619</feature>
+      <feature>2551.67</feature>
+      <feature>22</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>8.72874987347853</feature>
+      <feature>-0.405666666666699</feature>
+      <feature>0.405666666666699</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DVWHLQQAILGVSMLRPHEHGQ</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="R" proteinId="random_seq_1064"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1187.65" scanNumber="21">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1187.429" chargeState="2" experimentalMassToCharge="1187.65" id="test-spec-03_21_2_1" isDecoy="false">
+    <features>
+      <feature>3.29583686600433</feature>
+      <feature>0.427715119488919</feature>
+      <feature>0.0936193706128244</feature>
+      <feature>1.2679</feature>
+      <feature>308.8</feature>
+      <feature>0.5</feature>
+      <feature>1187.65</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.37169362233394</feature>
+      <feature>0.110500000000002</feature>
+      <feature>0.110500000000002</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SGPLIDGVLGMK</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="T" proteinId="gi|16130093|ref|NP_416660.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1780.05" chargeState="3" experimentalMassToCharge="1780.97" id="test-spec-03_21_3_1" isDecoy="false">
+    <features>
+      <feature>1.94591014905531</feature>
+      <feature>0.432464861158725</feature>
+      <feature>0.0115415381099303</feature>
+      <feature>1.7502</feature>
+      <feature>398.8</feature>
+      <feature>0.283333333333333</feature>
+      <feature>1780.97</feature>
+      <feature>16</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.07726601775084</feature>
+      <feature>0.306666666666691</feature>
+      <feature>0.306666666666691</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KPEAVKPLADVQEQVK</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="H" proteinId="gi|16128426|ref|NP_414975.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1050.268" chargeState="2" experimentalMassToCharge="1047.85" id="test-spec-05_21_2_1" isDecoy="false">
+    <features>
+      <feature>2.19722457733622</feature>
+      <feature>0.681044126786824</feature>
+      <feature>0.0150403977625855</feature>
+      <feature>0.8045</feature>
+      <feature>110.4</feature>
+      <feature>0.444444444444444</feature>
+      <feature>1047.85</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.42706335548747</feature>
+      <feature>-1.20900000000006</feature>
+      <feature>1.20900000000006</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SVLTAFITVV</peptideSequence>
+    </peptide>
+    <occurence flankC="C" flankN="K" proteinId="gi|90111190|ref|NP_415458.2|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1570.807" chargeState="3" experimentalMassToCharge="1571.27" id="test-spec-05_21_3_1" isDecoy="false">
+    <features>
+      <feature>5.91079664404053</feature>
+      <feature>0.294945617402431</feature>
+      <feature>0.0720125115518591</feature>
+      <feature>1.4067</feature>
+      <feature>83.3</feature>
+      <feature>0.25</feature>
+      <feature>1571.27</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.18563775933581</feature>
+      <feature>0.154333333333322</feature>
+      <feature>0.154333333333322</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AKQYATTYINIVGK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="K" proteinId="gi|16130458|ref|NP_417028.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1188.394" chargeState="2" experimentalMassToCharge="1187.65" id="test-spec-03_21_2_1" isDecoy="true">
+    <features>
+      <feature>1.94591014905531</feature>
+      <feature>0.131446964593158</feature>
+      <feature>0.0284452429074033</feature>
+      <feature>1.3359</feature>
+      <feature>361.8</feature>
+      <feature>0.454545454545455</feature>
+      <feature>1187.65</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.37771748138431</feature>
+      <feature>-0.371999999999957</feature>
+      <feature>0.371999999999957</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IIVASASDVKGK</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="L" proteinId="random_seq_2771"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1781.897" chargeState="3" experimentalMassToCharge="1780.97" id="test-spec-03_21_3_1" isDecoy="true">
+    <features>
+      <feature>3.76120011569356</feature>
+      <feature>0.427458978399926</feature>
+      <feature>0.0742096968573282</feature>
+      <feature>2.1574</feature>
+      <feature>319.2</feature>
+      <feature>0.28125</feature>
+      <feature>1780.97</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.09616332691378</feature>
+      <feature>-0.308999999999969</feature>
+      <feature>0.308999999999969</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IESAQRAHPSGESALDL</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="R" proteinId="random_seq_639"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1049.197" chargeState="2" experimentalMassToCharge="1047.85" id="test-spec-05_21_2_1" isDecoy="true">
+    <features>
+      <feature>1.09861228866811</feature>
+      <feature>0.0942732346517835</feature>
+      <feature>0.0360349429750061</feature>
+      <feature>0.8242</feature>
+      <feature>144.9</feature>
+      <feature>0.444444444444444</feature>
+      <feature>1047.85</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.43059976811053</feature>
+      <feature>-0.67349999999999</feature>
+      <feature>0.67349999999999</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VLTSAATWLS</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="K" proteinId="random_seq_3567"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1573.678" chargeState="3" experimentalMassToCharge="1571.27" id="test-spec-05_21_3_1" isDecoy="true">
+    <features>
+      <feature>4.63472898822964</feature>
+      <feature>0.807450845119006</feature>
+      <feature>0.106036564332528</feature>
+      <feature>1.4495</feature>
+      <feature>114.5</feature>
+      <feature>0.269230769230769</feature>
+      <feature>1571.27</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.20562929224606</feature>
+      <feature>-0.80266666666671</feature>
+      <feature>0.80266666666671</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EEYTGVKFGNETAK</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="L" proteinId="random_seq_3552"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="2107.55" scanNumber="22">
+
+  <peptideSpectrumMatch calculatedMassToCharge="2108.373" chargeState="2" experimentalMassToCharge="2107.55" id="test-spec-03_22_2_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.148327581629944</feature>
+      <feature>0.0335147332094505</feature>
+      <feature>1.5068</feature>
+      <feature>91.8</feature>
+      <feature>0.305555555555556</feature>
+      <feature>2107.55</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.97081334141145</feature>
+      <feature>-0.411499999999933</feature>
+      <feature>0.411499999999933</feature>
+    </features>
+    <peptide>
+      <peptideSequence>SASFLERQLTAGVFQPLDK</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="P" proteinId="gi|16128822|ref|NP_415375.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="3161.536" chargeState="3" experimentalMassToCharge="3160.82" id="test-spec-03_22_3_1" isDecoy="false">
+    <features>
+      <feature>6.16751649088834</feature>
+      <feature>0.577760572921707</feature>
+      <feature>0.0025162102003292</feature>
+      <feature>2.0666</feature>
+      <feature>40.6</feature>
+      <feature>0.151785714285714</feature>
+      <feature>3160.82</feature>
+      <feature>29</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.45062594714412</feature>
+      <feature>-0.238666666666631</feature>
+      <feature>0.238666666666631</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QFRPGQEEIIDTVLSGRDCLVVMPTGGGK</peptideSequence>
+    </peptide>
+    <occurence flankC="S" flankN="Q" proteinId="gi|162135918|ref|YP_026263.3|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1955.163" chargeState="2" experimentalMassToCharge="1957.89" id="test-spec-05_22_2_1" isDecoy="false">
+    <features>
+      <feature>4.88280192258637</feature>
+      <feature>0.417331881954523</feature>
+      <feature>0.033684083212385</feature>
+      <feature>1.6536</feature>
+      <feature>58</feature>
+      <feature>0.21875</feature>
+      <feature>1957.89</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.03169206054852</feature>
+      <feature>1.36350000000004</feature>
+      <feature>1.36350000000004</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AIELEDDGVMTYEKVEI</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="K" proteinId="gi|90111532|ref|NP_417519.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2937.276" chargeState="3" experimentalMassToCharge="2936.33" id="test-spec-05_22_3_1" isDecoy="false">
+    <features>
+      <feature>2.19722457733622</feature>
+      <feature>0.328434974283615</feature>
+      <feature>0.00435953955424939</feature>
+      <feature>2.0415</feature>
+      <feature>160.3</feature>
+      <feature>0.2</feature>
+      <feature>2936.33</feature>
+      <feature>26</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>8.56598335558567</feature>
+      <feature>-0.315333333333304</feature>
+      <feature>0.315333333333304</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ISELTGLDLGNFDDRLLLYVALQLDE</peptideSequence>
+    </peptide>
+    <occurence flankC="E" flankN="R" proteinId="gi|90111093|ref|NP_414704.4|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2106.426" chargeState="2" experimentalMassToCharge="2107.55" id="test-spec-03_22_2_1" isDecoy="true">
+    <features>
+      <feature>6.06842558824411</feature>
+      <feature>0.686463279776231</feature>
+      <feature>0.0678462238990438</feature>
+      <feature>1.5373</feature>
+      <feature>22.6</feature>
+      <feature>0.21875</feature>
+      <feature>2107.55</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.95531908176395</feature>
+      <feature>0.562000000000126</feature>
+      <feature>0.562000000000126</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RYHYMENATRPLKAELI</peptideSequence>
+    </peptide>
+    <occurence flankC="K" flankN="R" proteinId="random_seq_214"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="3159.538" chargeState="3" experimentalMassToCharge="3160.82" id="test-spec-03_22_3_1" isDecoy="true">
+    <features>
+      <feature>3.68887945411394</feature>
+      <feature>0.470916994411095</feature>
+      <feature>0.0439350031049472</feature>
+      <feature>1.9324</feature>
+      <feature>77.8</feature>
+      <feature>0.151785714285714</feature>
+      <feature>3160.82</feature>
+      <feature>29</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>8.47010158388239</feature>
+      <feature>0.427333333333384</feature>
+      <feature>0.427333333333384</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IASTAAPSPANCTHITRPTTVFLFDDILK</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="P" proteinId="random_seq_2506"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1956.202" chargeState="2" experimentalMassToCharge="1957.89" id="test-spec-05_22_2_1" isDecoy="true">
+    <features>
+      <feature>1.94591014905531</feature>
+      <feature>0.320231619582383</feature>
+      <feature>0.0827630578464058</feature>
+      <feature>1.7097</feature>
+      <feature>103.6</feature>
+      <feature>0.3125</feature>
+      <feature>1957.89</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.04723303410603</feature>
+      <feature>0.844000000000051</feature>
+      <feature>0.844000000000051</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EDYVIEMARGGLVYSPR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="A" proteinId="random_seq_32"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2938.34" chargeState="3" experimentalMassToCharge="2936.33" id="test-spec-05_22_3_1" isDecoy="true">
+    <features>
+      <feature>2.19722457733622</feature>
+      <feature>0.481128246753247</feature>
+      <feature>0.049512987012987</feature>
+      <feature>2.464</feature>
+      <feature>155</feature>
+      <feature>0.21</feature>
+      <feature>2936.33</feature>
+      <feature>26</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>8.53405030848266</feature>
+      <feature>-0.670000000000073</feature>
+      <feature>0.670000000000073</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QAWLMERNQPANQQQALLEAALAITK</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="A" proteinId="random_seq_2355"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="818.41" scanNumber="23">
+
+  <peptideSpectrumMatch calculatedMassToCharge="817.973" chargeState="2" experimentalMassToCharge="818.41" id="test-spec-03_23_2_1" isDecoy="false">
+    <features>
+      <feature>5.12396397940326</feature>
+      <feature>0.655711927038289</feature>
+      <feature>0.0184762953062348</feature>
+      <feature>1.2719</feature>
+      <feature>201.3</feature>
+      <feature>0.5625</feature>
+      <feature>818.41</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.58335115653074</feature>
+      <feature>0.218500000000006</feature>
+      <feature>0.218500000000006</feature>
+    </features>
+    <peptide>
+      <peptideSequence>ATGGPGMVK</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="L" proteinId="gi|16129202|ref|NP_415757.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1228.38" chargeState="3" experimentalMassToCharge="1227.11" id="test-spec-03_23_3_1" isDecoy="false">
+    <features>
+      <feature>4.62497281328427</feature>
+      <feature>0.760494003426613</feature>
+      <feature>0.067390062821245</feature>
+      <feature>1.4008</feature>
+      <feature>193.4</feature>
+      <feature>0.40625</feature>
+      <feature>1227.11</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.24898399556839</feature>
+      <feature>-0.423333333333403</feature>
+      <feature>0.423333333333403</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QRIEIEHFR</peptideSequence>
+    </peptide>
+    <occurence flankC="N" flankN="G" proteinId="gi|16130950|ref|NP_417526.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1076.265" chargeState="2" experimentalMassToCharge="1077.93" id="test-spec-05_23_2_1" isDecoy="false">
+    <features>
+      <feature>4.43081679884331</feature>
+      <feature>0.820075617169546</feature>
+      <feature>0.0319519608569945</feature>
+      <feature>1.3489</feature>
+      <feature>163.8</feature>
+      <feature>0.5</feature>
+      <feature>1077.93</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.36074117264371</feature>
+      <feature>0.832499999999982</feature>
+      <feature>0.832499999999982</feature>
+    </features>
+    <peptide>
+      <peptideSequence>PVVNYLKDK</peptideSequence>
+    </peptide>
+    <occurence flankC="L" flankN="L" proteinId="gi|16130827|ref|NP_417401.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1618.846" chargeState="3" experimentalMassToCharge="1616.39" id="test-spec-05_23_3_1" isDecoy="false">
+    <features>
+      <feature>3.09104245335832</feature>
+      <feature>0.705017301038062</feature>
+      <feature>0.0417928200692041</feature>
+      <feature>1.8496</feature>
+      <feature>287.6</feature>
+      <feature>0.28125</feature>
+      <feature>1616.39</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.17440226517055</feature>
+      <feature>-0.818666666666635</feature>
+      <feature>0.818666666666635</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GGSLTIIATALIDTGSK</peptideSequence>
+    </peptide>
+    <occurence flankC="M" flankN="E" proteinId="gi|16131639|ref|NP_418230.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="815.937" chargeState="2" experimentalMassToCharge="818.41" id="test-spec-03_23_2_1" isDecoy="true">
+    <features>
+      <feature>1.6094379124341</feature>
+      <feature>0.477925830791459</feature>
+      <feature>0.0443891475357201</feature>
+      <feature>1.2458</feature>
+      <feature>331.1</feature>
+      <feature>0.833333333333333</feature>
+      <feature>818.41</feature>
+      <feature>7</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.59185425926183</feature>
+      <feature>1.23649999999998</feature>
+      <feature>1.23649999999998</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EAIKARQ</peptideSequence>
+    </peptide>
+    <occurence flankC="G" flankN="K" proteinId="random_seq_3808"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1228.338" chargeState="3" experimentalMassToCharge="1227.11" id="test-spec-03_23_3_1" isDecoy="true">
+    <features>
+      <feature>4.04305126783455</feature>
+      <feature>0.279703295260601</feature>
+      <feature>0.0479847709071814</feature>
+      <feature>1.5234</feature>
+      <feature>204.9</feature>
+      <feature>0.388888888888889</feature>
+      <feature>1227.11</feature>
+      <feature>10</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.27462886185855</feature>
+      <feature>-0.409333333333355</feature>
+      <feature>0.409333333333355</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EALQQAQRQR</peptideSequence>
+    </peptide>
+    <occurence flankC="Q" flankN="Q" proteinId="random_seq_3695"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1075.155" chargeState="2" experimentalMassToCharge="1077.93" id="test-spec-05_23_2_1" isDecoy="true">
+    <features>
+      <feature>4.89783979995091</feature>
+      <feature>0.579142146453922</feature>
+      <feature>0.0601832190741978</feature>
+      <feature>1.6483</feature>
+      <feature>147.8</feature>
+      <feature>0.5</feature>
+      <feature>1077.93</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.37805577638077</feature>
+      <feature>1.38750000000005</feature>
+      <feature>1.38750000000005</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KSHAKQNDF</peptideSequence>
+    </peptide>
+    <occurence flankC="W" flankN="K" proteinId="random_seq_2300"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1613.918" chargeState="3" experimentalMassToCharge="1616.39" id="test-spec-05_23_3_1" isDecoy="true">
+    <features>
+      <feature>4.17438726989564</feature>
+      <feature>0.613834011964007</feature>
+      <feature>0.0419242949781331</feature>
+      <feature>1.9893</feature>
+      <feature>258.7</feature>
+      <feature>0.307692307692308</feature>
+      <feature>1616.39</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>9.18142636181154</feature>
+      <feature>0.824000000000069</feature>
+      <feature>0.824000000000069</feature>
+    </features>
+    <peptide>
+      <peptideSequence>RAVPVDLNKLIEVF</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="K" proteinId="random_seq_898"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="1438.59" scanNumber="24">
+
+  <peptideSpectrumMatch calculatedMassToCharge="1438.578" chargeState="2" experimentalMassToCharge="1438.59" id="test-spec-03_24_2_1" isDecoy="false">
+    <features>
+      <feature>3.58351893845611</feature>
+      <feature>0.101181387125291</feature>
+      <feature>0.0229848107369605</feature>
+      <feature>1.2443</feature>
+      <feature>112.2</feature>
+      <feature>0.375</feature>
+      <feature>1438.59</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>9.19624144759668</feature>
+      <feature>0.00599999999997181</feature>
+      <feature>0.00599999999997181</feature>
+    </features>
+    <peptide>
+      <peptideSequence>GADGYLLKDMEPE</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="R" proteinId="gi|16129184|ref|NP_415739.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2155.489" chargeState="3" experimentalMassToCharge="2157.38" id="test-spec-03_24_3_1" isDecoy="false">
+    <features>
+      <feature>3.89182029811063</feature>
+      <feature>0.677647058823529</feature>
+      <feature>0.0722352941176471</feature>
+      <feature>1.7</feature>
+      <feature>121</feature>
+      <feature>0.222222222222222</feature>
+      <feature>2157.38</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.93234456911382</feature>
+      <feature>0.630333333333359</feature>
+      <feature>0.630333333333359</feature>
+    </features>
+    <peptide>
+      <peptideSequence>KIAFGCDHVGFILKHEIVA</peptideSequence>
+    </peptide>
+    <occurence flankC="H" flankN="K" proteinId="gi|16131916|ref|NP_418514.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1291.381" chargeState="2" experimentalMassToCharge="1292.81" id="test-spec-05_24_2_1" isDecoy="false">
+    <features>
+      <feature>5.19849703126583</feature>
+      <feature>0.21330856274278</feature>
+      <feature>0.119236615436582</feature>
+      <feature>1.1842</feature>
+      <feature>78.5</feature>
+      <feature>0.363636363636364</feature>
+      <feature>1292.81</feature>
+      <feature>12</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.28331198443201</feature>
+      <feature>0.71449999999993</feature>
+      <feature>0.71449999999993</feature>
+    </features>
+    <peptide>
+      <peptideSequence>DEESSAVVVLDK</peptideSequence>
+    </peptide>
+    <occurence flankC="D" flankN="L" proteinId="gi|16132038|ref|NP_418637.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1939.203" chargeState="3" experimentalMassToCharge="1938.71" id="test-spec-05_24_3_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.178265723855601</feature>
+      <feature>0.0425505520406897</feature>
+      <feature>1.6122</feature>
+      <feature>330.6</feature>
+      <feature>0.323529411764706</feature>
+      <feature>1938.71</feature>
+      <feature>18</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.01456876745782</feature>
+      <feature>-0.164333333333313</feature>
+      <feature>0.164333333333313</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LTLHRQGSGFGPGGWVLR</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="L" proteinId="gi|16128504|ref|NP_415053.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1436.628" chargeState="2" experimentalMassToCharge="1438.59" id="test-spec-03_24_2_1" isDecoy="true">
+    <features>
+      <feature>2.63905732961526</feature>
+      <feature>0.410778093779625</feature>
+      <feature>0.00284401662655875</feature>
+      <feature>1.3713</feature>
+      <feature>135.8</feature>
+      <feature>0.384615384615385</feature>
+      <feature>1438.59</feature>
+      <feature>14</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.2018040409539</feature>
+      <feature>0.980999999999995</feature>
+      <feature>0.980999999999995</feature>
+    </features>
+    <peptide>
+      <peptideSequence>IAGYTNSINVLGTI</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="random_seq_473"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="2159.355" chargeState="3" experimentalMassToCharge="2157.38" id="test-spec-03_24_3_1" isDecoy="true">
+    <features>
+      <feature>5.98393628068719</feature>
+      <feature>0.944497089481522</feature>
+      <feature>0.00142141600108298</feature>
+      <feature>1.4774</feature>
+      <feature>74.5</feature>
+      <feature>0.194444444444444</feature>
+      <feature>2157.38</feature>
+      <feature>19</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>2</feature>
+      <feature>8.92917038313962</feature>
+      <feature>-0.658333333333303</feature>
+      <feature>0.658333333333303</feature>
+    </features>
+    <peptide>
+      <peptideSequence>QMEDPSYLARGVKDPDSHL</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="K" proteinId="random_seq_3756"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1291.518" chargeState="2" experimentalMassToCharge="1292.81" id="test-spec-05_24_2_1" isDecoy="true">
+    <features>
+      <feature>4.46590811865458</feature>
+      <feature>0.58359027064063</feature>
+      <feature>0.128297362110312</feature>
+      <feature>1.1676</feature>
+      <feature>100.3</feature>
+      <feature>0.35</feature>
+      <feature>1292.81</feature>
+      <feature>11</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.26983494376182</feature>
+      <feature>0.645999999999958</feature>
+      <feature>0.645999999999958</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AVETIFRVSLR</peptideSequence>
+    </peptide>
+    <occurence flankC="T" flankN="W" proteinId="random_seq_3194"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1936.068" chargeState="3" experimentalMassToCharge="1938.71" id="test-spec-05_24_3_1" isDecoy="true">
+    <features>
+      <feature>6.12029741895095</feature>
+      <feature>0.311211098612673</feature>
+      <feature>0.0959255093113361</feature>
+      <feature>1.6002</feature>
+      <feature>114.6</feature>
+      <feature>0.25</feature>
+      <feature>1938.71</feature>
+      <feature>17</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.04876217632013</feature>
+      <feature>0.880666666666684</feature>
+      <feature>0.880666666666684</feature>
+    </features>
+    <peptide>
+      <peptideSequence>AESANAYFSVNERLAHR</peptideSequence>
+    </peptide>
+    <occurence flankC="A" flankN="L" proteinId="random_seq_2090"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="948.13" scanNumber="26">
+
+  <peptideSpectrumMatch calculatedMassToCharge="948.108" chargeState="2" experimentalMassToCharge="948.13" id="test-spec-05_26_2_1" isDecoy="false">
+    <features>
+      <feature>2.70805020110221</feature>
+      <feature>0.140842577295256</feature>
+      <feature>0.0308000944064196</feature>
+      <feature>1.6948</feature>
+      <feature>358.2</feature>
+      <feature>0.625</feature>
+      <feature>948.13</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.44145209293957</feature>
+      <feature>0.0110000000000241</feature>
+      <feature>0.0110000000000241</feature>
+    </features>
+    <peptide>
+      <peptideSequence>LPCLFAAGV</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="R" proteinId="gi|16130374|ref|NP_416944.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1419.56" chargeState="3" experimentalMassToCharge="1421.69" id="test-spec-05_26_3_1" isDecoy="false">
+    <features>
+      <feature>4.26267987704132</feature>
+      <feature>0.416734735552379</feature>
+      <feature>0.13579742699612</feature>
+      <feature>1.9588</feature>
+      <feature>285</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1421.69</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>1</feature>
+      <feature>9.21632244365373</feature>
+      <feature>0.710000000000036</feature>
+      <feature>0.710000000000036</feature>
+    </features>
+    <peptide>
+      <peptideSequence>EIQSKQGTGTTIR</peptideSequence>
+    </peptide>
+    <occurence flankC="I" flankN="V" proteinId="gi|16129840|ref|NP_416402.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="948.027" chargeState="2" experimentalMassToCharge="948.13" id="test-spec-05_26_2_1" isDecoy="true">
+    <features>
+      <feature>3.80666248977032</feature>
+      <feature>0.096676930972543</feature>
+      <feature>0.000833974852450511</feature>
+      <feature>1.5588</feature>
+      <feature>288.7</feature>
+      <feature>0.625</feature>
+      <feature>948.13</feature>
+      <feature>9</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.44935727244668</feature>
+      <feature>0.0514999999999759</feature>
+      <feature>0.0514999999999759</feature>
+    </features>
+    <peptide>
+      <peptideSequence>NCVLTGGAR</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="K" proteinId="random_seq_3773"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="1422.696" chargeState="3" experimentalMassToCharge="1421.69" id="test-spec-05_26_3_1" isDecoy="true">
+    <features>
+      <feature>3.04452243772342</feature>
+      <feature>0.230502422851313</feature>
+      <feature>0.0340729405763836</feature>
+      <feature>1.9605</feature>
+      <feature>336.5</feature>
+      <feature>0.333333333333333</feature>
+      <feature>1421.69</feature>
+      <feature>13</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>9.20943996673302</feature>
+      <feature>-0.335333333333286</feature>
+      <feature>0.335333333333286</feature>
+    </features>
+    <peptide>
+      <peptideSequence>MHGMGAVFPAFTR</peptideSequence>
+    </peptide>
+    <occurence flankC="V" flankN="S" proteinId="random_seq_2194"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan>
+<fragSpectrumScan xmlns="http://per-colator.com/percolator_in/11" experimentalMassToCharge="433.76" scanNumber="27">
+
+  <peptideSpectrumMatch calculatedMassToCharge="432.463" chargeState="1" experimentalMassToCharge="433.76" id="test-spec-05_27_1_1" isDecoy="false">
+    <features>
+      <feature>0</feature>
+      <feature>0.269508568191474</feature>
+      <feature>0.131284520606146</feature>
+      <feature>0.7061</feature>
+      <feature>149.2</feature>
+      <feature>0.666666666666667</feature>
+      <feature>433.76</feature>
+      <feature>4</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.83252846359563</feature>
+      <feature>1.29699999999997</feature>
+      <feature>1.29699999999997</feature>
+    </features>
+    <peptide>
+      <peptideSequence>VPGC</peptideSequence>
+    </peptide>
+    <occurence flankC="P" flankN="K" proteinId="gi|16128938|ref|NP_415491.1|"/>
+  </peptideSpectrumMatch>
+
+  <peptideSpectrumMatch calculatedMassToCharge="436.452" chargeState="1" experimentalMassToCharge="433.76" id="test-spec-05_27_1_1" isDecoy="true">
+    <features>
+      <feature>1.38629436111989</feature>
+      <feature>0.680600214362272</feature>
+      <feature>0.0117899249732048</feature>
+      <feature>0.6531</feature>
+      <feature>75.3</feature>
+      <feature>0.5</feature>
+      <feature>433.76</feature>
+      <feature>4</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>1</feature>
+      <feature>0</feature>
+      <feature>0</feature>
+      <feature>9.85387705198279</feature>
+      <feature>-2.69200000000001</feature>
+      <feature>2.69200000000001</feature>
+    </features>
+    <peptide>
+      <peptideSequence>TVGC</peptideSequence>
+    </peptide>
+    <occurence flankC="R" flankN="K" proteinId="random_seq_2879"/>
+  </peptideSpectrumMatch>
+
+</fragSpectrumScan></experiment>

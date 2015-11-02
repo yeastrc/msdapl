@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PercolatorFilteredPsmResult"> 
+
+	<typeAlias alias="PercolatorFilteredPsmResult" type="org.yeastrc.ms.domain.analysis.percolator.impl.PercolatorFilteredPsmResult" />
+	<typeAlias alias="PercolatorBinnedPsmResult" type="org.yeastrc.ms.domain.analysis.percolator.impl.PercolatorBinnedPsmResult" />
+
+	<resultMap class="PercolatorFilteredPsmResult" id="percPsmResultResult">
+		<result property="id" column="id" />
+		<result property="runSearchAnalysisId" column="runSearchAnalysisID"/>
+		<result property="qvalue" column="qvalue" nullValue="-1.0"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+		<result property="binnedResults" 
+				select="PercolatorFilteredPsmResult.selectBinnedResults" 
+				column="id"/>
+	</resultMap>
+	
+	<resultMap class="PercolatorBinnedPsmResult" id="percBinnedResultResult">
+		<result property="percolatorFilteredPsmId" column="percPsmResultID" />
+		<result property="binStart" column="binStart"/>
+		<result property="binEnd" column="binEnd"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+	</resultMap>
+	
+	
+	<select id="select" resultMap="percPsmResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM PercolatorFilteredPsmResult
+		WHERE runSearchAnalysisId = #id#
+	</select>
+	
+	<select id="selectBinnedResults" resultMap="percBinnedResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM PercolatorFilteredBinnedPsmResult
+		WHERE percPsmResultID = #id#
+	</select>
+	
+	<insert id="insert" parameterClass="PercolatorFilteredPsmResult">
+		INSERT INTO PercolatorFilteredPsmResult
+		(runSearchAnalysisID, qvalue, total, filtered)
+		VALUES (#runSearchAnalysisId# , #qvalue# ,#total#, #filtered#)
+		<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+	</insert>
+	
+	<insert id="insertBinnedResult" parameterClass="PercolatorBinnedPsmResult">
+		INSERT INTO PercolatorFilteredBinnedPsmResult
+		(percPsmResultID, binStart, binEnd, total, filtered)
+		VALUES (#percolatorFilteredPsmId# , #binStart# , #binEnd#, #total#, #filtered#)
+	</insert>
+	
+	<delete id="delete" parameterClass="Integer">
+		DELETE FROM PercolatorFilteredPsmResult WHERE id=#id#
+	</delete>
+	
+	
+	<select id="selectPopulationAvgPerc" resultClass="Double" >
+		select AVG((filtered/total)*100) FROM PercolatorFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationStdDevPerc" resultClass="Double" >
+		select STDDEV((filtered/total)*100) FROM PercolatorFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationMax" resultClass="Double" >
+		select MAX((filtered/total)*100) FROM PercolatorFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationMin" resultClass="Double" >
+		select MIN((filtered/total)*100) FROM PercolatorFilteredPsmResult
+	</select>
+	
+	
+</sqlMap>

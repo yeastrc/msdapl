@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferRun"> 
+
+	<typeAlias alias="ProteinferRun" type="org.yeastrc.ms.domain.protinfer.ProteinferRun"/>
+	<typeAlias alias="GenericProteinferRun" type="org.yeastrc.ms.domain.protinfer.GenericProteinferRun"/>
+	
+	<typeAlias alias="ProteinferStatusTypeHandler" 
+				type="org.yeastrc.ms.dao.protinfer.ibatis.ProteinferRunDAO$ProteinferStatusTypeHandler"/>
+	<typeAlias alias="ProteinferProgramTypeHandler" 
+				type="org.yeastrc.ms.dao.protinfer.ibatis.ProteinferRunDAO$ProteinferProgramTypeHandler"/>
+	
+	<typeAlias alias="ProgramType" type="org.yeastrc.ms.domain.search.SearchProgram"/>
+	<typeAlias alias="ProgramTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchDAOImpl$SearchProgramTypeHandler"/>
+	
+	<resultMap class="GenericProteinferRun" id="pinferRunBaseResult">
+		<result property="id" column="id" />
+		<result property="programVersion" column="programVersion" />
+		<result property="program" column="program" typeHandler="ProteinferProgramTypeHandler"/>
+		<result property="inputGenerator" column="inputGenerator" typeHandler="ProgramTypeHandler"/>
+		<result property="comments" column="comments" />
+		<result property="name" column="name" />
+		<result property="date" column="dateRun" />
+	</resultMap>
+		
+	<resultMap class="ProteinferRun" id="pinferRunResult" extends="ProteinferRun.pinferRunBaseResult">
+		<result property="inputSummaryList" 
+				select="ProteinferInput.selectProteinferInputList"
+				column="id"/>
+	</resultMap>
+	
+	
+	<parameterMap class="GenericProteinferRun" id="pinferRunParam">
+		<parameter property="program" jdbcType="VARCHAR" typeHandler="ProteinferProgramTypeHandler"/>
+		<parameter property="programVersion" jdbcType="VARCHAR" />
+		<parameter property="inputGenerator" jdbcType="VARCHAR" typeHandler="ProgramTypeHandler"/>
+		<parameter property="comments" jdbcType="TEXT" />
+		<parameter property="name" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<select id="select" resultMap="pinferRunResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferRun WHERE id=#id#
+    </select>
+    
+    <select id="selectPinferIdsForInputIds" resultClass="Integer" parameterClass="java.lang.String">
+    	SELECT DISTINCT piRunID 
+    	FROM msProteinInferInput
+    	WHERE inputID IN $inputIds$ 
+    </select>
+    
+    <select id="selectPinferIdsForInputIdsProgram" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT DISTINCT piRunID 
+    	FROM msProteinInferInput AS input, msProteinInferRun AS run
+    	WHERE input.inputID in $inputIds$ 
+    	AND input.piRunID=run.id
+    	AND run.inputGenerator=#inputGenerator#
+    </select>
+    
+    <select id="selectSearchIdsForRunSearchIds" resultClass="Integer" parameterClass="Integer">
+    	SELECT DISTINCT rs.searchID
+    	FROM msProteinInferInput as i, msRunSearch as rs
+    	WHERE i.piRunID=#pinferId#
+    	AND   i.inputID = rs.id
+    </select>
+    
+    <select id="selectSearchIdsForRunSearchAnalysisIds" resultClass="Integer" parameterClass="Integer">
+    	SELECT DISTINCT rs.searchID
+    	FROM msProteinInferInput as i, msRunSearchAnalysis as ra, msRunSearch as rs
+    	WHERE i.piRunID=#pinferId#
+    	AND   i.inputID = ra.id
+    	AND   ra.runSearchID = rs.id
+    </select>
+    
+    <select id="getMaxProteinHitCount" resultClass="Integer" parameterClass="Integer">
+    	SELECT COUNT(psm.id) AS hitCount 
+    	FROM msProteinInferProtein AS prot, msProteinInferProteinPeptideMatch AS m, 
+    	msProteinInferPeptide AS pept, msProteinInferIon AS ion, 
+    	msProteinInferSpectrumMatch AS psm 
+    	WHERE prot.piRunID=#id# 
+    	AND prot.id = m.piProteinID 
+    	AND m.piPeptideID = pept.id 
+    	AND pept.id = ion.piPeptideID 
+    	AND ion.id = psm.piIonID 
+    	GROUP BY prot.id 
+    	ORDER BY hitCount DESC LIMIT 1;
+    </select>
+    
+    
+    <insert id="insert" parameterMap="pinferRunParam">
+    	INSERT INTO msProteinInferRun (
+    	program,
+    	programVersion,
+    	inputGenerator,
+    	comments,
+    	name)
+    	VALUES(?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <update id="update" parameterClass="GenericProteinferRun">
+    	UPDATE msProteinInferRun 
+    	SET program = #programString#,
+    	programVersion = #programVersion#,
+    	inputGenerator = #inputGeneratorString#,
+    	comments = #comments#,
+    	name = #name#
+    	<isNotNull property="date">
+    		, dateRun = #date#
+    	</isNotNull>
+    	WHERE id = #id#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msProteinInferRun WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

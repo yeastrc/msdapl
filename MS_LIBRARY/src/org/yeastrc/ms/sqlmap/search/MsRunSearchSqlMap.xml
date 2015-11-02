@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsRunSearch"> 
+
+	<typeAlias alias="MsRunSearchOut" type="org.yeastrc.ms.domain.search.impl.RunSearchBean"/>
+	<typeAlias alias="MsRunSearchIn" type="org.yeastrc.ms.domain.search.MsRunSearch"/>
+	<typeAlias alias="SQTRunSearchOut" type="org.yeastrc.ms.domain.search.sqtfile.impl.SQTRunSearchBean"/>
+	
+	<typeAlias alias="FileFormatType" type="org.yeastrc.ms.domain.search.SearchFileFormat"/>
+	<typeAlias alias="FileFormatTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsRunSearchDAOImpl$SearchFileFormatTypeHandler"/>
+	
+	
+	<resultMap class="MsRunSearchOut" id="msRunSearchResult">
+		<result property="id" column="id" />
+		<result property="searchId" column="searchID" nullValue="0"/>
+		<result property="runId" column="runID" nullValue="0"/>
+		<result property="searchFileFormat" column="originalFileType"
+				javaType="FileFormatType" jdbcType="VARCHAR"
+				typeHandler="FileFormatTypeHandler"/>
+		<result property="searchDate" column="searchDate" />
+		<result property="searchDuration" column="searchDuration" nullValue="-1"/>
+		<result property="uploadDate" column="uploadDate" />
+		<discriminator javaType="FileFormatType" jdbcType="VARCHAR" 
+						column="originalFileType" 
+						typeHandler="FileFormatTypeHandler">
+			<subMap value="SQT_NSEQ" resultMap="sqtSearchResult" />	
+			<subMap value="SQT_SEQ" resultMap="sqtSearchResult" />
+			<subMap value="SQT_PLUCID" resultMap="sqtSearchResult" />
+			<subMap value="QT_PPROBE" resultMap="sqtSearchResult" />
+							
+		</discriminator>
+	</resultMap>
+	
+	<!--  SQT Files -->
+	<resultMap class="SQTRunSearchOut" id="sqtSearchResult" extends="MsRunSearch.msRunSearchResult">
+		<result property="headers" 
+				select="SqtHeader.selectHeadersForRunSearch" 
+				column="id"/>
+	</resultMap> 
+	
+	<parameterMap class="MsRunSearchIn" id="msRunSearchParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="runId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="searchFileFormat" 
+					jdbcType="VARCHAR" 
+					javaType="FileFormatType" 
+					typeHandler="FileFormatTypeHandler"
+		/>
+		<parameter property="searchDate" jdbcType="DATE" />
+		<parameter property="searchDuration" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+    <select id="select" resultMap="msRunSearchResult" parameterClass="Integer">
+    	SELECT * FROM msRunSearch WHERE id = #id#
+    </select>
+    
+    <select id="selectSearchesForRun" resultMap="msRunSearchResult" parameterClass="Integer">
+    	SELECT * FROM msRunSearch WHERE runID = #id#
+    </select>
+    
+    <select id="selectRunSearchIdsForRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearch WHERE runID = #id#
+    </select>
+    
+    <select id="selectRunSearchIdsForSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearch WHERE searchID = #id#
+    </select>
+    
+    <select id="selectIdForRunAndSearch" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msRunSearch WHERE runID = #runId# AND searchID=#searchId#
+    </select>
+    
+    <select id="selectIdForSearchAndFile" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT rs.id FROM msRunSearch AS rs, msRun AS run
+    	WHERE rs.runID = run.id
+    	AND rs.searchID=#searchId#
+    	AND run.filename=#filename#
+    </select>
+    
+    <select id="selectFileNameForRunSearchId" resultClass="String" parameterClass="Integer">
+    	SELECT filename FROM msRunSearch AS rs, msRun AS run
+    	WHERE rs.runID = run.id
+    	AND rs.id=#id#
+    </select>
+    
+    <select id="selectSearchProgram" resultClass="String" parameterClass="Integer">
+    	SELECT s.analysisProgramName 
+    	FROM msSearch AS s, msRunSearch AS rs 
+    	WHERE rs.id=#id# AND rs.searchID= s.id
+    </select>
+    
+    <select id="countResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM msRunSearchResult WHERE runSearchID=#runSearchId# 
+    </select>
+    
+    <insert id="insert" parameterMap="msRunSearchParam">
+    	INSERT INTO msRunSearch (
+    	searchID,
+    	runID,
+    	originalFileType,
+    	searchDate,
+    	searchDuration) 
+    	VALUES (?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msRunSearch WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

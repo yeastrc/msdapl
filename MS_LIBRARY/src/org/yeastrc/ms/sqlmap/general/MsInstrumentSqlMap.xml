@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsInstrument"> 
+
+	<typeAlias alias="MsInstrument" type="org.yeastrc.ms.domain.general.impl.InstrumentBean" />
+	
+	<resultMap class="MsInstrument" id="msInstrumentResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="description" column="description" />
+	</resultMap>
+	
+	<parameterMap class="MsInstrument" id="msInstrumentParam">
+		<parameter property="id" jdbcType="INTEGER"/>
+		<parameter property="name" jdbcType="VARCHAR"/>
+		<parameter property="description" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+    
+    <select id="select" resultMap="msInstrumentResult" parameterClass="Integer">
+    	SELECT * FROM msInstrument WHERE id = #id#
+    </select>
+    
+    <select id="selectAll" resultMap="msInstrumentResult">
+    	SELECT * FROM msInstrument ORDER BY id
+    </select>
+    
+    <insert id="insert" parameterClass="MsInstrument">
+    	INSERT INTO msInstrument (name, description) 
+    	VALUES (#name#, #description#)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <update id="update" parameterClass="MsInstrument">
+    	UPDATE msInstrument 
+    	SET name=#name#, 
+    	description=#description#
+    	WHERE id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+    	DELETE from msInstrument WHERE id=#id#
+    </delete>
+    
+</sqlMap>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MS2ChgDAnalysis"> 
+
+	<typeAlias alias="DAnalysisOut" type="org.yeastrc.ms.domain.run.ms2file.impl.NameValuePair"/>
+	<typeAlias alias="DAnalysisIn" type="org.yeastrc.ms.domain.run.ms2file.impl.MS2ChargeDependentAnalysisDb"/>
+		
+	<resultMap class="DAnalysisOut" id="danalysisResult">
+		<result property="name" column="header" />
+		<result property="value" column="value" />
+	</resultMap>
+	
+	<parameterMap class="DAanalysisIn" id="danalysisParam">
+		<parameter property="scanChargeId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="name" jdbcType="VARCHAR"/>
+		<parameter property="value" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+    <select id="selectAnalysisForCharge" resultMap="danalysisResult" parameterClass="Integer"> 
+        SELECT * FROM MS2FileChargeDependentAnalysis where scanChargeID=#id#
+    </select> 
+    
+    <insert id="insert" parameterMap="danalysisParam">
+    	INSERT INTO MS2FileChargeDependentAnalysis (scanChargeID, header, value) 
+    	VALUES (?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO MS2FileChargeDependentAnalysis (scanChargeID, header, value) VALUES $values$
+    </insert>
+    
+    <delete id="deleteByScanChargeId" parameterClass="Integer" >
+    	DELETE FROM MS2FileChargeDependentAnalysis WHERE scanChargeID = #id#
+    </delete>
+    
+</sqlMap>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsEnzyme"> 
+
+	<typeAlias alias="MsEnzymeOut" type="org.yeastrc.ms.domain.general.impl.EnzymeBean"/>
+	<typeAlias alias="MsEnzymeIn" type="org.yeastrc.ms.domain.general.MsEnzymeIn"/>
+	<typeAlias alias="SenseHandler" type="org.yeastrc.ms.dao.general.ibatis.MsEnzymeDAOImpl$SenseTypeHandler"/>
+	
+	
+	<resultMap class="MsEnzymeOut" id="msEnzymeResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="sense" column="sense" typeHandler="SenseHandler"/>
+		<result property="cut" column="cut" />
+		<result property="nocut" column="nocut" />
+		<result property="description" column="description" />
+	</resultMap>
+	
+	<parameterMap class="MsEnzymeIn" id="msEnzymeParam">
+		<parameter property="name" jdbcType="VARCHAR" />
+		<parameter property="sense" jdbcType="SMALLINT" typeHandler="SenseHandler" />
+		<parameter property="cut" jdbcType="VARCHAR"/>	
+		<parameter property="nocut" jdbcType="VARCHAR"/>
+		<parameter property="description" jdbcType="TEXT"/>
+	</parameterMap>
+	
+    <select id="selectEnzymeById" resultMap="msEnzymeResult" parameterClass="Integer"> 
+        SELECT * FROM msDigestionEnzyme WHERE id = #id#
+    </select> 
+    
+    <select id="selectEnzymeByName" resultMap="msEnzymeResult" parameterClass="String"> 
+        SELECT * FROM msDigestionEnzyme WHERE name = #name#
+    </select> 
+    
+    <select id="selectEnzymes" resultMap="msEnzymeResult" parameterClass="java.util.Map"> 
+    	
+        SELECT * FROM msDigestionEnzyme WHERE
+        
+        <isPropertyAvailable property="name">
+        	<isNull property="name">
+        		name IS NULL
+        	</isNull>
+        	<isNotNull property="name">
+        		name = #name#
+        	</isNotNull>
+        </isPropertyAvailable>
+        
+        <isPropertyAvailable prepend="AND" property="sense">
+        	<isNull property="sense">
+        		sense IS NULL
+        	</isNull>
+        	<isNotNull property="sense">
+        		sense = #sense#
+        	</isNotNull>
+        </isPropertyAvailable>
+        
+        <isPropertyAvailable prepend="AND" property="cut">
+        	<isNull property="cut">
+        		cut IS NULL
+        	</isNull>
+        	<isNotNull  property="cut">
+        		cut = #cut#
+        	</isNotNull>
+        </isPropertyAvailable>
+        
+        <isPropertyAvailable prepend="AND" property="nocut">
+        	<isNull property="nocut">
+        		nocut IS NULL
+        	</isNull>
+        	<isNotNull property="nocut">
+        		nocut = #nocut#
+        	</isNotNull>
+        </isPropertyAvailable>
+    </select> 
+    
+    <select id="selectEnzymesForRun" resultMap="msEnzymeResult" parameterClass="Integer">
+    	SELECT e.id, e.name, e.sense, e.cut, e.nocut, e.description 
+    	FROM msDigestionEnzyme as e, msRunEnzyme
+    	WHERE e.id = msRunEnzyme.enzymeID AND
+    	msRunEnzyme.runID = #id#
+    </select>
+    
+    <select id="selectEnzymesForSearch" resultMap="msEnzymeResult" parameterClass="Integer">
+    	SELECT e.id, e.name, e.sense, e.cut, e.nocut, e.description 
+    	FROM msDigestionEnzyme as e, msSearchEnzyme
+    	WHERE e.id = msSearchEnzyme.enzymeID AND
+    	msSearchEnzyme.searchID = #id#
+    </select>
+    
+    
+    <insert id="insert" parameterMap="msEnzymeParam">
+    	INSERT INTO msDigestionEnzyme (name, 
+    						sense, 
+    						cut,
+    						nocut, 
+    						description) 
+    	VALUES (?,?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <insert id="insertRunEnzyme" parameterClass="java.util.Map">
+    	INSERT INTO msRunEnzyme (runID, 
+    						enzymeID) 
+    	VALUES (#runID#, #enzymeID#)
+    </insert>
+    
+    <insert id="insertSearchEnzyme" parameterClass="java.util.Map">
+    	INSERT INTO msSearchEnzyme (searchID, 
+    						enzymeID) 
+    	VALUES (#searchID#, #enzymeID#)
+    </insert>
+    
+    <delete id="deleteEnzymeById" parameterClass="Integer">
+    	DELETE FROM msDigestionEnzyme WHERE id=#id#
+    </delete>
+    
+    <delete id="deleteEnzymesByRunId" parameterClass="Integer">
+    	DELETE FROM msRunEnzyme WHERE runID=#id#
+    </delete>
+    
+    <delete id="deleteEnzymesBySearchId" parameterClass="Integer">
+    	DELETE FROM msSearchEnzyme WHERE searchID=#id#
+    </delete>
+    
+    <delete id="deleteEnzymesByRunIds" parameterClass="java.util.Map">
+    	DELETE FROM msRunEnzyme 
+    		<iterate property="runIdList"
+    			open="WHERE runID IN("
+    			close=")"
+    			conjunction=","
+    			>
+    			#runIdList[]#
+    		</iterate>
+    </delete>
+    
+    <delete id="deleteEnzymesBySearchIds" parameterClass="java.util.Map">
+    	DELETE FROM msRunEnzyme 
+    		<iterate property="searchIdList"
+    			open="WHERE searchID IN("
+    			close=")"
+    			conjunction=","
+    			>
+    			#searchIdList[]#
+    		</iterate>
+    </delete>
+    
+    
+</sqlMap>

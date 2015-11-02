@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="SqtSpectrum"> 
+
+
+	<typeAlias alias="SqtSpectrumOut" type="org.yeastrc.ms.domain.search.sqtfile.impl.SQTSearchScanBean"/>
+	<typeAlias alias="SqtSpectrumIn" type="org.yeastrc.ms.domain.search.sqtfile.SQTSearchScan"/>
+	
+	<resultMap class="SqtSpectrumOut" id="sqtSpectrumResult" >
+		<result property="runSearchId" column="runSearchID" nullValue="0"/>
+		<result property="scanId" column="scanID" nullValue="0"/>
+		<result property="charge" column="charge" nullValue="0"/>
+		<result property="observedMass" column="observedMass"/>
+		<result property="processTime" column="processTime" nullValue="0"/>
+		<result property="serverName" column="serverName"/>
+		<result property="totalIntensity" column="totalIntensity"/>
+		<result property="lowestSp" column="lowestSp"/>
+		<result property="sequenceMatches" column="sequenceMatches" nullValue="-1"/>
+	</resultMap>
+	
+	
+	<parameterMap class="SqtSpectrumIn" id="sqtSpectrumParam">
+		<parameter property="runSearchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="scanId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="charge" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="observedMass" jdbcType="DECIMAL"/>
+		<parameter property="processTime" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="serverName" jdbcType="VARCHAR" />
+		<parameter property="totalIntensity" jdbcType="DOUBLE"/>
+		<parameter property="lowestSp" jdbcType="DECIMAL"/>
+		<parameter property="sequenceMatches" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+    
+    <select id="select" resultMap="sqtSpectrumResult" parameterClass="java.util.Map">
+		SELECT * FROM SQTSpectrumData
+		WHERE scanID = #scanId#
+		AND runSearchID = #runSearchId#
+		AND charge = #charge#
+		AND observedMass = #observedMass#
+	</select>
+	
+    <insert id="insert" parameterMap="sqtSpectrumParam">
+    	INSERT INTO SQTSpectrumData 
+    	(runSearchID, 
+    	scanID, 
+    	charge, 
+    	observedMass,
+    	processTime, 
+    	serverName,
+    	totalIntensity,
+    	lowestSp,
+    	sequenceMatches) 
+    	VALUES (?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO SQTSpectrumData 
+    	(runSearchID, 
+    	scanID, 
+    	charge, 
+    	observedMass,
+    	processTime, 
+    	serverName,
+    	totalIntensity,
+    	lowestSp,
+    	sequenceMatches) 
+    	VALUES $values$
+    </insert>
+    
+    <delete id="deleteForRunSearch" parameterClass="Integer">
+		DELETE FROM SQTSpectrumData WHERE runSearchID=#id#
+    </delete>
+    
+</sqlMap>

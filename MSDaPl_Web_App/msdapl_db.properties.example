@@ -1,0 +1,86 @@
+# Global information; will be used for all databases
+# unless it is overridden by individual database properties
+all.host=localhost
+all.user=root
+all.password=
+
+# Properties for a database should be of this form:
+# db.<db_reference>.<property>
+# <db_reference> can be anything, but should be unique for each database in this file
+# <property> can be:
+# 1. dbname   -- this is the name of the MySQL database (REQUIRED)
+# 2. jndiname -- this is the name that is bound to the database resource by the naming and  
+#                directory service provided by Tomcat.  This may different from dbname. 
+#                This name goes in the "name" attribute of the generated context.xml's 
+#                <Resource> element. Example: jdbc/msData
+# 3. host     -- MySQL server hostname
+# 4. user     -- MYSQL username
+# 5. password -- MYSQL password
+
+
+# msData database
+db.msData.dbname=msData
+
+# jobQueue database
+db.jobQueue.dbname=jobQueue
+
+
+# mainDb database
+# IMPORTANT!! : Value of the db.mainDb.jndiname property should be "yrc" for 
+#               compatibility with older code. 
+# The old code has been changed to now use JNDI Name "msdapl_main"
+db.mainDb.dbname=mainDb
+db.mainDb.jndiname=msdapl_main
+
+
+# YRC_NRSEQ database
+# IMPORTANT!! : Value of the db.YRC_NRSEQ.jndiname property should be "nrseq" for 
+#               compatibility with older code.
+db.YRC_NRSEQ.dbname=YRC_NRSEQ
+db.YRC_NRSEQ.jndiname=nrseq
+# db.YRC_NRSEQ.host=hostname_or_IP_Address
+# db.YRC_NRSEQ.user=username
+# db.YRC_NRSEQ.password=pass
+
+
+# SGD database
+# IMPORTANT!! : Value of the db.sgd.jndiname property should be "sgd" for 
+#               compatibility with older code.
+db.sgd.dbname=sgd_static_201005
+db.sgd.jndiname=sgd
+
+# Gene Ontology database
+# IMPORTANT!! : Value of the db.go.jndiname property should be "go" for 
+#               compatibility with older code.
+db.go.dbname=mygo_201005
+db.go.jndiname=go
+
+
+# WormBase database
+# IMPORTANT!! : Value of the db.wormbase.jndiname property should be "wormbase" for 
+#               compatibility with older code.
+db.wormbase.dbname=wormbase
+db.wormbase.jndiname=wormbase
+
+
+# FlyBase database
+# IMPORTANT!! : Value of the db.flybase.jndiname property should be "flybase" for 
+#               compatibility with older code.
+db.flybase.dbname=flybase
+db.flybase.jndiname=flybase
+
+# HGNC database
+# IMPORTANT!! : Value of the db.hgcn.jndiname property should be "hgnc" for 
+#               compatibility with older code.
+db.hgnc.dbname=hgnc_static_200708
+db.hgnc.jndiname=hgnc
+
+
+# Philius database
+db.philiusData.dbname=philiusData
+
+# GO Human
+db.go_human.dbname=go_human
+
+
+

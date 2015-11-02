@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="SqtHeader"> 
+
+
+	<typeAlias alias="SqtHeaderOut" type="org.yeastrc.ms.domain.search.sqtfile.impl.HeaderItemBean"/>
+	<typeAlias alias="SqtHeaderIn" type="org.yeastrc.ms.domain.search.sqtfile.impl.SQTHeaderItemImpl"/>
+	
+	
+	<resultMap class="SqtHeaderOut" id="headerResult">
+		<result property="name" column="header"/>
+		<result property="value" column="value"/>
+	</resultMap>
+	
+	<parameterMap class="SqtHeaderIn" id="headerParam">
+		<parameter property="runSearchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="name" jdbcType="VARCHAR"/>
+		<parameter property="value" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+    
+    <select id="selectHeadersForRunSearch" resultMap="headerResult" parameterClass="Integer">
+		SELECT * FROM SQTFileHeader WHERE runSearchID = #id# ORDER BY id
+	</select>
+	
+    
+    <insert id="insertHeader" parameterMap="headerParam">
+    	INSERT INTO SQTFileHeader (runSearchID, header, value) 
+    	VALUES (?,?,?)
+    </insert>
+    
+    
+    <delete id="deleteHeadersForRunSearch" parameterClass="Integer">
+		DELETE FROM SQTFileHeader WHERE runSearchID=#id#
+    </delete>
+    
+</sqlMap>

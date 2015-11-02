@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MascotResult"> 
+
+
+	<typeAlias alias="MascotResultOut" type="org.yeastrc.ms.domain.search.mascot.impl.MascotSearchResultBean"/>
+	<typeAlias alias="MascotResultDataIn" type="org.yeastrc.ms.domain.search.mascot.MascotResultDataWId"/>
+	
+	
+	<resultMap class="MascotResultOut" id="mascotResultResult" extends="MsSearchResult.msSearchResult">
+		<result property="rank" column="rank" nullValue="-1"/>
+		<result property="ionScore" column="ionScore" nullValue="-1"/>
+		<result property="identityScore" column="identityScore"/>
+		<result property="homologyScore" column="homologyScore"/>
+		<result property="expect" column="expect"/>
+		<result property="star" column="star" nullValue="-1"/>
+		<result property="calculatedMass" column="calculatedMass" />
+		<result property="matchingIons" column="matchingIons" nullValue="-1"/>
+		<result property="predictedIons" column="predictedIons" nullValue="-1"/>
+	</resultMap>
+	
+	<parameterMap class="MascotResultDataIn" id="mascotResultDataParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="rank" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="ionScore" jdbcType="DECIMAL"/>
+		<parameter property="identityScore" jdbcType="DECIMAL"/>
+		<parameter property="homologyScore" jdbcType="DECIMAL"/>
+		<parameter property="expect" jdbcType="DECIMAL"/>
+		<parameter property="star" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="calculatedMass" jdbcType="DECIMAL" />
+		<parameter property="matchingIons" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="predictedIons" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+
+    <select id="select" resultMap="mascotResultResult" parameterClass="Integer">
+		SELECT * FROM msRunSearchResult, MascotSearchResult 
+		WHERE MascotSearchResult.resultID = msRunSearchResult.id
+		AND msRunSearchResult.id = #id#
+	</select>
+    
+    
+    <insert id="insert" parameterMap="mascotResultDataParam">
+    	INSERT INTO MascotSearchResult 
+    	(resultID,
+    	rank, 
+    	ionScore,
+    	identityScore,
+    	homologyScore,
+    	expect, 
+    	star,
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons)
+    	VALUES (?,?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO MascotSearchResult 
+    	(resultID, 
+    	rank,
+    	ionScore,
+    	identityScore,
+    	homologyScore,
+    	expect, 
+    	star,
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons)
+    	VALUES $values$
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM MascotSearchResult WHERE resultID=#id#
+    </delete>
+    
+</sqlMap>

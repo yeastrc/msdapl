@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MS2Scan"> 
+
+	<typeAlias alias="MS2ScanOut" type="org.yeastrc.ms.domain.run.ms2file.impl.MS2ScanDb"/>
+	
+	<resultMap class="MS2ScanOut" id="MS2ScanResult" extends="MsScan.msScanResult">
+		<result property="scanChargeList" 
+				column="id" 
+				select="MS2ScanCharge.selectForScan"/>
+		<result property="chargeIndependentAnalysisList" 
+				column="id" 
+				select="MS2ChgIAnalysis.selectAnalysisForScan"/>
+	</resultMap>
+	
+	<resultMap class="MS2ScanOut" id="MS2ScanNoDataResult" extends="MsScan.msScanNoDataResult">
+		<result property="scanChargeList" 
+				column="id" 
+				select="MS2ScanCharge.selectForScan"/>
+		<result property="chargeIndependentAnalysisList" 
+				column="id" 
+				select="MS2ChgIAnalysis.selectAnalysisForScan"/>
+	</resultMap>
+	
+	
+	<select id="select" resultMap="MS2ScanResult" parameterClass="Integer">
+		SELECT id, 
+    			runID, 
+    			startScanNumber, 
+    			endScanNumber, 
+    			level, 
+    			preMZ, 
+    			preScanID, 
+    			prescanNumber, 
+    			retentionTime,
+    			fragmentationType,
+    			isCentroid,
+    			peakCount,
+    			type,
+    			UNCOMPRESS(data) as data 
+    			FROM msScan, msScanData
+    			WHERE msScan.id = msScanData.scanID
+    			AND id= #id#
+    </select>
+    
+    <select id="selectScanNoData" resultMap="MS2ScanNoDataResult" parameterClass="Integer">
+		SELECT id, 
+    			runID, 
+    			startScanNumber, 
+    			endScanNumber, 
+    			level, 
+    			preMZ, 
+    			preScanID, 
+    			prescanNumber, 
+    			retentionTime,
+    			fragmentationType,
+    			isCentroid,
+    			peakCount
+    			FROM msScan
+    			WHERE id= #id#
+    </select>
+    
+    <select id="selectFileGeneratorHeader" resultClass="String" parameterClass="Integer">
+    	SELECT header.value
+    	FROM msData.msScan AS scan, msData.MS2FileHeader AS header
+    	WHERE scan.id=#scanId#
+    	AND scan.runID = header.runID
+    	AND header.header="FileGenerator"
+    </select>
+    
+</sqlMap>

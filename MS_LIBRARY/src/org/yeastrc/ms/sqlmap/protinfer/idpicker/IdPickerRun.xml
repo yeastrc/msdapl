@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="IdPickerRun"> 
+
+	<typeAlias alias="IdPickerRun" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerRun"/>
+		
+	<resultMap class="IdPickerRun" id="idpickerRunResult" extends="ProteinferRun.pinferRunBaseResult">
+		<result property="inputSummaryList" 
+				select="IdPickerInput.selectIdPickerInputList"
+				column="id"/>
+		<result property="params" 
+				select="IdPickerParam.selectParamsForRun"
+				column="id"/>
+	</resultMap>
+	
+	
+	<select id="select" resultMap="idpickerRunResult" parameterClass="Integer">
+    	SELECT run.* 
+    	FROM msProteinInferRun AS run, IDPickerParam as param
+    	WHERE run.id = param.piRunID
+    	AND run.id=#id#
+    	LIMIT 1
+    </select>
+    
+    <select id="selectIdpickerIdsForInputIds" resultClass="Integer" parameterClass="java.lang.String">
+    	SELECT DISTINCT input.piRunID 
+    	FROM msProteinInferInput AS input, IDPickerInputSummary AS idpinput
+    	WHERE input.id = idpinput.piInputID
+    	AND input.inputID IN $inputIds$ 
+    </select>
+    
+    <select id="selectIdpickerIdsForInputIdsProgram" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT DISTINCT input.piRunID 
+    	FROM msProteinInferInput AS input, msProteinInferRun AS run, IDPickerInputSummary AS idpinput
+    	WHERE input.inputID in $inputIds$ 
+    	AND input.piRunID=run.id
+    	AND run.inputGenerator=#inputGenerator#
+    	AND input.id = idpinput.piInputID
+    </select>
+    
+</sqlMap>

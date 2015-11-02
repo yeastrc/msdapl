@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferRunSummary"> 
+
+	<typeAlias alias="ProteinferRunSummary" type="org.yeastrc.ms.domain.protinfer.ProteinferRunSummary"/>
+	
+	<resultMap class="ProteinferRunSummary" id="pinferRunSummaryResult">
+		<result property="piRunId" column="piRunID" />
+		<result property="parsimIndistGroupCount" column="groupCount" />
+		<result property="parsimProteinCount" column="proteinCount" />
+		<result property="uniqPeptSeqCount" column="peptSeqCount" />
+		<result property="uniqIonCount" column="ionCount" />
+		<result property="spectrumCount" column="spectrumCount" />
+		<result property="minSpectrumCount" column="minSpectrumCount" />
+		<result property="maxSpectrumCount" column="maxSpectrumCount" />
+	</resultMap>
+		
+	
+	<parameterMap class="ProteinferRunSummary" id="pinferRunSummaryParam">
+		<parameter property="piRunId" jdbcType="INTEGER"/>
+		<parameter property="parsimIndistGroupCount" jdbcType="INTEGER" />
+		<parameter property="parsimProteinCount" jdbcType="INTEGER" />
+		<parameter property="uniqPeptSeqCount" jdbcType="INTEGER" />
+		<parameter property="uniqIonCount" jdbcType="INTEGER" />
+		<parameter property="spectrumCount" jdbcType="INTEGER" />
+		<parameter property="minSpectrumCount" jdbcType="INTEGER" />
+		<parameter property="maxSpectrumCount" jdbcType="INTEGER" />
+	</parameterMap>
+	
+	<select id="select" resultMap="pinferRunSummaryResult" parameterClass="Integer">
+    	SELECT * FROM proteinInferRunSummary WHERE piRunID=#id#
+    </select>
+    
+    <insert id="insert" parameterMap="pinferRunSummaryParam">
+    	INSERT INTO proteinInferRunSummary (
+    	piRunID,
+    	groupCount,
+    	proteinCount,
+    	peptSeqCount,
+    	ionCount,
+    	spectrumCount,
+    	minSpectrumCount,
+    	maxSpectrumCount)
+    	VALUES(?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <update id="update" parameterClass="ProteinferRunSummary">
+    	UPDATE proteinInferRunSummary 
+    	SET groupCount=#parsimIndistGroupCount#,
+    	proteinCount=#parsimProteinCount#,
+    	peptSeqCount=#uniqPeptSeqCount#,
+    	ionCount=#uniqIonCount#,
+    	spectrumCount=#spectrumCount#,
+    	minSpectrumCount=#minSpectrumCount#,
+    	maxSpectrumCount=#maxSpectrumCount#
+    	WHERE piRunID = #piRunId#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM proteinInferRunSummary WHERE piRunID=#id#		    
+    </delete>
+    
+</sqlMap>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="IdPickerInput"> 
+
+	<typeAlias alias="IdPickerInputSummary" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerInput"/>
+	
+	<resultMap class="IdPickerInputSummary" id="idpickerInputResult" extends="ProteinferInput.pinferInputResult">
+		<result property="numTargetHits" column="numTargetHits" nullValue="0"/>
+		<result property="numDecoyHits" column="numDecoyHits" nullValue="0"/>
+		<result property="numFilteredTargetHits" column="numFilteredTargetHits" nullValue="0"/>
+		<result property="numFilteredDecoyHits" column="numFilteredDecoyHits" nullValue="0"/>
+	</resultMap>
+	
+	<parameterMap class="IdPickerInputSummary" id="idpickerInputParam">
+		<parameter property="id" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="numTargetHits" jdbcType="INTEGER"  />
+		<parameter property="numDecoyHits" jdbcType="INTEGER" />
+		<parameter property="numFilteredTargetHits" jdbcType="INTEGER" />
+		<parameter property="numFilteredDecoyHits" jdbcType="INTEGER" />
+	</parameterMap>
+	
+    <select id="selectIdPickerInputList" resultMap="idpickerInputResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferInput as i 
+    	LEFT JOIN (IDPickerInputSummary as idp) ON i.id = idp.piInputID
+    	WHERE i.piRunID = #id#
+    </select>
+    
+    <update id="updateIdPickerInput" parameterMap="idpickerInputParam">
+    	UPDATE IDPickerInputSummary
+    	SET piInputID = #id#
+    	<isNotEqual property="numTargetHits" compareValue="-1">
+    		, numTargetHits = #numTargetHits#
+    	</isNotEqual>
+    	<isNotEqual property="numDecoyHits" compareValue="-1">
+    		, numDecoyHits = #numDecoyHits#
+    	</isNotEqual>
+    	<isNotEqual property="numFilteredTargetHits" compareValue="-1">
+    		, numFilteredTargetHits = #numFilteredTargetHits#
+    	</isNotEqual>
+    	<isNotEqual property="numFilteredDecoyHits" compareValue="-1">
+    		, numFilteredDecoyHits = #numFilteredDecoyHits#
+    	</isNotEqual>
+    	WHERE piInputID=#id#
+    </update>
+    
+    <insert id="saveIdPickerInput" parameterMap="idpickerInputParam">
+    	INSERT INTO IDPickerInputSummary (
+    	piInputID,
+    	numTargetHits,
+    	numDecoyHits,
+    	numFilteredTargetHits,
+    	numFilteredDecoyHits)
+    	VALUES (?,?,?,?)
+    </insert>
+    
+    <insert id="saveIdPickerInputList" parameterClass="String">
+    	INSERT INTO IDPickerInputSummary (
+    	piInputID,
+    	numTargetHits,
+    	numDecoyHits,
+    	numFilteredTargetHits,
+    	numFilteredDecoyHits)
+    	VALUES $values$
+    </insert>
+    
+</sqlMap>

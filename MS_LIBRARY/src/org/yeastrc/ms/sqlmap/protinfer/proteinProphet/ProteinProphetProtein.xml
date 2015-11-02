@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetProtein"> 
+
+	<typeAlias alias="ProteinProphetProtein" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetProtein" />
+	
+	<resultMap class="ProteinProphetProtein" id="proteinResult" extends="ProteinferProtein.pinferBaseProteinResult">
+		<result property="proteinProphetGroupId" column="proteinProphetGroupID" nullValue="0"/>
+		<result property="groupId" column="groupID" nullValue="0"/>
+		<result property="probability" column="probability" nullValue = "-1.0"/>
+		<result property="confidence" column="confidence" nullValue = "-1.0"/>
+		<result property="subsumed" column="subsumed" />
+		<result property="totalSpectrumCount" column="totalSpectrumCount" nullValue = "-1"/>
+		<result property="pctSpectrumCount" column="pctSpectrumCount" nullValue = "-1.0"/>
+		<result property="peptides" 
+				select="ProteinProphetPeptide.selectPeptidesForProtein"
+				column="id"/>
+	</resultMap>
+	
+	
+	<parameterMap class="ProteinProphetProtein" id="proteinParam">
+		<parameter property="id" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="proteinProphetGroupId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="groupId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="probability" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="confidence" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="subsumed" jdbcType="TINYINT" />
+		<parameter property="totalSpectrumCount" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="pctSpectrumCount" jdbcType="DOUBLE" nullValue="-1.0"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="proteinResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.id = ppProt.piProteinID
+    	AND prot.id=#id#
+    </select>
+    
+    <select id="selectProteinsForProteinferRun" resultMap="proteinResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.id = ppProt.piProteinID
+    	AND prot.piRunID = #id#
+    </select>
+    
+    
+    <select id="selectProteinsForGroup" resultMap="proteinResult" parameterClass="java.util.Map">
+    	SELECT * FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.id = ppProt.piProteinID
+    	AND prot.piRunID = #pinferId#
+    	AND ppProt.groupID = #groupId#
+    </select>
+    
+    <select id="selectProteinsForProteinProphetGroup" resultMap="proteinResult" parameterClass="java.util.Map">
+    	SELECT * FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.id = ppProt.piProteinID
+    	AND prot.piRunID = #pinferId#
+    	AND ppProt.proteinProphetGroupID = #proteinProphetGroupId#
+    </select>
+    
+    <select id="selectGroupCount" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(DISTINCT(ppProt.groupID)) 
+    	FROM ProteinProphetProtein AS ppProt, msProteinInferProtein as prot
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="selectProphetGroupCount" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(DISTINCT(ppProt.proteinProphetGroupID)) 
+    	FROM ProteinProphetProtein AS ppProt, msProteinInferProtein as prot
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    </select>
+    
+    
+    <select id="selectParsimProteinCountForProteinferRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt 
+    	WHERE prot.piRunID = #id# 
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.subsumed = 0
+    </select>
+    
+    <resultMap class="org.yeastrc.ms.dao.protinfer.ibatis.ProteinAndGroupLabel" 
+    				id="protAndGroupResult">
+		<result property="proteinId" jdbcType="INTEGER"/>
+		<result property="groupLabel" jdbcType="INTEGER"/>
+	</resultMap>
+	
+    <select id="selectProteinAndGroupIds" resultMap="protAndGroupResult" 
+    		parameterClass="java.util.Map">
+    	SELECT prot.id, pprot.groupID 
+    	FROM msProteinInferProtein as prot, ProteinProphetProtein as pprot 
+    	WHERE prot.piRunID = #pinferId# 
+    	AND prot.id = pprot.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND pprot.isSubsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    </select>
+    
+	<select id="selectProteinAndProphetGroupIds" resultMap="protAndGroupResult" 
+    		parameterClass="java.util.Map">
+    	SELECT prot.id, pprot.proteinProphetGroupID
+    	FROM msProteinInferProtein as prot, ProteinProphetProtein as pprot 
+    	WHERE prot.piRunID = #pinferId# 
+    	AND prot.id = pprot.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND pprot.isSubsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    </select>
+    
+	
+	<select id="selectProteinIdsForGroup" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID = #pinferId#
+    	AND ppProt.groupID = #groupId#
+    	AND prot.id = ppProt.piProteinID
+    </select>
+    
+    <select id="selectSubsumingProteinIdsForProtein" resultClass="Integer" parameterClass="Integer">
+    	SELECT subsumingProteinID FROM ProteinProphetSubsumedProtein WHERE subsumedProteinID=#pinferProteinId#
+    </select>
+    
+    <select id="selectSubsumedProteinIdsForProtein" resultClass="Integer" parameterClass="Integer">
+    	SELECT subsumedProteinID FROM ProteinProphetSubsumedProtein WHERE subsumingProteinID=#pinferProteinId#
+    </select>
+    
+    
+    <select id="selectProteinIdsForProteinProphetGroup" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id FROM msProteinInferProtein as prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID = #pinferId#
+    	AND ppProt.proteinProphetGroupID = #proteinProphetGroupId#
+    	AND prot.id = ppProt.piProteinID
+    </select>
+    
+    <select id="proteinProphetNrseqProteinIds" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID 
+    	FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    </select>
+    
+    
+    <!-- =========================================================================== -->
+    <!-- QUERIES FOR FILTERING AND SORTING PROTEINS                                  -->
+    
+    <select id="proteinProphetProteinIds" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+		<isPropertyAvailable property="groupProteins">
+			ORDER BY ppProt.groupID ASC
+		</isPropertyAvailable>
+    	
+    </select>
+    
+    
+    <select id="proteinIdsByGroupId" resultClass="Integer" parameterClass="Integer">
+    	SELECT prot.id FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	ORDER BY ppProt.groupID ASC
+    </select>
+    
+    <select id="proteinIdsByProteinProphetGroupId" resultClass="Integer" parameterClass="Integer">
+    	SELECT prot.id FROM msProteinInferProtein AS prot, 
+    	               ProteinProphetProtein AS ppProt,
+    	               ProteinProphetProteinGroup AS ppProtGrp
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.proteinProphetGroupID = ppProtGrp.id
+    	ORDER BY ppProtGrp.groupNumber, ppProt.groupID ASC
+    </select>
+    
+    <select id="filterByProteinProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.probability BETWEEN #minProbability# AND #maxProbability#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY ppProt.probability, ppProt.groupID ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsByProteinProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID, prot.id FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.probability BETWEEN #minProbability# AND #maxProbability#
+    </select>
+    
+    <select id="filterByProteinGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id 
+    	FROM msProteinInferProtein AS prot, 
+    	     ProteinProphetProtein AS ppProt,
+    	     ProteinProphetProteinGroup AS ppProtGrp
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.proteinProphetGroupID = ppProtGrp.id
+    	AND ppProtGrp.probability BETWEEN #minProbability# AND #maxProbability#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY ppProtGrp.probability, ppProtGrp.id, ppProt.groupID ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsByProteinGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID 
+    	FROM msProteinInferProtein AS prot, 
+    	     ProteinProphetProtein AS ppProt,
+    	     ProteinProphetProteinGroup AS ppProtGrp
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	AND ppProt.proteinProphetGroupID = ppProtGrp.id
+    	AND ppProtGrp.probability BETWEEN #minProbability# AND #maxProbability#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY ppProtGrp.probability, ppProtGrp.id, ppProt.groupID ASC
+    	</isPropertyAvailable>
+    </select>
+    
+     <select id="proteinsNotInGroup" resultClass="Integer" parameterClass="Integer">
+    	SELECT id, count(*) AS cnt FROM msProteinInferProtein AS prot, ProteinProphetProtein as ppProt
+    	WHERE prot.piRunID=#pinferId#
+    	AND prot.id = ppProt.piProteinID
+    	GROUP BY ppProt.groupID HAVING cnt = 1
+    </select>
+    
+    <select id="filterByCoverage" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msProteinInferProtein 
+    	WHERE piRunID=#pinferId#
+    	AND coverage BETWEEN #minCoverage# AND #maxCoverage#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY coverage ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsByCoverage" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msProteinInferProtein 
+    	WHERE piRunID=#pinferId#
+    	AND coverage BETWEEN #minCoverage# AND #maxCoverage#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY coverage ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterProteinGroupCoverage" 
+    		resultClass="org.yeastrc.ms.dao.protinfer.proteinProphet.ProteinGroupCoverageSorter$ProteinGroupCoverage" 
+    		parameterClass="java.util.Map">
+    	SELECT prot.id AS proteinId, 
+    		   pprot.groupID AS proteinGroupId, 
+    		   pprot.proteinProphetGroupID AS proteinProphetGroupId,
+    	       prot.coverage AS coverage 
+    	FROM msProteinInferProtein AS prot, ProteinProphetProtein AS pprot 
+    	WHERE prot.id = pprot.piProteinID 
+    	AND prot.piRunID = #pinferId# 
+    	AND prot.coverage BETWEEN #minCoverage# AND #maxCoverage#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY 
+    		<isPropertyAvailable property="sort_pg">
+    			proteinProphetGroupId, 
+    		</isPropertyAvailable>
+    		<isPropertyAvailable property="sort_ig">
+    			proteinGroupId,
+    		</isPropertyAvailable>
+    		coverage DESC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterByValidationStatus" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msProteinInferProtein 
+    	WHERE piRunID=#pinferId#
+    	<isPropertyAvailable property="validationStatus">
+    		AND userValidation IN $validationStatus$
+    	</isPropertyAvailable>
+    	<isPropertyAvailable property="sort">
+    		ORDER BY userValidation ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsByValidationStatus" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM msProteinInferProtein 
+    	WHERE piRunID=#pinferId#
+    	<isPropertyAvailable property="validationStatus">
+    		AND userValidation IN $validationStatus$
+    	</isPropertyAvailable>
+    	<isPropertyAvailable property="sort">
+    		ORDER BY userValidation ASC
+    	</isPropertyAvailable>
+    </select>
+
+	<select id="filterByChargeStates" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT DISTINCT(m.piProteinID) 
+    	FROM msProteinInferProteinPeptideMatch AS m, 
+    	msProteinInferPeptide AS pept, 
+    	msProteinInferIon AS ion 
+    	WHERE pept.piRunID=#pinferId#
+    	AND pept.id = ion.piPeptideID 
+    	AND pept.id = m.piPeptideID
+    	AND (
+    	<isPropertyAvailable property="chargeStates">
+    		ion.charge IN $chargeStates$ 
+    		<isPropertyAvailable property="chargeGreaterThan">
+    			OR
+    		</isPropertyAvailable>
+    	</isPropertyAvailable>
+    	<isPropertyAvailable property="chargeGreaterThan">
+    		ion.charge > #chargeGreaterThan#
+    	</isPropertyAvailable>
+    	)
+    </select>
+    
+    <select id="filterBySpecCount" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.id, count(*) AS cnt 
+    	FROM msProteinInferProtein AS prot, 
+    		 ProteinProphetProtein as ppProt,
+    	     msProteinInferProteinPeptideMatch AS m, 
+    		 msProteinInferPeptide AS pept, 
+    		 msProteinInferIon AS ion,
+    		 msProteinInferSpectrumMatch AS psm
+    	WHERE prot.id = ppProt.piProteinID
+    	AND ppProt.piProteinID = m.piProteinID
+    	AND m.piPeptideID = pept.id 
+    	AND pept.id = ion.piPeptideID 
+    	AND ion.id = psm.piIonID
+    	AND prot.piRunID = #pinferId# 
+    	GROUP BY prot.id HAVING cnt BETWEEN #minSpectra# AND #maxSpectra#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY cnt
+			<isPropertyAvailable property="sort_ig">
+				, ppProt.groupID
+			</isPropertyAvailable>
+    		ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterGroupsBySpecCount" 
+    		resultClass="org.yeastrc.ms.dao.protinfer.proteinProphet.ProteinGroupSpectrumCountSorter$ProteinGroupSpectrumCount" 
+    		parameterClass="java.util.Map">
+    	SELECT prot.id AS proteinId,
+    		   ppProt.groupID AS proteinGroupId,
+    		   ppProt.proteinProphetGroupID AS proteinProphetGroupId, 
+    	       count(*) AS spectrumCount 
+    	FROM msProteinInferProtein AS prot, 
+    		 ProteinProphetProtein as ppProt,
+    	     msProteinInferProteinPeptideMatch AS m, 
+    		 msProteinInferPeptide AS pept, 
+    		 msProteinInferIon AS ion,
+    		 msProteinInferSpectrumMatch AS psm
+    	WHERE prot.id = ppProt.piProteinID
+    	AND ppProt.piProteinID = m.piProteinID
+    	AND m.piPeptideID = pept.id 
+    	AND pept.id = ion.piPeptideID 
+    	AND ion.id = psm.piIonID
+    	AND prot.piRunID = #pinferId# 
+    	GROUP BY proteinId HAVING spectrumCount BETWEEN #minSpectra# AND #maxSpectra#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY
+    		<isPropertyAvailable property="sort_pg">
+    			proteinProphetGroupId, 
+    		</isPropertyAvailable>
+    		<isPropertyAvailable property="sort_ig">
+    			proteinGroupId,
+    		</isPropertyAvailable>
+    		spectrumCount DESC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsBySpecCount" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID, prot.id, count(*) AS cnt 
+    	FROM msProteinInferProtein AS prot, 
+    		 ProteinProphetProtein as ppProt,
+    	     msProteinInferProteinPeptideMatch AS m, 
+    		 msProteinInferPeptide AS pept, 
+    		 msProteinInferIon AS ion,
+    		 msProteinInferSpectrumMatch AS psm
+    	WHERE prot.id = ppProt.piProteinID
+    	AND ppProt.piProteinID = m.piProteinID
+    	AND m.piPeptideID = pept.id 
+    	AND pept.id = ion.piPeptideID 
+    	AND ion.id = psm.piIonID
+    	AND prot.piRunID = #pinferId# 
+    	GROUP BY prot.id HAVING cnt BETWEEN #minSpectra# AND #maxSpectra#
+    </select>
+    
+    
+    <select id="filterByPeptideCount_SMC" resultClass="Integer" parameterClass="java.util.Map">
+    
+    	SELECT prot.id, 
+    	<isNotPropertyAvailable property="peptideProbability">
+    		count(ion.id) AS cnt 
+    	</isNotPropertyAvailable>
+    	<isPropertyAvailable property="peptideProbability">
+    		count(pIon.nspAdjProbability) AS cnt
+    	</isPropertyAvailable>
+    	
+    	FROM (msProteinInferProtein AS prot, ProteinProphetProtein as ppProt, msProteinInferProteinPeptideMatch as m)
+    	LEFT JOIN ( msProteinInferPeptide AS pept, msProteinInferIon AS ion )
+    	ON  (m.piPeptideID = pept.id AND pept.id = ion.piPeptideID
+    		<isPropertyAvailable property="uniqueToProtein">
+    			AND pept.uniqueToProtein = #uniqueToProtein#
+    		</isPropertyAvailable>
+    	)
+    	<isPropertyAvailable property="peptideProbability">
+    	LEFT JOIN (ProteinProphetProteinIon AS pIon)
+    	ON (pIon.piProteinID = prot.id 
+    		AND pIon.piIonID = ion.id
+    		AND pIon.nspAdjProbability >= #peptideProbability#)
+    	</isPropertyAvailable>
+    	
+    	WHERE prot.piRunID = #pinferId# 
+    	AND ppProt.piProteinID  = prot.id 
+    	AND m.piProteinID = prot.id 
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    	GROUP BY prot.id HAVING cnt BETWEEN #minPeptides# AND #maxPeptides#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY cnt
+			<isPropertyAvailable property="sort_ig">
+				, ppProt.groupID
+			</isPropertyAvailable>
+    		ASC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterGroupsByPeptideCount_SMC" 
+    		resultClass="org.yeastrc.ms.dao.protinfer.proteinProphet.ProteinGroupPeptideCountSorter$ProteinGroupPeptideCount" 
+    		parameterClass="java.util.Map">
+    	SELECT prot.id AS proteinId,
+    			ppProt.groupID AS proteinGroupId,
+    			ppProt.proteinProphetGroupID AS proteinProphetGroupId,
+    			<isNotPropertyAvailable property="peptideProbability">
+    				count(ion.id) AS peptideCount
+    			</isNotPropertyAvailable>
+    			<isPropertyAvailable property="peptideProbability">
+    				count(pIon.nspAdjProbability) AS cnt
+    			</isPropertyAvailable>
+    	     	
+    	FROM (msProteinInferProtein AS prot, ProteinProphetProtein as ppProt, msProteinInferProteinPeptideMatch as m)
+    	LEFT JOIN ( msProteinInferPeptide AS pept, msProteinInferIon AS ion )
+    	ON  (m.piPeptideID = pept.id AND pept.id = ion.piPeptideID
+    		<isPropertyAvailable property="uniqueToProtein">
+    			AND pept.uniqueToProtein = #uniqueToProtein#
+    		</isPropertyAvailable>
+    	)
+    	
+    	<isPropertyAvailable property="peptideProbability">
+    	LEFT JOIN (ProteinProphetProteinIon AS pIon)
+    	ON (pIon.piProteinID = prot.id 
+    		AND pIon.piIonID = ion.id
+    		AND pIon.nspAdjProbability >= #peptideProbability#)
+    	</isPropertyAvailable>
+    	
+    	WHERE prot.piRunID = #pinferId# 
+    	AND prot.id = ppProt.piProteinID 
+    	AND prot.id = m.piProteinID 
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    	GROUP BY proteinId HAVING peptideCount BETWEEN #minPeptides# AND #maxPeptides#
+    	<isPropertyAvailable property="sort">
+    		ORDER BY
+    		<isPropertyAvailable property="sort_pg">
+    			proteinProphetGroupId, 
+    		</isPropertyAvailable>
+    		<isPropertyAvailable property="sort_ig">
+    			proteinGroupId,
+    		</isPropertyAvailable>
+    		peptideCount DESC
+    	</isPropertyAvailable>
+    </select>
+    
+    <select id="filterNrseqIdsByPeptideCount_SMC" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID, prot.id, 
+    	<isNotPropertyAvailable property="peptideProbability">
+    		count(ion.id) AS cnt 
+    	</isNotPropertyAvailable>
+    	<isPropertyAvailable property="peptideProbability">
+    		count(pIon.nspAdjProbability) AS cnt
+    	</isPropertyAvailable>
+    	FROM (msProteinInferProtein AS prot, ProteinProphetProtein as ppProt, msProteinInferProteinPeptideMatch as m)
+    	LEFT JOIN ( msProteinInferPeptide AS pept, msProteinInferIon AS ion )
+    	ON  (m.piPeptideID = pept.id AND pept.id = ion.piPeptideID
+    		<isPropertyAvailable property="uniqueToProtein">
+    			AND pept.uniqueToProtein = #uniqueToProtein#
+    		</isPropertyAvailable>
+    	)
+    	<isPropertyAvailable property="peptideProbability">
+    	LEFT JOIN (ProteinProphetProteinIon AS pIon)
+    	ON (pIon.piProteinID = prot.id 
+    		AND pIon.piIonID = ion.id
+    		AND pIon.nspAdjProbability >= #peptideProbability#)
+    	</isPropertyAvailable>
+    	
+    	WHERE prot.piRunID = #pinferId# 
+    	AND prot.id = ppProt.piProteinID 
+    	AND prot.id = m.piProteinID 
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    	GROUP BY prot.id HAVING cnt BETWEEN #minPeptides# AND #maxPeptides#
+    	
+    </select>
+    
+    <select id="filterNrseqIdsByPeptideCount_S" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT prot.nrseqProteinID, prot.id, count(pept.id) AS cnt 
+    	FROM (msProteinInferProtein AS prot, ProteinProphetProtein as ppProt, msProteinInferProteinPeptideMatch as m)
+    	LEFT JOIN ( msProteinInferPeptide AS pept )
+    	ON  (m.piPeptideID = pept.id 
+    		<isPropertyAvailable property="uniqueToProtein">
+    			AND pept.uniqueToProtein = #uniqueToProtein#
+    		</isPropertyAvailable>
+    	)
+    	WHERE prot.piRunID = #pinferId# 
+    	AND prot.id = ppProt.piProteinID 
+    	AND prot.id = m.piProteinID 
+    	<isPropertyAvailable property="isSubsumed">
+    		AND ppProt.subsumed = #isSubsumed#
+    	</isPropertyAvailable>
+    	GROUP BY prot.id
+    	HAVING cnt BETWEEN #minPeptides# AND #maxPeptides#
+    </select>
+    
+    <select id="indistinguishableGroupCountByGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(DISTINCT ppProt.groupID)
+    	FROM ProteinProphetProteinGroup AS ppProtGrp, ProteinProphetProtein AS ppProt
+    	WHERE ppProtGrp.piRunID=#pinferId#
+    	AND ppProtGrp.id = ppProt.proteinProphetGroupID
+    	AND ppProtGrp.probability >= #minProbability#
+    	AND ppProt.probability >= #minProbability#
+    	AND ppProt.subsumed = 0
+    </select>
+    
+    <select id="proteinCountCountByGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(ppProt.piProteinID)
+    	FROM ProteinProphetProteinGroup AS ppProtGrp, ProteinProphetProtein AS ppProt
+    	WHERE ppProtGrp.piRunID=#pinferId#
+    	AND ppProtGrp.id = ppProt.proteinProphetGroupID
+    	AND ppProtGrp.probability >= #minProbability#
+    	AND ppProt.probability >= #minProbability#
+    	AND ppProt.subsumed = 0
+    </select>
+    
+   <!-- =========================================================================== -->
+    
+    
+    <insert id="insert" parameterMap="proteinParam">
+    	INSERT INTO ProteinProphetProtein (
+    	piProteinID,
+    	proteinProphetGroupID,
+    	groupID,
+    	probability,
+    	confidence,
+    	subsumed,
+    	totalSpectrumCount,
+    	pctSpectrumCount)
+    	VALUES (?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msProteinInferProtein WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

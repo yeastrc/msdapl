@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PeptideProphetResult"> 
+
+	
+	<typeAlias alias="PeptideProphetResultOut" type="org.yeastrc.ms.domain.analysis.peptideProphet.impl.PeptideProphetResultBean" />
+	<typeAlias alias="PeptideProphetResultIn" type="org.yeastrc.ms.domain.analysis.peptideProphet.PeptideProphetResultDataWId" />
+	
+	
+	<!-- All properties of the "super" resultMap will be included as part of this resultMap, 			-->
+	<!-- and values from the "super" resultMap  are set before any values specified by this resultMap 	-->
+	<resultMap class="PeptideProphetResultOut" id="prophetResultResult" extends="MsSearchResult.msSearchBaseResult">
+		<result property="id" column="sresID" />
+		<result property="peptideProphetResultId" column="presID" />
+		<result property="runSearchAnalysisId" column="runSearchAnalysisID" nullValue="0"/>
+		<result property="probability" column="probability" nullValue="-1.0"/>
+		<result property="fVal" column="fVal" />
+		<result property="numEnzymaticTermini" column="numEnzymaticTermini" nullValue="-1"/>
+		<result property="numMissedCleavages" column="numMissedCleavages" nullValue="-1"/>
+		<result property="massDifference" column="massDifference" />
+		<result property="probabilityNet_0" column="probabilityNet_0" nullValue="-1.0" />
+		<result property="probabilityNet_1" column="probabilityNet_1" nullValue="-1.0" />
+		<result property="probabilityNet_2" column="probabilityNet_2" nullValue="-1.0" />
+		<result property="proteinMatchList" 
+				select="MsResultProtein.selectResultProteins" 
+				column="sresID"/>
+	</resultMap>
+	
+	<parameterMap class="PeptideProphetResultIn" id="prophetResultParam">
+		<parameter property="searchResultId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="runSearchAnalysisId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="probability" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="fVal" jdbcType="DOUBLE" />
+		<parameter property="numEnzymaticTermini" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="numMissedCleavages" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="massDifference" jdbcType="DOUBLE" />
+		<parameter property="probabilityNet_0" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="probabilityNet_1" jdbcType="DOUBLE" nullValue="-1.0"/>
+		<parameter property="probabilityNet_2" jdbcType="DOUBLE" nullValue="-1.0"/>
+	</parameterMap>
+	
+	
+	<select id="select" resultMap="prophetResultResult" parameterClass="Integer">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PeptideProphetResult AS pres
+		WHERE pres.id = #id#
+		AND pres.resultID = res.id
+	</select>
+	
+	<select id="selectForRunSearchAnalysis" resultMap="prophetResultResult" parameterClass="java.util.Map">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PeptideProphetResult AS pres 
+		WHERE res.id = #searchResultId#
+		AND pres.resultID = res.id
+		AND pres.runSearchAnalysisID = #runSearchAnalysisId#
+	</select>
+    
+    <select id="selectForSearchAnalysis" resultMap="prophetResultResult" parameterClass="java.util.Map">
+		SELECT res.id AS sresID, pres.id AS presID, res.*, pres.* 
+		FROM msRunSearchResult AS res, PeptideProphetResult AS pres, msRunSearchAnalysis AS rsa
+		WHERE res.id = #searchResultId#
+		AND pres.resultID = res.id
+		AND pres.runSearchAnalysisID = rsa.id
+		AND rsa.searchAnalysisID = #searchAnalysisId# 
+	</select>
+    
+    <select id="selectResultIdsForRunSearchAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM PeptideProphetResult WHERE runSearchAnalysisID=#runSearchAnalysisId#
+    </select>
+    
+    <select id="selectResultIdsLimitedForRunSearchAnalysis" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT id FROM PeptideProphetResult 
+    	WHERE runSearchAnalysisID=#runSearchAnalysisId# 
+    	ORDER BY id LIMIT #offset#, #limit#
+    </select>
+    
+    <select id="selectResultIdsForRunSearchAnalysisScan" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT pres.id
+    	FROM msRunSearchResult AS res, PeptideProphetResult AS pres 
+    	WHERE pres.runSearchAnalysisID=#runSearchAnalysisId#
+    	AND   pres.resultID = res.id
+    	AND   res.scanID = #scanId#
+    </select>
+    
+    <select id="selectResultIdsForAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT pres.id 
+    	FROM PeptideProphetResult AS pres, msRunSearchAnalysis as rsa 
+    	WHERE pres.runSearchAnalysisID = rsa.id AND
+    	rsa.searchAnalysisID = #analysisId# 
+    </select>
+    
+    <select id="selectResultIdsLimitedForAnalysis" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT pres.id 
+    	FROM PeptideProphetResult AS pres, msRunSearchAnalysis as rsa 
+    	WHERE pres.runSearchAnalysisID = rsa.id AND
+    	rsa.searchAnalysisID = #searchAnalyisId# 
+    	ORDER BY id LIMIT #offset#, #limit#
+    </select>
+    
+   	<select id="countRunSearchAnalysisResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) FROM PeptideProphetResult WHERE runSearchAnalysisID=#runSearchAnalysisId# 
+    </select>
+    
+    <select id="countSearchAnalysisResults" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(*) 
+    	FROM PeptideProphetResult AS pres, msRunSearchAnalysis AS rsa
+    	WHERE rsa.searchAnalysisID=#searchAnalysisId# 
+    	AND  pres.runSearchAnalysisID = rsa.id
+    </select>
+    
+    <insert id="insert" parameterMap="prophetResultParam">
+    	INSERT INTO PeptideProphetResult 
+    	(resultID, 
+    	runSearchAnalysisID,
+    	probability,
+    	fVal,
+    	numEnzymaticTermini,
+    	numMissedCleavages,
+    	massDifference,
+    	probabilityNet_0,
+    	probabilityNet_1,
+    	probabilityNet_2) 
+    	VALUES (?,?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO PeptideProphetResult 
+    	(resultID, 
+    	runSearchAnalysisID,
+    	probability,
+    	fVal,
+    	numEnzymaticTermini,
+    	numMissedCleavages,
+    	massDifference,
+    	probabilityNet_0,
+    	probabilityNet_1,
+    	probabilityNet_2) 
+    	VALUES $values$
+    </insert>
+    
+    <delete id="deleteForRunSearchAnalysis" parameterClass="Integer">
+		DELETE FROM  PeptideProphetResult
+		WHERE runSearchAnalysisID = #runSearchAnalysisId#
+    </delete>
+</sqlMap>

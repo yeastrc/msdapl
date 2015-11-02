@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd" > 
+
+<sqlMapConfig>
+
+	<properties resource="msDataDB.properties" />
+	
+	<settings 
+		useStatementNamespaces="true"
+		lazyLoadingEnabled="true"
+	/>
+	
+	<typeAlias alias="CharTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchModificationDAOImpl$CharTypeHandler"/>
+	<typeHandler jdbcType="CHAR" javaType="java.lang.Character" callback="CharTypeHandler"/>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE"> 
+      		<property name="JDBC.Driver" 
+                value="${db.driver}"/> 
+      		<property name="JDBC.ConnectionURL" 
+                value="${db.temp.url}"/> 
+      		<property name="JDBC.Username" 
+                value="${db.user}"/> 
+      		<property name="JDBC.Password" 
+                value="${db.password}"/>
+                
+            <property name="JDBC.DefaultAutoCommit" value="true" />
+                
+            <property name="Pool.MaximumActiveConnections" value="${db.maxactiveconn}"/>
+            <property name="Pool.MaximumIdleConnections" value="${db.maxidleconn}"/>
+            <property name="Pool.MaximumCheckoutTime" value="${db.maxcheckouttime}"/>
+            
+            <property name="Pool.PingQuery" value="${db.pingquery}"/>
+            <property name="Pool.PingEnabled" value="${db.pingenabled}"/>
+            <property name="Pool.PingConnectionsOlderThan" value="${db.pingolderthan}"/>
+            <property name="Pool.PingConnectionsNotUsedFor" value="${db.pingnotusedfor}"/>
+             
+    	</dataSource>
+	</transactionManager>
+	
+	
+	
+	<!--  General sqlmaps -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/general/MsEnzymeSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/general/MsExperimentSqlMap.xml"/>
+	<!-- <sqlMap resource="org/yeastrc/ms/sqlmap/DeletionSqlMap.xml"/> -->
+	
+	
+	<!-- Related to runs -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/MsScanSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/MsRunSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/MsRunLocationSqlMap.xml"/>
+
+	
+	<!-- Related to MS2 files -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/ms2file/MS2HeaderSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/ms2file/MS2ChargeDependentAnalysisSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/ms2file/MS2ScanChargeSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/ms2file/MS2ChargeIndependentAnalysisSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/run/ms2file/MS2ScanSqlMap.xml"/>
+	
+	
+	<!-- Related to peptide searches -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsSearchDatabaseSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsSearchModificationSqlMap.xml" />
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsSearchResultProteinSqlMap.xml" />
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsSearchResultSqlMap.xml" />
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsRunSearchSqlMap.xml" />
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/MsSearchSqlMap.xml" />
+
+	<!-- Related to SQT files -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/sqtfile/SQTHeaderSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/sqtfile/SQTSearchScanSqlMap.xml"/>
+
+	<!-- Related to Sequest files -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/sequest/SequestSearchSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/sequest/SequestSearchResultSqlMap.xml"/>
+	
+	<!-- Related to ProLuCID files -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/prolucid/ProlucidSearchSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/search/prolucid/ProlucidSearchResultSqlMap.xml"/>
+	
+	<!-- Related to post search analysis -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/analysis/MsSearchAnalysisSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/analysis/MsRunSearchAnalysisSqlMap.xml"/>
+	
+	<!-- Related to Percolator  -->
+	<sqlMap resource="org/yeastrc/ms/sqlmap/analysis/percolator/PercolatorParamsSqlMap.xml"/>
+	<sqlMap resource="org/yeastrc/ms/sqlmap/analysis/percolator/PercolatorResultSqlMap.xml"/>
+	
+</sqlMapConfig>	

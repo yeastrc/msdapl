@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinferSpectrumMatch"> 
+
+	<typeAlias alias="ProteinferSpectrumMatch" type="org.yeastrc.ms.domain.protinfer.ProteinferSpectrumMatch"/>
+	
+	<resultMap class="ProteinferSpectrumMatch" id="pinferSMatchResult">
+		<result property="id" column="id" nullValue="0"/>
+		<result property="resultId" column="resultID" nullValue="0"/>
+		<result property="scanId" column="scanID" nullValue="0"/>
+		<result property="proteinferIonId" column="piIonID" nullValue="0"/>
+		<result property="rank" column="rankForPeptide"/>
+	</resultMap>
+	
+	<parameterMap class="ProteinferSpectrumMatch" id="pinferSMatchParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="scanId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="proteinferIonId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="rank" jdbcType="INTEGER"/>
+	</parameterMap>
+	
+    <select id="select" resultMap="pinferSMatchResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferSpectrumMatch WHERE id = #id#
+    </select>
+    
+    <select id="selectSpectrumCountForIon" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(DISTINCT scanID) FROM msProteinInferSpectrumMatch WHERE piIonID = #id#
+    </select>
+    
+    <select id="selectSpectrumCountForPeptide" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(DISTINCT psm.scanID) 
+    	FROM msProteinInferSpectrumMatch AS psm, msProteinInferIon AS ion
+    	WHERE psm.piIonID = ion.id
+    	AND ion.piPeptideID = #id#
+    </select>
+    
+    <select id="selectSpectrumCountForProtein" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(DISTINCT psm.scanID) 
+    	FROM msProteinInferSpectrumMatch AS psm, 
+    	msProteinInferIon AS ion,
+    	msProteinInferProteinPeptideMatch AS m
+    	WHERE psm.piIonID = ion.id
+    	AND ion.piPeptideID = m.piPeptideID
+    	AND m.piProteinID = #id#
+    </select>
+    
+    <select id="selectMatchesForIon" resultMap="pinferSMatchResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferSpectrumMatch WHERE piIonID = #id#
+    </select>
+    
+    <select id="selectBestMatchForIon" resultMap="pinferSMatchResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferSpectrumMatch 
+    	WHERE piIonID = #id#
+    	AND rankForPeptide = (SELECT min(rankForPeptide) FROM msProteinInferSpectrumMatch WHERE piIonID = #id#)
+    </select>
+    
+    <select id="selectMatchesForPeptide" resultMap="pinferSMatchResult" parameterClass="Integer">
+    	SELECT * FROM msProteinInferSpectrumMatch AS psm, msProteinInferIon as ion
+    	WHERE psm.piIonID = ion.id
+    	AND ion.piPeptideID = #id#
+    </select>
+    
+    <select id="selectMatchIdsForPinferId" resultClass="Integer" parameterClass="Integer">
+    	SELECT psm.id 
+    	FROM msProteinInferSpectrumMatch AS psm,
+    	msProteinInferIon AS ion, 
+    	msProteinInferPeptide AS pept 
+    	WHERE pept.piRunID=#pinferId#
+    	AND pept.id = ion.piPeptideID
+    	AND ion.id = psm.piIonID
+    </select>
+    
+    <select id="selectSpectrumCountForPinferId" resultClass="Integer" parameterClass="Integer">
+    	SELECT count(DISTINCT psm.scanID)
+    	FROM msProteinInferSpectrumMatch AS psm,
+    	msProteinInferIon AS ion, 
+    	msProteinInferPeptide AS pept 
+    	WHERE pept.piRunID=#pinferId#
+    	AND pept.id = ion.piPeptideID
+    	AND ion.id = psm.piIonID
+    </select>
+    
+    <select id="selectSpectrumCountForPinferIdProtein" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(DISTINCT psm.scanID) AS cnt, prot.id 
+    	FROM msProteinInferProtein AS prot, 
+    	msProteinInferProteinPeptideMatch AS m, 
+    	msProteinInferPeptide AS pept, 
+    	msProteinInferIon AS ion, 
+    	msProteinInferSpectrumMatch AS psm 
+    	WHERE prot.piRunID=#pinferId# 
+    	AND prot.id = m.piProteinID 
+    	AND m.piPeptideID = pept.id 
+    	AND pept.id = ion.piPeptideID 
+    	AND ion.id = psm.piIonID 
+    	GROUP BY prot.id 
+    	ORDER BY cnt
+    	<isPropertyAvailable property="max">
+    		DESC
+    	</isPropertyAvailable>
+    	<isNotPropertyAvailable property="max">
+    		ASC
+    	</isNotPropertyAvailable>
+    	LIMIT 1
+    </select>
+    
+     <update id="update" parameterClass="ProteinferSpectrumMatch">
+    	UPDATE msProteinInferSpectrumMatch 
+    	SET resultID=#resultId#,
+    	scanID=#scanId#,
+    	piIonID=#proteinferIonId#,
+    	rankForPeptide=#rank#
+    	WHERE id=#id#
+    </update>
+    
+    
+    <insert id="insert" parameterMap="pinferSMatchParam">
+    	INSERT INTO msProteinInferSpectrumMatch (
+    	resultID,
+    	scanID,
+    	piIonID,
+    	rankForPeptide) 
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+</sqlMap>

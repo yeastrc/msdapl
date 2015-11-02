@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProphetFilteredPsmResult"> 
+
+	<typeAlias alias="ProphetFilteredPsmResult" type="org.yeastrc.ms.domain.analysis.peptideProphet.impl.ProphetFilteredPsmResult" />
+	<typeAlias alias="ProphetBinnedPsmResult" type="org.yeastrc.ms.domain.analysis.peptideProphet.impl.ProphetBinnedPsmResult" />
+
+	<resultMap class="ProphetFilteredPsmResult" id="prophetPsmResultResult">
+		<result property="id" column="id" />
+		<result property="runSearchAnalysisId" column="runSearchAnalysisID"/>
+		<result property="probability" column="probability" nullValue="-1.0"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+		<result property="binnedResults" 
+				select="ProphetFilteredPsmResult.selectBinnedResults" 
+				column="id"/>
+	</resultMap>
+	
+	<resultMap class="ProphetBinnedPsmResult" id="prophetBinnedResultResult">
+		<result property="prophetFilteredPsmId" column="prophetPsmResultID" />
+		<result property="binStart" column="binStart"/>
+		<result property="binEnd" column="binEnd"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+	</resultMap>
+	
+	
+	<select id="select" resultMap="prophetPsmResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM ProphetFilteredPsmResult
+		WHERE runSearchAnalysisId = #id#
+	</select>
+	
+	<select id="selectBinnedResults" resultMap="prophetBinnedResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM ProphetFilteredBinnedPsmResult
+		WHERE prophetPsmResultID = #id#
+	</select>
+	
+	<insert id="insert" parameterClass="ProphetFilteredPsmResult">
+		INSERT INTO ProphetFilteredPsmResult
+		(runSearchAnalysisID, probability, total, filtered)
+		VALUES (#runSearchAnalysisId# , #probability# ,#total#, #filtered#)
+		<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+	</insert>
+	
+	<insert id="insertBinnedResult" parameterClass="ProphetBinnedPsmResult">
+		INSERT INTO ProphetFilteredBinnedPsmResult
+		(prophetPsmResultID, binStart, binEnd, total, filtered)
+		VALUES (#prophetFilteredPsmId# , #binStart# , #binEnd#, #total#, #filtered#)
+	</insert>
+	
+	<delete id="delete" parameterClass="Integer">
+		DELETE FROM ProphetFilteredPsmResult WHERE id=#id#
+	</delete>
+	
+	
+	<select id="selectPopulationAvgPerc" resultClass="Double" >
+		select AVG((filtered/total)*100) FROM ProphetFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationStdDevPerc" resultClass="Double" >
+		select STDDEV((filtered/total)*100) FROM ProphetFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationMax" resultClass="Double" >
+		select MAX((filtered/total)*100) FROM ProphetFilteredPsmResult
+	</select>
+	
+	<select id="selectPopulationMin" resultClass="Double" >
+		select MIN((filtered/total)*100) FROM ProphetFilteredPsmResult
+	</select>
+	
+	
+</sqlMap>

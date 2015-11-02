@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProphetFilteredSpectraResult"> 
+
+	<typeAlias alias="ProphetFilteredSpectraResult" type="org.yeastrc.ms.domain.analysis.peptideProphet.impl.ProphetFilteredSpectraResult" />
+	<typeAlias alias="ProphetBinnedSpectraResult" type="org.yeastrc.ms.domain.analysis.peptideProphet.impl.ProphetBinnedSpectraResult" />
+
+	<resultMap class="ProphetFilteredSpectraResult" id="prophetSpectraResultResult">
+		<result property="id" column="id" />
+		<result property="runSearchAnalysisId" column="runSearchAnalysisID"/>
+		<result property="probability" column="probability" nullValue="-1.0"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+		<result property="binnedResults" 
+				select="ProphetFilteredSpectraResult.selectBinnedResults" 
+				column="id"/>
+	</resultMap>
+	
+	<resultMap class="ProphetBinnedSpectraResult" id="prophetBinnedResultResult">
+		<result property="prophetFilteredSpectraId" column="prophetScanResultID" />
+		<result property="binStart" column="binStart"/>
+		<result property="binEnd" column="binEnd"/>
+		<result property="total" column="total"/>
+		<result property="filtered" column="filtered" />
+	</resultMap>
+	
+	
+	<select id="select" resultMap="prophetSpectraResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM ProphetFilteredSpectraResult
+		WHERE runSearchAnalysisId = #id#
+	</select>
+	
+	<select id="selectBinnedResults" resultMap="prophetBinnedResultResult" parameterClass="Integer">
+		SELECT * 
+		FROM ProphetFilteredBinnedSpectraResult
+		WHERE prophetScanResultID = #id#
+	</select>
+	
+	<insert id="insert" parameterClass="ProphetFilteredSpectraResult">
+		INSERT INTO ProphetFilteredSpectraResult
+		(runSearchAnalysisID, probability, total, filtered)
+		VALUES (#runSearchAnalysisId# , #probability# ,#total#, #filtered#)
+		<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+	</insert>
+	
+	<insert id="insertBinnedResult" parameterClass="ProphetBinnedSpectraResult">
+		INSERT INTO ProphetFilteredBinnedSpectraResult
+		(prophetScanResultID, binStart, binEnd, total, filtered)
+		VALUES (#prophetFilteredSpectraId# , #binStart# , #binEnd#, #total#, #filtered#)
+	</insert>
+	
+	<delete id="delete" parameterClass="Integer">
+		DELETE FROM ProphetFilteredSpectraResult WHERE id=#id#
+	</delete>
+	
+	<select id="selectPopulationAvgPerc" resultClass="Double" >
+		select AVG((filtered/total)*100) FROM ProphetFilteredSpectraResult
+	</select>
+	
+	<select id="selectPopulationStdDevPerc" resultClass="Double" >
+		select STDDEV((filtered/total)*100) FROM ProphetFilteredSpectraResult
+	</select>
+	
+	<select id="selectPopulationMax" resultClass="Double" >
+		select MAX((filtered/total)*100) FROM ProphetFilteredSpectraResult
+	</select>
+	
+	<select id="selectPopulationMin" resultClass="Double" >
+		select MIN((filtered/total)*100) FROM ProphetFilteredSpectraResult
+	</select>
+	
+	
+</sqlMap>

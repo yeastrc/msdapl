@@ -1,0 +1,56 @@
+H	SQTGenerator SEQUEST
+H	SQTGeneratorVersion	3.0
+H	Comment	SEQUEST was written by J Eng and JR Yates, III
+H	Comment	SEQUEST ref. J. Am. Soc. Mass Spectrom., 1994, v. 4, p. 976
+H	Comment	SEQUEST ref. Eng,J.K.; McCormack A.L.; Yates J.R.
+H	Comment	SEQUEST is licensed to Finnigan Corp.
+H	Comment	Paralellization Program is run_ms2
+H	Comment	run_ms2 was written by Rovshan Sadygov
+H	StartTime 01/29/2008, 03:34 AM
+H	EndTime 01/29/2008, 06:21 AM
+H	Database	/net/maccoss/vol2/software/pipeline/dbase/mouse-contam.fasta
+H	DBSeqLength	96816536
+H	DBLocusCount	271842
+H	PrecursorMasses	AVG
+H	FragmentMasses	MONO
+H	Alg-PreMassTol	3.000
+H	Alg-FragMassTol	0.0
+H	Alg-XCorrMode	0
+H	StaticMod	C=160.139
+H	DiffMod	STY*=+80.000 
+H	Alg-MaxDiffMod	3H	Alg-DisplayTop	5
+H	Alg-IonSeries	0 1 1 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0
+H	EnzymeSpec	No_Enzyme
+
+S	00023	00023	1	22	shamu048	866.46000	1892.2	56.4	4716510
+M	  1	  4	 866.96470	0.00000	 1.1529	  3.137	  9	14	    L.S*D#MSASRT*Y*.T	U
+L	Reverse_gi|927415|emb|CAA55359.1|
+L	Reverse_gi|21618336|ref|NP_659006.1|
+M	  2	200	 865.91874	0.0311	 1.117	  2.953	  8	16	  T.SG#TSSAS*LR.K	V
+L	Reverse_gi|22760741|dbj|BAC11315.1|
+L	Reverse_gi|7159735|emb|CAB75875.2|
+M	  3	389	 865.91874	0.087	 1.0526	  2.621	  8	16	            G.SASS*SASLR.V	N
+L	gi|3644048|gb|AAC43042.1|
+L	gi|3522970|gb|AAC34245.1|
+M	  5	207	 867.98042	0.1071	 1.0295	  2.503	  8	14	         R.ELHKAQAA.E	M
+L	gi|24308330|ref|NP_115811.1|
+L	gi|14017825|dbj|BAB47433.1|
+
+S	00020	00020	1	22	shamu049	807.67000	2681.7	95.3	5138490
+M	  1	260	 807.89390	0.00000	 1.188	  2.717	  7	14	          P.AG#D#V#DMSL.S	U
+L	gi|4506751|ref|NP_002947.1|
+L	gi|2905655|gb|AAC03550.1|
+M	  2	 45	 806.93710	0.0236	 1.16	  2.526	  8	14	            T.KGGVDFAL.D	U
+L	gi|825623|emb|CAA39813.1|
+L	gi|18490173|gb|AAH22319.1|
+L	gi|71565152|ref|NP_000661.2|
+
+S	00010	00010	1	23	shamu050	717.62000	4000.6	111.6	5928764
+S	00026	00026	1	23	shamu048	817.33000	2044.4	69.6	5697304
+M	  1	 22	 816.80570	0.00000	 1.5492	  3.795	 11	24	            D.AGGGAGGGGAGAG.Q	U
+L	gi|3090887|gb|AAC15421.1|
+L	gi|55956928|ref|NP_004465.2|
+M	  2	 35	 816.97614	0.12	 1.3633	  2.85	  8	14	  G.SLTRIVAG.A	U
+L	Reverse_gi|20521077|dbj|BAA25466.3|
+L	Reverse_gi|34526553|dbj|BAC85154.1|
+L	Reverse_gi|21751572|dbj|BAC03994.1|

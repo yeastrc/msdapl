@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsSearchMod"> 
+
+	<typeAlias alias="MsResidueModOut" type="org.yeastrc.ms.domain.search.impl.ResidueModificationBean"/>
+	<typeAlias alias="MsTerminalModOut" type="org.yeastrc.ms.domain.search.impl.TerminalModificationBean"/>
+	
+	<typeAlias alias="MsResultResidueModOut" type="org.yeastrc.ms.domain.search.impl.ResultResidueModBean"/>
+	<typeAlias alias="MsResultTerminalModOut" type="org.yeastrc.ms.domain.search.impl.ResultTerminalModBean"/>
+		
+	<typeAlias alias="MsResidueModIn" type="org.yeastrc.ms.domain.search.impl.MsResidueModificationWrap" />
+	<typeAlias alias="MsTerminalModIn" type="org.yeastrc.ms.domain.search.impl.MsTerminalModificationWrap" />
+	
+	<typeAlias alias="MsResultResidueModIn" type="org.yeastrc.ms.domain.search.ResultResidueModIds" />
+	<typeAlias alias="MsResultTerminalModIn" type="org.yeastrc.ms.domain.search.ResultTerminalModIds" />
+	
+	<typeAlias alias="TerminalTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchModificationDAOImpl$TerminalTypeHandler"/>
+	
+	
+	
+	<!-- ==================================== Result Maps ===================================== -->
+	<!-- STATIC RESIDUE MODIFICATION for SEARCH -->
+	<resultMap class="MsResidueModOut" id="msStaticResidueModResult">
+		<result property="id" column="id"/>
+		<result property="modifiedResidue" column="residue" jdbcType="CHAR" javaType="java.lang.Character"/>
+		<result property="modificationMass" column="modifier"/>
+	</resultMap>
+	
+	<!-- DYNAMIC RESIDUE MODIFICATION for SEARCH -->
+	<resultMap class="MsResidueModOut" id="msDynamicResidueModResult" extends="msStaticResidueModResult">
+		<result property="modificationSymbol" column="symbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</resultMap>
+	
+	<!-- DYNAMIC RESIDUE MODIFICATION  for RESULT-->
+	<resultMap class="MsResultResidueModOut" id="msResultDynaResidueModResult">
+		<result property="modifiedPosition" column="position" nullValue="-1"/>
+		<result property="modifiedResidue" column="residue" jdbcType="CHAR" javaType="java.lang.Character" />
+		<result property="modificationMass" column="modifier"/>
+		<result property="modificationSymbol" column="symbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</resultMap>
+	
+	
+	<!-- STATIC TERMINAL MODIFICATION for SEARCH -->
+	<resultMap class="MsTerminalModOut" id="msStaticTerminalModResult">
+		<result property="id" column="id"/>
+		<result property="modifiedTerminal" column="terminus" typeHandler="TerminalTypeHandler" />
+		<result property="modificationMass" column="modifier"/>
+	</resultMap>
+	
+	<!-- DYNAMIC TERMINAL MODIFICATION for SEARCH -->
+	<resultMap class="MsTerminalModOut" id="msDynamicTerminalModResult" extends="msStaticTerminalModResult">
+		<result property="modificationSymbol" column="symbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</resultMap>
+	
+	<!-- DYNAMIC TERMINAL MODIFICATION  for RESULT-->
+	<resultMap class="MsResultTerminalModOut" id="msResultDynaTerminalModResult">
+		<result property="modifiedTerminal" column="terminus" typeHandler="TerminalTypeHandler" />
+		<result property="modificationMass" column="modifier"/>
+		<result property="modificationSymbol" column="symbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</resultMap>
+	
+	
+	<!-- ==================================== Parameter Maps ===================================== -->
+	<parameterMap class="MsResidueModIn" id="msStaticResidueModParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modifiedResidue" jdbcType="CHAR" javaType="java.lang.Character" />
+		<parameter property="modificationMass" jdbcType="DECIMAL"/>
+	</parameterMap>
+	
+	<parameterMap class="MsResidueModIn" id="msDynamicResidueModParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modifiedResidue" jdbcType="CHAR" javaType="java.lang.Character" />
+		<parameter property="modificationMass" jdbcType="DECIMAL"/>
+		<parameter property="modificationSymbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</parameterMap>
+	
+	<parameterMap class="MsTerminalModIn" id="msStaticTerminalModParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modifiedTerminal" jdbcType="CHAR" typeHandler="TerminalTypeHandler" />
+		<parameter property="modificationMass" jdbcType="DECIMAL"/>
+	</parameterMap>
+	
+	<parameterMap class="MsTerminalModIn" id="msDynamicTerminalModParam">
+		<parameter property="searchId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modifiedTerminal" jdbcType="CHAR" typeHandler="TerminalTypeHandler" />
+		<parameter property="modificationMass" jdbcType="DECIMAL"/>
+		<parameter property="modificationSymbol" jdbcType="CHAR" javaType="java.lang.Character" />
+	</parameterMap>
+	
+	<parameterMap class="MsResultResidueModIn" id="msResultDynaResidueModParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modificationId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modifiedPosition" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+	<parameterMap class="MsResultTerminalModIn" id="msResultDynaTerminalModParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="modificationId" jdbcType="INTEGER" nullValue="0"/>
+	</parameterMap>
+	
+	
+	<!-- ================================================================================= -->
+	<!-- QUERIES FOR STATIC RESIDUE MODIFICATIONS -->
+	<!-- ================================================================================= -->
+    <select id="selectStaticResidueModsForSearch" resultMap="msStaticResidueModResult" parameterClass="Integer">
+    	SELECT * FROM msSearchStaticMod WHERE searchID= #id#
+    </select>
+    
+    <insert id="insertStaticResidueMod" parameterMap="msStaticResidueModParam">
+    	INSERT INTO msSearchStaticMod (
+    	searchID,
+    	residue,
+    	modifier)
+    	VALUES (?,?,?)
+    </insert>
+    
+    <delete id="deleteStaticResidueModsForSearch" parameterClass="Integer">
+		DELETE FROM msSearchStaticMod WHERE searchID=#id#
+    </delete>
+    
+	
+	<!-- ================================================================================= -->
+	<!-- QUERIES FOR DYNAMIC RESIDUE MODIFICATIONS -->
+	<!-- ================================================================================= -->
+    <select id="selectDynamicResidueModsForSearch" resultMap="msDynamicResidueModResult" parameterClass="Integer">
+    	SELECT * FROM msSearchDynamicMod WHERE searchID= #id#
+    </select>
+    
+    <select id="selectMatchingDynaResModId" resultClass="Integer" parameterMap="msStaticResidueModParam">
+    	SELECT id FROM msSearchDynamicMod 
+    	WHERE searchID= ?
+    	AND residue = ?
+    	AND modifier = ?
+    </select>
+    
+    <insert id="insertDynamicResidueMod" parameterMap="msDynamicResidueModParam">
+    	INSERT INTO msSearchDynamicMod (
+    	searchID,
+    	residue,
+    	modifier,
+    	symbol)
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+     <delete id="deleteDynamicResidueModsForSearch" parameterClass="Integer">
+		DELETE FROM msSearchDynamicMod WHERE searchID=#id#
+    </delete>
+    
+    
+    <!-- ================================================================================= -->
+	<!-- QUERIES FOR STATIC TERMINAL MODIFICATIONS -->
+	<!-- ================================================================================= -->
+    <select id="selectStaticTerminalModsForSearch" resultMap="msStaticTerminalModResult" parameterClass="Integer">
+    	SELECT * FROM msSearchTerminalStaticMod WHERE searchID= #id#
+    </select>
+    
+    <insert id="insertStaticTerminalMod" parameterMap="msStaticTerminalModParam">
+    	INSERT INTO msSearchTerminalStaticMod (
+    	searchID,
+    	terminus,
+    	modifier)
+    	VALUES (?,?,?)
+    </insert>
+    
+    <delete id="deleteStaticTerminalModsForSearch" parameterClass="Integer">
+		DELETE FROM msSearchTerminalStaticMod WHERE searchID=#id#
+    </delete>
+    
+    <!-- ================================================================================= -->
+	<!-- QUERIES FOR DYNAMIC TERMINAL MODIFICATIONS -->
+	<!-- ================================================================================= -->
+    <select id="selectDynamicTerminalModsForSearch" resultMap="msDynamicTerminalModResult" parameterClass="Integer">
+    	SELECT * FROM msSearchTerminalDynamicMod WHERE searchID= #id#
+    </select>
+    
+    <select id="selectMatchingDynaTermModId" resultClass="Integer" parameterMap="msStaticTerminalModParam">
+    	SELECT id FROM msSearchTerminalDynamicMod 
+    	WHERE searchID= ?
+    	AND terminus = ? 
+    	AND modifier = ?
+    </select>
+    
+    <insert id="insertDynamicTerminalMod" parameterMap="msDynamicTerminalModParam">
+    	INSERT INTO msSearchTerminalDynamicMod (
+    	searchID,
+    	terminus,
+    	modifier,
+    	symbol)
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="deleteDynamicTerminalModsForSearch" parameterClass="Integer">
+		DELETE FROM msSearchTerminalDynamicMod WHERE searchID=#id#
+    </delete>
+    
+    
+    <!-- ================================================================================= -->
+	<!-- QUERIES FOR DYNAMIC RESIDUE MODIFICATIONS (FOR A SEARCH RESULT) -->
+	<!-- ================================================================================= -->
+    <select id="selectDynamicResidueModsForResult" resultMap="msResultDynaResidueModResult" parameterClass="Integer">
+    	SELECT sMod.residue, sMod.modifier, sMod.symbol, rMod.position
+    	FROM msSearchDynamicMod AS sMod, msDynamicModResult AS rMod
+    	WHERE sMod.id = rMod.modID
+    	AND rMod.resultID= #id#
+    </select>
+    
+    <insert id="insertResultDynamicResidueMod" parameterMap="msResultDynaResidueModParam">
+    	INSERT INTO msDynamicModResult (
+    	resultID,
+    	modID,
+    	position)
+    	VALUES (?,?,?)
+    </insert>
+    
+    <insert id="insertAllResultDynamicResidueMods" parameterClass="String">
+    	INSERT INTO msDynamicModResult (resultID, modID, position) VALUES $values$
+    </insert>
+    
+    <delete id="deleteDynamicResidueModsForResult" parameterClass="Integer">
+		DELETE FROM msDynamicModResult WHERE resultID = #resultId#
+    </delete>
+    
+    <!-- ================================================================================= -->
+	<!-- QUERIES FOR DYNAMIC TERMINAL MODIFICATIONS (FOR A SEARCH RESULT) -->
+	<!-- ================================================================================= -->
+    <select id="selectDynamicTerminalModsForResult" resultMap="msResultDynaTerminalModResult" parameterClass="Integer">
+    	SELECT sMod.terminus, sMod.modifier, sMod.symbol
+    	FROM msSearchTerminalDynamicMod AS sMod, msTerminalDynamicModResult AS rMod
+    	WHERE sMod.id = rMod.modID
+    	AND rMod.resultID= #id#
+    </select>
+    
+    <insert id="insertResultDynamicTerminalMod" parameterMap="msResultDynaTerminalModParam">
+    	INSERT INTO msTerminalDynamicModResult (
+    	resultID,
+    	modID)
+    	VALUES (?,?)
+    </insert>
+    
+    <insert id="insertAllResultDynamicTerminalMods" parameterClass="String">
+    	INSERT INTO msTerminalDynamicModResult (resultID, modID) VALUES $values$
+    </insert>
+    
+    <delete id="deleteDynamicTerminalModsForResult" parameterClass="Integer">
+		DELETE FROM msTerminalDynamicModResult WHERE resultID = #resultId#
+    </delete>
+    
+</sqlMap>

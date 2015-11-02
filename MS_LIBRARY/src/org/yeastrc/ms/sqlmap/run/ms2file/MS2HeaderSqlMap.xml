@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MS2Header"> 
+
+	<typeAlias alias="HeaderOut" type="org.yeastrc.ms.domain.run.ms2file.impl.NameValuePair"/>
+	<typeAlias alias="HeaderIn" type="org.yeastrc.ms.dao.run.ms2file.ibatis.MS2HeaderWrap"/>
+	
+	<resultMap class="HeaderOut" id="headerResult">
+		<result property="name" column="header" />
+		<result property="value" column="value" />
+	</resultMap>
+	
+	<parameterMap class="HeaderIn" id="headerParam">
+		<parameter property="runId" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="name" jdbcType="VARCHAR"/>
+		<parameter property="value" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+    <select id="selectHeadersForRun" resultMap="headerResult" parameterClass="Integer"> 
+        SELECT * FROM MS2FileHeader where runID=#id# ORDER BY id
+    </select> 
+    
+    <insert id="insert" parameterMap="headerParam">
+    	INSERT INTO MS2FileHeader (runID, 
+    						header, 
+    						value) 
+    	VALUES (?,?,?)
+    </insert>
+    
+    <delete id="deleteByRunId" parameterClass="Integer">
+		DELETE FROM MS2FileHeader WHERE runID=#runId#		    
+    </delete>
+    
+</sqlMap>

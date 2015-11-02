@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PercolatorParams"> 
+
+
+	<typeAlias alias="PercParamsOut" type="org.yeastrc.ms.domain.analysis.percolator.impl.PercolatorParamBean"/>
+	<typeAlias alias="PercParamsIn" type="org.yeastrc.ms.upload.dao.analysis.percolator.ibatis.PercolatorParamWrap"/>
+	
+	
+	<resultMap class="PercParamsOut" id="paramsResult">
+		<result property="paramName" column="param"/>
+		<result property="paramValue" column="value"/>
+	</resultMap>
+	
+	<parameterMap class="PercParamsIn" id="paramsParam">
+		<parameter property="searchAnalysisId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="paramName" jdbcType="VARCHAR"/>
+		<parameter property="paramValue" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+    
+    <select id="selectParams" resultMap="paramsResult" parameterClass="Integer">
+		SELECT * FROM PercolatorParams WHERE searchAnalysisID = #id# ORDER BY id
+	</select>
+	
+    
+    <insert id="insertParam" parameterMap="paramsParam">
+    	INSERT INTO PercolatorParams (searchAnalysisID, param, value) 
+    	VALUES (?,?,?)
+    </insert>
+    
+</sqlMap>

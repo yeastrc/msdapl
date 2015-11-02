@@ -1,0 +1,58 @@
+H	SQTGenerator	SEQUEST
+H	SQTGeneratorVersion 3.0
+H	Comment	SEQUEST was written by J Eng and JR Yates, III
+H	Comment	SEQUEST ref. J. Am. Soc. Mass Spectrom., 1994, v. 4, p. 976
+H	Comment	SEQUEST ref. Eng,J.K.; McCormack A.L.; Yates J.R.
+H	Comment	SEQUEST is licensed to Finnigan Corp.
+H	Comment	Normalized SEQUEST ref. MacCoss,M.J.; Wu C.C; Yates J.R.
+H	Comment	Normalized SEQUEST ref. Anal. Chem. 2002, v. 74, p. 5593
+H	Comment	Paralellization Program is run_ms2
+H	Comment	run_ms2 was written by Rovshan Sadygov
+H	StartTime 03/23/2005, 07:57 AM
+H	EndTime 03/23/2005, 09:51 AM
+H	Database	/net/maccoss/vol2/software/pipeline/dbase/mouse-contam.fasta
+H	DBSeqLength	6076840
+H	DBLocusCount	13468
+H	PrecursorMasses	AVG
+H	FragmentMasses	MONO
+H	Alg-PreMassTol	3.000
+H	Alg-FragMassTol	0.0
+H	Alg-XCorrMode	1
+H	StaticMod	C=160.139
+H       DiffMod GVD#=-99.9
+H	Alg-DisplayTop	5
+H	Alg-IonSeries	0 1 1 0.0 1.0 0.0 0.0 0.0 0.0 0.0 1.0 0.0
+H	EnzymeSpec	No_Enzyme
+
+S	00026	00026	1	1	nd031	441.40000	3029.4	30.3	171760
+M	  1	 19	 443.48300	0.00000	 0.111	  81.9	  4	 8	         S.RPG#GG#.G	U
+L	YHR165W-A
+M	  2	152	 443.48000	0.0893	 0.1011	  38.4	  3	10	           N.V#PGGGG.T	U
+L	YCR019W
+M	  3	 14	 442.40900	0.0948	 0.1005	  83.7	  4	 8	           R.D#HGGG.I	U
+L	YIL042C
+M	  4	 76	 440.47900	0.1244	 0.0972	  52.6	  3	 6	       D.AV#HN.Q	U
+L	YCL030C
+L	YER065C
+
+S	00027	00027	1	2	nd031	451.23000	3172.8	41.8	293272
+M	  1	129	 450.53000	0.00000	 0.145	  49.5	  4	 8	       T.AAASM.V	U
+L	YPR199C
+L	rand_YGL025C
+L	rand_YPL132W
+
+S	00014	00014	1	2	nd026	436.21000	2245.8	32.8	304275
+M	  1	 63	 434.47000	0.00000	 0.1698	  53.6	  3	 8	    S.SGSAL.G	U
+L	YBL017C
+L	YFL032W
+M	132	  1	 436.54700	0.4899	 0.0866	 128.5	  4	 6	    F.SMKA.V	U
+L	YBR169C
+L	YDR104C
+
+S	00010	00010	1	2	nd024	401.86000	4030.8	26.3	319614
+M	  1	  2	 404.40000	0.00000	 0.1288	 111	  5	 8	       I.SPSGG.P	U
+L	YDL090C
+L	YGL092W
+M	  2	  3	 400.45500	0.0271	 0.1253	 105.2	  5	 8	       F.GAGPV.G	U
+L	YDL246C
+L	YER103W

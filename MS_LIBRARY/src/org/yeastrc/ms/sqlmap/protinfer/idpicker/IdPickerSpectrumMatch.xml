@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="IdPickerSpectrumMatch"> 
+
+	<typeAlias alias="IdPickerSpectrumMatch" type="org.yeastrc.ms.domain.protinfer.idpicker.IdPickerSpectrumMatch"/>
+	
+	<resultMap class="IdPickerSpectrumMatch" id="idpickerSMatchResult" extends="ProteinferSpectrumMatch.pinferSMatchResult">
+		<result property="fdr"  column="fdr" nullValue="-1.0"/>
+	</resultMap>
+	
+	<parameterMap class="IdPickerSpectrumMatch" id="idpickerSMatchParam">
+		<parameter property="id" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="fdr" jdbcType="DOUBLE" nullValue="-1.0"/>
+	</parameterMap>
+	
+    <select id="selectSpectrumMatch" resultMap="idpickerSMatchResult" parameterClass="Integer">
+    	SELECT * FROM IDPickerSpectrumMatch as idpPsm, msProteinInferSpectrumMatch as psm
+    	WHERE psm.id = #id#
+    	AND psm.id = idpPsm.piSpectrumMatchID
+    </select>
+    
+    <select id="selectMatchesForPeptide" resultMap="idpickerSMatchResult" parameterClass="Integer">
+    	SELECT idpPsm.*, psm.* 
+    	FROM IDPickerSpectrumMatch AS idpPsm, 
+    	msProteinInferSpectrumMatch AS psm,
+    	msProteinInferIon AS ion
+    	WHERE ion.piPeptideID = #id#
+    	AND ion.id = psm.piIonID
+    	AND psm.id = idpPsm.piSpectrumMatchID
+    </select>
+    
+    <select id="selectMatchesForIon" resultMap="idpickerSMatchResult" parameterClass="Integer">
+    	SELECT * FROM IDPickerSpectrumMatch as idpPsm, msProteinInferSpectrumMatch as psm
+    	WHERE psm.piIonID = #id#
+    	AND psm.id = idpPsm.piSpectrumMatchID
+    </select>
+    
+    <select id="selectBestMatchForIon" resultMap="idpickerSMatchResult" parameterClass="Integer">
+    	SELECT * FROM IDPickerSpectrumMatch as idpPsm, msProteinInferSpectrumMatch as psm
+    	WHERE psm.piIonID = #id#
+    	AND psm.id = idpPsm.piSpectrumMatchID
+    	AND psm.rankForPeptide = (SELECT min(rankForPeptide) FROM msProteinInferSpectrumMatch WHERE piIonID = #id#)
+    </select>
+    
+    <insert id="insert" parameterMap="idpickerSMatchParam">
+    	INSERT INTO IDPickerSpectrumMatch (
+    	piSpectrumMatchID,
+    	fdr) 
+    	VALUES (?,?)
+    </insert>
+    
+</sqlMap>

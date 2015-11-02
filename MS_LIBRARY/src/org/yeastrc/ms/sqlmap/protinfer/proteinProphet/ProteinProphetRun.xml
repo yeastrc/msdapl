@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetRun"> 
+
+	<typeAlias alias="ProteinProphetRun" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetRun"/>
+		
+	<resultMap class="ProteinProphetRun" id="proteinProphetRunResult" extends="ProteinferRun.pinferRunBaseResult">
+		<result property="filename" column="filename" />
+		<result property="params" 
+				select="ProteinProphetParam.selectParamsForRun"
+				column="id"/>
+		<result property="rocPoints" 
+				select="ProteinProphetRoc.select"
+				column="id"/>
+	</resultMap>
+	
+	<parameterMap class="ProteinProphetRun" id="proteinProphetRunParam">
+		<parameter property="id" jdbcType="INTEGER" nullValue="0" />
+		<parameter property="filename" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	<select id="select" resultMap="proteinProphetRunResult" parameterClass="Integer">
+    	SELECT * 
+    	FROM msProteinInferRun AS run, ProteinProphetRun as prun
+    	WHERE run.id=#id#
+    	AND prun.piRunID = run.id
+    </select>
+    
+    <insert id="insert" parameterMap="proteinProphetRunParam">
+    	INSERT INTO ProteinProphetRun (
+    	piRunID,
+    	filename)
+    	VALUES(?,?)
+    </insert>
+    
+</sqlMap>

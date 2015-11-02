@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsExperiment"> 
+
+	<typeAlias alias="MsExperiment" type="org.yeastrc.ms.domain.general.impl.ExperimentBean" />
+	
+	<resultMap class="MsExperiment" id="msExperimentResult">
+		<result property="id" column="id" />
+		<result property="uploadDate" column="uploadDate" />
+		<result property="serverAddress" column="serverAddress" />
+		<result property="serverDirectory" column="serverDirectory" />
+		<result property="lastUpdateDate" column="lastUpdate" />
+		<result property="comments" column="comments" />
+		<result property="instrumentId" column="instrumentID" nullValue="0"/>
+	</resultMap>
+	
+	<parameterMap class="MsExperiment" id="msExperimentParam">
+		<parameter property="serverAddress" jdbcType="VARCHAR"/>
+		<parameter property="serverDirectory" jdbcType="VARCHAR" />
+		<parameter property="comments" jdbcType="TEXT" />
+		<parameter property="instrumentId" jdbcType="INTEGER" nullValue="0"/>
+	</parameterMap>
+	
+    
+    <select id="selectExperiment" resultMap="msExperimentResult" parameterClass="Integer">
+    	SELECT * FROM msExperiment WHERE id = #id#
+    </select>
+    
+    <select id="selectAllExperimentIds" resultClass="Integer">
+    	SELECT id FROM msExperiment ORDER BY id
+    </select>
+    
+    <select id="searchExperiments" resultClass="Integer">
+    	SELECT DISTINCT expt.id 
+    	FROM msExperiment AS expt, msSearch AS search, msSearchDatabase AS db
+    	WHERE expt.id = search.experimentID
+    	AND search.id = db.searchID
+    	<!-- fasta databases -->
+    	<isNotNull property="searchDbIds">
+    		AND db.databaseID IN $searchDbIds$
+    	</isNotNull>
+    	<!-- date -->
+    	<isNotNull property="startDate">
+    		AND expt.uploadDate
+    		<isNotNull property="endDate">
+    			BETWEEN #startDate# AND #endDate#
+    		</isNotNull>
+    		<isNull property="endDate">
+    			&gt;= #startDate# 
+    		</isNull>
+    	</isNotNull>
+    	<isNull property="startDate">
+    		<isNotNull property="endDate">
+    			AND expt.uploadDate &lt;= #endDate#
+    		</isNotNull>
+    	</isNull>
+    	ORDER BY expt.id
+    </select>
+    
+    <select id="selectRunIdsForExperiment" resultClass="Integer" parameterClass="Integer">
+    	SELECT runID FROM msExperimentRun WHERE experimentID = #experimentId#
+    </select>
+    
+    <select id="selectExperimentIdsForRun" resultClass="Integer" parameterClass="Integer">
+    	SELECT experimentID FROM msExperimentRun WHERE runID = #runId#
+    </select>
+    
+    <select id="getExperimentRunCount" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT count(*) from msExperimentRun WHERE experimentID=#experimentId# AND runID=#runId#
+    </select>
+    
+    <insert id="insertExperiment" parameterMap="msExperimentParam">
+    	INSERT INTO msExperiment (serverAddress, serverDirectory, comments, instrumentID, lastUpdate) 
+    	VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <update id="updateLastUpdate" parameterClass="Integer">
+    	UPDATE msExperiment SET lastUpdate=CURRENT_TIMESTAMP 
+    	WHERE id=#experimentId#
+    </update>
+    
+    <update id="update" parameterClass="MsExperiment">
+    	UPDATE msExperiment SET 
+    	comments=#comments#, 
+    	instrumentID=#instrumentId#,
+    	lastUpdate=CURRENT_TIMESTAMP 
+    	WHERE id=#id#
+    </update>
+    
+    <insert id="insertExperimentRun" parameterClass="java.util.Map">
+    	INSERT INTO msExperimentRun (experimentID, runID) VALUES (#experimentId#, #runId#)
+    </insert>
+    
+    <delete id="deleteExperiment" parameterClass="Integer">
+    	DELETE from msExperiment WHERE id=#id#
+    </delete>
+    
+</sqlMap>

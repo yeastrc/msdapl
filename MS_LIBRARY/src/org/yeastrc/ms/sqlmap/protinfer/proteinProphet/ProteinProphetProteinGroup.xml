@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetProteinGroup"> 
+
+	<typeAlias alias="ProteinProphetProteinGroup" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetGroup"/>
+	
+	<resultMap class="ProteinProphetProteinGroup" id="groupResult">
+		<result property="id" column="id" />
+		<result property="proteinferId" column="piRunID" nullValue="0"/>
+		<result property="groupNumber" column="groupNumber" nullValue="-1"/>
+		<result property="probability" column="probability" nullValue="-1.0"/>
+	</resultMap>
+	
+	<parameterMap class="ProteinProphetProteinGroup" id="groupParam">
+		<parameter property="proteinferId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="groupNumber" jdbcType="INTEGER" />
+		<parameter property="probability" jdbcType="DOUBLE" />
+	</parameterMap>
+	
+    <select id="select" resultMap="groupResult" parameterClass="Integer">
+    	SELECT * FROM ProteinProphetProteinGroup WHERE id = #id#
+    </select>
+    
+    <select id="selectGroupIds" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM ProteinProphetProteinGroup WHERE piRunID = #id#
+    </select>
+    
+    <select id="prophetGroupCountByGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(*)
+    	FROM ProteinProphetProteinGroup
+    	WHERE piRunID=#pinferId#
+    	AND probability >= #minProbability#
+    </select>
+    
+    <insert id="insert" parameterMap="groupParam">
+    	INSERT INTO ProteinProphetProteinGroup (
+    	piRunID,
+    	groupNumber,
+    	probability) 
+    	VALUES (?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM ProteinProphetProteinGroup WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>

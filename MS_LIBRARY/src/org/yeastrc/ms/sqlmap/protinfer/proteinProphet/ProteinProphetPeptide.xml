@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProteinProphetPeptide"> 
+
+	<typeAlias alias="ProteinProphetPeptide" type="org.yeastrc.ms.domain.protinfer.proteinProphet.ProteinProphetProteinPeptide"/>
+	
+	<resultMap class="ProteinProphetPeptide" id="proteinProphetProteinPeptideResult" extends="ProteinferPeptide.pinferPeptideBaseResult">
+		<result property="ionList" 
+				column="{piPeptideId=id, piProteinId=piProteinID}"
+				select="ProteinProphetProteinIon.selectIonsForProteinPeptide"
+				 />
+	</resultMap>
+	
+	<resultMap class="ProteinProphetPeptide" id="proteinProphetPeptideResult" extends="ProteinferPeptide.pinferPeptideBaseResult">
+		<result property="ionList" 
+				column="id"
+				select="ProteinProphetProteinIon.selectIonsForPeptide"
+				 />
+	</resultMap>
+	
+	<select id="select" resultMap="proteinProphetPeptideResult" parameterClass="Integer">
+    	SELECT * FROM  msProteinInferPeptide WHERE id = #id#
+    </select>
+	
+	<select id="selectPeptidesForProtein" resultMap="proteinProphetProteinPeptideResult" parameterClass="Integer">
+    	SELECT p.*, protMatch.piProteinID
+    	FROM  msProteinInferPeptide as p, msProteinInferProteinPeptideMatch as protMatch 
+    	WHERE p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = #id#
+    </select>
+    
+    <select id="peptideSequenceCountForProphetGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(DISTINCT p.sequence)
+    	FROM  msProteinInferPeptide AS p, 
+    	      msProteinInferProteinPeptideMatch AS protMatch,
+    	      ProteinProphetProtein AS ppProt, 
+    	      ProteinProphetProteinGroup AS ppProtGrp 
+    	WHERE p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = ppProt.piProteinID
+    	AND ppProt.proteinProphetGroupID = ppProtGrp.id
+    	AND ppProtGrp.piRunID = #pinferId#
+    	AND ppProtGrp.probability >= #minProbability#
+    	AND ppProt.probability >= #minProbability#
+    	AND ppProt.subsumed = 0
+    </select>
+    
+    <select id="ionCountForProphetGroupProbability" resultClass="Integer" parameterClass="java.util.Map">
+    	SELECT COUNT(DISTINCT ion.id)
+    	FROM  msProteinInferIon AS ion,
+    		  msProteinInferPeptide AS p, 
+    	      msProteinInferProteinPeptideMatch AS protMatch, 
+    	      ProteinProphetProtein AS ppProt, 
+    	      ProteinProphetProteinGroup AS ppProtGrp 
+    	WHERE ion.piPeptideID = p.id 
+    	AND p.id = protMatch.piPeptideID
+    	AND protMatch.piProteinID = ppProt.piProteinID
+    	AND ppProt.proteinProphetGroupID = ppProtGrp.id
+    	AND ppProtGrp.piRunID = #pinferId#
+    	AND ppProtGrp.probability >= #minProbability#
+    	AND ppProt.probability >= #minProbability#
+    	AND ppProt.subsumed = 0
+    </select>
+    
+</sqlMap>

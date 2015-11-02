@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="PeptideTerminiStats"> 
+
+    <typeAlias alias="PeptideTerminalAAResultDb" type="org.yeastrc.ms.domain.analysis.impl.PeptideTerminalAAResultDb"/>
+	
+	<resultMap class="PeptideTerminalAAResultDb" id="PeptideTerminalAAResultDbResult">
+	
+		<result property="analysisId" column="analysisID"/>
+		<result property="scoreCutoff" column="scoreCutoff"/>
+		<result property="scoreType" column="scoreType"/>
+		<result property="totalResultCount" column="totalResultCount"/>
+		<result property="numResultsWithEnzTerm_0" column="numResultsWithEnzTerm_0"/>
+		<result property="numResultsWithEnzTerm_1" column="numResultsWithEnzTerm_1"/>
+		<result property="numResultsWithEnzTerm_2" column="numResultsWithEnzTerm_2"/>
+		<result property="ntermMinusOneAminoAcidCount" column="ntermMinusOneAminoAcidCount"/>
+		<result property="ntermAminoAcidCount" column="ntermAminoAcidCount"/>
+		<result property="ctermAminoAcidCount" column="ctermAminoAcidCount"/>
+		<result property="ctermPlusOneAminoAcidCount" column="ctermPlusOneAminoAcidCount"/>
+		<result property="enzymeId" column="enzymeID" nullValue="0" />
+		<result property="enzyme" column="enzyme" />
+		
+	</resultMap>
+	
+	<parameterMap class="PeptideTerminalAAResultDb" id="PeptideTerminalAAResultDbParam">
+		<parameter property="analysisId" />
+		<parameter property="scoreCutoff" />
+		<parameter property="scoreType" />
+		<parameter property="totalResultCount" />
+		<parameter property="numResultsWithEnzTerm_0" />
+		<parameter property="numResultsWithEnzTerm_1" />
+		<parameter property="numResultsWithEnzTerm_2" />
+		<parameter property="ntermMinusOneAminoAcidCount" />
+		<parameter property="ntermAminoAcidCount" />
+		<parameter property="ctermAminoAcidCount" />
+		<parameter property="ctermPlusOneAminoAcidCount" />
+		<parameter property="enzymeId" nullValue="0" />
+		<parameter property="enzyme" />
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="PeptideTerminalAAResultDbResult" parameterClass="Integer">
+    	SELECT * FROM PeptideTerminiStats WHERE analysisID = #id#
+    </select>
+    
+    <insert id="insert" parameterMap="PeptideTerminalAAResultDbParam">
+    	INSERT INTO PeptideTerminiStats (
+    	analysisID,
+    	scoreCutoff,
+    	scoreType,
+    	totalResultCount,
+    	numResultsWithEnzTerm_0,
+    	numResultsWithEnzTerm_1,
+    	numResultsWithEnzTerm_2,
+    	ntermMinusOneAminoAcidCount,
+    	ntermAminoAcidCount,
+    	ctermAminoAcidCount,
+    	ctermPlusOneAminoAcidCount,
+    	enzymeID,
+    	enzyme)
+    	VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM PeptideTerminiStats WHERE analysisID = #id#
+    </delete>
+</sqlMap>

@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<percolator_output 
+xmlns="http://per-colator.com/percolator_out/11" 
+xmlns:p="http://per-colator.com/percolator_out/11" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://per-colator.com/percolator_out/11 http://per-colator.com/xml/xml-1-1/percolator_out.xsd" 
+p:majorVersion="1" p:minorVersion="17" p:percolator_version="Percolator version 1.17">
+
+  <process_info>
+    <command_line>/net/maccoss/vol2/software/bin64/percolator_v1.17 -v 2 -M -E psms.pin.xml -X combined-results.perc.xml</command_line>
+    <other_command_line>/net/maccoss/vol2/software/bin64/sqt2pin_v1.17 /net/maccoss/vol2/home/frewen/Research/hermie/data/test/barista-tests/pipeline/percolator/realSqt.list /net/maccoss/vol2/home/frewen/Research/hermie/data/test/barista-tests/pipeline/percolator/randSqt.list</other_command_line>
+    <pi_0>0.973146</pi_0>
+  </process_info>
+  <psms>
+    <psm p:psm_id="test-spec-05_16_3_1">
+      <svm_score>0.252785</svm_score>
+      <q_value>0.000000</q_value>
+      <pep>7.643251e-07</pep>
+      <exp_mass>1913.9900</exp_mass>
+      <calc_mass>1914.159</calc_mass>
+      <peptide_seq n="K" c="A" seq="ILCAKAENARLVVNIDN"/>
+      <protein_id>gi|27371164|gb|AAH41070.1|</protein_id>
+      <p_value>1.205e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_20_3_1">
+      <svm_score>0.000</svm_score>
+      <q_value>0.000</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2551.6700</exp_mass>
+      <calc_mass>2551.786</calc_mass>
+      <peptide_seq n="R" c="E" seq="VLNQFDDAGIVTRHNFEGGKSVF"/>
+      <protein_id>gi|16128659|ref|NP_415209.1|</protein_id>
+      <p_value>1.205e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_18_1_1">
+      <svm_score>0.000</svm_score>
+      <q_value>0.324</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1003.8500</exp_mass>
+      <calc_mass>1004.158</calc_mass>
+      <peptide_seq n="K" c="A" seq="VVTSDTRII"/>
+      <protein_id>gi|90111535|ref|NP_417555.4|</protein_id>
+      <p_value>2.410e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_17_2_1">
+      <svm_score>-0.078</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1957.1100</exp_mass>
+      <calc_mass>1958.213</calc_mass>
+      <peptide_seq n="R" c="D" seq="NTWTLLPRERVLCIAD"/>
+      <protein_id>gi|16128980|ref|NP_415534.1|</protein_id>
+      <p_value>7.229e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_22_3_1">
+      <svm_score>-0.204</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>3160.8200</exp_mass>
+      <calc_mass>3161.536</calc_mass>
+      <peptide_seq n="Q" c="S" seq="QFRPGQEEIIDTVLSGRDCLVVMPTGGGK"/>
+      <protein_id>gi|162135918|ref|YP_026263.3|</protein_id>
+      <p_value>8.434e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_2_3_1">
+      <svm_score>-0.216</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2419.9400</exp_mass>
+      <calc_mass>2421.706</calc_mass>
+      <peptide_seq n="R" c="I" seq="AGGMYLNQVIENGDVLGVAWGRT"/>
+      <protein_id>gi|90111724|ref|NP_418715.2|</protein_id>
+      <p_value>8.434e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_24_2_1">
+      <svm_score>-0.251</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1292.8100</exp_mass>
+      <calc_mass>1291.381</calc_mass>
+      <peptide_seq n="L" c="D" seq="DEESSAVVVLDK"/>
+      <protein_id>gi|16132038|ref|NP_418637.1|</protein_id>
+      <p_value>9.639e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_21_2_1">
+      <svm_score>-0.264</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1047.8500</exp_mass>
+      <calc_mass>1050.268</calc_mass>
+      <peptide_seq n="K" c="C" seq="SVLTAFITVV"/>
+      <protein_id>gi|90111190|ref|NP_415458.2|</protein_id>
+      <p_value>9.639e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_17_3_1">
+      <svm_score>-0.279</svm_score>
+      <q_value>0.757</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2935.1600</exp_mass>
+      <calc_mass>2936.532</calc_mass>
+      <peptide_seq n="R" c="L" seq="GIMLLWTGGKWIEGLPAELKQLSAPLL"/>
+      <protein_id>gi|16129473|ref|NP_416031.1|</protein_id>
+      <p_value>9.639e-02</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_10_3_1">
+      <svm_score>-0.298</svm_score>
+      <q_value>0.779</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1258.1000</exp_mass>
+      <calc_mass>1255.372</calc_mass>
+      <peptide_seq n="R" c="A" seq="GKSGIIYCNSR"/>
+      <protein_id>gi|162135918|ref|YP_026263.3|</protein_id>
+      <p_value>1.084e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_14_2_1">
+      <svm_score>-0.349</svm_score>
+      <q_value>0.811</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1346.0700</exp_mass>
+      <calc_mass>1348.545</calc_mass>
+      <peptide_seq n="Q" c="Q" seq="LSLNNLGMTAADK"/>
+      <protein_id>gi|16131205|ref|NP_417785.1|</protein_id>
+      <p_value>1.325e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_17_3_1">
+      <svm_score>-0.376</svm_score>
+      <q_value>0.811</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1395.3200</exp_mass>
+      <calc_mass>1394.474</calc_mass>
+      <peptide_seq n="R" c="T" seq="VGGPGNIASCGNCM"/>
+      <protein_id>gi|16130354|ref|NP_416924.1|</protein_id>
+      <p_value>1.325e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_11_2_1">
+      <svm_score>-0.453</svm_score>
+      <q_value>0.823</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>824.0900</exp_mass>
+      <calc_mass>822.971</calc_mass>
+      <peptide_seq n="F" c="S" seq="GVAIPHTK"/>
+      <protein_id>gi|16130315|ref|NP_416884.1|</protein_id>
+      <p_value>1.446e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_10_2_1">
+      <svm_score>-0.480</svm_score>
+      <q_value>0.859</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>839.0700</exp_mass>
+      <calc_mass>838.891</calc_mass>
+      <peptide_seq n="G" c="T" seq="AGGQHVNR"/>
+      <protein_id>gi|16130793|ref|NP_417367.1|</protein_id>
+      <p_value>1.807e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_22_2_1">
+      <svm_score>-0.501</svm_score>
+      <q_value>0.859</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1957.8900</exp_mass>
+      <calc_mass>1955.163</calc_mass>
+      <peptide_seq n="K" c="I" seq="AIELEDDGVMTYEKVEI"/>
+      <protein_id>gi|90111532|ref|NP_417519.4|</protein_id>
+      <p_value>1.928e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_16_2_1">
+      <svm_score>-0.513</svm_score>
+      <q_value>0.859</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1481.5900</exp_mass>
+      <calc_mass>1481.715</calc_mass>
+      <peptide_seq n="R" c="V" seq="SLRPLGQILLENQ"/>
+      <protein_id>gi|16128552|ref|NP_415101.1|</protein_id>
+      <p_value>1.928e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_12_2_1">
+      <svm_score>-0.519</svm_score>
+      <q_value>0.859</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1694.9500</exp_mass>
+      <calc_mass>1694.773</calc_mass>
+      <peptide_seq n="R" c="L" seq="RTFNAIEDASEQLEA"/>
+      <protein_id>gi|16131148|ref|NP_417726.1|</protein_id>
+      <p_value>1.928e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_24_2_1">
+      <svm_score>-0.580</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1438.5900</exp_mass>
+      <calc_mass>1438.578</calc_mass>
+      <peptide_seq n="R" c="D" seq="GADGYLLKDMEPE"/>
+      <protein_id>gi|16129184|ref|NP_415739.1|</protein_id>
+      <p_value>2.289e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_5_3_1">
+      <svm_score>-0.620</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2188.1600</exp_mass>
+      <calc_mass>2189.442</calc_mass>
+      <peptide_seq n="L" c="T" seq="TVLPLVVYPNSGEHYDAVSK"/>
+      <protein_id>gi|16128246|ref|NP_414795.1|</protein_id>
+      <p_value>2.651e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_21_3_1">
+      <svm_score>-0.629</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1571.2700</exp_mass>
+      <calc_mass>1570.807</calc_mass>
+      <peptide_seq n="K" c="L" seq="AKQYATTYINIVGK"/>
+      <protein_id>gi|16130458|ref|NP_417028.1|</protein_id>
+      <p_value>2.771e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_26_3_1">
+      <svm_score>-0.664</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1421.6900</exp_mass>
+      <calc_mass>1419.560</calc_mass>
+      <peptide_seq n="V" c="I" seq="EIQSKQGTGTTIR"/>
+      <protein_id>gi|16129840|ref|NP_416402.1|</protein_id>
+      <p_value>3.012e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_16_3_1">
+      <svm_score>-0.686</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2221.8800</exp_mass>
+      <calc_mass>2218.917</calc_mass>
+      <peptide_seq n="R" c="Q" seq="KLMLLRSALGMGIVMVLMGLA"/>
+      <protein_id>gi|16129016|ref|NP_415571.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_8_3_1">
+      <svm_score>-0.700</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1667.1200</exp_mass>
+      <calc_mass>1668.920</calc_mass>
+      <peptide_seq n="A" c="E" seq="RPNGLFIAHFGWPR"/>
+      <protein_id>gi|16131984|ref|NP_418583.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_15_3_1">
+      <svm_score>-0.708</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1628.0900</exp_mass>
+      <calc_mass>1630.948</calc_mass>
+      <peptide_seq n="A" c="L" seq="YLFTVLRWAYAVK"/>
+      <protein_id>gi|16129593|ref|NP_416152.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_2_3_1">
+      <svm_score>-0.729</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1372.3700</exp_mass>
+      <calc_mass>1370.570</calc_mass>
+      <peptide_seq n="E" c="L" seq="VDVGISGPTAAVVGK"/>
+      <protein_id>gi|49176247|ref|YP_026172.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_23_2_1">
+      <svm_score>-0.760</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>818.4100</exp_mass>
+      <calc_mass>817.973</calc_mass>
+      <peptide_seq n="L" c="A" seq="ATGGPGMVK"/>
+      <protein_id>gi|16129202|ref|NP_415757.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_8_3_1">
+      <svm_score>-0.767</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2114.3600</exp_mass>
+      <calc_mass>2112.317</calc_mass>
+      <peptide_seq n="R" c="A" seq="NEVKNSVLVDNGDLIQGSPL"/>
+      <protein_id>gi|16132035|ref|NP_418634.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_5_2_1">
+      <svm_score>-0.804</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1468.0100</exp_mass>
+      <calc_mass>1465.651</calc_mass>
+      <peptide_seq n="K" c="Q" seq="YGAEMIHPEYRV"/>
+      <protein_id>gi|16131523|ref|NP_418109.1|</protein_id>
+      <p_value>3.373e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_14_3_1">
+      <svm_score>-0.817</svm_score>
+      <q_value>0.906</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2018.6000</exp_mass>
+      <calc_mass>2021.299</calc_mass>
+      <peptide_seq n="F" c="E" seq="VGPWALPSPPWGSVWLDR"/>
+      <protein_id>gi|90111302|ref|NP_416108.2|</protein_id>
+      <p_value>3.373e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_24_3_1">
+      <svm_score>-0.867</svm_score>
+      <q_value>0.910</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2157.3800</exp_mass>
+      <calc_mass>2155.489</calc_mass>
+      <peptide_seq n="K" c="H" seq="KIAFGCDHVGFILKHEIVA"/>
+      <protein_id>gi|16131916|ref|NP_418514.1|</protein_id>
+      <p_value>3.614e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_5_3_1">
+      <svm_score>-0.916</svm_score>
+      <q_value>0.910</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2201.5100</exp_mass>
+      <calc_mass>2200.465</calc_mass>
+      <peptide_seq n="R" c="G" seq="IVELPAGATPVDFAYAVHTDI"/>
+      <protein_id>gi|16131521|ref|NP_418107.1|</protein_id>
+      <p_value>3.614e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_15_3_1">
+      <svm_score>-0.949</svm_score>
+      <q_value>0.914</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1439.1200</exp_mass>
+      <calc_mass>1441.608</calc_mass>
+      <peptide_seq n="V" c="-" seq="DVGTWIAGVGYRF"/>
+      <protein_id>gi|16128782|ref|NP_415335.1|</protein_id>
+      <p_value>3.855e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_21_3_1">
+      <svm_score>-0.960</svm_score>
+      <q_value>0.914</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1780.9700</exp_mass>
+      <calc_mass>1780.050</calc_mass>
+      <peptide_seq n="H" c="A" seq="KPEAVKPLADVQEQVK"/>
+      <protein_id>gi|16128426|ref|NP_414975.1|</protein_id>
+      <p_value>3.855e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_22_3_1">
+      <svm_score>-0.976</svm_score>
+      <q_value>0.916</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2936.3300</exp_mass>
+      <calc_mass>2937.276</calc_mass>
+      <peptide_seq n="R" c="E" seq="ISELTGLDLGNFDDRLLLYVALQLDE"/>
+      <protein_id>gi|90111093|ref|NP_414704.4|</protein_id>
+      <p_value>3.976e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_20_2_1">
+      <svm_score>-1.026</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1701.4500</exp_mass>
+      <calc_mass>1703.905</calc_mass>
+      <peptide_seq n="K" c="L" seq="IQTIDEIQSTETLIV"/>
+      <protein_id>gi|16131611|ref|NP_418199.1|</protein_id>
+      <p_value>5.060e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_3_2_1">
+      <svm_score>-1.053</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1175.1100</exp_mass>
+      <calc_mass>1176.363</calc_mass>
+      <peptide_seq n="I" c="D" seq="DLKELEAAMR"/>
+      <protein_id>gi|49176235|ref|YP_026169.1|</protein_id>
+      <p_value>5.301e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_27_1_1">
+      <svm_score>-1.056</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>433.7600</exp_mass>
+      <calc_mass>432.463</calc_mass>
+      <peptide_seq n="K" c="P" seq="VPGC"/>
+      <protein_id>gi|16128938|ref|NP_415491.1|</protein_id>
+      <p_value>5.422e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_23_3_1">
+      <svm_score>-1.079</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1227.1100</exp_mass>
+      <calc_mass>1228.380</calc_mass>
+      <peptide_seq n="G" c="N" seq="QRIEIEHFR"/>
+      <protein_id>gi|16130950|ref|NP_417526.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_21_2_1">
+      <svm_score>-1.082</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1187.6500</exp_mass>
+      <calc_mass>1187.429</calc_mass>
+      <peptide_seq n="T" c="A" seq="SGPLIDGVLGMK"/>
+      <protein_id>gi|16130093|ref|NP_416660.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_6_2_1">
+      <svm_score>-1.086</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1214.1100</exp_mass>
+      <calc_mass>1211.427</calc_mass>
+      <peptide_seq n="R" c="R" seq="ALAGELPLLKGE"/>
+      <protein_id>gi|16128728|ref|NP_415281.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_10_3_1">
+      <svm_score>-1.092</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2356.9700</exp_mass>
+      <calc_mass>2356.868</calc_mass>
+      <peptide_seq n="A" c="-" seq="KLLPTAPSAAVVVVRVVVVVGNAP"/>
+      <protein_id>gi|16131542|ref|NP_418128.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_3_3_1">
+      <svm_score>-1.093</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1762.1600</exp_mass>
+      <calc_mass>1761.134</calc_mass>
+      <peptide_seq n="K" c="L" seq="RFVPIISGLAAIFTGVV"/>
+      <protein_id>gi|16129064|ref|NP_415619.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_6_2_1">
+      <svm_score>-1.094</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1151.7100</exp_mass>
+      <calc_mass>1149.273</calc_mass>
+      <peptide_seq n="R" c="P" seq="DVVAYAVQNGI"/>
+      <protein_id>gi|16129970|ref|NP_416533.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_6_3_1">
+      <svm_score>-1.106</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1727.0600</exp_mass>
+      <calc_mass>1725.779</calc_mass>
+      <peptide_seq n="R" c="H" seq="GEADAMICGTVGDYHE"/>
+      <protein_id>gi|16130388|ref|NP_416958.1|</protein_id>
+      <p_value>5.904e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_4_2_1">
+      <svm_score>-1.113</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1566.8500</exp_mass>
+      <calc_mass>1569.706</calc_mass>
+      <peptide_seq n="M" c="F" seq="QLTCAISGESLAYR"/>
+      <protein_id>gi|16131161|ref|NP_417739.1|</protein_id>
+      <p_value>5.904e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_3_3_1">
+      <svm_score>-1.116</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1906.8800</exp_mass>
+      <calc_mass>1908.376</calc_mass>
+      <peptide_seq n="R" c="G" seq="IIPHSLAAAMLAGILLRF"/>
+      <protein_id>gi|90111272|ref|NP_415950.4|</protein_id>
+      <p_value>5.904e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_16_2_1">
+      <svm_score>-1.130</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1276.3300</exp_mass>
+      <calc_mass>1274.398</calc_mass>
+      <peptide_seq n="E" c="M" seq="VTEHAFLDVDK"/>
+      <protein_id>gi|16131887|ref|NP_418485.1|</protein_id>
+      <p_value>6.024e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_12_3_1">
+      <svm_score>-1.159</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2541.9200</exp_mass>
+      <calc_mass>2541.649</calc_mass>
+      <peptide_seq n="T" c="T" seq="RQSPDGCEDGSYYYLVDMQEK"/>
+      <protein_id>gi|145698221|ref|NP_414785.4|</protein_id>
+      <p_value>6.265e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_3_2_1">
+      <svm_score>-1.162</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1271.5900</exp_mass>
+      <calc_mass>1269.509</calc_mass>
+      <peptide_seq n="P" c="G" seq="TDLPKALAALQK"/>
+      <protein_id>gi|16130154|ref|NP_416721.1|</protein_id>
+      <p_value>6.386e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_23_2_1">
+      <svm_score>-1.175</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1077.9300</exp_mass>
+      <calc_mass>1076.265</calc_mass>
+      <peptide_seq n="L" c="L" seq="PVVNYLKDK"/>
+      <protein_id>gi|16130827|ref|NP_417401.1|</protein_id>
+      <p_value>6.386e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_6_3_1">
+      <svm_score>-1.178</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1820.6600</exp_mass>
+      <calc_mass>1821.071</calc_mass>
+      <peptide_seq n="K" c="P" seq="TIPCINDSLVDKFGLK"/>
+      <protein_id>gi|90111165|ref|NP_415246.2|</protein_id>
+      <p_value>6.506e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_12_3_1">
+      <svm_score>-1.206</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2203.5500</exp_mass>
+      <calc_mass>2205.467</calc_mass>
+      <peptide_seq n="R" c="A" seq="EVFGDKSPAISATKAMTGHSLG"/>
+      <protein_id>gi|16130258|ref|NP_416826.1|</protein_id>
+      <p_value>6.627e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_15_2_1">
+      <svm_score>-1.210</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>959.7500</exp_mass>
+      <calc_mass>960.149</calc_mass>
+      <peptide_seq n="G" c="T" seq="LGKSSLLNK"/>
+      <protein_id>gi|90111464|ref|NP_417080.4|</protein_id>
+      <p_value>6.747e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_12_2_1">
+      <svm_score>-1.234</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1469.3700</exp_mass>
+      <calc_mass>1469.622</calc_mass>
+      <peptide_seq n="Y" c="I" seq="PVLQQQAQTDGKR"/>
+      <protein_id>gi|16128086|ref|NP_414635.1|</protein_id>
+      <p_value>6.867e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_23_3_1">
+      <svm_score>-1.269</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1616.3900</exp_mass>
+      <calc_mass>1618.846</calc_mass>
+      <peptide_seq n="E" c="M" seq="GGSLTIIATALIDTGSK"/>
+      <protein_id>gi|16131639|ref|NP_418230.1|</protein_id>
+      <p_value>7.108e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_4_3_1">
+      <svm_score>-1.300</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1963.0100</exp_mass>
+      <calc_mass>1965.371</calc_mass>
+      <peptide_seq n="R" c="V" seq="LTCDIPQVKPLNIVIKL"/>
+      <protein_id>gi|16128898|ref|NP_415451.1|</protein_id>
+      <p_value>7.229e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_11_3_1">
+      <svm_score>-1.341</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1235.6300</exp_mass>
+      <calc_mass>1237.469</calc_mass>
+      <peptide_seq n="A" c="R" seq="ASRIAEMEAMK"/>
+      <protein_id>gi|16129380|ref|NP_415938.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_26_2_1">
+      <svm_score>-1.346</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>948.1300</exp_mass>
+      <calc_mass>948.108</calc_mass>
+      <peptide_seq n="R" c="V" seq="LPCLFAAGV"/>
+      <protein_id>gi|16130374|ref|NP_416944.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_11_2_1">
+      <svm_score>-1.346</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>823.8700</exp_mass>
+      <calc_mass>821.897</calc_mass>
+      <peptide_seq n="I" c="D" seq="GVASSWSK"/>
+      <protein_id>gi|16128655|ref|NP_415205.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_9_2_1">
+      <svm_score>-1.504</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1744.4300</exp_mass>
+      <calc_mass>1743.053</calc_mass>
+      <peptide_seq n="A" c="S" seq="LFFATTFEVMGHLTK"/>
+      <protein_id>gi|16128049|ref|NP_414597.1|</protein_id>
+      <p_value>7.831e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_22_2_1">
+      <svm_score>-1.514</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2107.5500</exp_mass>
+      <calc_mass>2108.373</calc_mass>
+      <peptide_seq n="P" c="S" seq="SASFLERQLTAGVFQPLDK"/>
+      <protein_id>gi|16128822|ref|NP_415375.1|</protein_id>
+      <p_value>7.831e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_18_3_1">
+      <svm_score>-1.560</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1953.1100</exp_mass>
+      <calc_mass>1952.144</calc_mass>
+      <peptide_seq n="R" c="A" seq="EAPYIKHTLSDDKYATV"/>
+      <protein_id>gi|16129060|ref|NP_415615.1|</protein_id>
+      <p_value>8.193e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_5_2_1">
+      <svm_score>-1.578</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1459.1100</exp_mass>
+      <calc_mass>1459.589</calc_mass>
+      <peptide_seq n="K" c="A" seq="GIAAHAANSPHLGRS"/>
+      <protein_id>gi|16129298|ref|NP_415853.1|</protein_id>
+      <p_value>8.193e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_2_2_1">
+      <svm_score>-1.615</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1613.6300</exp_mass>
+      <calc_mass>1614.735</calc_mass>
+      <peptide_seq n="R" c="H" seq="YLRHRIADYDYE"/>
+      <protein_id>gi|16130724|ref|NP_417297.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_4_2_1">
+      <svm_score>-1.652</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1309.0100</exp_mass>
+      <calc_mass>1306.447</calc_mass>
+      <peptide_seq n="K" c="S" seq="AHIGVDAKSGLTH"/>
+      <protein_id>gi|16128244|ref|NP_414793.1|</protein_id>
+      <protein_id>gi|16128535|ref|NP_415084.1|</protein_id>
+      <protein_id>gi|16128639|ref|NP_415189.1|</protein_id>
+      <protein_id>gi|16129292|ref|NP_415847.1|</protein_id>
+      <protein_id>gi|16129331|ref|NP_415888.1|</protein_id>
+      <protein_id>gi|16129935|ref|NP_416498.1|</protein_id>
+      <protein_id>gi|16129971|ref|NP_416535.1|</protein_id>
+      <protein_id>gi|16130129|ref|NP_416696.1|</protein_id>
+      <protein_id>gi|16130882|ref|NP_417456.1|</protein_id>
+      <protein_id>gi|16131108|ref|NP_417685.1|</protein_id>
+      <protein_id>gi|16131377|ref|NP_417962.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_2_2_1">
+      <svm_score>-1.664</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>915.2500</exp_mass>
+      <calc_mass>913.006</calc_mass>
+      <peptide_seq n="S" c="-" seq="ELAKVSHE"/>
+      <protein_id>gi|16131264|ref|NP_417845.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_9_3_1">
+      <svm_score>-1.668</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2184.2300</exp_mass>
+      <calc_mass>2184.383</calc_mass>
+      <peptide_seq n="R" c="Q" seq="QAITQLEALDNRYPFGPYS"/>
+      <protein_id>gi|16130516|ref|NP_417086.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_14_2_1">
+      <svm_score>-1.714</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1625.1300</exp_mass>
+      <calc_mass>1622.886</calc_mass>
+      <peptide_seq n="L" c="D" seq="ELLSPAQRPLQITR"/>
+      <protein_id>gi|162135893|ref|NP_414690.4|</protein_id>
+      <p_value>8.675e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_15_2_1">
+      <svm_score>-1.798</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1085.7300</exp_mass>
+      <calc_mass>1084.398</calc_mass>
+      <peptide_seq n="R" c="G" seq="LKARGVLMVP"/>
+      <protein_id>gi|49176374|ref|YP_026231.1|</protein_id>
+      <p_value>9.157e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_10_2_1">
+      <svm_score>-1.805</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1571.6500</exp_mass>
+      <calc_mass>1573.763</calc_mass>
+      <peptide_seq n="K" c="I" seq="FYTDVLGLPGTYGGI"/>
+      <protein_id>gi|145698335|ref|NP_418313.4|</protein_id>
+      <p_value>9.157e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_20_3_1">
+      <svm_score>-1.817</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1425.1400</exp_mass>
+      <calc_mass>1422.623</calc_mass>
+      <peptide_seq n="P" c="L" seq="SSEALQVGSIMATK"/>
+      <protein_id>gi|16130325|ref|NP_416894.1|</protein_id>
+      <p_value>9.157e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_8_2_1">
+      <svm_score>-1.875</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1409.9100</exp_mass>
+      <calc_mass>1411.539</calc_mass>
+      <peptide_seq n="Q" c="L" seq="ALQGGGGLEPGLADR"/>
+      <protein_id>gi|16129831|ref|NP_416393.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_24_3_1">
+      <svm_score>-1.889</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1938.7100</exp_mass>
+      <calc_mass>1939.203</calc_mass>
+      <peptide_seq n="L" c="R" seq="LTLHRQGSGFGPGGWVLR"/>
+      <protein_id>gi|16128504|ref|NP_415053.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_14_3_1">
+      <svm_score>-1.904</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2437.1900</exp_mass>
+      <calc_mass>2436.821</calc_mass>
+      <peptide_seq n="G" c="R" seq="AFAALVYGLISIGGYVGDHLLGTK"/>
+      <protein_id>gi|16131368|ref|NP_417953.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_17_2_1">
+      <svm_score>-1.911</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>930.5500</exp_mass>
+      <calc_mass>929.007</calc_mass>
+      <peptide_seq n="T" c="L" seq="FADVASYR"/>
+      <protein_id>gi|16131893|ref|NP_418491.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_8_2_1">
+      <svm_score>-1.931</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1111.7500</exp_mass>
+      <calc_mass>1113.334</calc_mass>
+      <peptide_seq n="A" c="T" seq="IVSQLLQRR"/>
+      <protein_id>gi|16131214|ref|NP_417794.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_4_3_1">
+      <svm_score>-1.952</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2349.7700</exp_mass>
+      <calc_mass>2347.525</calc_mass>
+      <peptide_seq n="S" c="G" seq="NQNTCINQMPCVSLGEPVER"/>
+      <protein_id>gi|16131817|ref|NP_418414.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_11_3_1">
+      <svm_score>-1.954</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1235.3000</exp_mass>
+      <calc_mass>1237.469</calc_mass>
+      <peptide_seq n="A" c="R" seq="ASRIAEMEAMK"/>
+      <protein_id>gi|16129380|ref|NP_415938.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_9_3_1">
+      <svm_score>-2.031</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2616.1400</exp_mass>
+      <calc_mass>2618.872</calc_mass>
+      <peptide_seq n="R" c="F" seq="TPGELAQQTGVSGRTILRDIDYLN"/>
+      <protein_id>gi|16131737|ref|NP_418333.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_18_2_1">
+      <svm_score>-2.157</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1302.4100</exp_mass>
+      <calc_mass>1305.383</calc_mass>
+      <peptide_seq n="R" c="V" seq="VDGAVQLNESLC"/>
+      <protein_id>gi|16130631|ref|NP_417204.1|</protein_id>
+      <p_value>9.518e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-05_9_2_1">
+      <svm_score>-2.194</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1456.4900</exp_mass>
+      <calc_mass>1459.489</calc_mass>
+      <peptide_seq n="D" c="A" seq="FTGSVDGEEFEGGK"/>
+      <protein_id>gi|16128421|ref|NP_414970.1|</protein_id>
+      <p_value>9.518e-01</p_value>
+    </psm>
+    <psm p:psm_id="test-spec-03_20_2_1">
+      <svm_score>-2.610</svm_score>
+      <q_value>0.961</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>950.4300</exp_mass>
+      <calc_mass>948.024</calc_mass>
+      <peptide_seq n="D" c="T" seq="EIDACIAR"/>
+      <protein_id>gi|16129303|ref|NP_415858.1|</protein_id>
+      <p_value>9.880e-01</p_value>
+    </psm>
+  </psms>
+  <peptides>
+    <peptide p:peptide_id="ILCAKAENARLVVNIDN">
+      <svm_score>0.252785</svm_score>
+      <q_value>0.000000</q_value>
+      <pep>7.402377e-07</pep>
+      <exp_mass>1913.9900</exp_mass>
+      <calc_mass>1914.159</calc_mass>
+      <protein_id>gi|27371164|gb|AAH41070.1|</protein_id>
+      <p_value>1.205e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_16_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VLNQFDDAGIVTRHNFEGGKSVF">
+      <svm_score>0.000</svm_score>
+      <q_value>0.000</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2551.6700</exp_mass>
+      <calc_mass>2551.786</calc_mass>
+      <protein_id>gi|16128659|ref|NP_415209.1|</protein_id>
+      <p_value>1.205e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_20_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VVTSDTRII">
+      <svm_score>0.000</svm_score>
+      <q_value>0.320</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1003.8500</exp_mass>
+      <calc_mass>1004.158</calc_mass>
+      <protein_id>gi|90111535|ref|NP_417555.4|</protein_id>
+      <p_value>2.410e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_18_1_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="NTWTLLPRERVLCIAD">
+      <svm_score>-0.078</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1957.1100</exp_mass>
+      <calc_mass>1958.213</calc_mass>
+      <protein_id>gi|16128980|ref|NP_415534.1|</protein_id>
+      <p_value>7.229e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_17_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="QFRPGQEEIIDTVLSGRDCLVVMPTGGGK">
+      <svm_score>-0.204</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>3160.8200</exp_mass>
+      <calc_mass>3161.536</calc_mass>
+      <protein_id>gi|162135918|ref|YP_026263.3|</protein_id>
+      <p_value>8.434e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_22_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AGGMYLNQVIENGDVLGVAWGRT">
+      <svm_score>-0.216</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2419.9400</exp_mass>
+      <calc_mass>2421.706</calc_mass>
+      <protein_id>gi|90111724|ref|NP_418715.2|</protein_id>
+      <p_value>8.434e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_2_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="DEESSAVVVLDK">
+      <svm_score>-0.251</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1292.8100</exp_mass>
+      <calc_mass>1291.381</calc_mass>
+      <protein_id>gi|16132038|ref|NP_418637.1|</protein_id>
+      <p_value>9.639e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_24_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="SVLTAFITVV">
+      <svm_score>-0.264</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1047.8500</exp_mass>
+      <calc_mass>1050.268</calc_mass>
+      <protein_id>gi|90111190|ref|NP_415458.2|</protein_id>
+      <p_value>9.639e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_21_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GIMLLWTGGKWIEGLPAELKQLSAPLL">
+      <svm_score>-0.279</svm_score>
+      <q_value>0.747</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2935.1600</exp_mass>
+      <calc_mass>2936.532</calc_mass>
+      <protein_id>gi|16129473|ref|NP_416031.1|</protein_id>
+      <p_value>9.639e-02</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_17_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GKSGIIYCNSR">
+      <svm_score>-0.298</svm_score>
+      <q_value>0.769</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1258.1000</exp_mass>
+      <calc_mass>1255.372</calc_mass>
+      <protein_id>gi|162135918|ref|YP_026263.3|</protein_id>
+      <p_value>1.084e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_10_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LSLNNLGMTAADK">
+      <svm_score>-0.349</svm_score>
+      <q_value>0.801</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1346.0700</exp_mass>
+      <calc_mass>1348.545</calc_mass>
+      <protein_id>gi|16131205|ref|NP_417785.1|</protein_id>
+      <p_value>1.325e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_14_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VGGPGNIASCGNCM">
+      <svm_score>-0.376</svm_score>
+      <q_value>0.801</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1395.3200</exp_mass>
+      <calc_mass>1394.474</calc_mass>
+      <protein_id>gi|16130354|ref|NP_416924.1|</protein_id>
+      <p_value>1.325e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_17_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GVAIPHTK">
+      <svm_score>-0.453</svm_score>
+      <q_value>0.813</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>824.0900</exp_mass>
+      <calc_mass>822.971</calc_mass>
+      <protein_id>gi|16130315|ref|NP_416884.1|</protein_id>
+      <p_value>1.446e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_11_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AGGQHVNR">
+      <svm_score>-0.480</svm_score>
+      <q_value>0.848</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>839.0700</exp_mass>
+      <calc_mass>838.891</calc_mass>
+      <protein_id>gi|16130793|ref|NP_417367.1|</protein_id>
+      <p_value>1.807e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_10_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AIELEDDGVMTYEKVEI">
+      <svm_score>-0.501</svm_score>
+      <q_value>0.848</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1957.8900</exp_mass>
+      <calc_mass>1955.163</calc_mass>
+      <protein_id>gi|90111532|ref|NP_417519.4|</protein_id>
+      <p_value>1.928e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_22_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="SLRPLGQILLENQ">
+      <svm_score>-0.513</svm_score>
+      <q_value>0.848</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1481.5900</exp_mass>
+      <calc_mass>1481.715</calc_mass>
+      <protein_id>gi|16128552|ref|NP_415101.1|</protein_id>
+      <p_value>1.928e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_16_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="RTFNAIEDASEQLEA">
+      <svm_score>-0.519</svm_score>
+      <q_value>0.848</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1694.9500</exp_mass>
+      <calc_mass>1694.773</calc_mass>
+      <protein_id>gi|16131148|ref|NP_417726.1|</protein_id>
+      <p_value>1.928e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_12_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GADGYLLKDMEPE">
+      <svm_score>-0.580</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1438.5900</exp_mass>
+      <calc_mass>1438.578</calc_mass>
+      <protein_id>gi|16129184|ref|NP_415739.1|</protein_id>
+      <p_value>2.289e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_24_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="TVLPLVVYPNSGEHYDAVSK">
+      <svm_score>-0.620</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2188.1600</exp_mass>
+      <calc_mass>2189.442</calc_mass>
+      <protein_id>gi|16128246|ref|NP_414795.1|</protein_id>
+      <p_value>2.651e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_5_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AKQYATTYINIVGK">
+      <svm_score>-0.629</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1571.2700</exp_mass>
+      <calc_mass>1570.807</calc_mass>
+      <protein_id>gi|16130458|ref|NP_417028.1|</protein_id>
+      <p_value>2.771e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_21_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="EIQSKQGTGTTIR">
+      <svm_score>-0.664</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1421.6900</exp_mass>
+      <calc_mass>1419.560</calc_mass>
+      <protein_id>gi|16129840|ref|NP_416402.1|</protein_id>
+      <p_value>3.012e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_26_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="KLMLLRSALGMGIVMVLMGLA">
+      <svm_score>-0.686</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2221.8800</exp_mass>
+      <calc_mass>2218.917</calc_mass>
+      <protein_id>gi|16129016|ref|NP_415571.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_16_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="RPNGLFIAHFGWPR">
+      <svm_score>-0.700</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1667.1200</exp_mass>
+      <calc_mass>1668.920</calc_mass>
+      <protein_id>gi|16131984|ref|NP_418583.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_8_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="YLFTVLRWAYAVK">
+      <svm_score>-0.708</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1628.0900</exp_mass>
+      <calc_mass>1630.948</calc_mass>
+      <protein_id>gi|16129593|ref|NP_416152.1|</protein_id>
+      <p_value>3.133e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_15_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VDVGISGPTAAVVGK">
+      <svm_score>-0.729</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1372.3700</exp_mass>
+      <calc_mass>1370.570</calc_mass>
+      <protein_id>gi|49176247|ref|YP_026172.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_2_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ATGGPGMVK">
+      <svm_score>-0.760</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>818.4100</exp_mass>
+      <calc_mass>817.973</calc_mass>
+      <protein_id>gi|16129202|ref|NP_415757.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_23_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="NEVKNSVLVDNGDLIQGSPL">
+      <svm_score>-0.767</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2114.3600</exp_mass>
+      <calc_mass>2112.317</calc_mass>
+      <protein_id>gi|16132035|ref|NP_418634.1|</protein_id>
+      <p_value>3.253e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_8_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="YGAEMIHPEYRV">
+      <svm_score>-0.804</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1468.0100</exp_mass>
+      <calc_mass>1465.651</calc_mass>
+      <protein_id>gi|16131523|ref|NP_418109.1|</protein_id>
+      <p_value>3.373e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_5_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VGPWALPSPPWGSVWLDR">
+      <svm_score>-0.817</svm_score>
+      <q_value>0.895</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2018.6000</exp_mass>
+      <calc_mass>2021.299</calc_mass>
+      <protein_id>gi|90111302|ref|NP_416108.2|</protein_id>
+      <p_value>3.373e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_14_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="KIAFGCDHVGFILKHEIVA">
+      <svm_score>-0.867</svm_score>
+      <q_value>0.899</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2157.3800</exp_mass>
+      <calc_mass>2155.489</calc_mass>
+      <protein_id>gi|16131916|ref|NP_418514.1|</protein_id>
+      <p_value>3.614e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_24_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="IVELPAGATPVDFAYAVHTDI">
+      <svm_score>-0.916</svm_score>
+      <q_value>0.899</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2201.5100</exp_mass>
+      <calc_mass>2200.465</calc_mass>
+      <protein_id>gi|16131521|ref|NP_418107.1|</protein_id>
+      <p_value>3.614e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_5_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="DVGTWIAGVGYRF">
+      <svm_score>-0.949</svm_score>
+      <q_value>0.903</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1439.1200</exp_mass>
+      <calc_mass>1441.608</calc_mass>
+      <protein_id>gi|16128782|ref|NP_415335.1|</protein_id>
+      <p_value>3.855e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_15_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="KPEAVKPLADVQEQVK">
+      <svm_score>-0.960</svm_score>
+      <q_value>0.903</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1780.9700</exp_mass>
+      <calc_mass>1780.050</calc_mass>
+      <protein_id>gi|16128426|ref|NP_414975.1|</protein_id>
+      <p_value>3.855e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_21_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ISELTGLDLGNFDDRLLLYVALQLDE">
+      <svm_score>-0.976</svm_score>
+      <q_value>0.904</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2936.3300</exp_mass>
+      <calc_mass>2937.276</calc_mass>
+      <protein_id>gi|90111093|ref|NP_414704.4|</protein_id>
+      <p_value>3.976e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_22_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="IQTIDEIQSTETLIV">
+      <svm_score>-1.026</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1701.4500</exp_mass>
+      <calc_mass>1703.905</calc_mass>
+      <protein_id>gi|16131611|ref|NP_418199.1|</protein_id>
+      <p_value>5.060e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_20_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="DLKELEAAMR">
+      <svm_score>-1.053</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1175.1100</exp_mass>
+      <calc_mass>1176.363</calc_mass>
+      <protein_id>gi|49176235|ref|YP_026169.1|</protein_id>
+      <p_value>5.301e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_3_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VPGC">
+      <svm_score>-1.056</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>433.7600</exp_mass>
+      <calc_mass>432.463</calc_mass>
+      <protein_id>gi|16128938|ref|NP_415491.1|</protein_id>
+      <p_value>5.422e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_27_1_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="QRIEIEHFR">
+      <svm_score>-1.079</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1227.1100</exp_mass>
+      <calc_mass>1228.380</calc_mass>
+      <protein_id>gi|16130950|ref|NP_417526.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_23_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="SGPLIDGVLGMK">
+      <svm_score>-1.082</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1187.6500</exp_mass>
+      <calc_mass>1187.429</calc_mass>
+      <protein_id>gi|16130093|ref|NP_416660.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_21_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ALAGELPLLKGE">
+      <svm_score>-1.086</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1214.1100</exp_mass>
+      <calc_mass>1211.427</calc_mass>
+      <protein_id>gi|16128728|ref|NP_415281.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_6_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="KLLPTAPSAAVVVVRVVVVVGNAP">
+      <svm_score>-1.092</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2356.9700</exp_mass>
+      <calc_mass>2356.868</calc_mass>
+      <protein_id>gi|16131542|ref|NP_418128.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_10_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="RFVPIISGLAAIFTGVV">
+      <svm_score>-1.093</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1762.1600</exp_mass>
+      <calc_mass>1761.134</calc_mass>
+      <protein_id>gi|16129064|ref|NP_415619.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_3_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="DVVAYAVQNGI">
+      <svm_score>-1.094</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1151.7100</exp_mass>
+      <calc_mass>1149.273</calc_mass>
+      <protein_id>gi|16129970|ref|NP_416533.1|</protein_id>
+      <p_value>5.663e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_6_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GEADAMICGTVGDYHE">
+      <svm_score>-1.106</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1727.0600</exp_mass>
+      <calc_mass>1725.779</calc_mass>
+      <protein_id>gi|16130388|ref|NP_416958.1|</protein_id>
+      <p_value>5.904e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_6_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="QLTCAISGESLAYR">
+      <svm_score>-1.113</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1566.8500</exp_mass>
+      <calc_mass>1569.706</calc_mass>
+      <protein_id>gi|16131161|ref|NP_417739.1|</protein_id>
+      <p_value>5.904e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_4_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="IIPHSLAAAMLAGILLRF">
+      <svm_score>-1.116</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1906.8800</exp_mass>
+      <calc_mass>1908.376</calc_mass>
+      <protein_id>gi|90111272|ref|NP_415950.4|</protein_id>
+      <p_value>5.904e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_3_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VTEHAFLDVDK">
+      <svm_score>-1.130</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1276.3300</exp_mass>
+      <calc_mass>1274.398</calc_mass>
+      <protein_id>gi|16131887|ref|NP_418485.1|</protein_id>
+      <p_value>6.024e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_16_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="RQSPDGCEDGSYYYLVDMQEK">
+      <svm_score>-1.159</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2541.9200</exp_mass>
+      <calc_mass>2541.649</calc_mass>
+      <protein_id>gi|145698221|ref|NP_414785.4|</protein_id>
+      <p_value>6.265e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_12_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="TDLPKALAALQK">
+      <svm_score>-1.162</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1271.5900</exp_mass>
+      <calc_mass>1269.509</calc_mass>
+      <protein_id>gi|16130154|ref|NP_416721.1|</protein_id>
+      <p_value>6.386e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_3_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="PVVNYLKDK">
+      <svm_score>-1.175</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1077.9300</exp_mass>
+      <calc_mass>1076.265</calc_mass>
+      <protein_id>gi|16130827|ref|NP_417401.1|</protein_id>
+      <p_value>6.386e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_23_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="TIPCINDSLVDKFGLK">
+      <svm_score>-1.178</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1820.6600</exp_mass>
+      <calc_mass>1821.071</calc_mass>
+      <protein_id>gi|90111165|ref|NP_415246.2|</protein_id>
+      <p_value>6.506e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_6_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="EVFGDKSPAISATKAMTGHSLG">
+      <svm_score>-1.206</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2203.5500</exp_mass>
+      <calc_mass>2205.467</calc_mass>
+      <protein_id>gi|16130258|ref|NP_416826.1|</protein_id>
+      <p_value>6.627e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_12_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LGKSSLLNK">
+      <svm_score>-1.210</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>959.7500</exp_mass>
+      <calc_mass>960.149</calc_mass>
+      <protein_id>gi|90111464|ref|NP_417080.4|</protein_id>
+      <p_value>6.747e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_15_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="PVLQQQAQTDGKR">
+      <svm_score>-1.234</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1469.3700</exp_mass>
+      <calc_mass>1469.622</calc_mass>
+      <protein_id>gi|16128086|ref|NP_414635.1|</protein_id>
+      <p_value>6.867e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_12_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GGSLTIIATALIDTGSK">
+      <svm_score>-1.269</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1616.3900</exp_mass>
+      <calc_mass>1618.846</calc_mass>
+      <protein_id>gi|16131639|ref|NP_418230.1|</protein_id>
+      <p_value>7.108e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_23_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LTCDIPQVKPLNIVIKL">
+      <svm_score>-1.300</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1963.0100</exp_mass>
+      <calc_mass>1965.371</calc_mass>
+      <protein_id>gi|16128898|ref|NP_415451.1|</protein_id>
+      <p_value>7.229e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_4_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ASRIAEMEAMK">
+      <svm_score>-1.341</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1235.6300</exp_mass>
+      <calc_mass>1237.469</calc_mass>
+      <protein_id>gi|16129380|ref|NP_415938.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_11_3_1</psm_id>
+        <psm_id>test-spec-03_11_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LPCLFAAGV">
+      <svm_score>-1.346</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>948.1300</exp_mass>
+      <calc_mass>948.108</calc_mass>
+      <protein_id>gi|16130374|ref|NP_416944.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_26_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GVASSWSK">
+      <svm_score>-1.346</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>823.8700</exp_mass>
+      <calc_mass>821.897</calc_mass>
+      <protein_id>gi|16128655|ref|NP_415205.1|</protein_id>
+      <p_value>7.470e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_11_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LFFATTFEVMGHLTK">
+      <svm_score>-1.504</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1744.4300</exp_mass>
+      <calc_mass>1743.053</calc_mass>
+      <protein_id>gi|16128049|ref|NP_414597.1|</protein_id>
+      <p_value>7.831e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_9_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="SASFLERQLTAGVFQPLDK">
+      <svm_score>-1.514</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2107.5500</exp_mass>
+      <calc_mass>2108.373</calc_mass>
+      <protein_id>gi|16128822|ref|NP_415375.1|</protein_id>
+      <p_value>7.831e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_22_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="EAPYIKHTLSDDKYATV">
+      <svm_score>-1.560</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1953.1100</exp_mass>
+      <calc_mass>1952.144</calc_mass>
+      <protein_id>gi|16129060|ref|NP_415615.1|</protein_id>
+      <p_value>8.193e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_18_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="GIAAHAANSPHLGRS">
+      <svm_score>-1.578</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1459.1100</exp_mass>
+      <calc_mass>1459.589</calc_mass>
+      <protein_id>gi|16129298|ref|NP_415853.1|</protein_id>
+      <p_value>8.193e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_5_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="YLRHRIADYDYE">
+      <svm_score>-1.615</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1613.6300</exp_mass>
+      <calc_mass>1614.735</calc_mass>
+      <protein_id>gi|16130724|ref|NP_417297.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_2_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AHIGVDAKSGLTH">
+      <svm_score>-1.652</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1309.0100</exp_mass>
+      <calc_mass>1306.447</calc_mass>
+      <protein_id>gi|16128244|ref|NP_414793.1|</protein_id>
+      <protein_id>gi|16128535|ref|NP_415084.1|</protein_id>
+      <protein_id>gi|16128639|ref|NP_415189.1|</protein_id>
+      <protein_id>gi|16129292|ref|NP_415847.1|</protein_id>
+      <protein_id>gi|16129331|ref|NP_415888.1|</protein_id>
+      <protein_id>gi|16129935|ref|NP_416498.1|</protein_id>
+      <protein_id>gi|16129971|ref|NP_416535.1|</protein_id>
+      <protein_id>gi|16130129|ref|NP_416696.1|</protein_id>
+      <protein_id>gi|16130882|ref|NP_417456.1|</protein_id>
+      <protein_id>gi|16131108|ref|NP_417685.1|</protein_id>
+      <protein_id>gi|16131377|ref|NP_417962.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_4_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ELAKVSHE">
+      <svm_score>-1.664</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>915.2500</exp_mass>
+      <calc_mass>913.006</calc_mass>
+      <protein_id>gi|16131264|ref|NP_417845.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_2_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="QAITQLEALDNRYPFGPYS">
+      <svm_score>-1.668</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2184.2300</exp_mass>
+      <calc_mass>2184.383</calc_mass>
+      <protein_id>gi|16130516|ref|NP_417086.1|</protein_id>
+      <p_value>8.313e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_9_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ELLSPAQRPLQITR">
+      <svm_score>-1.714</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1625.1300</exp_mass>
+      <calc_mass>1622.886</calc_mass>
+      <protein_id>gi|162135893|ref|NP_414690.4|</protein_id>
+      <p_value>8.675e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_14_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LKARGVLMVP">
+      <svm_score>-1.798</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1085.7300</exp_mass>
+      <calc_mass>1084.398</calc_mass>
+      <protein_id>gi|49176374|ref|YP_026231.1|</protein_id>
+      <p_value>9.157e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_15_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="FYTDVLGLPGTYGGI">
+      <svm_score>-1.805</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1571.6500</exp_mass>
+      <calc_mass>1573.763</calc_mass>
+      <protein_id>gi|145698335|ref|NP_418313.4|</protein_id>
+      <p_value>9.157e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_10_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="SSEALQVGSIMATK">
+      <svm_score>-1.817</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1425.1400</exp_mass>
+      <calc_mass>1422.623</calc_mass>
+      <protein_id>gi|16130325|ref|NP_416894.1|</protein_id>
+      <p_value>9.157e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_20_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="ALQGGGGLEPGLADR">
+      <svm_score>-1.875</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1409.9100</exp_mass>
+      <calc_mass>1411.539</calc_mass>
+      <protein_id>gi|16129831|ref|NP_416393.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_8_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="LTLHRQGSGFGPGGWVLR">
+      <svm_score>-1.889</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1938.7100</exp_mass>
+      <calc_mass>1939.203</calc_mass>
+      <protein_id>gi|16128504|ref|NP_415053.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_24_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="AFAALVYGLISIGGYVGDHLLGTK">
+      <svm_score>-1.904</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2437.1900</exp_mass>
+      <calc_mass>2436.821</calc_mass>
+      <protein_id>gi|16131368|ref|NP_417953.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_14_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="FADVASYR">
+      <svm_score>-1.911</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>930.5500</exp_mass>
+      <calc_mass>929.007</calc_mass>
+      <protein_id>gi|16131893|ref|NP_418491.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_17_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="IVSQLLQRR">
+      <svm_score>-1.931</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1111.7500</exp_mass>
+      <calc_mass>1113.334</calc_mass>
+      <protein_id>gi|16131214|ref|NP_417794.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_8_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="NQNTCINQMPCVSLGEPVER">
+      <svm_score>-1.952</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2349.7700</exp_mass>
+      <calc_mass>2347.525</calc_mass>
+      <protein_id>gi|16131817|ref|NP_418414.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_4_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="TPGELAQQTGVSGRTILRDIDYLN">
+      <svm_score>-2.031</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>2616.1400</exp_mass>
+      <calc_mass>2618.872</calc_mass>
+      <protein_id>gi|16131737|ref|NP_418333.1|</protein_id>
+      <p_value>9.398e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_9_3_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="VDGAVQLNESLC">
+      <svm_score>-2.157</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1302.4100</exp_mass>
+      <calc_mass>1305.383</calc_mass>
+      <protein_id>gi|16130631|ref|NP_417204.1|</protein_id>
+      <p_value>9.518e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_18_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="FTGSVDGEEFEGGK">
+      <svm_score>-2.194</svm_score>
+      <q_value>0.937</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>1456.4900</exp_mass>
+      <calc_mass>1459.489</calc_mass>
+      <protein_id>gi|16128421|ref|NP_414970.1|</protein_id>
+      <p_value>9.518e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-05_9_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+    <peptide p:peptide_id="EIDACIAR">
+      <svm_score>-2.610</svm_score>
+      <q_value>0.961</q_value>
+      <pep>1.000e+00</pep>
+      <exp_mass>950.4300</exp_mass>
+      <calc_mass>948.024</calc_mass>
+      <protein_id>gi|16129303|ref|NP_415858.1|</protein_id>
+      <p_value>9.880e-01</p_value>
+      <psm_ids>
+        <psm_id>test-spec-03_20_2_1</psm_id>
+      </psm_ids>
+    </peptide>
+  </peptides>
+</percolator_output>

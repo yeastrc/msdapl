@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd" > 
+
+<sqlMapConfig>
+
+	<properties resource="msDataDBTest.properties" />
+	
+	<settings 
+		useStatementNamespaces="true"
+		lazyLoadingEnabled="true"
+	/>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE"> 
+      		<property name="JDBC.Driver" 
+                value="${db.driver}"/> 
+      		<property name="JDBC.ConnectionURL" 
+                value="${db.proteinfer.url}"/> 
+      		<property name="JDBC.Username" 
+                value="${db.proteinfer.user}"/> 
+      		<property name="JDBC.Password" 
+                value="${db.proteinfer.password}"/>
+                
+            <property name="JDBC.DefaultAutoCommit" value="true" />
+                
+            <property name="Pool.MaximumActiveConnections" value="${db.maxactiveconn}"/>
+            <property name="Pool.MaximumIdleConnections" value="${db.maxidleconn}"/>
+            <property name="Pool.MaximumCheckoutTime" value="${db.maxcheckouttime}"/>
+            
+            <property name="Pool.PingQuery" value="${db.pingquery}"/>
+            <property name="Pool.PingEnabled" value="${db.pingenabled}"/>
+            <property name="Pool.PingConnectionsOlderThan" value="${db.pingolderthan}"/>
+            <property name="Pool.PingConnectionsNotUsedFor" value="${db.pingnotusedfor}"/>
+             
+    	</dataSource>
+	</transactionManager>
+	
+	
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferSpectrumMatch.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferIon.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferPeptide.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferProtein.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferInput.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/ProteinferRun.xml"/>
+	
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerSpectrumMatch.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerIon.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerPeptide.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerProtein.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerFilter.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerInputSummary.xml"/>
+	<sqlMap resource="edu/uwpr/protinfer/database/sqlmap/idpicker/IdPickerRunSummary.xml"/>
+	
+</sqlMapConfig>	

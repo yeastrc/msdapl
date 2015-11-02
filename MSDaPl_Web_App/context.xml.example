@@ -1,0 +1,155 @@
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+    	<Resource     	name="jdbc/msdapl_main"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100" 
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/mainDb?autoReconnect=true"/>
+
+		<Resource       name="jdbc/jobQueue"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+                        factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/jobQueue?autoReconnect=true"/>
+
+
+ 	  	<Resource     	name="jdbc/msData"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+                        factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/msData?autoReconnect=true"/>
+
+          <Resource     name="jdbc/sgd"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100" 
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/sgd_static_201005?autoReconnect=true"/>
+
+
+          <Resource     name="jdbc/go"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100" 
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/mygo_201005?autoReconnect=true"/>
+
+
+          <Resource     name="jdbc/wormbase"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/wormbase?autoReconnect=true"/>
+
+        <Resource     	name="jdbc/flybase"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+                        factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/flybase?autoReconnect=true"/>
+
+	 	<Resource     	name="jdbc/go_human"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+                        factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/go_human?autoReconnect=true"/>
+
+
+        <Resource       name="jdbc/nrseq"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/YRC_NRSEQ?autoReconnect=true"/>
+                        
+
+          <Resource     name="jdbc/hgnc"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+						factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/hgnc_static_200708?autoReconnect=true"/>
+
+
+		<Resource     	name="jdbc/philiusData"
+                        auth="Container"
+                        type="javax.sql.DataSource"
+                        factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+                        maxActive="100"
+                        maxIdle="30"
+                        maxWait="10000"
+                        username="root"
+                        password=""
+                        driverClassName="com.mysql.jdbc.Driver"
+                        url="jdbc:mysql://localhost/philiusData?autoReconnect=true"/>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+
+    <!-- Uncomment this to enable Comet connection tacking (provides events
+         on session expiration as well as webapp lifecycle) -->
+    <!--
+    <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+    -->
+
+</Context>

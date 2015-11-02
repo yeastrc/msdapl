@@ -1,0 +1,48 @@
+
+Percolator version 1.17, Build Date Nov 18 2010 10:49:56
+Copyright (c) 2006-9 University of Washington. All rights reserved.
+Written by Lukas Käll (lukall@u.washington.edu) in the
+Department of Genome Sciences at the University of Washington.
+Issued command:
+/net/maccoss/vol2/software/bin64/percolator_v1.17 -v 2 -M -E psms.pin.xml -X combined-results.perc.xml
+Started Thu Apr 14 13:44:56 2011 on unknown_host
+Hyperparameters fdr=0.01, Cpos=0, Cneg=0, maxNiter=10
+Train/test set contains 82 positives and 82 negatives, size ratio=1 and pi0=1
+
+
+
+
+selecting cpos by cross validation
+selecting cneg by cross validation
+A
+Estimating 0 over q=0.01 in initial direction
+Reading in data and feature calculation took 0.09 cpu seconds or 0 seconds wall time
+---Training with Cpos selected by cross validation, Cneg selected by cross validation, fdr=0.01
+Iteration 1 : After the iteration step, 14 target PSMs with q<0.01 were estimated by cross validation
+Iteration 2 : After the iteration step, 25 target PSMs with q<0.01 were estimated by cross validation
+Iteration 3 : After the iteration step, 26 target PSMs with q<0.01 were estimated by cross validation
+Iteration 4 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 5 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 6 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 7 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 8 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 9 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Iteration 10 : After the iteration step, 27 target PSMs with q<0.01 were estimated by cross validation
+Obtained weights (only showing weights of first cross validation set)
+# first line contains normalized weights, second line the raw weights
+lnrSp	deltLCn	deltCn	Xcorr	Sp	IonFrac	Mass	PepLen	Charge1	Charge2	Charge3	enzN	enzC	enzInt	lnNumSP	dM	absdM	m0
+-0.355	-0.0564	-0.193	-1.04	0.387	0.347	-0.742	0.541	0.305	-0.405	0.311	0.874	1.12	-0.44	-0.532	0.829	-0.488	-1.93
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+After all training done, 3 target PSMs with q<0.01 were found when measuring on the test set
+Found 3 target PSMs scoring over 1% FDR level on testset
+Warning weight for XCorr negative
+Warning weight for deltaCn negative
+Warning weight for XCorr negative
+Warning weight for deltaCn negative
+Reseting score vector, using default vector
+Merging results from 3 datasets
+Selecting pi_0=0.973
+Calibrating statistics - calculating q values
+New pi_0 estimate on merged list gives 2 PSMs over q=0.01
+Calibrating statistics - calculating Posterior error probabilities (PEPs)
+Processing took 0.21 cpu seconds or 0 seconds wall time

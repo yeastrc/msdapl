@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MSDaPlUploadQueueWS"
+  id="myeclipse.1283989697858"
+  context-root="/msdapl_queue"
+  j2ee-spec="5.0"
+  archive="MSDaPlUploadQueueWS.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

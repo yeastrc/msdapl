@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="ProlucidResult"> 
+
+
+	<typeAlias alias="ProlucidResultOut" type="org.yeastrc.ms.domain.search.prolucid.impl.ProlucidSearchResultBean"/>
+	<typeAlias alias="ProlucidResultDataIn" type="org.yeastrc.ms.domain.search.prolucid.ProlucidResultDataWId"/>
+	
+	
+	<resultMap class="ProlucidResultOut" id="prolucidResultResult" extends="MsSearchResult.msSearchResult">
+		<result property="primaryScoreRank" column="primaryScoreRank" nullValue="-1"/>
+		<result property="secondaryScoreRank" column="secondaryScoreRank" nullValue="-1"/>
+		<result property="primaryScore" column="primaryScore" />
+		<result property="secondaryScore" column="secondaryScore" />
+		<result property="deltaCN" column="deltaCN"/>
+		<result property="calculatedMass" column="calculatedMass" />
+		<result property="matchingIons" column="matchingIons" nullValue="-1"/>
+		<result property="predictedIons" column="predictedIons" nullValue="-1"/>
+	</resultMap>
+	
+	<parameterMap class="ProlucidResultDataIn" id="prolucidResultDataParam">
+		<parameter property="resultId" jdbcType="INTEGER" nullValue="0"/>
+		<parameter property="primaryScoreRank" jdbcType="INTEGER" nullValue="-1" />
+		<parameter property="secondaryScoreRank" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="primaryScore" jdbcType="DECIMAL" />
+		<parameter property="secondaryScore" jdbcType="DOUBLE"/>
+		<parameter property="deltaCN" jdbcType="DECIMAL"/>
+		<parameter property="calculatedMass" jdbcType="DECIMAL" />
+		<parameter property="matchingIons" jdbcType="INTEGER" nullValue="-1"/>
+		<parameter property="predictedIons" jdbcType="INTEGER" nullValue="-1"/>
+	</parameterMap>
+	
+
+    <select id="select" resultMap="prolucidResultResult" parameterClass="Integer">
+		SELECT * FROM msRunSearchResult, ProLuCIDSearchResult 
+		WHERE ProLuCIDSearchResult.resultID = msRunSearchResult.id
+		AND msRunSearchResult.id = #id#
+	</select>
+    
+    <select id="selectTopResultIdsForRunSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT id FROM msRunSearchResult as res, ProLuCIDSearchResult pres
+    	WHERE res.id = pres.resultID 
+    	AND pres.primaryScoreRank=1  
+    	AND runSearchID = #id#
+    </select>
+    
+    <insert id="insert" parameterMap="prolucidResultDataParam">
+    	INSERT INTO ProLuCIDSearchResult 
+    	(resultID, 
+    	primaryScoreRank,
+    	secondaryScoreRank,
+    	primaryScore,
+    	secondaryScore,
+    	deltaCN, 
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons) 
+    	VALUES (?,?,?,?,?,?,?,?,?)
+    </insert>
+    
+    <insert id="insertAll" parameterClass="String">
+    	INSERT INTO ProLuCIDSearchResult
+    	(resultID, 
+    	primaryScoreRank,
+    	secondaryScoreRank,
+    	primaryScore,
+    	secondaryScore,
+    	deltaCN, 
+    	calculatedMass,
+    	matchingIons,
+    	predictedIons) 
+    	VALUES $values$
+    </insert>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM ProLuCIDSearchResult WHERE resultID=#id#
+    </delete>
+    
+</sqlMap>

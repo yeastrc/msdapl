@@ -1,0 +1,67 @@
+
+
+The code in org.systemsbiology.jrap previously existed.
+
+
+The code in org.systemsbiology.jrap was refreshed from
+	http://sourceforge.net/p/sashimi/code/HEAD/tree/trunk/jrap/
+on 7-24-2014 
+
+
+
+On 7-25-2014, the code in org.systemsbiology.jrap.stax.MSXMLSequentialParser was altered as described in the comment below
+
+
+
+package org.systemsbiology.jrap.stax;
+
+
+/**
+ * 
+ */
+public class MSXMLSequentialParser {
+
+
+
+
+
+    //  djaschob  7-25-2014   
+    //
+    //     Replaced code in readFileHeader with previous version of that code found in MSDAPL Google Code SVN
+    //     so that any XMLStreamException with message "HeaderEndFoundException" will be ignored and swallowed
+    
+    
+    
+    ****  Version copied from http://sourceforge.net/p/sashimi/code/HEAD/tree/trunk/jrap/  *****
+
+    /**this gives back the file header (info before scan)
+     *@return the file header info (MZXMLFileInfo)
+     * @throws XMLStreamException 
+     */
+    private void readFileHeader(XMLStreamReader reader) throws XMLStreamException {
+        FileHeaderParser fileHeaderParser = new FileHeaderParser(fileName);
+       	fileHeaderParser.parseFileHeader(reader);
+       	this.fileHeader = fileHeaderParser.getInfo();
+    }
+    
+
+    ****  previous version of that code found in MSDAPL Google Code SVN and placed in the file for proper operation  *****
+    
+    /**this gives back the file header (info before scan)
+     *@return the file header info (MZXMLFileInfo)
+     * @throws XMLStreamException 
+     */
+    private void readFileHeader(XMLStreamReader reader) throws XMLStreamException {
+        FileHeaderParser fileHeaderParser = new FileHeaderParser(fileName);
+        try {
+            fileHeaderParser.parseFileHeader(reader);
+        }
+        catch(XMLStreamException e) {
+            if(!(e.getMessage()).equals("HeaderEndFoundException"))
+                throw e;
+        }
+        this.fileHeader = fileHeaderParser.getInfo();
+    }
+    
+    
+    

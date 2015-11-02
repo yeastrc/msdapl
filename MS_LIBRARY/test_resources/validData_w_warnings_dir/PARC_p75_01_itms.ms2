@@ -1,0 +1,191 @@
+H	FilteringProgram	Parc	
+H	CreationDate	12/20/2007 2:29:19 PM
+H	Extractor	RAWXtract
+H	ExtractorVersion	1.8
+H	Comments	RawXtract written by John Venable, 2003
+H	ExtractorOptions	MS2
+H	AcquisitionMethod	Data-Dependent
+H	InstrumentType	ITMS
+H	ScanType	MS2
+H	DataType	Centroid
+H	IsolationWindow	
+H	FirstScan	1
+H	LastScan	17903
+S	000002	000002	475.42000
+I
+I	RetTime
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan
+I
+Z	1	475.42
+D	PARC	0.106982
+166.2 1785.6
+178.2 3188.7
+181.4 442.7
+191.0 1045.0
+193.3 3087.3
+194.0 1108.8
+195.1 929.0
+205.5 797.3
+207.3 4177.0
+208.4 519.1
+221.0 1345.5
+222.2 822.2
+233.4 367.6
+235.3 1824.4
+S	000009	000009	1372.55000
+I	RetTime	0.03
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	2	123.45
+D       PARC	-1.2345 Hello World
+Z	1	1372.55laksdjflkasf;a
+D	PARC	-1.602722 Hello World
+397.4 78.6
+399.2 57.0
+401.1 23.4
+413.4 73.7
+417.1 35.9
+422.2 55.4
+424.4 37.7
+426.4 67.2
+S	000010	000010	717.62000
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	717.62invalid
+D	PARC	0.133447
+207.4 37.8
+222.1 39.2
+235.2 45.8
+236.2 45.7
+248.3 105.9
+249.3 182.8
+250.1 107.9
+264.3 409.5
+266.4 422.6
+267.3 49.4
+275.2 131.6
+277.2 851.8
+278.2 94.5
+S	000011	000011	576.27000
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	576.27
+D	PARC	0.201929
+166.3 
+221.1 79.6
+228.3 47.5
+250.4 47.7
+251.4 45.4
+254.1 126.7
+263.2 218.6
+265.2 116.2
+273.6 40.9
+288.9 16.4
+289.9 32.8
+291.5 170.0
+292.1 47.9helloworld
+S	000012	000012	1394.58000
+I	RetTime	0.04
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	7
+Z	1	1394.58
+D	PARC	4.082397
+400.6 ^E
+abc 53.8
+420.3 
+S	000014	000014	1712.6500 hello world
+I	RetTime	0.05
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	13
+Z	1	1712.65
+D	PARC	0.102705
+493.1 79.4
+510.8 8.0
+519.8 37.4
+525.0 108.6
+528.9 9.7
+534.9 42.1
+537.1 100.1
+538.9 197.5
+541.1 45.6
+553.0 220.1
+553.8 37.9
+562.0 26.6
+563.7 30.8
+S	000016	000016	1410.57000
+I	RetTime	0.06
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	13
+Z	1	1410.57
+D	PARC	0.723101
+404.2 44.4
+420.3 23.2
+426.3 18.0
+434.2 5.8
+S	000017	000017	709.12000
+I	RetTime	0.06
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	13
+Z	2	1417.23218
+Z	3	2125.34435
+D	PARC	-0.432856
+203.2 27.8
+208.4 14.8
+S	000020	000020	807.67000
+I	RetTime	0.08
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	19
+Z	1	807.67
+D	PARC	0.233657
+252.2 4.9
+260.3 16.5
+267.4 25.8
+S	000022	000022	1396.69000
+I	RetTime	0.08
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	19
+Z	1	1396.69
+D	PARC	4.681008
+390.1 58.3
+393.3 52.3
+402.2 151.2
+S	000023	000023	866.46000
+I	RetTime	0.09
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	19
+Z	1	866.46
+D	PARC	0.757822
+254.4 4.1
+272.4 9.9
+288.0 5.8
+S	000024	000024	1374.58000
+I	RetTime	0.09
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	19
+Z	1	1374.58
+D	PARC	1.468788
+383.2 15.2
+388.2 364.4
+391.3 76.8
+S	000026	000026	817.33000
+I	RetTime	0.10
+I	ActivationType	CID
+I	PrecursorFile	p75_01_itms.ms1
+I	PrecursorScan	25
+Z	1	817.33
+D	PARC	-2.005286

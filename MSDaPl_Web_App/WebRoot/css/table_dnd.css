@@ -1,0 +1,14 @@
+.dragHandle {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 2px solid #0066FF;
+    cursor: move;
+    display: block;
+    float: right;
+    height: 10px;
+    width: 10px;
+}
+tr.myDragClass td {
+	color: white;
+    background-color: #0088FF;
+}
+

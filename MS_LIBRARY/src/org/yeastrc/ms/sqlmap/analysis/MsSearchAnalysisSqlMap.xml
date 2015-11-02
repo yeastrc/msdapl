@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+      "http://ibatis.apache.org/dtd/sql-map-2.dtd"> 
+<sqlMap namespace="MsSearchAnalysis"> 
+
+    <typeAlias alias="MsSearchAnalysisOut" type="org.yeastrc.ms.domain.analysis.impl.SearchAnalysisBean"/>
+    <typeAlias alias="MsSearchAnalysisIn" type="org.yeastrc.ms.domain.analysis.MsSearchAnalysis"/>
+	
+	<typeAlias alias="ProgramType" type="org.yeastrc.ms.domain.search.SearchProgram"/>
+	<typeAlias alias="ProgramTypeHandler" type="org.yeastrc.ms.dao.search.ibatis.MsSearchDAOImpl$SearchProgramTypeHandler"/>
+	
+	<resultMap class="MsSearchAnalysisOut" id="msAnalysisResult">
+		<result property="id" column="id" />
+		<result property="analysisProgram" column="programName" 
+				typeHandler="ProgramTypeHandler"/>
+		<result property="analysisProgramVersion" column="programVersion" />
+		<result property="uploadDate" column="uploadDate" />
+		<result property="comments" column="comments" />
+		<result property="filename" column="filename" />
+	</resultMap>
+	
+	<parameterMap class="MsSearchAnalysisIn" id="msAnalysisParam">
+		<parameter property="analysisProgram" typeHandler="ProgramTypeHandler"/>
+		<parameter property="analysisProgramVersion"/>
+		<parameter property="comments" jdbcType="TEXT" />
+		<parameter property="filename" jdbcType="STRING" />
+	</parameterMap>
+	
+	
+    <select id="select" resultMap="msAnalysisResult" parameterClass="Integer">
+    	SELECT * FROM msSearchAnalysis WHERE id = #id#
+    </select>
+    
+    <select id="selectAnalysisIdsForSearch" resultClass="Integer" parameterClass="Integer">
+    	SELECT DISTINCT searchAnalysisID 
+    	FROM msRunSearch AS rs, msRunSearchAnalysis AS ra 
+    	WHERE rs.searchID = #searchId# 
+    	AND rs.id = ra.runSearchID
+    </select>
+    
+    <select id="selectSearchIdsForAnalysis" resultClass="Integer" parameterClass="Integer">
+    	SELECT DISTINCT searchID 
+    	FROM msRunSearch AS rs, msRunSearchAnalysis AS ra 
+    	WHERE ra.searchAnalysisID = #searchAnalysisId# 
+    	AND rs.id = ra.runSearchID
+    </select>
+    
+    <select id="selectAnalysisForFileName" resultMap="msAnalysisResult" parameterClass="java.util.Map">
+		SELECT * FROM msSearchAnalysis
+		WHERE id IN $analysisIds$
+		AND filename = #filename#
+	</select>
+	
+    <insert id="insert" parameterMap="msAnalysisParam">
+    	INSERT INTO msSearchAnalysis (
+    	programName,
+    	programVersion,
+    	comments,
+    	filename)
+    	VALUES (?,?,?,?)
+    	<selectKey resultClass="int">
+      		select last_insert_id() as id
+    	</selectKey>
+    </insert>
+    
+    
+    <update id="updateAnalysisProgramVersion" parameterClass="java.util.Map">
+    	UPDATE msSearchAnalysis
+    	SET programVersion=#analysisProgramVersion#
+    	WHERE id=#analysisId#
+    </update>
+    
+    <parameterMap class="java.util.Map" id="updateAnalysisProgParam">
+    	<parameter property="analysisProgram" typeHandler="ProgramTypeHandler"/>
+		<parameter property="analysisId"  />
+	</parameterMap>
+	
+    <update id="updateAnalysisProgram" parameterMap="updateAnalysisProgParam">
+    	UPDATE msSearchAnalysis
+    	SET programName=?
+    	WHERE id=?
+    </update>
+    
+    <update id="updateComments" parameterClass="java.util.Map">
+    	UPDATE msSearchAnalysis
+    	SET comments=#comments#
+    	WHERE id=#analysisId#
+    </update>
+    
+    <delete id="delete" parameterClass="Integer">
+		DELETE FROM msSearchAnalysis WHERE id=#id#		    
+    </delete>
+    
+</sqlMap>
