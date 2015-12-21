@@ -57,6 +57,20 @@ function backToProject(projectId) {
 	    	</td>
 	   </tr>
    </logic:notEmpty>
+   <tr>
+		<td>
+			<logic:notEmpty name="paymentMethod" property="uwbudgetNumber">
+				Budget
+			</logic:notEmpty>
+			<logic:notEmpty name="paymentMethod" property="ponumber">
+				PO
+			</logic:notEmpty>
+			Name:
+		</td>
+		<td>
+			<bean:write name="paymentMethod"  property="paymentMethodName" />
+		</td>
+	</tr>
    <!--  
    <tr>
 	   	<td>Federal Funding:</td>

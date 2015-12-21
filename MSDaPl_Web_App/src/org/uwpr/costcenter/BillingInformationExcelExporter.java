@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -223,6 +224,7 @@ public class BillingInformationExcelExporter extends BillingInformationExporter 
 		}
 		row.createCell(cellnum++).setCellValue("Cost");
 		row.createCell(cellnum++).setCellValue("Payment_Method");
+		row.createCell(cellnum++).setCellValue("Payment_Method_Name");
 		row.createCell(cellnum++).setCellValue("%Billed");
 		row.createCell(cellnum++).setCellValue("AmountBilled");
 		row.createCell(cellnum++).setCellValue("ContactFirstName");
@@ -266,7 +268,7 @@ public class BillingInformationExcelExporter extends BillingInformationExporter 
 //	}
 	
 	// Format:
-	// ProjectID	PI	Researcher	Instrument	Block	Start	End	Hours	Rate	Setup_Cost	PaymentMethod	%Billed	AmountBilled	
+	// ProjectID	PI	Researcher	Instrument	Block	Start	End	Hours	Rate	Setup_Cost	PaymentMethod	PaymentMethodName %Billed	AmountBilled	
 	private void writeBlockDetails(Project project, UsageBlockBase block, Sheet sheet) throws BillingInformationExporterException, SQLException {
 		
 		// get the name of the researcher that scheduled the instrument time
@@ -376,6 +378,12 @@ public class BillingInformationExcelExporter extends BillingInformationExporter 
 					+paymentMethod.getId());
 		}
 
+		String paymentMethodName = paymentMethod.getPaymentMethodName();
+		if(StringUtils.isBlank(paymentMethodName))
+		{
+			paymentMethodName = "";
+		}
+		row.createCell(cellnum++).setCellValue(paymentMethodName);
 		
 		row.createCell(cellnum++).setCellValue(percent+"%");
 

@@ -133,6 +133,7 @@ public class EditPaymentMethodAction extends Action {
         paymentMethodForm.setProjectId(projectId);
         paymentMethodForm.setUwBudgetNumber(paymentMethod.getUwbudgetNumber());
         paymentMethodForm.setPoNumber(paymentMethod.getPonumber());
+        paymentMethodForm.setPaymentMethodName(paymentMethod.getPaymentMethodName());
         paymentMethodForm.setContactFirstName(paymentMethod.getContactFirstName());
         paymentMethodForm.setContactLastName(paymentMethod.getContactLastName());
         paymentMethodForm.setContactEmail(paymentMethod.getContactEmail());

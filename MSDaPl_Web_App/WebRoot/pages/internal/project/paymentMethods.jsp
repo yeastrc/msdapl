@@ -12,6 +12,9 @@
                     <td style="padding:3px;font-weight:bold"><bean:write name="paymentMethod" property="ponumber"/></td>
             </logic:notEmpty>
             <td style="padding:3px">
+				<bean:write name="paymentMethod" property="name50Chars" />
+			</td>
+            <td style="padding:3px">
                     <logic:equal name="paymentMethod" property="current" value="true">
                             <span style="color:green">current</span>
                     </logic:equal>

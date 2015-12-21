@@ -50,6 +50,7 @@ public class PaymentMethodDAO {
 				paymentMethod.setId(paymentMethodId);
 				paymentMethod.setUwbudgetNumber(rs.getString("UWBudgetNumber"));
 				paymentMethod.setPonumber(rs.getString("PONumber"));
+				paymentMethod.setPaymentMethodName(rs.getString("paymentMethodName"));
 				paymentMethod.setContactFirstName(rs.getString("contactNameFirst"));
 				paymentMethod.setContactLastName(rs.getString("contactLastName"));
 				paymentMethod.setContactEmail(rs.getString("contactEmail"));
@@ -104,6 +105,7 @@ public class PaymentMethodDAO {
 				paymentMethod.setId(rs.getInt("id"));
 				paymentMethod.setUwbudgetNumber(rs.getString("UWBudgetNumber"));
 				paymentMethod.setPonumber(rs.getString("PONumber"));
+				paymentMethod.setPaymentMethodName(rs.getString("paymentMethodName"));
 				paymentMethod.setContactFirstName(rs.getString("contactNameFirst"));
 				paymentMethod.setContactLastName(rs.getString("contactLastName"));
 				paymentMethod.setContactEmail(rs.getString("contactEmail"));
@@ -136,9 +138,9 @@ public class PaymentMethodDAO {
 	
 	public int savePaymentMethod(PaymentMethod paymentMethod) throws SQLException {
 		
-		String sql = "INSERT INTO paymentMethod (UWBudgetNumber, PONumber, contactNameFirst, contactLastName, contactEmail,";
+		String sql = "INSERT INTO paymentMethod (UWBudgetNumber, PONumber, paymentMethodName, contactNameFirst, contactLastName, contactEmail,";
 		sql += " contactPhone, organization, addressLine1, addressLine2, city, state, zip, country, ";
-		sql += " dateCreated,  createdBy, isCurrent, federalFunding) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		sql += " dateCreated,  createdBy, isCurrent, federalFunding) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -146,29 +148,30 @@ public class PaymentMethodDAO {
 		
 		try {
 			conn = getConnection();
-			
+			int i = 1;
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, paymentMethod.getUwbudgetNumber());
-			stmt.setString(2, paymentMethod.getPonumber());
-			stmt.setString(3, paymentMethod.getContactFirstName());
-			stmt.setString(4, paymentMethod.getContactLastName());
-			stmt.setString(5, paymentMethod.getContactEmail());
-			stmt.setString(6, paymentMethod.getContactPhone());
-			stmt.setString(7, paymentMethod.getOrganization());
-			stmt.setString(8, paymentMethod.getAddressLine1());
-			stmt.setString(9, paymentMethod.getAddressLine2());
-			stmt.setString(10, paymentMethod.getCity());
-			stmt.setString(11, paymentMethod.getState());
-			stmt.setString(12, paymentMethod.getZip());
-			stmt.setString(13, paymentMethod.getCountry());
-			stmt.setTimestamp(14, new Timestamp(new Date().getTime()));
-			stmt.setInt(15, paymentMethod.getCreatorId());
-			stmt.setInt(16, 1);
+			stmt.setString(i++, paymentMethod.getUwbudgetNumber());
+			stmt.setString(i++, paymentMethod.getPonumber());
+			stmt.setString(i++, paymentMethod.getPaymentMethodName());
+			stmt.setString(i++, paymentMethod.getContactFirstName());
+			stmt.setString(i++, paymentMethod.getContactLastName());
+			stmt.setString(i++, paymentMethod.getContactEmail());
+			stmt.setString(i++, paymentMethod.getContactPhone());
+			stmt.setString(i++, paymentMethod.getOrganization());
+			stmt.setString(i++, paymentMethod.getAddressLine1());
+			stmt.setString(i++, paymentMethod.getAddressLine2());
+			stmt.setString(i++, paymentMethod.getCity());
+			stmt.setString(i++, paymentMethod.getState());
+			stmt.setString(i++, paymentMethod.getZip());
+			stmt.setString(i++, paymentMethod.getCountry());
+			stmt.setTimestamp(i++, new Timestamp(new Date().getTime()));
+			stmt.setInt(i++, paymentMethod.getCreatorId());
+			stmt.setInt(i++, 1);
 			if(paymentMethod.isFederalFunding()) {
-				stmt.setInt(17, 1);
+				stmt.setInt(i, 1);
 			}
 			else {
-				stmt.setInt(17, 0);
+				stmt.setInt(i, 0);
 			}
 			
 			int numRowsInserted = stmt.executeUpdate();
@@ -198,6 +201,7 @@ public class PaymentMethodDAO {
 		String sql = "UPDATE paymentMethod ";
 		sql += "SET UWBudgetNumber = ?";
 		sql += ", PONumber = ?";
+		sql += ", paymentMethodName = ?";
 		sql += ", contactNameFirst= ?";
 		sql += ", contactLastName = ?";
 		sql += ", contactEmail = ?";
@@ -221,33 +225,34 @@ public class PaymentMethodDAO {
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, paymentMethod.getUwbudgetNumber());
-			stmt.setString(2, paymentMethod.getPonumber());
-			stmt.setString(3, paymentMethod.getContactFirstName());
-			stmt.setString(4, paymentMethod.getContactLastName());
-			stmt.setString(5, paymentMethod.getContactEmail());
-			stmt.setString(6, paymentMethod.getContactPhone());
-			stmt.setString(7, paymentMethod.getOrganization());
-			stmt.setString(8, paymentMethod.getAddressLine1());
-			stmt.setString(9, paymentMethod.getAddressLine2());
-			stmt.setString(10, paymentMethod.getCity());
-			stmt.setString(11, paymentMethod.getState());
-			stmt.setString(12, paymentMethod.getZip());
-			stmt.setString(13, paymentMethod.getCountry());
-			stmt.setInt(14, paymentMethod.getCreatorId());
-			
+			int i = 0;
+			stmt.setString(++i, paymentMethod.getUwbudgetNumber());
+			stmt.setString(++i, paymentMethod.getPonumber());
+			stmt.setString(++i, paymentMethod.getPaymentMethodName());
+			stmt.setString(++i, paymentMethod.getContactFirstName());
+			stmt.setString(++i, paymentMethod.getContactLastName());
+			stmt.setString(++i, paymentMethod.getContactEmail());
+			stmt.setString(++i, paymentMethod.getContactPhone());
+			stmt.setString(++i, paymentMethod.getOrganization());
+			stmt.setString(++i, paymentMethod.getAddressLine1());
+			stmt.setString(++i, paymentMethod.getAddressLine2());
+			stmt.setString(++i, paymentMethod.getCity());
+			stmt.setString(++i, paymentMethod.getState());
+			stmt.setString(++i, paymentMethod.getZip());
+			stmt.setString(++i, paymentMethod.getCountry());
+			stmt.setInt(++i, paymentMethod.getCreatorId());
+			i++;
 			if(paymentMethod.isCurrent())
-				stmt.setInt(15, 1);
+				stmt.setInt(i, 1);
 			else
-				stmt.setInt(15, 0);
-			
+				stmt.setInt(i, 0);
+			i++;
 			if(paymentMethod.isFederalFunding())
-				stmt.setInt(16, 1);
+				stmt.setInt(i, 1);
 			else
-				stmt.setInt(16, 0);
+				stmt.setInt(i, 0);
 			
-			stmt.setInt(17,paymentMethod.getId());
+			stmt.setInt(++i,paymentMethod.getId());
 			
 			int numRowsInserted = stmt.executeUpdate();
 			if(numRowsInserted == 0) {

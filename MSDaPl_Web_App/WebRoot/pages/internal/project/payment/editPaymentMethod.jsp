@@ -31,6 +31,13 @@ function backToProject() {
 
 <html:form action="savePaymentMethod.do" method="POST">
 
+<logic:equal name="paymentMethodForm" property="uwbudgetAllowed" value="true">
+	<bean:define id="paymentMethodFormTitle">Budget Name</bean:define>
+</logic:equal>
+<logic:equal name="paymentMethodForm" property="ponumberAllowed" value="true">
+	<bean:define id="paymentMethodFormTitle">PO Name</bean:define>
+</logic:equal>
+
 <table border="0" cellpadding="7">
 
 	<tbody>
@@ -70,19 +77,29 @@ function backToProject() {
     		<logic:notEmpty name="paymentMethodForm" property="uwBudgetNumber">
     			<td>UW Budget Number:</td>
 	    		<td>
-	    		<html:text  property="uwBudgetNumber" readonly="true"/>
+	    		<bean:write name="paymentMethodForm" property="uwBudgetNumber" />
+				<html:hidden  name="paymentMethodForm" property="uwBudgetNumber" />
 	    	</td>
     		</logic:notEmpty>
     		<logic:notEmpty name="paymentMethodForm" property="poNumber">
     			<td>PO Number:</td>
 	    		<td>
-	    			<html:text  property="poNumber" readonly="true"/>
+	    			<bean:write name="paymentMethodForm" property="poNumber" />
+					<html:hidden  name="paymentMethodForm" property="poNumber" />
 	    		</td>
     		</logic:notEmpty>
     	</logic:equal>
     	
    </tr>
    
+   <tr>
+		<td><bean:write name="paymentMethodFormTitle"/></td>
+		<td colspan="4">
+			<!-- Should be able to edit the payment method name anytime -->
+			<html:text  property="paymentMethodName" size="40" />
+		</td>
+	</tr>
+	
    <logic:equal name="paymentMethodForm" property="editable" value="true">
    <!-- 
 	   <tr>
@@ -129,7 +146,8 @@ function backToProject() {
    				<html:text  property="contactFirstName" size="40" />
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="contactFirstName" size="40" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="contactFirstName" />
+   				<html:hidden  name="paymentMethodForm" property="contactFirstName" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -140,7 +158,8 @@ function backToProject() {
    				<html:text  property="contactLastName" size="40" />
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="contactLastName" size="40" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="contactLastName" />
+				<html:hidden  name="paymentMethodForm" property="contactLastName" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -151,7 +170,8 @@ function backToProject() {
    				<html:text  property="contactEmail" size="40" />
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="contactEmail" size="40" readonly="true" />
+   				<bean:write name="paymentMethodForm" property="contactEmail" />
+				<html:hidden  name="paymentMethodForm" property="contactEmail" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -162,7 +182,8 @@ function backToProject() {
    				<html:text  property="contactPhone"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="contactPhone" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="contactPhone" />
+				<html:hidden  name="paymentMethodForm" property="contactPhone" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -173,7 +194,8 @@ function backToProject() {
    				<html:text  property="organization" size="40"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="organization" size="40" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="organization" />
+				<html:hidden  name="paymentMethodForm" property="organization" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -184,7 +206,8 @@ function backToProject() {
    				<html:text  property="addressLine1" size="80"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="addressLine1" size="80" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="addressLine1" />
+				<html:hidden  name="paymentMethodForm" property="addressLine1" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -195,7 +218,8 @@ function backToProject() {
    				<html:text  property="addressLine2" size="80"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="addressLine2" size="80" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="addressLine2" />
+				<html:hidden  name="paymentMethodForm" property="addressLine2" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -206,7 +230,8 @@ function backToProject() {
    				<html:text  property="city"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text  property="city" readonly="true" />
+   				<bean:write name="paymentMethodForm" property="city" />
+				<html:hidden  name="paymentMethodForm" property="city" />
    			</logic:equal>
    		</td>
    	</tr>
@@ -232,7 +257,8 @@ function backToProject() {
    				<html:text property="zip" size="20" maxlength="255"/>
    			</logic:equal>
    			<logic:equal name="paymentMethodForm" property="editable" value="false">
-   				<html:text property="zip" size="20" maxlength="255" readonly="true"/>
+   				<bean:write name="paymentMethodForm" property="zip" />
+				<html:hidden  name="paymentMethodForm" property="zip" />
    			</logic:equal>
    		</td>
    	</tr>
