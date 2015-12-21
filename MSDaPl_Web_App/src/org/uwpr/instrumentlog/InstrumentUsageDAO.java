@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.yeastrc.db.DBConnectionManager;
@@ -98,6 +99,48 @@ public class InstrumentUsageDAO {
 		}
 	}
 
+	public void updateBlocksDates(List<? extends UsageBlockBase> blocks) throws Exception {
+
+		if (blocks == null || blocks.size() == 0)
+			return;
+
+		log.info("Updating usage blocks on instrument: " + blocks.get(0).getInstrumentID());
+
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+        StringBuilder sql = new StringBuilder("Update InstrumentUsage SET");
+        sql.append(" startDate = ?");
+        sql.append(", endDate = ?");
+        sql.append(", updatedBy = ?");
+        sql.append(" WHERE id = ?");
+		try {
+
+            conn = getConnection();
+            conn.setAutoCommit(false);
+            stmt = conn.prepareStatement(sql.toString());
+
+            for(UsageBlockBase block: blocks)
+            {
+                stmt.setTimestamp(1, new Timestamp(block.getStartDate().getTime()));
+                stmt.setTimestamp(2, new Timestamp(block.getEndDate().getTime()));
+                stmt.setInt(3, block.getUpdaterResearcherID());
+                stmt.setInt(4, block.getID());
+                stmt.executeUpdate();
+            }
+            conn.commit();
+
+		} finally {
+
+			if(conn != null) try {conn.close();} catch(SQLException e){}
+			if(stmt != null) try {stmt.close();} catch(SQLException e){}
+			if(rs != null) try {rs.close();} catch(SQLException e){}
+		}
+	}
+
+
 	private Connection getConnection() throws SQLException {
 		return DBConnectionManager.getConnection(DBConnectionManager.MAIN_DB);
 	}
@@ -140,18 +183,15 @@ public class InstrumentUsageDAO {
 		
 		log.info("Deleting usage block ID "+usageId);
 		Connection conn = null;
-		PreparedStatement stmt = null;
+		Statement stmt = null;
 		
 		try {
 			
 			String sql = "DELETE FROM instrumentUsage WHERE id="+usageId;
 			// System.out.println(sql);
 			conn = getConnection();
-			stmt = conn.prepareStatement( sql );
-			stmt.executeUpdate();
-			
-			stmt.close(); stmt = null;
-			conn.close(); conn = null;
+			stmt = conn.createStatement();
+			stmt.execute(sql);
 			
 			//InstrumentUsagePaymentDAO.getInstance().deletePaymentsForUsage(usageId);
 			
@@ -160,13 +200,46 @@ public class InstrumentUsageDAO {
 				// Always make sure result sets and statements are closed,
 				// and the connection is returned to the pool
 				if (stmt != null) {
-					try { stmt.close(); } catch (SQLException e) { ; }
-					stmt = null;
+					try { stmt.close(); } catch (SQLException ignored) { ; }
 				}
 				if (conn != null) {
-					try { conn.close(); } catch (SQLException e) { ; }
-					conn = null;
+					try { conn.close(); } catch (SQLException ignored) { ; }
 				}
+		}
+	}
+
+	public void delete(List<Integer> usageIds) throws SQLException {
+
+		// NOTE: There is a trigger on instrumentUsage table that will
+		//       delete all entries in the instrumentUsagePayment where instrumentUsageID is equal to
+		//       the given usageId
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		String sql = "DELETE FROM instrumentUsage WHERE id=?";
+
+		try {
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			stmt = conn.prepareStatement( sql );
+
+			for(Integer usageId: usageIds)
+			{
+				stmt.setInt(1, usageId);
+				stmt.executeUpdate();
+			}
+			conn.commit();
+
+		} finally {
+
+			// Always make sure result sets and statements are closed,
+			// and the connection is returned to the pool
+			if (stmt != null) {
+				try { stmt.close(); } catch (SQLException ignored) { ; }
+			}
+			if (conn != null) {
+				try { conn.close(); } catch (SQLException ignored) { ; }
+			}
 		}
 	}
 }

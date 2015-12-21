@@ -132,6 +132,8 @@ public class DeleteProjectInstrumentTimeAction extends Action {
         	return newFwd;
         }
 
+        log.info("Deleting usage block: Researcher: " + user.getIdAndName() + "; " + usageBlock.toString());
+        
         // delete
 		InstrumentUsageDAO.getInstance().delete(usageBlockId);
 		

@@ -44,6 +44,7 @@
    			<th>Description</th>
    			<th></th>
    			<th></th>
+   			<th></th>
    			</tr>
    		</thead>
    		<tbody>
@@ -58,6 +59,9 @@
    					<span class="clickable underline" onClick="confirmDelete('<bean:write name="instrument" property="id"/>', '<bean:write name="instrument" property="name"/>')">
    					<font color="red">Delete</font>
    					</span>
+   				</td>
+   				<td>
+   					<html:link action="/viewTimeScheduledForInstrument.do" paramId="instrumentId" paramName="instrument" paramProperty="id">List Usage </html:link>
    				</td>
    				</tr>
    			</logic:iterate>

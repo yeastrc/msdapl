@@ -89,7 +89,7 @@ private static final Logger log = Logger.getLogger(ViewTimeScheduledForProject.c
         }
         
         List<UsageBlock> usageBlocks = ProjectInstrumentUsageDAO.getInstance().getUsageBlocksForProject(projectId);
-        // sort the blocks by instrument and then by start date
+        // sort the blocks by instrument and then by start date, descending
         Collections.sort(usageBlocks, new Comparator<UsageBlock>() {
 			@Override
 			public int compare(UsageBlock o1, UsageBlock o2) {

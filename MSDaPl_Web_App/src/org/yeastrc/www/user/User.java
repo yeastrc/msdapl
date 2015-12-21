@@ -412,7 +412,18 @@ public class User implements IData {
 	 */
 	public Researcher getResearcher() { return this.researcher; }
 
-
+	public String getIdAndName()
+	{
+		StringBuilder buf = new StringBuilder();
+		buf.append(String.valueOf(getID()));
+		buf.append(": ").append(this.getUsername());
+		if(this.getResearcher() != null)
+		{
+			buf.append(" (").append(getResearcher().getFirstName()).append(" ").append(getResearcher().getLastName()).append(")");
+		}
+		return buf.toString();
+	}
+	
 	// instance variables
 
 	// The researcher id of this User

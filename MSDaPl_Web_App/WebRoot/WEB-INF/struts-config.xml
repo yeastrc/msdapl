@@ -52,7 +52,8 @@
     <form-bean name="editInstrumentTimeForm" type="org.uwpr.www.scheduler.EditProjectInstrumentTimeForm" />
   	<form-bean name="viewInstrumentRatesForm" type="org.uwpr.www.costcenter.ViewInstrumentRatesForm"></form-bean>
   	<form-bean name="paymentMethodForm" type="org.yeastrc.www.project.payment.PaymentMethodForm" />
-	
+  	<form-bean name="viewScheduledTimeDetailsForm" type="org.uwpr.www.scheduler.ViewTimeScheduledForInstrumentForm"></form-bean>
+    
     </form-beans>
 
 
@@ -117,6 +118,7 @@
 	<forward name="viewScheduler" path="/viewScheduler.do" />
 	<forward name="viewEditInstrumentTimeForm" path="/viewEditInstrumentTimeForm.do"/>
 	<forward name="viewAllInstrumentCalendar" path="/viewAllInstrumentCalendar.do"/>
+	<forward name="viewTimeScheduledForInstrument" path="/viewTimeScheduledForInstrument.do"/>
     </global-forwards>
 
 
@@ -1828,7 +1830,25 @@
       <forward name="Failure" path="/viewProject.do" redirect="false"/>
     </action>
    
-   
+   <action
+      path="/viewTimeScheduledForInstrument"
+      type="org.uwpr.www.scheduler.ViewTimeScheduledForInstrument"
+      input="/pages/internal/scheduler/viewTimeScheduledForInstrument.jsp"
+      name="viewScheduledTimeDetailsForm"
+      validate="false"
+      >
+      <forward name="Success" path="/pages/internal/scheduler/viewTimeScheduledForInstrument.jsp" redirect="false" />
+      <forward name="Failure" path="/allInstrumentUsageSummary.do" redirect="false"/>
+    </action>
+
+	<action
+      path="/shiftTimeScheduledForInstrument"
+      type="org.uwpr.www.scheduler.ShiftTimeScheduledForInstrument"
+     >
+		<forward name="Success" path="/pages/internal/scheduler/viewTimeScheduledForInstrument.jsp" redirect="true" />
+		<forward name="Failure" path="/pages/internal/scheduler/viewTimeScheduledForInstrument.jsp" redirect="false"/>
+	</action>
+	
    <!-- JSON services -->
        
     <action

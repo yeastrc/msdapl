@@ -108,7 +108,8 @@ public class DeleteProjectInstrumentTimeAjaxAction extends Action {
         	return null;
         }
         
-        
+        List<Integer> blockIdsToDelete = new ArrayList<Integer>();
+
         for(int usageBlockId: usageBlockIds) {
         	
         	UsageBlockBase usageBlock = MsInstrumentUtils.instance().getUsageBlockBase(usageBlockId);
@@ -126,11 +127,13 @@ public class DeleteProjectInstrumentTimeAjaxAction extends Action {
 
         		return null;
         	}
-        	
-        	InstrumentUsageDAO.getInstance().delete(usageBlockId);
+
+			log.info("Deleting usage block - Researcher " + user.getIdAndName() + "; " + usageBlock.toString());
+			blockIdsToDelete.add(usageBlockId);
         }
 
-        
+		InstrumentUsageDAO.getInstance().delete(usageBlockIds);
+
         PrintWriter writer = response.getWriter();
         writer.write("SUCCESS");
         return null;

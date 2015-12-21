@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.uwpr.costcenter.InvoiceInstrumentUsage;
@@ -22,6 +23,8 @@ import org.uwpr.instrumentlog.InstrumentColors;
 import org.uwpr.instrumentlog.MsInstrument;
 import org.uwpr.instrumentlog.MsInstrumentUtils;
 import org.uwpr.instrumentlog.UsageBlock;
+import org.yeastrc.data.InvalidIDException;
+import org.yeastrc.project.Researcher;
 
 /**
  * For use with fullcalendar
@@ -275,6 +278,8 @@ public class JSONInstrumentUsageGetter {
 		JSONObject event = new JSONObject();
 		event.put("id", blocks.get(0).getID());
 		event.put("projectId", Integer.valueOf(blocks.get(0).getProjectID()));
+		event.put("title", String.valueOf(blocks.get(0).getProjectID())
+				   + " " + getResearcherName(blocks.get(0).getResearcherID()));
 		event.put("instrumentId", Integer.valueOf(blocks.get(0).getInstrumentID()));
 		event.put("title", String.valueOf(blocks.get(0).getProjectID()));
 		event.put("start", sd.toString());
@@ -344,4 +349,26 @@ public class JSONInstrumentUsageGetter {
 		
 		return event;
 	}
+	
+	private String getResearcherName(int researcherId)
+    {
+           Researcher r = new Researcher();
+           try
+           {
+                   r.load(researcherId);
+           }
+           catch (InvalidIDException ignore) {}
+           catch (SQLException ignored) {}
+
+           String researcherName = !StringUtils.isBlank(r.getFirstName()) ? r.getFirstName().substring(0,1) + "." : "";
+           researcherName = !StringUtils.isBlank(r.getLastName()) ? r.getLastName() : "";
+
+           if(StringUtils.isBlank(researcherName))
+           {
+                   researcherName = r.getEmail() != null ? r.getEmail() : "UNKNOWN";
+           }
+
+           return researcherName;
+    }
+
 }
