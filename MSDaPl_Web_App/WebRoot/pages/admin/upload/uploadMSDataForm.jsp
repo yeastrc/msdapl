@@ -134,7 +134,7 @@ function onCancel(projectId) {
       <html:option value="2013">2013</html:option>
       <html:option value="2014">2014</html:option>
       <html:option value="2015">2015</html:option>
-      <html:option value="2016">2015</html:option>
+      <html:option value="2016">2016</html:option>
      </html:select>
      
      <b> - </b>
