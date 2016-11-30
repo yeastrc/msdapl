@@ -20,7 +20,12 @@ public class WIdPickerSpectrumMatch {
         this.idpPsm = idpPsm;
         this.spectrumMatch = psm;
         this.scanNumber = scan.getStartScanNum();
-        this.retentionTime = round(scan.getRetentionTime());
+        
+        if( scan.getRetentionTime() != null )
+        	this.retentionTime = round(scan.getRetentionTime());
+        else
+        	this.retentionTime = 0;
+
         if(scan instanceof MS2Scan) {
             precursorArea = round(((MS2Scan)scan).getBullsEyeArea());
         }
