@@ -65,7 +65,7 @@ public class SequestParamsParser implements SearchParamsDataProvider {
     protected static final Pattern modCharsPattern = Pattern.compile("[A-Z]+");
 
 
-    protected static final char[] modSymbols = {'*', '#', '@', '^', '~', '$'};
+    protected static final char[] modSymbols = {'*', '#', '@', '^', '~', '$', '%', '!', '+'};
 
     
     public MsSearchDatabaseIn getSearchDatabase() {
